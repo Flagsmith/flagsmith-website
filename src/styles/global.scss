@@ -9,6 +9,14 @@ body {
   font-size: $font-size-base;
   line-height: $line-height-base;
   color: $color-primary;
+  background-color: $color-tertiary;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  position: relative;
+  max-width: 1530px;
+  margin-right: auto;
+  margin-left: auto;
 }

@@ -1,0 +1,27 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 350px;
+  @include section-paddings;
+}
+
+.title {
+  text-align: center;
+
+  span {
+    &.title-color-accent-secondary {
+      color: $color-accent-secondary;
+    }
+
+    &.title-color-accent-tertiary {
+      color: $color-accent-tertiary;
+    }
+  }
+}
+
+.illustration {
+  position: absolute;
+  z-index: -1;
+}

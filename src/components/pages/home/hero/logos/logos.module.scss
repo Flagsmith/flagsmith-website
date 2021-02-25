@@ -1,0 +1,10 @@
+.items-wrapper {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  column-gap: 70px;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 15px;
+}

@@ -1,0 +1,27 @@
+@mixin code-highlighting {
+  * {
+    &::selection {
+      background-color: rgba($color-accent-primary, 0.5);
+    }
+  }
+
+  pre {
+    line-height: 1;
+    margin: 0;
+  }
+
+  :global {
+    .hljs-keyword,
+    .hljs-name {
+      color: $color-accent-primary;
+    }
+
+    .hljs-string {
+      color: $color-accent-tertiary;
+    }
+
+    .linenumber {
+      color: $color-additional-2;
+    }
+  }
+}

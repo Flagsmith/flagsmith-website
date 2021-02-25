@@ -1,0 +1,42 @@
+.wrapper {
+  background-color: $color-secondary;
+  padding-top: 150px;
+  padding-bottom: 210px;
+
+  @include section-paddings;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 30px;
+}
+
+.title {
+  max-width: 475px;
+  margin-bottom: 90px;
+}
+
+.left {
+  position: relative;
+  grid-column-start: 2;
+  grid-column-end: 8;
+}
+
+.left-inner {
+  position: sticky;
+  top: 80px;
+}
+
+.items-wrapper {
+  grid-column: span 5;
+  padding-top: 30px;
+  padding-left: 40px;
+}
+
+.illustration-wrapper {
+  position: relative;
+  margin-left: -290px;
+  width: 1040px;
+  height: 480px;
+}

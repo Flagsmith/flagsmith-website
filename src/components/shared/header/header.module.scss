@@ -1,7 +1,26 @@
 .wrapper {
-  background: blue;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  @include section-paddings;
+
+  .button {
+    padding: 7px;
+    margin-right: 20px;
+  }
 }
 
-.wrapper-test {
-  background: red;
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-wrapper {
+  display: flex;
 }

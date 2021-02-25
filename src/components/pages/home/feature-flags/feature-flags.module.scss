@@ -1,0 +1,57 @@
+.wrapper {
+  margin-bottom: 310px;
+  @include section-paddings;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 30px;
+}
+
+.title {
+  margin-bottom: 30px;
+}
+
+.left {
+  position: relative;
+  grid-column: span 6;
+}
+
+.right {
+  grid-column-start: 8;
+  grid-column-end: 12;
+}
+
+.icon {
+  margin-bottom: 30px;
+}
+
+.description {
+  margin-bottom: 30px;
+  @include content;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
+  font-weight: 700;
+  color: $color-accent-secondary;
+  text-decoration: none;
+
+  svg {
+    margin-left: 10px;
+
+    path {
+      stroke: $color-accent-secondary;
+      stroke-width: 2;
+    }
+  }
+}
+
+.illustration {
+  margin-top: -22px;
+  margin-left: -30px;
+}

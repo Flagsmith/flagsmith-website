@@ -1,0 +1,21 @@
+.wrapper {
+  text-align: center;
+  background-color: $color-secondary;
+  padding-top: 150px;
+  padding-bottom: 90px;
+  margin-bottom: 210px;
+  @include section-paddings;
+
+  .title {
+    margin-bottom: 10px;
+  }
+}
+
+.description {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.button {
+  margin-bottom: 120px;
+}

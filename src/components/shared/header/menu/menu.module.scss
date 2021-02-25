@@ -1,0 +1,42 @@
+.wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  column-gap: 60px;
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.item {
+  position: relative;
+}
+
+.link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
+  font-weight: 600;
+  color: $color-primary;
+  height: 100%;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-accent-secondary;
+  }
+}

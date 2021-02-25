@@ -1,0 +1,21 @@
+@mixin section-paddings {
+  // constant() is for older versions of Safari, env() all other cases
+  padding-right: constant(safe-area-inset-right);
+  padding-right: env(safe-area-inset-right);
+  padding-left: constant(safe-area-inset-left);
+  padding-left: env(safe-area-inset-left);
+
+  @include md-down {
+    padding-right: calc(constant(safe-area-inset-right) + 35px);
+    padding-right: calc(env(safe-area-inset-right) + 35px);
+    padding-left: calc(constant(safe-area-inset-left) + 35px);
+    padding-left: calc(env(safe-area-inset-left) + 35px);
+  }
+
+  @include sm-down {
+    padding-right: calc(constant(safe-area-inset-right) + 15px);
+    padding-right: calc(env(safe-area-inset-right) + 15px);
+    padding-left: calc(constant(safe-area-inset-left) + 15px);
+    padding-left: calc(env(safe-area-inset-left) + 15px);
+  }
+}

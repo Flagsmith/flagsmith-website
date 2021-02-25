@@ -1,0 +1,71 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: top;
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  transition: $transition-base;
+
+  > span {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+}
+
+.size {
+  &-lg {
+    font-size: $font-size-sm;
+    padding: 21px 30px;
+  }
+
+  &-md {
+    font-size: $font-size-xs;
+    padding: 17px 25px;
+  }
+}
+
+.theme {
+  &-primary {
+    color: $color-tertiary;
+    background-color: $color-primary;
+    box-shadow: 0px 10px 20px rgba(30, 13, 38, 0.2);
+
+    &:hover:not(:disabled) {
+      background-color: $color-primary-hover;
+    }
+  }
+
+  &-tertiary {
+    border: 2px solid $color-additional-1;
+    color: $color-primary;
+    background-color: transparent;
+
+    &:hover:not(:disabled) {
+      color: $color-accent-primary;
+      background-color: $color-tertiary;
+    }
+  }
+
+  &-accent-primary {
+    color: $color-tertiary;
+    background: $color-accent-primary;
+    box-shadow: 0px 10px 20px rgba(10, 194, 163, 0.3);
+
+    &:hover:not(:disabled) {
+      background: $color-accent-primary-hover;
+    }
+  }
+}
+
+.disabled {
+  opacity: 0.25;
+  pointer-events: none;
+}
