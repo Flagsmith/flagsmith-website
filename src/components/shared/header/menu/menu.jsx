@@ -11,11 +11,23 @@ const cx = classNames.bind(styles);
 const Menu = ({ items }) => (
   <nav className={cx('wrapper')}>
     <ul className={cx('list')}>
-      {items.map(({ label, path }, index) => (
+      {items.map(({ label, path, childItems }, index) => (
         <li className={cx('item')} key={index}>
           <Link className={cx('link')} to={path}>
             {label}
           </Link>
+
+          {childItems && (
+            <ul className={cx('dropdown')} key={index}>
+              {childItems.map(({ label, path }, index) => (
+                <li key={index}>
+                  <Link className={cx('link')} to={path}>
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </li>
       ))}
     </ul>
@@ -27,6 +39,12 @@ Menu.propTypes = {
     PropTypes.shape({
       label: PropTypes.string.isRequired,
       path: PropTypes.string.isRequired,
+      childItems: PropTypes.arrayOf(
+        PropTypes.shape({
+          label: PropTypes.string.isRequired,
+          path: PropTypes.string.isRequired,
+        })
+      ),
     })
   ).isRequired,
 };
@@ -36,6 +54,24 @@ Menu.defaultProps = {
     {
       label: 'Features',
       path: '/',
+      childItems: [
+        {
+          label: 'Overview',
+          path: '/',
+        },
+        {
+          label: 'Phased Rollouts',
+          path: '/',
+        },
+        {
+          label: 'Integrations',
+          path: '/',
+        },
+        {
+          label: 'Enterprise',
+          path: '/',
+        },
+      ],
     },
     {
       label: 'Solutions',
