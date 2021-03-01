@@ -24,7 +24,7 @@ const FeatureFlags = ({ title, description }) => (
           {title}
         </Heading>
         <div className={cx('description')} dangerouslySetInnerHTML={{ __html: description }} />
-        <Link className={cx('button')} to="/">
+        <Link className={cx('link', 'icon-arrow')} to="/">
           Learn More <IconArrowRight />
         </Link>
       </div>

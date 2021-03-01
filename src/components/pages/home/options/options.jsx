@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import { graphql, useStaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
 
 import Heading from 'components/shared/heading/heading';
 import Link from 'components/shared/link/link';
@@ -14,47 +16,102 @@ import IconArrowRight from 'icons/arrow-right.inline.svg';
 
 const cx = classNames.bind(styles);
 
-const Options = ({ title, items }) => (
-  <div className={cx('wrapper')}>
-    <div className="container">
-      <Heading tag="h2" className={cx('title')} size="xl">
-        {title}
-      </Heading>
+const Options = ({ title, items }) => {
+  const {
+    illustrationSaas: {
+      childImageSharp: { fixed: illustrationSaas },
+    },
+    illustrationPrivateCloud: {
+      childImageSharp: { fixed: illustrationPrivateCloud },
+    },
+    illustrationOnPrem: {
+      childImageSharp: { fixed: illustrationOnPrem },
+    },
+  } = useStaticQuery(graphql`
+    query {
+      illustrationSaas: file(relativePath: { eq: "pages/home/options/illustration-saas.png" }) {
+        childImageSharp {
+          fixed(height: 246) {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
+          }
+        }
+      }
 
-      <div className={cx('items-wrapper')}>
-        {items.map(({ title, path, theme, features }, index) => (
-          <Link className={cx('item', `item-theme-${theme}`)} to={path} key={index}>
-            <div className={cx('item-inner')}>
-              <div className={cx('item-content')}>
-                <Heading className={cx('item-title')} tag="h3" size="lg">
-                  {title}
-                </Heading>
+      illustrationPrivateCloud: file(
+        relativePath: { eq: "pages/home/options/illustration-private-cloud.png" }
+      ) {
+        childImageSharp {
+          fixed(height: 230) {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
+          }
+        }
+      }
 
-                <div className={cx('item-image')}></div>
+      illustrationOnPrem: file(
+        relativePath: { eq: "pages/home/options/illustration-on-prem.png" }
+      ) {
+        childImageSharp {
+          fixed(height: 260) {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
+          }
+        }
+      }
+    }
+  `);
 
-                <ul className={cx('item-features')}>
-                  {features.map((feature, index) => (
-                    <li key={index}>
-                      <IconCheck />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+  const imageCollection = {
+    saas: illustrationSaas,
+    privateCloud: illustrationPrivateCloud,
+    onPrem: illustrationOnPrem,
+  };
 
-              <span className={cx('item-button')}>
-                Learn more <IconArrowRight />
-              </span>
-            </div>
-          </Link>
-        ))}
+  return (
+    <div className={cx('wrapper')}>
+      <div className="container">
+        <Heading tag="h2" className={cx('title')} size="xl">
+          {title}
+        </Heading>
 
-        <img className={cx('shape', 'shape-1')} src={shape1} alt="" loading="lazy" aria-hidden />
-        <img className={cx('shape', 'shape-2')} src={shape2} alt="" loading="lazy" aria-hidden />
+        <div className={cx('items-wrapper')}>
+          {items.map(({ title, path, theme, imageName, features }, index) => {
+            const image = imageCollection[imageName];
+            return (
+              <Link className={cx('item', `item-theme-${theme}`)} to={path} key={index}>
+                <div className={cx('item-inner')}>
+                  <div className={cx('item-content')}>
+                    <Heading className={cx('item-title')} tag="h3" size="lg">
+                      {title}
+                    </Heading>
+
+                    <div className={cx('item-image')}>
+                      <Img fixed={image} alt="" />
+                    </div>
+
+                    <ul className={cx('item-features')}>
+                      {features.map((feature, index) => (
+                        <li key={index}>
+                          <IconCheck />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <Link to={path} className={cx('item-link', 'icon-arrow')}>
+                    Learn more <IconArrowRight />
+                  </Link>
+                </div>
+              </Link>
+            );
+          })}
+
+          <img className={cx('shape', 'shape-1')} src={shape1} alt="" loading="lazy" aria-hidden />
+          <img className={cx('shape', 'shape-2')} src={shape2} alt="" loading="lazy" aria-hidden />
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 Options.propTypes = {
   title: PropTypes.string.isRequired,
@@ -75,6 +132,7 @@ Options.defaultProps = {
       title: 'SaaS',
       path: '/',
       theme: 'accent-primary',
+      imageName: 'saas',
       features: [
         'Try our enterprise-grade SaaS offering hosted by Flagsmith.',
         'Optimized over six regions across the world. Choose your location to minimize latency and manage data sovereignty',
@@ -83,7 +141,8 @@ Options.defaultProps = {
     {
       title: 'Private Cloud',
       path: '/',
-      theme: 'primary',
+      theme: 'quaternary',
+      imageName: 'privateCloud',
       features: [
         'Fully managed private deployments',
         'Have us host in your own private instance',
@@ -95,6 +154,7 @@ Options.defaultProps = {
       title: 'On Prem',
       path: '/',
       theme: 'accent-secondary',
+      imageName: 'onPrem',
       features: [
         'Self host',
         'Good for privacy-conscious',

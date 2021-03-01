@@ -33,7 +33,7 @@ const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
             {title}
           </Heading>
           <p className={cx('description')}>{description}</p>
-          <Link className={cx('button')} to={buttonLink}>
+          <Link className={cx('link', 'icon-arrow')} to={buttonLink}>
             {buttonText} <IconArrowRight />
           </Link>
         </div>

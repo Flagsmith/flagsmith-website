@@ -1,0 +1,127 @@
+@mixin with-link-primary {
+  a:not(.button) {
+    text-decoration: none;
+    color: $color-primary;
+    transition: color $transition-base;
+
+    &:hover {
+      color: $color-accent-secondary;
+    }
+
+    &.icon-arrow {
+      &:hover {
+        svg {
+          path {
+            stroke: $color-accent-secondary;
+          }
+        }
+      }
+
+      svg {
+        margin-left: 10px;
+
+        path {
+          stroke: $color-primary;
+          stroke-width: 2;
+          transition: stroke $transition-base;
+        }
+      }
+    }
+  }
+}
+
+@mixin with-link-quaternary {
+  a:not(.button) {
+    text-decoration: none;
+    color: $color-quaternary;
+    transition: color $transition-base;
+
+    &:hover {
+      color: $color-accent-secondary;
+    }
+
+    &.icon-arrow {
+      &:hover {
+        svg {
+          path {
+            stroke: $color-accent-secondary;
+          }
+        }
+      }
+
+      svg {
+        margin-left: 10px;
+
+        path {
+          stroke: $color-quaternary;
+          stroke-width: 2;
+          transition: stroke $transition-base;
+        }
+      }
+    }
+  }
+}
+
+@mixin with-link-accent-primary {
+  a:not(.button) {
+    text-decoration: none;
+    color: $color-accent-primary;
+    transition: color $transition-base;
+
+    &:hover {
+      color: $color-accent-secondary;
+    }
+
+    &.icon-arrow {
+      &:hover {
+        svg {
+          path {
+            stroke: $color-accent-secondary;
+          }
+        }
+      }
+
+      svg {
+        margin-left: 10px;
+
+        path {
+          stroke: $color-accent-primary;
+          stroke-width: 2;
+          transition: stroke $transition-base;
+        }
+      }
+    }
+  }
+}
+
+@mixin with-link-accent-secondary {
+  a:not(.button) {
+    text-decoration: none;
+    color: $color-accent-secondary;
+    transition: color $transition-base;
+
+    &:hover {
+      color: $color-accent-primary;
+    }
+
+    &.icon-arrow {
+      &:hover {
+        svg {
+          path {
+            stroke: $color-accent-primary;
+          }
+        }
+      }
+
+      svg {
+        margin-left: 10px;
+
+        path {
+          stroke: $color-accent-secondary;
+          stroke-width: 2;
+          transition: stroke $transition-base;
+        }
+      }
+    }
+  }
+}

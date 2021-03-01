@@ -9,6 +9,7 @@
 
   li {
     margin-bottom: 20px;
+    @include with-link-primary;
 
     &:last-child {
       margin-bottom: 0;
@@ -19,11 +20,4 @@
 .link {
   font-size: $font-size-xs;
   line-height: $line-height-xs;
-  color: $color-primary;
-  text-decoration: none;
-  transition: color $transition-base;
-
-  &:hover {
-    color: $color-accent-secondary;
-  }
 }

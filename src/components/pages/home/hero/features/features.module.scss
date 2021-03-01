@@ -112,7 +112,7 @@
   position: relative;
   height: 30px;
   width: 55px;
-  background-color: $color-primary;
+  background-color: $color-quaternary;
   border-radius: 100px;
   outline: none;
   border: none;
@@ -141,12 +141,13 @@
   }
 }
 
-.result {
+.state {
   position: relative;
-  background: $color-tertiary;
+  background-color: $color-tertiary;
   box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
   border-radius: 10px;
   z-index: 1;
+  overflow: hidden;
 }
 
 .shape {

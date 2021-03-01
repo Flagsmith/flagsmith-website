@@ -16,6 +16,7 @@
 .left {
   grid-column-start: 2;
   grid-column-end: 6;
+  @include with-link-accent-secondary;
 }
 
 .right {
@@ -32,23 +33,12 @@
   @include content;
 }
 
-.button {
+.link {
   display: flex;
   align-items: center;
   font-size: $font-size-xs;
   line-height: $line-height-xs;
   font-weight: 700;
-  color: $color-accent-secondary;
-  text-decoration: none;
-
-  svg {
-    margin-left: 10px;
-
-    path {
-      stroke: $color-accent-secondary;
-      stroke-width: 2;
-    }
-  }
 }
 
 .illustration {

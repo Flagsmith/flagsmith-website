@@ -12,6 +12,20 @@
   .button {
     padding: 7px;
     margin-right: 20px;
+
+    svg {
+      path {
+        transition: fill $transition-base;
+      }
+    }
+
+    &:hover {
+      svg {
+        path {
+          fill: $color-tertiary;
+        }
+      }
+    }
   }
 }
 

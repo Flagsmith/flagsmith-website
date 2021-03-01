@@ -45,7 +45,7 @@ Heading.propTypes = {
   className: PropTypes.string,
   tag: PropTypes.string,
   size: PropTypes.oneOf(['xxl', 'xl', 'lg', 'md']),
-  color: PropTypes.oneOf(['primary', 'tertiary']),
+  color: PropTypes.oneOf(['primary', 'tertiary', 'quaternary']),
   highlightedWordsColor: PropTypes.oneOf(['primary', 'secondary']),
   innerHTML: PropTypes.string,
   children: PropTypes.node,

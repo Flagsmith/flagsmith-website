@@ -70,6 +70,8 @@
   }
 
   &-theme-accent-primary {
+    @include with-link-accent-primary;
+
     .item-title {
       color: $color-accent-primary;
     }
@@ -82,51 +84,50 @@
       }
     }
 
-    .item-button {
-      color: $color-accent-primary;
+    &:hover {
+      .item-link {
+        color: $color-accent-secondary;
 
-      svg {
-        path {
-          stroke: $color-accent-primary;
+        svg {
+          path {
+            stroke: $color-accent-secondary !important;
+          }
         }
       }
     }
   }
 
-  &-theme-primary {
+  &-theme-quaternary {
+    @include with-link-quaternary;
+
     .item-title {
-      color: $color-primary;
+      color: $color-quaternary;
     }
 
     .item-features {
       svg {
         circle {
-          fill: $color-primary;
+          fill: $color-quaternary;
         }
       }
     }
 
-    .item-button {
-      color: $color-primary;
+    &:hover {
+      .item-link {
+        color: $color-accent-secondary;
 
-      svg {
-        path {
-          stroke: $color-primary;
+        svg {
+          path {
+            stroke: $color-accent-secondary !important;
+          }
         }
       }
     }
-  }
-
-  &-title {
-    margin-bottom: 10px;
-  }
-
-  &-image {
-    height: 280px;
-    margin-bottom: 20px;
   }
 
   &-theme-accent-secondary {
+    @include with-link-accent-secondary;
+
     .item-title {
       color: $color-accent-secondary;
     }
@@ -139,15 +140,29 @@
       }
     }
 
-    .item-button {
-      color: $color-accent-secondary;
+    &:hover {
+      .item-link {
+        color: $color-accent-primary;
 
-      svg {
-        path {
-          stroke: $color-accent-secondary;
+        svg {
+          path {
+            stroke: $color-accent-primary !important;
+          }
         }
       }
     }
+  }
+
+  &-title {
+    margin-bottom: 20px;
+  }
+
+  &-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 260px;
+    margin-bottom: 30px;
   }
 
   &-content {
@@ -178,7 +193,7 @@
     }
   }
 
-  &-button {
+  &-link {
     display: flex;
     align-items: center;
     font-size: $font-size-xs;
@@ -187,14 +202,6 @@
     border-top: 2px solid $color-additional-4;
     padding-top: 20px;
     padding-bottom: 20px;
-
-    svg {
-      margin-left: 10px;
-
-      path {
-        stroke-width: 2;
-      }
-    }
   }
 }
 

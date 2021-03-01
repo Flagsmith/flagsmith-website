@@ -1,6 +1,4 @@
 .wrapper {
-  padding-top: 60px;
-  padding-bottom: 60px;
   @include section-paddings;
 }
 
@@ -8,6 +6,9 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   column-gap: 30px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  border-top: 2px solid #f8f8f7;
 }
 
 .left {
@@ -28,23 +29,18 @@
   font-size: $font-size-xs;
   line-height: $line-height-xs;
 
+  @include with-link-accent-secondary;
+
   a {
     display: flex;
     align-items: center;
     font-size: $font-size-xs;
     line-height: $line-height-xs;
     font-weight: 700;
-    color: $color-accent-secondary;
-    text-decoration: none;
     margin-left: 4px;
 
     svg {
       margin-left: 6px;
-
-      path {
-        stroke: $color-accent-secondary;
-        stroke-width: 2;
-      }
     }
   }
 }

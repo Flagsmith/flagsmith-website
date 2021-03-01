@@ -8,6 +8,7 @@
 .head {
   text-align: center;
   margin-bottom: 60px;
+  @include with-link-accent-secondary;
 }
 
 .title {
@@ -22,24 +23,13 @@
   margin-bottom: 20px;
 }
 
-.button {
+.link {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: $font-size-xs;
   line-height: $line-height-xs;
   font-weight: 700;
-  color: $color-accent-secondary;
-  text-decoration: none;
-
-  svg {
-    margin-left: 10px;
-
-    path {
-      stroke: $color-accent-secondary;
-      stroke-width: 2;
-    }
-  }
 }
 
 .tabs-wrapper {

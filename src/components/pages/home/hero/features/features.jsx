@@ -4,6 +4,8 @@ import classNames from 'classnames/bind';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { okaidia } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
+import State from './state';
+
 import styles from './features.module.scss';
 
 import Logo from './images/logo.inline.svg';
@@ -16,14 +18,14 @@ import shapeEqual from './images/shape-equal.url.svg';
 const cx = classNames.bind(styles);
 
 const Features = ({ code, options }) => {
-  const [switchCheck, setSwitchCheck] = useState({
-    chat: true,
-    design: true,
+  const [state, setState] = useState({
+    chat: false,
+    designV2: false,
     dark: false,
   });
 
   const handleSwitchButton = (key) => {
-    setSwitchCheck((prevState) => ({ ...prevState, [key]: !prevState[key] }));
+    setState((prevState) => ({ ...prevState, [key]: !prevState[key] }));
   };
 
   return (
@@ -50,7 +52,7 @@ const Features = ({ code, options }) => {
               {label}
               <button
                 className={cx('switch-button', {
-                  checked: switchCheck[key],
+                  checked: state[key],
                 })}
                 onClick={() => handleSwitchButton(key)}
               />
@@ -78,7 +80,9 @@ const Features = ({ code, options }) => {
         />
       </div>
 
-      <div className={cx('result')}></div>
+      <div className={cx('state')}>
+        <State {...state} setOption={handleSwitchButton} />
+      </div>
 
       <img className={cx('shape', 'shape-1')} src={shape1} alt="" loading="lazy" aria-hidden />
       <img className={cx('shape', 'shape-2')} src={shape2} alt="" loading="lazy" aria-hidden />
@@ -114,12 +118,12 @@ function Main(props) {
    `,
   options: [
     {
-      label: 'Chat',
-      key: 'chat',
+      label: 'Design 2.0',
+      key: 'designV2',
     },
     {
-      label: 'Design 2.0',
-      key: 'design',
+      label: 'Chat',
+      key: 'chat',
     },
     {
       label: 'Dark mode',

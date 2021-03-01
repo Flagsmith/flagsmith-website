@@ -39,7 +39,7 @@
     box-shadow: 0px 10px 20px rgba(30, 13, 38, 0.2);
 
     &:hover:not(:disabled) {
-      background-color: $color-primary-hover;
+      background-color: $color-accent-secondary;
     }
   }
 
@@ -49,8 +49,8 @@
     background-color: transparent;
 
     &:hover:not(:disabled) {
-      color: $color-accent-primary;
-      background-color: $color-tertiary;
+      border: 2px solid $color-accent-secondary;
+      background-color: $color-accent-secondary;
     }
   }
 
@@ -60,7 +60,8 @@
     box-shadow: 0px 10px 20px rgba(10, 194, 163, 0.3);
 
     &:hover:not(:disabled) {
-      background: $color-accent-primary-hover;
+      background: $color-accent-secondary;
+      box-shadow: 0px 10px 20px rgba(123, 81, 251, 0.2);
     }
   }
 }

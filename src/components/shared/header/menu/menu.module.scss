@@ -20,6 +20,7 @@
 
 .item {
   position: relative;
+  @include with-link-primary;
 
   &:hover {
     .dropdown {
@@ -37,16 +38,9 @@
   font-size: $font-size-xs;
   line-height: $line-height-xs;
   font-weight: 600;
-  color: $color-primary;
   height: 100%;
   padding-top: 25px;
   padding-bottom: 25px;
-  text-decoration: none;
-  transition: color $transition-base;
-
-  &:hover {
-    color: $color-accent-secondary;
-  }
 }
 
 .dropdown {

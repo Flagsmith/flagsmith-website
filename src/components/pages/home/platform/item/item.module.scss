@@ -11,12 +11,16 @@
 
     .icon {
       [fill-rule='circle'] {
-        fill: $color-primary;
+        fill: $color-quaternary;
       }
 
       &-circle {
         opacity: 1;
       }
+    }
+
+    .title {
+      color: $color-quaternary;
     }
   }
 

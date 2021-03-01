@@ -11,7 +11,7 @@ const cx = classNames.bind(styles);
 
 const MenuItem = ({ label: sectionTitle, childItems }) => (
   <div>
-    <Heading className={cx('title')} tag="h3" size="md">
+    <Heading className={cx('title')} tag="h3" size="md" color="quaternary">
       {sectionTitle}
     </Heading>
 
