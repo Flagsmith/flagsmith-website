@@ -1,36 +1,146 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
 
 import Heading from 'components/shared/heading/heading';
 import Link from 'components/shared/link/link';
+import { MOTION_EASY } from 'constants/constants';
 import styles from './feature-flags.module.scss';
 
 import Icon from './images/icon.inline.svg';
-import illustration from './images/illustration.url.svg';
 import IconArrowRight from 'icons/arrow-right.inline.svg';
+import window from './images/window.url.svg';
+import popup from './images/popup.url.svg';
+import logo from './images/logo.url.svg';
+import search from './images/search.url.svg';
+import item1 from './images/item-1.url.svg';
+import item2 from './images/item-2.url.svg';
+import item3 from './images/item-3.url.svg';
 
 const cx = classNames.bind(styles);
 
-const FeatureFlags = ({ title, description }) => (
-  <section className={cx('wrapper')}>
-    <div className={cx('container', 'inner')}>
-      <div className={cx('left')}>
-        <img className={cx('illustration')} src={illustration} alt="" loading="lazy" />
+const variantsContent = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: (custom) => ({
+    opacity: 1,
+    clipPath: 'polygon(0 0, 0 100%, 100% 100%, 100% 0)',
+    transition: { delay: custom, duration: 0.5, ease: MOTION_EASY },
+  }),
+};
+
+const variantsContentFade = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: (custom) => ({
+    opacity: 1,
+    transition: { delay: custom, duration: 0.5, ease: MOTION_EASY },
+  }),
+};
+
+const variantsAction = {
+  hidden: {
+    opacity: 0,
+    y: 70,
+  },
+  visible: (custom) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: custom, duration: 0.5, ease: MOTION_EASY },
+  }),
+};
+
+const FeatureFlags = ({ title, description }) => {
+  const [animationContainer, animationContainerView] = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
+
+  return (
+    <section className={cx('wrapper')}>
+      <div className={cx('container', 'inner')}>
+        <div className={cx('left')} ref={animationContainer}>
+          <motion.div
+            className={cx('illustration-wrapper')}
+            initial="hidden"
+            animate={animationContainerView && 'visible'}
+            aria-hidden
+          >
+            <motion.img
+              className={cx('window')}
+              src={window}
+              alt=""
+              loading="lazy"
+              variants={variantsAction}
+            />
+            <motion.img
+              className={cx('popup')}
+              src={popup}
+              alt=""
+              loading="lazy"
+              variants={variantsContentFade}
+              custom={0.6}
+            />
+            <motion.img
+              className={cx('logo')}
+              src={logo}
+              alt=""
+              loading="lazy"
+              variants={variantsContent}
+              custom={0.8}
+            />
+            <motion.img
+              className={cx('search')}
+              src={search}
+              alt=""
+              loading="lazy"
+              variants={variantsContentFade}
+              custom={1}
+            />
+            <motion.img
+              className={cx('item', 'item-1')}
+              src={item1}
+              alt=""
+              loading="lazy"
+              variants={variantsAction}
+              custom={1.2}
+            />
+            <motion.img
+              className={cx('item', 'item-2')}
+              src={item2}
+              alt=""
+              loading="lazy"
+              variants={variantsAction}
+              custom={1.4}
+            />
+            <motion.img
+              className={cx('item', 'item-3')}
+              src={item3}
+              alt=""
+              loading="lazy"
+              variants={variantsAction}
+              custom={1.6}
+            />
+          </motion.div>
+        </div>
+        <div className={cx('right')}>
+          <Icon className={cx('icon')} />
+          <Heading className={cx('title')} tag="h2" size="xl">
+            {title}
+          </Heading>
+          <div className={cx('description')} dangerouslySetInnerHTML={{ __html: description }} />
+          <Link className={cx('link', 'icon-arrow')} to="/">
+            Learn More <IconArrowRight />
+          </Link>
+        </div>
       </div>
-      <div className={cx('right')}>
-        <Icon className={cx('icon')} />
-        <Heading className={cx('title')} tag="h2" size="xl">
-          {title}
-        </Heading>
-        <div className={cx('description')} dangerouslySetInnerHTML={{ __html: description }} />
-        <Link className={cx('link', 'icon-arrow')} to="/">
-          Learn More <IconArrowRight />
-        </Link>
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 FeatureFlags.propTypes = {
   title: PropTypes.string.isRequired,

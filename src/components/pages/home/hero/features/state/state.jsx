@@ -4,6 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
+import { MOTION_EASY } from 'constants/constants';
 import styles from './state.module.scss';
 
 import Avatar from './images/avatar.inline.svg';
@@ -17,8 +18,6 @@ import chatIcon from './images/chat.svg';
 
 const cx = classNames.bind(styles);
 
-const motionEase = [0.25, 0.1, 0.25, 1];
-
 const variantsContent = {
   hidden: {
     opacity: 0,
@@ -26,7 +25,7 @@ const variantsContent = {
   visible: (custom) => ({
     opacity: 1,
     clipPath: 'polygon(0 0, 0 100%, 100% 100%, 100% 0)',
-    transition: { delay: custom, duration: 0.5, ease: motionEase },
+    transition: { delay: custom, duration: 0.5, ease: MOTION_EASY },
   }),
 };
 
@@ -36,7 +35,7 @@ const variantsContentFade = {
   },
   visible: (custom) => ({
     opacity: 1,
-    transition: { delay: custom, duration: 0.5, ease: motionEase },
+    transition: { delay: custom, duration: 0.5, ease: MOTION_EASY },
   }),
 };
 
@@ -44,12 +43,12 @@ const variantChat = {
   hidden: {
     opacity: 0,
     bottom: -90,
-    transition: { delay: 0, duration: 0.5, ease: motionEase },
+    transition: { delay: 0, duration: 0.5, ease: MOTION_EASY },
   },
   visible: (custom) => ({
     opacity: 1,
     bottom: 30,
-    transition: { delay: custom, duration: 0.5, ease: motionEase },
+    transition: { delay: custom, duration: 0.5, ease: MOTION_EASY },
   }),
 };
 
