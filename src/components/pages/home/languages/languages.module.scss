@@ -125,6 +125,25 @@
   z-index: -1;
   animation: wiggle 5s infinite;
 
+  path {
+    transition: fill $transition-base;
+  }
+
+  &.active {
+    :global {
+      .android_inline_svg__circle,
+      .react-native_inline_svg__circle,
+      .flutter_inline_svg__circle,
+      .ios_inline_svg__circle,
+      .javascript_inline_svg__circle,
+      .php_inline_svg__circle,
+      .python_inline_svg__circle,
+      .ruby_inline_svg__circle {
+        fill: $color-accent-primary;
+      }
+    }
+  }
+
   &-android {
     top: 18.6%;
     left: 19.7vw;

@@ -13,14 +13,14 @@ import styles from './languages.module.scss';
 import Logo from 'images/logo.inline.svg';
 import IconArrowRight from 'icons/arrow-right.inline.svg';
 
-import shapeAndroid from './images/android.url.svg';
-import shapePython from './images/python.url.svg';
-import shapePhp from './images/php.url.svg';
-import shapeRuby from './images/ruby.url.svg';
-import shapeReactNative from './images/react-native.url.svg';
-import shapeIos from './images/ios.url.svg';
-import shapeFlutter from './images/flutter.url.svg';
-import shapeJavascript from './images/javascript.url.svg';
+import ShapeAndroid from './images/android.inline.svg';
+import ShapePython from './images/python.inline.svg';
+import ShapePhp from './images/php.inline.svg';
+import ShapeRuby from './images/ruby.inline.svg';
+import ShapeReactNative from './images/react-native.inline.svg';
+import ShapeIos from './images/ios.inline.svg';
+import ShapeFlutter from './images/flutter.inline.svg';
+import ShapeJavascript from './images/javascript.inline.svg';
 
 const cx = classNames.bind(styles);
 
@@ -39,35 +39,35 @@ const variantsIntervals = [0, 0.2, 0.4, 0.8, 1];
 const imageCollection = [
   {
     name: 'android',
-    image: shapeAndroid,
+    Icon: ShapeAndroid,
   },
   {
     name: 'python',
-    image: shapePython,
+    Icon: ShapePython,
   },
   {
     name: 'php',
-    image: shapePhp,
+    Icon: ShapePhp,
   },
   {
     name: 'ruby',
-    image: shapeRuby,
+    Icon: ShapeRuby,
   },
   {
     name: 'react-native',
-    image: shapeReactNative,
+    Icon: ShapeReactNative,
   },
   {
     name: 'ios',
-    image: shapeIos,
+    Icon: ShapeIos,
   },
   {
     name: 'flutter',
-    image: shapeFlutter,
+    Icon: ShapeFlutter,
   },
   {
     name: 'javascript',
-    image: shapeJavascript,
+    Icon: ShapeJavascript,
   },
 ];
 
@@ -76,11 +76,19 @@ const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
   const { scrollYProgress } = useViewportScroll();
   const { scrollPercentageStart, scrollPercentageEnd } = useSectionOffset(sectionRef);
 
+  const [activeItemName, setActiveItemName] = useState('react-native');
   const [activeItemIndex, setActiveItemIndex] = useState(0);
 
   const inputRange = variantsIntervals.map(
     (input) => scrollPercentageStart + (scrollPercentageEnd - scrollPercentageStart) * input
   );
+
+  const hadleTabClick = (index, languageName) => {
+    const name = languageName.toLowerCase().replace(' ', '-');
+
+    setActiveItemIndex(index);
+    setActiveItemName(name);
+  };
 
   const getParallaxStyle = (index) => {
     const marginTop = useTransform(scrollYProgress, inputRange, variantsParallax[index]);
@@ -109,7 +117,7 @@ const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
                 <li
                   className={cx('tabs-item', { active: index === activeItemIndex })}
                   key={index}
-                  onClick={() => setActiveItemIndex(index)}
+                  onClick={() => hadleTabClick(index, language)}
                 >
                   {language}
                 </li>
@@ -135,16 +143,17 @@ const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
         </div>
       </div>
 
-      {imageCollection.map(({ name, image }, index) => (
-        <motion.img
-          className={cx('shape', `shape-${name}`)}
-          src={image}
-          alt=""
-          loading="lazy"
-          aria-hidden
+      {imageCollection.map(({ name, Icon }, index) => (
+        <motion.div
+          className={cx('shape', `shape-${name}`, {
+            active: name === activeItemName,
+          })}
           style={getParallaxStyle(index)}
           key={index}
-        />
+          aria-hidden
+        >
+          <Icon />
+        </motion.div>
       ))}
     </section>
   );
