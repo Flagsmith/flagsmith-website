@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import { useInView } from 'react-intersection-observer';
-
-import Heading from 'components/shared/heading/heading';
+import { motion, useViewportScroll, useTransform } from 'framer-motion';
+import useSectionOffset from 'hooks/use-section-offset';
 
 import styles from './item.module.scss';
 
 import TraitsIcon from './images/traits.inline.svg';
+import TraitsIconActive from './images/traits-active.inline.svg';
 import SegmentsIcon from './images/segments.inline.svg';
+import SegmentsIconActive from './images/segments-active.inline.svg';
 import RolloutsIcon from './images/rollouts.inline.svg';
+import RolloutsIconActive from './images/rollouts-active.inline.svg';
 import TrackIcon from './images/track.inline.svg';
+import TrackIconActive from './images/track-active.inline.svg';
 
 const iconCollection = {
   traits: TraitsIcon,
@@ -19,26 +22,71 @@ const iconCollection = {
   track: TrackIcon,
 };
 
+const iconCollectionActive = {
+  traits: TraitsIconActive,
+  segments: SegmentsIconActive,
+  rollouts: RolloutsIconActive,
+  track: TrackIconActive,
+};
+
 const cx = classNames.bind(styles);
 
+const variantsY = ['0%', '20%', '40%', '80%', '100%'];
+const variantsIntervals = [0, 0.2, 0.4, 0.8, 1];
+const variantsOpacity = [0, 1, 1, 1, 1];
+const variantsColor = ['#1e0d26', '#22194d', '#22194d', '#22194d', '#22194d'];
+
 const Item = ({ title, description, iconName }) => {
-  const [sectionRef, inView] = useInView({
-    threshold: 1,
-    triggerOnce: true,
-  });
+  const sectionRef = useRef();
+  const { scrollYProgress } = useViewportScroll();
+  const { scrollPercentageStart, scrollPercentageEnd } = useSectionOffset(sectionRef);
+
+  const inputRange = variantsIntervals.map(
+    (input) => scrollPercentageStart + (scrollPercentageEnd - scrollPercentageStart) * input
+  );
+
+  const getProgressBarStyle = () => {
+    const height = useTransform(scrollYProgress, inputRange, variantsY);
+
+    return {
+      height,
+    };
+  };
+
+  const getItemStyle = () => {
+    const opacity = useTransform(scrollYProgress, inputRange, variantsOpacity);
+
+    return {
+      opacity,
+    };
+  };
+
+  const getColor = () => {
+    const color = useTransform(scrollYProgress, inputRange, variantsColor);
+
+    return { color };
+  };
 
   const Icon = iconCollection[iconName];
+  const IconActive = iconCollectionActive[iconName];
 
   return (
-    <div className={cx('item', { active: inView })} ref={sectionRef}>
+    <div className={cx('item')} ref={sectionRef}>
       <div className={cx('left')}>
-        <Icon className={cx('icon')} />
-        <span className={cx('icon-circle')} aria-hidden />
+        <motion.div className={cx('progress-bar')} style={getProgressBarStyle()}>
+          <span className={cx('icon-circle')} aria-hidden />
+        </motion.div>
+        <div className={cx('icon-wrapper')}>
+          <Icon className={cx('icon')} />
+          <motion.div className={cx('icon', 'active')} style={getItemStyle()}>
+            <IconActive />
+          </motion.div>
+        </div>
       </div>
       <article className={cx('content')}>
-        <Heading className={cx('title')} tag="h3" size="lg">
+        <motion.h3 className={cx('title')} style={getColor()}>
           {title}
-        </Heading>
+        </motion.h3>
         <p className={cx('description')}>{description}</p>
       </article>
     </div>

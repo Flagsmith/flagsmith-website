@@ -2,81 +2,54 @@
   position: relative;
   display: flex;
 
-  &.active {
-    .left {
-      &::after {
-        height: calc(100% - 100px);
-      }
-    }
-
-    .icon {
-      [fill-rule='circle'] {
-        fill: $color-quaternary;
-      }
-
-      &-circle {
-        opacity: 1;
-      }
-    }
-
-    .title {
-      color: $color-quaternary;
-    }
-  }
-
   &:last-child {
     .content {
       padding-bottom: 0;
     }
 
     .left {
-      &::before,
-      &::after {
+      .progress-bar {
         display: none;
       }
-    }
 
-    .icon-circle {
-      display: none;
+      &::before {
+        display: none;
+      }
     }
   }
 }
 
 .left {
   position: relative;
-  margin-right: 30px;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+  margin-right: 10px;
 
   &::before {
-    height: calc(100% - 100px);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
     width: 1px;
     background-color: $color-additional-1;
   }
+}
 
-  &::after {
-    height: 0;
-    width: 3px;
-    background-color: $color-primary;
-    transition: height 1s;
-  }
+.icon-wrapper {
+  position: relative;
+  margin-top: -25px;
+  z-index: 1;
 }
 
 .icon {
-  [fill-rule='circle'] {
-    transition: all $transition-base;
+  &.active {
+    position: absolute;
+    top: 0;
   }
 
   &-circle {
     position: absolute;
-    top: calc(50% + 50px);
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
     height: 14px;
@@ -84,8 +57,6 @@
     background-color: $color-secondary;
     border-radius: 100%;
     z-index: 1;
-    opacity: 0;
-    transition: opacity 0.5s 0.3s;
 
     &::before {
       content: '';
@@ -102,6 +73,11 @@
 }
 
 .title {
+  font-size: $font-size-lg;
+  line-height: $line-height-lg;
+  font-family: $font-family-secondary;
+  font-weight: 800;
+  margin-top: 0;
   margin-bottom: 20px;
 }
 
@@ -113,4 +89,13 @@
 .content {
   max-width: 360px;
   padding-bottom: 210px;
+}
+
+.progress-bar {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  background-color: $color-primary;
+  z-index: 1;
 }
