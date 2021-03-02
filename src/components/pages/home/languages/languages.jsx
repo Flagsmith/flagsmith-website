@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { okaidia } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { useViewportScroll, motion, useTransform } from 'framer-motion';
 
 import Heading from 'components/shared/heading/heading';
 import Link from 'components/shared/link/link';
+import useSectionOffset from 'hooks/use-section-offset';
 
 import styles from './languages.module.scss';
 import Logo from 'images/logo.inline.svg';
@@ -22,11 +24,74 @@ import shapeJavascript from './images/javascript.url.svg';
 
 const cx = classNames.bind(styles);
 
+const variantsParallax = [
+  [-60, -40, 20, 40, 80],
+  [-20, -10, 0, 10, 20],
+  [-20, -10, 0, 10, 20],
+  [-60, -40, 20, 40, 80],
+  [-60, -40, 20, 40, 80],
+  [-20, -10, 0, 10, 20],
+  [-20, -10, 0, 10, 20],
+  [-10, -5, 0, 5, 10],
+];
+const variantsIntervals = [0, 0.2, 0.4, 0.8, 1];
+
+const imageCollection = [
+  {
+    name: 'android',
+    image: shapeAndroid,
+  },
+  {
+    name: 'python',
+    image: shapePython,
+  },
+  {
+    name: 'php',
+    image: shapePhp,
+  },
+  {
+    name: 'ruby',
+    image: shapeRuby,
+  },
+  {
+    name: 'react-native',
+    image: shapeReactNative,
+  },
+  {
+    name: 'ios',
+    image: shapeIos,
+  },
+  {
+    name: 'flutter',
+    image: shapeFlutter,
+  },
+  {
+    name: 'javascript',
+    image: shapeJavascript,
+  },
+];
+
 const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
+  const sectionRef = useRef();
+  const { scrollYProgress } = useViewportScroll();
+  const { scrollPercentageStart, scrollPercentageEnd } = useSectionOffset(sectionRef);
+
   const [activeItemIndex, setActiveItemIndex] = useState(0);
 
+  const inputRange = variantsIntervals.map(
+    (input) => scrollPercentageStart + (scrollPercentageEnd - scrollPercentageStart) * input
+  );
+
+  const getParallaxStyle = (index) => {
+    const marginTop = useTransform(scrollYProgress, inputRange, variantsParallax[index]);
+
+    return {
+      marginTop,
+    };
+  };
+
   return (
-    <section className={cx('wrapper')}>
+    <section className={cx('wrapper')} ref={sectionRef}>
       <div className="container">
         <div className={cx('head')}>
           <Heading className={cx('title')} tag="h2" size="xl">
@@ -70,50 +135,17 @@ const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
         </div>
       </div>
 
-      <img
-        className={cx('shape', 'shape-android')}
-        src={shapeAndroid}
-        alt=""
-        loading="lazy"
-        aria-hidden
-      />
-      <img
-        className={cx('shape', 'shape-python')}
-        src={shapePython}
-        alt=""
-        loading="lazy"
-        aria-hidden
-      />
-      <img className={cx('shape', 'shape-php')} src={shapePhp} alt="" loading="lazy" aria-hidden />
-      <img
-        className={cx('shape', 'shape-ruby')}
-        src={shapeRuby}
-        alt=""
-        loading="lazy"
-        aria-hidden
-      />
-      <img
-        className={cx('shape', 'shape-react-native')}
-        src={shapeReactNative}
-        alt=""
-        loading="lazy"
-        aria-hidden
-      />
-      <img className={cx('shape', 'shape-ios')} src={shapeIos} alt="" loading="lazy" aria-hidden />
-      <img
-        className={cx('shape', 'shape-flutter')}
-        src={shapeFlutter}
-        alt=""
-        loading="lazy"
-        aria-hidden
-      />
-      <img
-        className={cx('shape', 'shape-javascript')}
-        src={shapeJavascript}
-        alt=""
-        loading="lazy"
-        aria-hidden
-      />
+      {imageCollection.map(({ name, image }, index) => (
+        <motion.img
+          className={cx('shape', `shape-${name}`)}
+          src={image}
+          alt=""
+          loading="lazy"
+          aria-hidden
+          style={getParallaxStyle(index)}
+          key={index}
+        />
+      ))}
     </section>
   );
 };
