@@ -123,10 +123,17 @@
 .shape {
   position: absolute;
   z-index: -1;
-  animation: wiggle 5s infinite;
 
   path {
     transition: fill $transition-base;
+  }
+
+  &:nth-child(odd) {
+    animation: wiggle 5s infinite;
+  }
+
+  &:nth-child(even) {
+    animation: wiggleTwo 5s infinite;
   }
 
   &.active {
@@ -198,5 +205,17 @@
   }
   100% {
     transform: translateX(-5px);
+  }
+}
+
+@keyframes wiggleTwo {
+  0% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(5px);
   }
 }
