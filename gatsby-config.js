@@ -65,6 +65,9 @@ module.exports = {
                 },
               ],
             },
+            urlLoaderOptions: {
+              limit: 512,
+            },
           },
         ],
       },
