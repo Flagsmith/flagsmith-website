@@ -25,7 +25,7 @@ const variantsContent = {
   visible: (custom) => ({
     opacity: 1,
     clipPath: 'polygon(0 0, 0 100%, 100% 100%, 100% 0)',
-    transition: { delay: custom, duration: 1, ease: MOTION_EASY },
+    transition: { delay: custom, duration: 0.7, ease: MOTION_EASY },
   }),
 };
 
@@ -35,7 +35,7 @@ const variantsContentFade = {
   },
   visible: (custom) => ({
     opacity: 1,
-    transition: { delay: custom, duration: 1, ease: MOTION_EASY },
+    transition: { delay: custom, duration: 0.7, ease: MOTION_EASY },
   }),
 };
 
@@ -43,12 +43,12 @@ const variantChat = {
   hidden: {
     opacity: 0,
     bottom: -90,
-    transition: { delay: 0, duration: 1, ease: MOTION_EASY },
+    transition: { delay: 0, duration: 0.7, ease: MOTION_EASY },
   },
   visible: (custom) => ({
     opacity: 1,
     bottom: 30,
-    transition: { delay: custom, duration: 1, ease: MOTION_EASY },
+    transition: { delay: custom, duration: 0.7, ease: MOTION_EASY },
   }),
 };
 
@@ -104,38 +104,56 @@ const State = ({ chat, designV2, dark, setOption }) => {
       ref={sectionRef}
     >
       <div className={cx('illustration-wrapper')}>
-        {designV2 ? (
-          <Img className={cx('illustration')} fixed={illustration} alt="" />
-        ) : (
-          <Img className={cx('illustration')} fixed={illustration} alt="" />
-        )}
+        <Img className={cx('illustration')} fixed={illustration} alt="" />
       </div>
 
-      {designV2 ? <Avatar className={cx('avatar')} /> : <AvatarDefault className={cx('avatar')} />}
+      {designV2 && (
+        <motion.div
+          initial="hidden"
+          variants={variantsContentFade}
+          animate={designV2 ? 'visible' : 'hidden'}
+        >
+          <Avatar className={cx('avatar')} />
+        </motion.div>
+      )}
 
-      <motion.div variants={variantsContentFade} animate={'visible'}>
+      {!designV2 && (
+        <motion.div
+          initial="hidden"
+          variants={variantsContentFade}
+          animate={!designV2 ? 'visible' : 'hidden'}
+        >
+          <AvatarDefault className={cx('avatar')} />
+        </motion.div>
+      )}
+
+      <motion.div initial="hidden" variants={variantsContentFade} animate={'visible'}>
         <Search className={cx('search')} />
       </motion.div>
 
-      <motion.div
-        className={cx('actions')}
-        initial="hidden"
-        variants={variantsContent}
-        animate={designV2 ? 'visible' : 'hidden'}
-      >
-        <Action1 className={cx('action', 'action-1')} />
-        <Action2 className={cx('action', 'action-1')} />
-      </motion.div>
+      {designV2 && (
+        <motion.div
+          className={cx('actions')}
+          initial="hidden"
+          variants={variantsContent}
+          animate={designV2 ? 'visible' : 'hidden'}
+        >
+          <Action1 className={cx('action', 'action-1')} />
+          <Action2 className={cx('action', 'action-1')} />
+        </motion.div>
+      )}
 
-      <motion.div
-        className={cx('actions')}
-        initial="hidden"
-        variants={variantsContent}
-        animate={!designV2 ? 'visible' : 'hidden'}
-      >
-        <Action1Default className={cx('action', 'action-1')} />
-        <Action2Default className={cx('action', 'action-2')} />
-      </motion.div>
+      {!designV2 && (
+        <motion.div
+          className={cx('actions')}
+          initial="hidden"
+          variants={variantsContent}
+          animate={!designV2 ? 'visible' : 'hidden'}
+        >
+          <Action1Default className={cx('action', 'action-1')} />
+          <Action2Default className={cx('action', 'action-2')} />
+        </motion.div>
+      )}
 
       <motion.img
         className={cx('chat')}
