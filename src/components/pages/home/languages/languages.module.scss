@@ -7,7 +7,7 @@
 
 .head {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 55px;
   @include with-link-accent-secondary;
 }
 
@@ -133,10 +133,6 @@
     opacity: 0;
     stroke: $color-secondary;
     transition: opacity $transition-base;
-
-    &:after {
-      content: '';
-    }
   }
 }
 
@@ -201,47 +197,47 @@
   }
 
   &-android {
-    top: 18.6%;
-    left: 19.7vw;
+    top: 18.5%;
+    left: 16.9vw;
   }
 
   &-python {
     top: 22.6%;
-    right: 18.4vw;
+    right: 15.4vw;
   }
 
   &-php {
     top: 37%;
-    left: 7.8vw;
+    left: 3.8vw;
     height: 100px;
     width: 100px;
   }
 
   &-ruby {
-    top: 42%;
-    right: 7.8vw;
+    top: 41.6%;
+    right: 3.9vw;
     height: 80px;
     width: 80px;
   }
 
   &-react-native {
-    bottom: 36.2%;
-    left: 16.3vw;
+    bottom: 36.6%;
+    left: 13.2vw;
   }
 
   &-ios {
-    bottom: 33.9%;
-    right: 15vw;
+    bottom: 34.2%;
+    right: 11.7vw;
   }
 
   &-flutter {
-    bottom: 10.5%;
-    left: 11.6vw;
+    bottom: 10.8%;
+    left: 8vw;
   }
 
   &-javascript {
-    bottom: 8.9%;
-    right: 11.7vw;
+    bottom: 9.1%;
+    right: 8vw;
   }
 }
 
