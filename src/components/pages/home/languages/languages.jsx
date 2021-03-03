@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import { useInView } from 'react-intersection-observer';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { okaidia } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { useViewportScroll, motion, useTransform } from 'framer-motion';
@@ -37,67 +36,47 @@ const variantsParallax = [
 ];
 const variantsIntervals = [0, 0.2, 0.4, 0.8, 1];
 
-const circleVariants = {
-  initial: (custom) => ({
-    strokeDashoffset: custom,
-    transition: { duration: 0, ease: [1, 1, 1, 1] },
-  }),
-  animate: {
-    strokeDashoffset: 0,
-    transition: { duration: 5, ease: [1, 1, 1, 1] },
-  },
-};
-
 const imageCollection = [
   {
     name: 'android',
     Icon: ShapeAndroid,
-    circleAnimateSize: 100,
   },
   {
     name: 'python',
     Icon: ShapePython,
-    circleAnimateSize: 120,
   },
   {
     name: 'php',
     Icon: ShapePhp,
-    circleAnimateSize: 130,
   },
   {
     name: 'ruby',
     Icon: ShapeRuby,
-    circleAnimateSize: 110,
   },
   {
     name: 'react-native',
     Icon: ShapeReactNative,
-    circleAnimateSize: 105,
   },
   {
     name: 'ios',
     Icon: ShapeIos,
-    circleAnimateSize: 130,
   },
   {
     name: 'flutter',
     Icon: ShapeFlutter,
-    circleAnimateSize: 120,
   },
   {
     name: 'javascript',
     Icon: ShapeJavascript,
-    circleAnimateSize: 120,
   },
 ];
 
 const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
-  const [sectionRef, inView] = useInView({ threshold: 0.5, triggerOnce: true });
+  const sectionRef = useRef();
 
   const { scrollYProgress } = useViewportScroll();
   const { scrollPercentageStart, scrollPercentageEnd } = useSectionOffset(sectionRef);
 
-  const [activeItemName, setActiveItemName] = useState('react-native');
   const [activeItemIndex, setActiveItemIndex] = useState(0);
 
   const inputRange = variantsIntervals.map(
@@ -117,16 +96,6 @@ const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
     return {
       marginTop,
     };
-  };
-
-  const getCircleAnimateSize = (size) => {
-    const strokeWidth = 3;
-
-    const center = size / 2;
-    const radius = size / 2 - strokeWidth / 2;
-    const circumference = 2 * Math.PI * radius;
-
-    return { center, radius, circumference };
   };
 
   return (
@@ -175,50 +144,14 @@ const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
       </div>
 
       <div>
-        {imageCollection.map(({ name, Icon, circleAnimateSize }, index) => {
-          const { center, radius, circumference } = getCircleAnimateSize(circleAnimateSize);
-
+        {imageCollection.map(({ name, Icon }, index) => {
           return (
             <motion.div
-              className={cx('shape', `shape-${name}`, {
-                active: name === activeItemName,
-              })}
+              className={cx('shape', `shape-${name}`)}
               style={getParallaxStyle(index)}
               key={index}
               aria-hidden
             >
-              <motion.svg
-                className={cx('circle')}
-                viewBox={`0 0 ${circleAnimateSize} ${circleAnimateSize}`}
-                style={{ height: circleAnimateSize + 'px', width: circleAnimateSize + 'px' }}
-                animate={name === activeItemName && inView ? 'animate' : 'initial'}
-              >
-                <motion.circle
-                  className={cx('circle-default')}
-                  fillOpacity="0"
-                  strokeWidth={1}
-                  strokeDashoffset={0}
-                  strokeDasharray={0}
-                  cx={center}
-                  cy={center}
-                  r={radius}
-                  variants={circleVariants}
-                  initial="initial"
-                  custom={circumference}
-                />
-                <motion.circle
-                  fillOpacity="0"
-                  strokeWidth={3}
-                  strokeDashoffset={circumference}
-                  strokeDasharray={circumference}
-                  cx={center}
-                  cy={center}
-                  r={radius}
-                  variants={circleVariants}
-                  initial="initial"
-                  custom={circumference}
-                />
-              </motion.svg>
               <Icon />
             </motion.div>
           );

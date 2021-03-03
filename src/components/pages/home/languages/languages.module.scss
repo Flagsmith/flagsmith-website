@@ -177,25 +177,6 @@
     animation: wiggle 5s infinite cubic-bezier(1, 1, 0, 0);
   }
 
-  &.active {
-    :global {
-      .android_inline_svg__circle,
-      .react-native_inline_svg__circle,
-      .flutter_inline_svg__circle,
-      .ios_inline_svg__circle,
-      .javascript_inline_svg__circle,
-      .php_inline_svg__circle,
-      .python_inline_svg__circle,
-      .ruby_inline_svg__circle {
-        fill: $color-accent-primary;
-      }
-    }
-
-    .circle-default {
-      opacity: 1;
-    }
-  }
-
   &-android {
     top: 18.5%;
     left: 16.9vw;
