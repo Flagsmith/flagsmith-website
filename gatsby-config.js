@@ -2,7 +2,7 @@ require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    siteTitle: 'Pixel Point Gatsby Starter', // <title>
+    siteTitle: 'Flagsmith', // <title>
     siteDescription: 'Site Description',
     // pathPrefix: "",
     siteImage: '/images/social-preview.jpg',
