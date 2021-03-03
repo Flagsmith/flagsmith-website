@@ -19,4 +19,24 @@ body {
   max-width: 1530px;
   margin-right: auto;
   margin-left: auto;
+
+  @include fullhd-down {
+    max-width: 1290px;
+  }
+
+  @include xl-down {
+    max-width: 1170px;
+  }
+
+  @include lg-down {
+    max-width: 940px;
+  }
+
+  @include md-down {
+    max-width: 700px;
+  }
+
+  @include sm-down {
+    max-width: initial;
+  }
 }

@@ -1,12 +1,19 @@
 @mixin fullhd-down {
-  // 1919.98 - 1600
+  // 1919.98 - 1440
   @media only screen and (max-width: $breakpoint-fullhd-down) {
     @content;
   }
 }
 
+@mixin xl-down {
+  // 1439.98 - 1280
+  @media only screen and (max-width: $breakpoint-xl-down) {
+    @content;
+  }
+}
+
 @mixin lg-down {
-  // 1219.98 - 1024
+  // 1279.98 - 1024
   @media only screen and (max-width: $breakpoint-lg-down) {
     @content;
   }
@@ -20,22 +27,15 @@
 }
 
 @mixin sm-down {
-  // 767.98 - 576
+  // 767.98 - 414
   @media only screen and (max-width: $breakpoint-sm-down) {
     @content;
   }
 }
 
 @mixin xs-down {
-  // 575.98 - 414
-  @media only screen and (max-width: $breakpoint-xs-down) {
-    @content;
-  }
-}
-
-@mixin xxs-down {
   // 413.98px - 320
-  @media only screen and (max-width: $breakpoint-xxs-down) {
+  @media only screen and (max-width: $breakpoint-xs-down) {
     @content;
   }
 }
