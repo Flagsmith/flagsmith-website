@@ -24,7 +24,7 @@ const Footer = ({ items }) => {
           </div>
           <span className={cx('copyright')}>
             Creative design made by
-            <Link className={cx('icon-arrow')} to="https://pixelpoint.io/">
+            <Link className={cx('icon-arrow')} to="https://pixelpoint.io/" target="_blank">
               Pixel Point <IconArrowRight />
             </Link>
           </span>

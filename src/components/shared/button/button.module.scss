@@ -40,6 +40,7 @@
 
     &:hover:not(:disabled) {
       background-color: $color-primary-hover;
+      box-shadow: none;
     }
   }
 
