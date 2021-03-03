@@ -24,9 +24,7 @@
 }
 
 .link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   font-size: $font-size-xs;
   line-height: $line-height-xs;
   font-weight: 700;
@@ -120,8 +118,31 @@
   }
 }
 
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  height: 122px;
+  width: 122px;
+  stroke: $color-accent-primary;
+  stroke-linecap: round;
+  transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+
+  &-default {
+    opacity: 0;
+    stroke: $color-secondary;
+    transition: opacity $transition-base;
+
+    &:after {
+      content: '';
+    }
+  }
+}
+
 .shape {
   position: absolute;
+  display: flex;
   z-index: -1;
 
   path {
@@ -172,6 +193,10 @@
       .ruby_inline_svg__circle {
         fill: $color-accent-primary;
       }
+    }
+
+    .circle-default {
+      opacity: 1;
     }
   }
 
