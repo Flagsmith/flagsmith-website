@@ -2,7 +2,7 @@
   height: 100%;
   width: 100%;
   padding: 30px;
-  transition: background-color $transition-base;
+  transition: background-color 1s;
 
   &.dark {
     background-color: #22194d;
@@ -86,7 +86,7 @@
   top: 14.4%;
   left: 5.3%;
   fill: #e6e4e7;
-  transition: fill $transition-base;
+  transition: fill 1s;
 }
 
 .search {
@@ -96,10 +96,10 @@
   transform: translateX(-50%);
   border-radius: 6px;
   margin-top: 5px;
-  transition: margin-top $transition-base;
+  transition: margin-top 1s;
 
   rect {
-    transition: stroke-width $transition-base;
+    transition: stroke-width 1s;
   }
 }
 
@@ -117,7 +117,7 @@
 
   rect {
     fill: #e6e4e7;
-    transition: fill $transition-base;
+    transition: fill 1s;
   }
 
   :global {
@@ -129,7 +129,7 @@
 
   circle {
     fill: $color-secondary;
-    transition: fill $transition-base;
+    transition: fill 1s;
   }
 
   &:last-child {
