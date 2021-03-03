@@ -97,9 +97,9 @@ const Options = ({ title, items }) => {
                     </ul>
                   </div>
 
-                  <Link to={path} className={cx('item-link', 'icon-arrow')}>
+                  <span className={cx('item-link')}>
                     Learn more <IconArrowRight />
-                  </Link>
+                  </span>
                 </div>
               </Link>
             );

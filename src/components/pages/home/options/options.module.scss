@@ -70,8 +70,6 @@
   }
 
   &-theme-accent-primary {
-    @include with-link-accent-primary;
-
     .item-title {
       color: $color-accent-primary;
     }
@@ -84,22 +82,18 @@
       }
     }
 
-    &:hover {
-      .item-link {
-        color: $color-accent-secondary;
+    .item-link {
+      color: $color-accent-primary;
 
-        svg {
-          path {
-            stroke: $color-accent-secondary !important;
-          }
+      svg {
+        path {
+          stroke: $color-accent-primary;
         }
       }
     }
   }
 
   &-theme-quaternary {
-    @include with-link-quaternary;
-
     .item-title {
       color: $color-quaternary;
     }
@@ -112,22 +106,18 @@
       }
     }
 
-    &:hover {
-      .item-link {
-        color: $color-accent-secondary;
+    .item-link {
+      color: $color-quaternary;
 
-        svg {
-          path {
-            stroke: $color-accent-secondary !important;
-          }
+      svg {
+        path {
+          stroke: $color-quaternary;
         }
       }
     }
   }
 
   &-theme-accent-secondary {
-    @include with-link-accent-secondary;
-
     .item-title {
       color: $color-accent-secondary;
     }
@@ -140,14 +130,12 @@
       }
     }
 
-    &:hover {
-      .item-link {
-        color: $color-accent-primary;
+    .item-link {
+      color: $color-accent-secondary;
 
-        svg {
-          path {
-            stroke: $color-accent-primary !important;
-          }
+      svg {
+        path {
+          stroke: $color-accent-secondary;
         }
       }
     }
@@ -202,6 +190,14 @@
     border-top: 2px solid $color-additional-4;
     padding-top: 20px;
     padding-bottom: 20px;
+
+    svg {
+      margin-left: 10px;
+
+      path {
+        stroke-width: 2;
+      }
+    }
   }
 }
 
