@@ -73,9 +73,7 @@ const Item = ({ title, description, iconName }) => {
   return (
     <div className={cx('item')} ref={sectionRef}>
       <div className={cx('left')}>
-        <motion.div className={cx('progress-bar')} style={getProgressBarStyle()}>
-          <span className={cx('icon-circle')} aria-hidden />
-        </motion.div>
+        <motion.div className={cx('progress-bar')} style={getProgressBarStyle()} />
         <div className={cx('icon-wrapper')}>
           <Icon className={cx('icon')} />
           <motion.div className={cx('icon', 'active')} style={getItemStyle()}>

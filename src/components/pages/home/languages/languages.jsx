@@ -143,18 +143,20 @@ const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
         </div>
       </div>
 
-      {imageCollection.map(({ name, Icon }, index) => (
-        <motion.div
-          className={cx('shape', `shape-${name}`, {
-            active: name === activeItemName,
-          })}
-          style={getParallaxStyle(index)}
-          key={index}
-          aria-hidden
-        >
-          <Icon />
-        </motion.div>
-      ))}
+      <div>
+        {imageCollection.map(({ name, Icon }, index) => (
+          <motion.div
+            className={cx('shape', `shape-${name}`, {
+              active: name === activeItemName,
+            })}
+            style={getParallaxStyle(index)}
+            key={index}
+            aria-hidden
+          >
+            <Icon />
+          </motion.div>
+        ))}
+      </div>
     </section>
   );
 };
