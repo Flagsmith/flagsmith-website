@@ -14,14 +14,14 @@ const cx = classNames.bind(styles);
 const Platform = ({ title, items }) => {
   const {
     illustration: {
-      childImageSharp: { fluid: illustration },
+      childImageSharp: { fixed: illustration },
     },
   } = useStaticQuery(graphql`
     query {
       illustration: file(relativePath: { eq: "pages/home/platform/illustration.png" }) {
         childImageSharp {
-          fluid(maxWidth: 1040, quality: 95) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
+          fixed(width: 1040, quality: 95) {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
           }
         }
       }
@@ -37,7 +37,7 @@ const Platform = ({ title, items }) => {
             </Heading>
 
             <div className={cx('illustration-wrapper')}>
-              <Img fluid={illustration} alt="" />
+              <Img fixed={illustration} alt="" />
             </div>
           </div>
         </div>
