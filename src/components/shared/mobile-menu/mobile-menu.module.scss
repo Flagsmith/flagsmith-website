@@ -1,0 +1,146 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 70px;
+  padding-bottom: 45px;
+  visibility: hidden;
+  background-color: $color-primary;
+  transition-duration: $transition-base;
+  transition-property: transform, visibility;
+  transform: translateX(100%);
+
+  @include section-paddings;
+
+  @include sm-down {
+    @include safe-area(padding-left, left, 30px);
+    @include safe-area(padding-right, right, 30px);
+  }
+
+  &.open {
+    visibility: visible;
+    transform: translateX(0);
+  }
+}
+
+.menu {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow-y: auto;
+  list-style-type: none;
+}
+
+.item {
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba($color-tertiary, 0.05);
+
+  &:last-of-type {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.link {
+  font-weight: 800;
+  line-height: 1.3;
+  color: $color-secondary;
+  text-decoration: none;
+}
+
+.buttons-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 60px;
+  column-gap: 20px;
+
+  &::before {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    width: 100%;
+    height: 25px;
+    pointer-events: none;
+    content: '';
+    background-image: linear-gradient(180deg, rgba($color-primary, 0) 0%, $color-primary 100%);
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  border: 2px solid rgba($color-tertiary, 0.2);
+
+  span {
+    display: flex;
+    align-items: center;
+  }
+
+  @include xs-down {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.icon {
+  max-width: 27px;
+  margin-right: 10px;
+
+  path {
+    fill: $color-tertiary;
+  }
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+
+  @include sm-down {
+    right: 15px;
+  }
+
+  @include hover {
+    &::before,
+    &::after {
+      background-color: $color-accent-primary;
+    }
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    content: '';
+    background-color: $color-tertiary;
+    border-radius: 2px;
+    transition: background-color $transition-base;
+  }
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}

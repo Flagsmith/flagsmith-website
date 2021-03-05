@@ -1,7 +1,7 @@
 // Colors
 $color-primary: #1e0d26;
 $color-secondary: #f6f3ee;
-$color-tertiary: #ffffff;
+$color-tertiary: #fff;
 $color-quaternary: #22194d;
 
 $color-accent-primary: #0ac2a3;
@@ -11,6 +11,7 @@ $color-accent-tertiary: #f7d56e;
 $color-primary-hover: #4f4554;
 $color-accent-primary-hover: #12a189;
 $color-accent-secondary-hover: '';
+$color-accent-tertiary-hover: #ebc247;
 
 $color-additional-1: #e0dcd4;
 $color-additional-2: #827986;
@@ -18,9 +19,11 @@ $color-additional-3: #342a39;
 $color-additional-4: #f8f8f7;
 $color-additional-5: #2a1f2f;
 
+$color-gray-1: #8e8792;
+
 // Fonts
-$font-family-primary: 'Open-sans', Arial, sans-serif;
-$font-family-secondary: 'Bitter', Arial, sans-serif;
+$font-family-primary: 'Open-sans', arial, sans-serif;
+$font-family-secondary: 'Bitter', arial, sans-serif;
 
 $font-size-base: 20px;
 $line-height-base: 30px;

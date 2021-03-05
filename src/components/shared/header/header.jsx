@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import Link from 'components/shared/link';
 import Menu from './menu/menu';
@@ -13,7 +13,7 @@ import styles from './header.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Header = (props) => (
+const Header = ({ onBurgerClick }) => (
   <header className={cx('wrapper')}>
     <div className={cx('container', 'inner')}>
       <Link className={cx('logo-wrapper')} to="/">
@@ -29,8 +29,22 @@ const Header = (props) => (
           Sign in
         </Button>
       </div>
+      <button
+        className={cx('burger')}
+        type="button"
+        aria-label="Open Mobile Menu"
+        onClick={onBurgerClick}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 );
+
+Header.propTypes = {
+  onBurgerClick: PropTypes.func.isRequired,
+};
 
 export default Header;
