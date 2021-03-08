@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { graphql } from 'gatsby';
 
 import Header from 'components/shared/header';
 import Footer from 'components/shared/footer';
 import SEO from 'components/shared/seo';
 import MobileMenu from 'components/shared/mobile-menu';
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({ seo, children }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const handleHeaderBurgerClick = () => setIsMobileMenuOpen(true);
   const handleMobileNavCloseButtonClick = () => setIsMobileMenuOpen(false);
@@ -24,14 +25,49 @@ const MainLayout = ({ children }) => {
   }, [isMobileMenuOpen]);
   return (
     <>
-      <SEO />
-      <Header onBurgerClick={handleHeaderBurgerClick}/>
+      {seo && <SEO {...seo} />}
+      <Header onBurgerClick={handleHeaderBurgerClick} />
       <main>{children}</main>
       <Footer />
-      <MobileMenu isOpen={isMobileMenuOpen} onCloseButtonClick={handleMobileNavCloseButtonClick}/>
+      <MobileMenu isOpen={isMobileMenuOpen} onCloseButtonClick={handleMobileNavCloseButtonClick} />
     </>
   );
 };
+
+export const query = graphql`
+  fragment wpPageSeo on WpPage {
+    seo {
+      canonical
+      cornerstone
+      focuskw
+      metaDesc
+      metaKeywords
+      metaRobotsNofollow
+      metaRobotsNoindex
+      opengraphAuthor
+      opengraphDescription
+      opengraphImage {
+        localFile {
+          childImageSharp {
+            fixed(toFormat: JPG, width: 1200, height: 630) {
+              src
+            }
+          }
+        }
+      }
+      opengraphModifiedTime
+      opengraphPublishedTime
+      opengraphPublisher
+      opengraphSiteName
+      opengraphTitle
+      opengraphType
+      opengraphUrl
+      title
+      twitterDescription
+      twitterTitle
+    }
+  }
+`;
 
 MainLayout.propTypes = {
   children: PropTypes.node.isRequired,

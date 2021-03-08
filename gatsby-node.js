@@ -1,7 +1,90 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const fs = require('fs');
+const path = require('path');
+const slash = require('slash');
 
-// You can delete this file if you're not using it
+async function createRedirects({ graphql, actions }) {
+  const { createRedirect } = actions;
+  const result = await graphql(`
+    {
+      wp {
+        seo {
+          redirects {
+            origin
+            target
+            type
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) {
+    throw new Error(result.errors);
+  }
+
+  const { redirects } = result.data.wp.seo;
+  // Add slash at the beginning of the string if not present to adjust it for Netlify's format
+  // eg. blog/the-ultimate-guide-to-buying-intercom-systems-for-offices -> /blog/the-ultimate-guide-to-buying-intercom-systems-for-offices
+
+  const formatPath = (path) => (/^\/|^http|^https|^www/.test(path) ? path : `/${path}`);
+  redirects.forEach(({ origin, target, type }) => {
+    createRedirect({
+      fromPath: formatPath(origin),
+      toPath: formatPath(target),
+      statusCode: parseInt(type, 10),
+      force: true,
+    });
+  });
+}
+
+// Create Pages
+async function createPages({ graphql, actions, reporter }) {
+  const { createPage } = actions;
+
+  const result = await graphql(`
+    {
+      allWpPage {
+        nodes {
+          id
+          uri
+          template {
+            templateName
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) {
+    throw new Error(result.errors);
+  }
+
+  const pages = result.data.allWpPage.nodes;
+
+  pages.forEach(({ id, uri, template: { templateName } }) => {
+    const templateNamePath = templateName.toLowerCase().replace(/\s/g, '-');
+    const templatePath = path.resolve(`./src/templates/${templateNamePath}.jsx`);
+    const context = {
+      id
+    };
+
+    if (fs.existsSync(templatePath)) {
+      createPage({
+        path: uri,
+        component: slash(templatePath),
+        context,
+      });
+    } else {
+      reporter.error(`Template "${templateName}" was not found`);
+    }
+  });
+}
+
+exports.createPages = async (args) => {
+  const params = {
+    ...args
+  };
+
+  await createPages(params);
+  await createRedirects(params);
+};
