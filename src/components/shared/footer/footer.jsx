@@ -14,11 +14,7 @@ const cx = classNames.bind(styles);
 
 const Footer = () => {
   const {
-    menus: {
-      footer: {
-        menuItems: { nodes: menuItemsNodes },
-      },
-    },
+    menus: { footerMenuItems: menuItems },
   } = useContext(MainContext);
 
   return (
@@ -37,7 +33,7 @@ const Footer = () => {
         </span>
 
         <div className={cx('menu')}>
-          {menuItemsNodes.map(({ label, childItems }, index) => (
+          {menuItems.map(({ label, childItems }, index) => (
             <MenuItem label={label} childItems={childItems.nodes} key={index} />
           ))}
         </div>

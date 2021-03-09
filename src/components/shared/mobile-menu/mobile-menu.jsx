@@ -7,8 +7,6 @@ import Link from 'components/shared/link';
 import Button from 'components/shared/button';
 import SubMenu from './sub-menu';
 
-import filterNonRootItems from 'utils/filter-non-root-items';
-
 import GithubIcon from 'icons/github.inline.svg';
 
 import styles from './mobile-menu.module.scss';
@@ -17,17 +15,13 @@ const cx = classNames.bind(styles);
 
 const MobileMenu = ({ isOpen, onCloseButtonClick }) => {
   const {
-    menus: {
-      mobile: {
-        menuItems: { nodes: menuItemsNodes },
-      },
-    },
+    menus: { mobileMenuItems: menuItems },
   } = useContext(MainContext);
 
   return (
     <nav className={cx('wrapper', { open: isOpen })}>
       <ul className={cx('menu')}>
-        {menuItemsNodes.map(({ label, path, childItems }, index) => {
+        {menuItems.map(({ label, path, childItems }, index) => {
           const withChildItems = childItems.nodes.length > 0;
 
           return (

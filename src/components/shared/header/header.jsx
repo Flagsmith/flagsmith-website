@@ -16,11 +16,7 @@ const cx = classNames.bind(styles);
 
 const Header = ({ onBurgerClick }) => {
   const {
-    menus: {
-      header: {
-        menuItems: { nodes: menuItemsNodes },
-      },
-    },
+    menus: { headerMenuItems: menuItems },
   } = useContext(MainContext);
 
   return (
@@ -31,7 +27,7 @@ const Header = ({ onBurgerClick }) => {
         </Link>
 
         <div className={cx('menu-wrapper')}>
-          <Menu items={menuItemsNodes} />
+          <Menu items={menuItems} />
           <Button className={cx('button')} theme="tertiary" to="/">
             <GithubIcon />
           </Button>
@@ -52,10 +48,6 @@ const Header = ({ onBurgerClick }) => {
       </div>
     </header>
   );
-};
-
-Header.propTypes = {
-  onBurgerClick: PropTypes.func.isRequired,
 };
 
 export default Header;

@@ -8,36 +8,34 @@ import styles from './menu.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Menu = ({ items }) => {
-  return (
-    <nav className={cx('wrapper')}>
-      <ul className={cx('list')}>
-        {menuItems.map(({ label, path, childItems }, index) => (
-          <li className={cx('item')} key={index}>
-            <Link className={cx('link')} to={path}>
-              {label}
-            </Link>
+const Menu = ({ items }) => (
+  <nav className={cx('wrapper')}>
+    <ul className={cx('list')}>
+      {items.map(({ label, path, childItems }, index) => (
+        <li className={cx('item')} key={index}>
+          <Link className={cx('link')} to={path}>
+            {label}
+          </Link>
 
-            {childItems.nodes.length > 0 && (
-              <ul className={cx('dropdown')}>
-                {childItems.nodes.map(({ label, path }, index) => (
-                  <li key={index}>
-                    <Link className={cx('link')} to={path}>
-                      {label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
-};
+          {childItems.nodes.length > 0 && (
+            <ul className={cx('dropdown')}>
+              {childItems.nodes.map(({ label, path }, index) => (
+                <li key={index}>
+                  <Link className={cx('link')} to={path}>
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  </nav>
+);
 
 Menu.propTypes = {
-  menuItems: PropTypes.arrayOf(
+  items: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
       path: PropTypes.string,
