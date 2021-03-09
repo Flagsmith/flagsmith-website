@@ -12,7 +12,7 @@ import IconArrowRight from 'icons/arrow-right.inline.svg';
 
 const cx = classNames.bind(styles);
 
-const Footer = ({ items }) => {
+const Footer = ({ menuItems }) => {
   return (
     <footer className={cx('wrapper')}>
       <div className={cx('container', 'inner')}>
@@ -31,8 +31,8 @@ const Footer = ({ items }) => {
         </div>
 
         <div className={cx('menu')}>
-          {items.map(({ label, childItems }, index) => (
-            <MenuItem label={label} childItems={childItems} key={index} />
+          {menuItems.map(({ label, childItems }, index) => (
+            <MenuItem label={label} childItems={childItems.nodes} key={index} />
           ))}
         </div>
       </div>
@@ -41,73 +41,19 @@ const Footer = ({ items }) => {
 };
 
 Footer.propTypes = {
-  items: PropTypes.PropTypes.arrayOf(
+  menuItems: PropTypes.PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
-      childItems: PropTypes.PropTypes.arrayOf(
-        PropTypes.shape({
-          label: PropTypes.string.isRequired,
-          path: PropTypes.string.isRequired,
-        })
-      ).isRequired,
+      childItems: PropTypes.shape({
+        nodes: PropTypes.arrayOf(
+          PropTypes.shape({
+            label: PropTypes.string.isRequired,
+            path: PropTypes.string.isRequired,
+          })
+        ),
+      }).isRequired,
     })
   ).isRequired,
-};
-
-Footer.defaultProps = {
-  items: [
-    {
-      label: 'Product',
-      childItems: [
-        {
-          label: 'Demo Account',
-          path: '/',
-        },
-        {
-          label: 'Documentation',
-          path: '/',
-        },
-        {
-          label: 'Podcast',
-          path: '/',
-        },
-        {
-          label: 'Pricing',
-          path: '/',
-        },
-      ],
-    },
-    {
-      label: 'Company',
-      childItems: [
-        {
-          label: 'Terms of Service',
-          path: '/',
-        },
-        {
-          label: 'Privacy Policy',
-          path: '/',
-        },
-        {
-          label: 'SLA',
-          path: '/',
-        },
-      ],
-    },
-    {
-      label: 'Support',
-      childItems: [
-        {
-          label: 'Contact Us',
-          path: '/',
-        },
-        {
-          label: 'Roadmap',
-          path: '/',
-        },
-      ],
-    },
-  ],
 };
 
 export default Footer;

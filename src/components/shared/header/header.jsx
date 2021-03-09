@@ -13,7 +13,7 @@ import styles from './header.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Header = ({ onBurgerClick }) => (
+const Header = ({ menuItems, onBurgerClick }) => (
   <header className={cx('wrapper')}>
     <div className={cx('container', 'inner')}>
       <Link className={cx('logo-wrapper')} to="/">
@@ -21,7 +21,7 @@ const Header = ({ onBurgerClick }) => (
       </Link>
 
       <div className={cx('menu-wrapper')}>
-        <Menu />
+        <Menu menuItems={menuItems}/>
         <Button className={cx('button')} theme="tertiary" to="/">
           <GithubIcon />
         </Button>

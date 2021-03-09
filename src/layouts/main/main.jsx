@@ -7,7 +7,11 @@ import Footer from 'components/shared/footer';
 import SEO from 'components/shared/seo';
 import MobileMenu from 'components/shared/mobile-menu';
 
-const MainLayout = ({ seo, children }) => {
+const MainLayout = ({
+  seo,
+  menus: { headerMenuItems, footerMenuItems, mobileMenuItems },
+  children,
+}) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const handleHeaderBurgerClick = () => setIsMobileMenuOpen(true);
   const handleMobileNavCloseButtonClick = () => setIsMobileMenuOpen(false);
@@ -26,10 +30,10 @@ const MainLayout = ({ seo, children }) => {
   return (
     <>
       {seo && <SEO {...seo} />}
-      <Header onBurgerClick={handleHeaderBurgerClick} />
+      <Header menuItems={headerMenuItems} onBurgerClick={handleHeaderBurgerClick} />
       <main>{children}</main>
-      <Footer />
-      <MobileMenu isOpen={isMobileMenuOpen} onCloseButtonClick={handleMobileNavCloseButtonClick} />
+      <Footer menuItems={footerMenuItems} />
+      <MobileMenu menuItems={mobileMenuItems} isOpen={isMobileMenuOpen} onCloseButtonClick={handleMobileNavCloseButtonClick} />
     </>
   );
 };

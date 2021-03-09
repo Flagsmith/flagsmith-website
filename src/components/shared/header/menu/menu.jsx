@@ -8,84 +8,50 @@ import styles from './menu.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Menu = ({ items }) => (
+const Menu = ({ menuItems }) => (
   <nav className={cx('wrapper')}>
     <ul className={cx('list')}>
-      {items.map(({ label, path, childItems }, index) => (
-        <li className={cx('item')} key={index}>
-          <Link className={cx('link')} to={path}>
-            {label}
-          </Link>
+      {menuItems.map(({ label, path, childItems }, index) => {
+        const withChildItems = childItems && childItems.nodes.length > 0;
+        return (
+          <li className={cx('item')} key={index}>
+            <Link className={cx('link')} to={path}>
+              {label}
+            </Link>
 
-          {childItems && (
-            <ul className={cx('dropdown')} key={index}>
-              {childItems.map(({ label, path }, index) => (
-                <li key={index}>
-                  <Link className={cx('link')} to={path}>
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </li>
-      ))}
+            {withChildItems && (
+              <ul className={cx('dropdown')} key={index}>
+                {childItems.nodes.map(({ label, path }, index) => (
+                  <li key={index}>
+                    <Link className={cx('link')} to={path}>
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        );
+      })}
     </ul>
   </nav>
 );
 
 Menu.propTypes = {
-  items: PropTypes.arrayOf(
+  menuItems: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
       path: PropTypes.string.isRequired,
-      childItems: PropTypes.arrayOf(
-        PropTypes.shape({
-          label: PropTypes.string.isRequired,
-          path: PropTypes.string.isRequired,
-        })
-      ),
+      childItems: PropTypes.shape({
+        nodes: PropTypes.arrayOf(
+          PropTypes.shape({
+            label: PropTypes.string.isRequired,
+            path: PropTypes.string.isRequired,
+          })
+        ),
+      }),
     })
   ).isRequired,
-};
-
-Menu.defaultProps = {
-  items: [
-    {
-      label: 'Features',
-      path: '/',
-      childItems: [
-        {
-          label: 'Overview',
-          path: '/',
-        },
-        {
-          label: 'Phased Rollouts',
-          path: '/',
-        },
-        {
-          label: 'Integrations',
-          path: '/',
-        },
-        {
-          label: 'Enterprise',
-          path: '/',
-        },
-      ],
-    },
-    {
-      label: 'Solutions',
-      path: '/',
-    },
-    {
-      label: 'Resources',
-      path: '/',
-    },
-    {
-      label: 'Pricing',
-      path: '/',
-    },
-  ],
 };
 
 export default Menu;

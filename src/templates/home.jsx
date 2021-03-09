@@ -16,9 +16,9 @@ const Home = ({
   data: {
     wpPage: { seo },
   },
-  // pageContext: { menus, globalFields },
+  pageContext: { menus },
 }) => (
-  <MainLayout seo={seo}>
+  <MainLayout seo={seo} menus={menus}>
     <Hero />
     <FeatureFlags />
     <ConfigureFeatures />
