@@ -4,6 +4,22 @@
   padding: 30px;
   transition: background-color $transition-long;
 
+  @include fullhd-down {
+    padding: 25px;
+  }
+
+  @include lg-down {
+    padding: 20px;
+  }
+
+  @include md-down {
+    padding: 30px;
+  }
+
+  @include xs-down {
+    padding: 20px;
+  }
+
   &.dark {
     background-color: #22194d;
 
@@ -43,11 +59,60 @@
       top: 30px;
       left: 50%;
       transform: translateX(-50%);
+      width: 30%;
+
+      @include fullhd-down {
+        top: 15px;
+        width: 28.8%;
+      }
+
+      @include xl-down {
+        top: 7px;
+      }
+
+      @include lg-down {
+        top: 7px;
+        width: 36%;
+      }
+
+      @include md-down {
+        top: 29px;
+      }
+
+      @include xs-down {
+        top: 7px;
+        width: 32%;
+      }
     }
 
     .search {
       margin-top: -30px;
       box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
+
+      @include fullhd-down {
+        width: 90%;
+      }
+
+      @include xl-down {
+        height: 50px;
+        margin-top: -25px;
+      }
+
+      @include lg-down {
+        height: 40px;
+        width: 86.5%;
+        margin-top: -20px;
+      }
+
+      @include md-down {
+        height: auto;
+        width: 90%;
+        margin-top: 3px;
+      }
+
+      @include xs-down {
+        margin-top: 9px;
+      }
 
       rect {
         stroke: $color-tertiary;
@@ -61,21 +126,99 @@
       height: 225px;
       width: 100%;
       border-radius: 0;
+
+      @include fullhd-down {
+        height: 190px;
+      }
+
+      @include xl-down {
+        height: 173px;
+      }
+
+      @include md-down {
+        height: 218px;
+      }
+
+      @include xs-down {
+        height: 173px;
+      }
+    }
+
+    .illustration {
+      height: 100% !important;
+      width: 100% !important;
     }
 
     .actions {
       flex-direction: column;
       align-items: center;
       bottom: 30px;
+
+      @include fullhd-down {
+        bottom: 24px;
+      }
+
+      @include xl-down {
+        bottom: 13px;
+      }
+
+      @include md-down {
+        bottom: 28px;
+      }
+
+      @include xs-down {
+        width: 100%;
+        bottom: 15px;
+      }
     }
 
     .action {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
+      width: 80%;
+
+      @include fullhd-down {
+        width: 82%;
+        margin-bottom: 0;
+      }
+
+      @include lg-down {
+        width: 106%;
+        margin-left: 78px;
+      }
+
+      @include md-down {
+        width: 100%;
+        margin-left: -10px;
+      }
+
+      @include xs-down {
+        width: 81%;
+        margin-left: -31px;
+      }
 
       &:last-child {
         margin-left: -60px;
         margin-right: 0;
         margin-bottom: 0;
+        width: 70%;
+
+        @include fullhd-down {
+          margin-left: -50px;
+        }
+
+        @include xl-down {
+          margin-left: -44px;
+        }
+
+        @include lg-down {
+          display: block;
+          margin-left: 28px;
+          width: 87%;
+        }
+
+        @include md-down {
+          display: none;
+        }
       }
     }
   }
@@ -85,8 +228,28 @@
   position: absolute;
   top: 14.4%;
   left: 5.3%;
+  width: 48.2%;
   fill: #e6e4e7;
   transition: fill $transition-long;
+
+  @include fullhd-down {
+    top: 13%;
+  }
+
+  @include xl-down {
+    top: 11.2%;
+  }
+
+  @include md-down {
+    top: 10.4%;
+    left: 4%;
+  }
+
+  @include xs-down {
+    top: 8%;
+    left: 6.1%;
+    width: 52.2%;
+  }
 }
 
 .search {
@@ -97,6 +260,27 @@
   border-radius: 6px;
   margin-top: 5px;
   transition: margin-top $transition-long;
+
+  @include fullhd-down {
+    width: 90%;
+    margin-top: 0;
+  }
+
+  @include lg-down {
+    width: 294px;
+    height: 46px;
+  }
+
+  @include md-down {
+    width: 90%;
+    height: auto;
+    margin-top: -20px;
+  }
+
+  @include xs-down {
+    width: 88%;
+    margin-top: -6px;
+  }
 
   rect {
     transition: stroke-width $transition-long;
@@ -110,10 +294,46 @@
   justify-content: space-between;
   width: calc(100% - 60px);
   bottom: 50px;
+
+  @include fullhd-down {
+    bottom: 38px;
+  }
+
+  @include xl-down {
+    bottom: 30px;
+  }
+
+  @include lg-down {
+    bottom: 25px;
+  }
+
+  @include md-down {
+    bottom: 35px;
+  }
+
+  @include xs-down {
+    bottom: 15px;
+  }
 }
 
 .action {
   flex-shrink: 0;
+  width: 46%;
+
+  @include lg-down {
+    width: 64%;
+    margin-left: 3px;
+  }
+
+  @include md-down {
+    width: 42%;
+    margin-left: 0;
+  }
+
+  @include xs-down {
+    width: 55%;
+    margin-left: 3px;
+  }
 
   rect {
     fill: #e6e4e7;
@@ -134,6 +354,25 @@
 
   &:last-child {
     margin-right: 20px;
+    width: 41%;
+
+    @include fullhd-down {
+      margin-right: 10px;
+    }
+
+    @include lg-down {
+      display: none;
+    }
+
+    @include md-down {
+      display: block;
+      width: 38%;
+      margin-right: 69px;
+    }
+
+    @include xs-down {
+      display: none;
+    }
   }
 }
 
@@ -143,6 +382,26 @@
   bottom: 30px;
   border-radius: 100%;
   box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
+  width: 10.7%;
+
+  @include fullhd-down {
+    right: 25px;
+  }
+
+  @include lg-down {
+    right: 20px;
+    width: 14%;
+  }
+
+  @include md-down {
+    width: 10%;
+    right: 30px;
+  }
+
+  @include xs-down {
+    width: 12.4%;
+    right: 22px;
+  }
 }
 
 .illustration-wrapper {
@@ -152,6 +411,32 @@
   right: 30px;
   overflow: hidden;
   border-radius: 6px;
+
+  @include fullhd-down {
+    height: 8.444rem;
+    width: 8.429rem;
+    right: 25px;
+  }
+
+  @include xl-down {
+    height: 7.667rem;
+    width: 7.643rem;
+  }
+
+  @include lg-down {
+    height: 122px;
+    width: 122px;
+  }
+
+  @include md-down {
+    width: 107px;
+    height: 107px;
+  }
+
+  @include xs-down {
+    height: 90px;
+    width: 90px;
+  }
 }
 
 .illustration {

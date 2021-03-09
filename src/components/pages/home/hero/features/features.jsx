@@ -48,7 +48,7 @@ const Features = ({ code, options }) => {
         <div className={cx('options-inner')}>
           <span className={cx('options-title')}>feautures</span>
           {options.map(({ label, key }) => (
-            <div className={cx('options-item')} key={key}>
+            <div className={cx('options-item', key)} key={key}>
               {label}
               <button
                 className={cx('switch-button', {

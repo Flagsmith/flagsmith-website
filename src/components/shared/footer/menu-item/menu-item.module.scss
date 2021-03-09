@@ -1,5 +1,27 @@
-.title {
-  margin-bottom: 25px;
+.wrapper {
+  @include sm-down {
+    flex: 0 0 180px;
+    margin-bottom: 40px;
+  }
+
+  @include xxs-down {
+    flex: 0 0 160px;
+  }
+
+  .title {
+    margin-bottom: 25px;
+
+    @include lg-down {
+      font-size: 22px;
+      line-height: 28.6px;
+      margin-bottom: 20px;
+    }
+
+    @include md-down {
+      font-size: $font-size-base;
+      line-height: 26px;
+    }
+  }
 }
 
 .links {
@@ -10,6 +32,14 @@
   li {
     margin-bottom: 20px;
     @include with-link-primary;
+
+    @include fullhd-down {
+      margin-bottom: 25px;
+    }
+
+    @include lg-down {
+      margin-bottom: 20px;
+    }
 
     &:last-child {
       margin-bottom: 0;

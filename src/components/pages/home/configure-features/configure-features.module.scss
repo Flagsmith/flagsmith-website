@@ -5,6 +5,26 @@
   justify-content: center;
   margin-bottom: 350px;
   @include section-paddings;
+
+  @include fullhd-down {
+    margin-bottom: 295px;
+  }
+
+  @include xl-down {
+    margin-bottom: 280px;
+  }
+
+  @include lg-down {
+    margin-bottom: 230px;
+  }
+
+  @include md-down {
+    margin-bottom: 200px;
+  }
+
+  @include xxs-down {
+    margin-bottom: 120px;
+  }
 }
 
 .title {
@@ -24,4 +44,16 @@
 .illustration {
   position: absolute;
   z-index: -1;
+
+  @include fullhd-down {
+    width: 420px;
+  }
+
+  @include xl-down {
+    width: 380px;
+  }
+
+  @include xxs-down {
+    max-width: 100%;
+  }
 }
