@@ -66,8 +66,8 @@ const Options = ({ title, items }) => {
   };
 
   return (
-    <div className={cx('wrapper')}>
-      <div className="container">
+    <section className={cx('wrapper')}>
+      <div className={cx('container', 'inner')}>
         <Heading tag="h2" className={cx('title')} size="xl">
           {title}
         </Heading>
@@ -78,15 +78,14 @@ const Options = ({ title, items }) => {
             return (
               <Link className={cx('item', `item-theme-${theme}`)} to={path} key={index}>
                 <div className={cx('item-inner')}>
+                  <Heading className={cx('item-title')} tag="h3" size="lg">
+                    {title}
+                  </Heading>
+
+                  <div className={cx('item-image')}>
+                    <Img fixed={image} alt="" />
+                  </div>
                   <div className={cx('item-content')}>
-                    <Heading className={cx('item-title')} tag="h3" size="lg">
-                      {title}
-                    </Heading>
-
-                    <div className={cx('item-image')}>
-                      <Img fixed={image} alt="" />
-                    </div>
-
                     <ul className={cx('item-features')}>
                       {features.map((feature, index) => (
                         <li key={index}>
@@ -98,7 +97,7 @@ const Options = ({ title, items }) => {
                   </div>
 
                   <span className={cx('item-link')}>
-                    Learn more <IconArrowRight />
+                    Learn More <IconArrowRight />
                   </span>
                 </div>
               </Link>
@@ -109,7 +108,7 @@ const Options = ({ title, items }) => {
           <img className={cx('shape', 'shape-2')} src={shape2} alt="" loading="lazy" aria-hidden />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

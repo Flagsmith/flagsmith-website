@@ -13,24 +13,11 @@ import Icon from './images/icon.inline.svg';
 import IconArrowRight from 'icons/arrow-right.inline.svg';
 import window from './images/window.url.svg';
 import popup from './images/popup.url.svg';
-import logo from './images/logo.url.svg';
-import search from './images/search.url.svg';
 import item1 from './images/item-1.url.svg';
 import item2 from './images/item-2.url.svg';
 import item3 from './images/item-3.url.svg';
 
 const cx = classNames.bind(styles);
-
-const variantsContent = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: (custom) => ({
-    opacity: 1,
-    clipPath: 'polygon(0 0, 0 100%, 100% 100%, 100% 0)',
-    transition: { delay: custom, duration: 0.5, ease: MOTION_EASY },
-  }),
-};
 
 const variantsContentFade = {
   hidden: {
@@ -95,28 +82,12 @@ const RemoteConfig = ({ title, description }) => {
               custom={0.6}
             />
             <motion.img
-              className={cx('logo')}
-              src={logo}
-              alt=""
-              loading="lazy"
-              variants={variantsContent}
-              custom={0.8}
-            />
-            <motion.img
-              className={cx('search')}
-              src={search}
-              alt=""
-              loading="lazy"
-              variants={variantsContentFade}
-              custom={1}
-            />
-            <motion.img
               className={cx('item', 'item-1')}
               src={item1}
               alt=""
               loading="lazy"
               variants={variantsAction}
-              custom={1.2}
+              custom={0.7}
             />
             <motion.img
               className={cx('item', 'item-2')}
@@ -124,7 +95,7 @@ const RemoteConfig = ({ title, description }) => {
               alt=""
               loading="lazy"
               variants={variantsAction}
-              custom={1.4}
+              custom={0.8}
             />
             <motion.img
               className={cx('item', 'item-3')}
@@ -132,7 +103,7 @@ const RemoteConfig = ({ title, description }) => {
               alt=""
               loading="lazy"
               variants={variantsAction}
-              custom={1.6}
+              custom={0.9}
             />
           </motion.div>
         </div>

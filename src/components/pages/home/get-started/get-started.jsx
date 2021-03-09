@@ -36,7 +36,9 @@ const GetStarted = ({ title, description, buttonText, buttonLink }) => {
               {title}
             </Heading>
             <p className={cx('description')}>{description}</p>
-            <Button to={buttonLink}>{buttonText}</Button>
+            <Button className={cx('button')} to={buttonLink}>
+              {buttonText}
+            </Button>
           </div>
 
           <div className={cx('illustration-wrapper')}>

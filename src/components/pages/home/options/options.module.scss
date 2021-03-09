@@ -6,6 +6,22 @@
   overflow: hidden;
 
   @include section-paddings;
+
+  @include fullhd-down {
+    padding-top: 90px;
+    padding-bottom: 150px;
+  }
+
+  @include lg-down {
+    padding-top: 70px;
+    padding-bottom: 90px;
+  }
+}
+
+.inner {
+  @include lg-down {
+    max-width: 780px;
+  }
 }
 
 .title {
@@ -13,6 +29,14 @@
   text-align: center;
   margin-bottom: 90px;
   z-index: 1;
+
+  @include fullhd-down {
+    margin-bottom: 70px;
+  }
+
+  @include lg-down {
+    margin-bottom: 50px;
+  }
 }
 
 .items-wrapper {
@@ -20,6 +44,21 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 90px;
+
+  @include fullhd-down {
+    grid-template-columns: repeat(3, 380px);
+    column-gap: 75px;
+  }
+
+  @include xl-down {
+    grid-template-columns: repeat(3, 350px);
+    column-gap: 60px;
+  }
+
+  @include lg-down {
+    grid-template-columns: 12fr;
+    row-gap: 50px;
+  }
 }
 
 .item {
@@ -39,10 +78,53 @@
     padding-top: 30px;
     padding-left: 30px;
     padding-right: 30px;
+
+    @include lg-down {
+      display: grid;
+      align-items: center;
+      grid-template-columns: 290px 1fr;
+      column-gap: 30px;
+      padding-bottom: 30px;
+    }
+
+    @include sm-down {
+      display: block;
+      padding-bottom: 0;
+    }
+
+    @include xxs-down {
+      padding: 15px;
+    }
+  }
+
+  &:nth-child(1) {
+    .item-image {
+      & > div {
+        width: 287px !important;
+        height: 202px !important;
+
+        @include xl-down {
+          width: 260px !important;
+          height: 183px !important;
+        }
+      }
+    }
   }
 
   &:nth-child(2) {
     z-index: 1;
+
+    .item-image {
+      & > div {
+        width: 251px !important;
+        height: 189px !important;
+
+        @include xl-down {
+          width: 227px !important;
+          height: 171px !important;
+        }
+      }
+    }
 
     &::before,
     &::after {
@@ -56,16 +138,77 @@
       background-size: contain;
       background-repeat: no-repeat;
       z-index: -1;
+
+      @include fullhd-down {
+        height: 126px;
+        width: 126px;
+      }
+
+      @include xl-down {
+        height: 114px;
+        width: 114px;
+        margin-top: 32px;
+      }
+
+      @include lg-down {
+        height: 100px;
+        width: 100px;
+        margin-top: 0;
+
+        transform: translateX(-50%);
+      }
     }
 
     &::before {
       left: -120px;
       background-image: url('./images/shape-comparison-1.url.svg');
+
+      @include fullhd-down {
+        left: -100px;
+      }
+
+      @include xl-down {
+        left: -87px;
+      }
+
+      @include lg-down {
+        top: -75px;
+        left: 50%;
+      }
     }
 
     &::after {
       right: -120px;
       background-image: url('./images/shape-comparison-2.url.svg');
+
+      @include fullhd-down {
+        right: -100px;
+      }
+
+      @include xl-down {
+        right: -87px;
+      }
+
+      @include lg-down {
+        top: auto;
+        right: auto;
+        left: 50%;
+        bottom: -75px;
+      }
+    }
+  }
+
+  &:nth-child(3) {
+    .item-image {
+      & > div {
+        width: 295px !important;
+        height: 213px !important;
+
+        @include xl-down {
+          width: 268px !important;
+          height: 193px !important;
+        }
+      }
     }
   }
 
@@ -143,6 +286,10 @@
 
   &-title {
     margin-bottom: 20px;
+
+    @include lg-down {
+      grid-column-start: 2;
+    }
   }
 
   &-image {
@@ -151,10 +298,37 @@
     justify-content: center;
     height: 260px;
     margin-bottom: 30px;
+
+    @include fullhd-down {
+      height: 210px;
+    }
+
+    @include xl-down {
+      height: 200px;
+      margin-bottom: 20px;
+    }
+
+    @include lg-down {
+      grid-row-start: 1;
+      grid-row-end: 3;
+      margin-bottom: 0;
+    }
+
+    @include sm-down {
+      margin-bottom: 20px;
+    }
   }
 
   &-content {
     padding-bottom: 30px;
+
+    @include xl-down {
+      padding-bottom: 25px;
+    }
+
+    @include lg-down {
+      padding-bottom: 37px;
+    }
   }
 
   &-features {
@@ -169,6 +343,16 @@
       line-height: $line-height-xs;
       margin-bottom: 15px;
 
+      @include fullhd-down {
+        margin-bottom: 17px;
+      }
+
+      @include xl-down {
+        font-size: $font-size-xxs;
+        line-height: 21px;
+        margin-bottom: 15px;
+      }
+
       &:last-child {
         margin-bottom: 0;
       }
@@ -177,6 +361,10 @@
         flex-shrink: 0;
         margin-top: 2px;
         margin-right: 10px;
+
+        @include xl-down {
+          width: 18px;
+        }
       }
     }
   }
@@ -191,6 +379,19 @@
     padding-top: 20px;
     padding-bottom: 20px;
 
+    @include lg-down {
+      grid-column-start: 2;
+      border-top: none;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    @include sm-down {
+      border-top: 2px solid $color-additional-4;
+      padding-top: 20px;
+      padding-bottom: 15px;
+    }
+
     svg {
       margin-left: 10px;
 
@@ -203,14 +404,69 @@
 
 .shape {
   position: absolute;
+
+  @include fullhd-down {
+    width: 420px;
+  }
+
+  @include xl-down {
+    width: 380px;
+  }
+
+  @include lg-down {
+    width: 370px;
+  }
+
+  @include sm-down {
+    width: 320px;
+  }
 }
 
 .shape-1 {
   top: -100px;
   left: -135px;
+
+  @include fullhd-down {
+    top: -90px;
+    left: -120px;
+  }
+
+  @include xl-down {
+    top: -67px;
+    left: -110px;
+  }
+
+  @include lg-down {
+    top: -52px;
+    left: -160px;
+  }
+
+  @include sm-down {
+    top: -39px;
+    left: -90px;
+  }
 }
 
 .shape-2 {
   bottom: -60px;
   right: -135px;
+
+  @include fullhd-down {
+    right: -100px;
+  }
+
+  @include xl-down {
+    right: -81px;
+    bottom: -57px;
+  }
+
+  @include lg-down {
+    right: -90px;
+    bottom: -46px;
+  }
+
+  @include sm-down {
+    right: -145px;
+    bottom: 294px;
+  }
 }

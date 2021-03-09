@@ -34,8 +34,15 @@
 }
 
 @mixin xs-down {
-  // 413.98px - 320
+  // 575.98 - 414
   @media only screen and (max-width: $breakpoint-xs-down) {
+    @content;
+  }
+}
+
+@mixin xxs-down {
+  // 413.98px - 320
+  @media only screen and (max-width: $breakpoint-xxs-down) {
     @content;
   }
 }

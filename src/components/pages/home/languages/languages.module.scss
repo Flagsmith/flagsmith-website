@@ -3,12 +3,50 @@
   padding-top: 180px;
   padding-bottom: 210px;
   @include section-paddings;
+
+  @include fullhd-down {
+    padding-top: 150px;
+    padding-bottom: 180px;
+  }
+
+  @include lg-down {
+    padding-top: 120px;
+    padding-bottom: 150px;
+  }
+
+  @include md-down {
+    padding-top: 90px;
+    padding-bottom: 120px;
+  }
+
+  @include sm-down {
+    padding-top: 70px;
+    padding-bottom: 90px;
+  }
+}
+
+.inner {
+  @include lg-down {
+    max-width: 620px;
+  }
+
+  @include md-down {
+    max-width: 580px;
+  }
 }
 
 .head {
   text-align: center;
   margin-bottom: 55px;
   @include with-link-accent-secondary;
+
+  @include fullhd-down {
+    margin-bottom: 60px;
+  }
+
+  @include sm-down {
+    margin-bottom: 50px;
+  }
 }
 
 .title {
@@ -21,6 +59,21 @@
   margin-right: auto;
   margin-top: 0;
   margin-bottom: 20px;
+
+  @include fullhd-down {
+    margin-bottom: 15px;
+  }
+
+  @include xl-down {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+    max-width: 630px;
+  }
+
+  @include lg-down {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+  }
 }
 
 .link {
@@ -34,6 +87,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @include lg-down {
+    flex-direction: column;
+  }
 }
 
 .tabs {
@@ -44,10 +101,32 @@
   padding-top: 15px;
   padding-bottom: 15px;
 
+  @include fullhd-down {
+    width: 190px;
+  }
+
+  @include xl-down {
+    width: 200px;
+  }
+
+  @include lg-down {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: hidden;
+  }
+
   &-list {
     padding-left: 0;
     margin: 0;
     list-style: none;
+
+    @include lg-down {
+      display: flex;
+      justify-content: space-between;
+      background-color: $color-accent-primary;
+    }
   }
 
   &-item {
@@ -64,9 +143,25 @@
     cursor: pointer;
     transition: background-color $transition-base;
 
+    @include lg-down {
+      display: none;
+      padding: 0;
+    }
+
     &.active {
       background-color: $color-accent-primary;
+
+      @include lg-down {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
+  }
+
+  &-content-inner {
+    height: 100%;
+    overflow: auto;
   }
 
   &-content {
@@ -83,14 +178,50 @@
     padding-right: 30px;
     padding-bottom: 30px;
 
+    @include fullhd-down {
+      width: 660px;
+      height: 600px;
+    }
+
+    @include xl-down {
+      width: 630px;
+    }
+
+    @include lg-down {
+      height: 520px;
+      width: 100%;
+      border-radius: 0 0 10px 10px;
+      padding-top: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 20px;
+    }
+
+    @include sm-down {
+      height: 470px;
+    }
+
+    @include xxs-down {
+      height: 320px;
+    }
+
     code {
       font-size: 17px !important;
       line-height: 27.2px !important;
+
+      @include lg-down {
+        font-size: 15px !important;
+        line-height: $line-height-xs !important;
+      }
     }
 
     :global {
       .linenumber {
         margin-right: 35px;
+
+        @include lg-down {
+          margin-right: 25px;
+        }
       }
     }
 
@@ -112,8 +243,27 @@
     height: 20px;
     width: 95px;
 
+    @include lg-down {
+      width: 76px;
+      height: 16px;
+    }
+
     path {
       fill: $color-tertiary;
+    }
+  }
+
+  &-button {
+    display: none;
+    background-color: transparent;
+    padding: 13px 18px;
+    outline: none;
+    border: none;
+
+    @include lg-down {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
@@ -141,84 +291,220 @@
   display: flex;
   z-index: -1;
 
+  @include md-down {
+    display: none;
+  }
+
   path {
     transition: fill $transition-base;
   }
 
   &:nth-child(1) {
-    animation: wiggleTwo 5s infinite cubic-bezier(1, 1, 0, 0);
+    animation: wiggleTwo 3s infinite cubic-bezier(1, 1, 0, 0);
   }
 
   &:nth-child(2) {
-    animation: wiggle 5s infinite cubic-bezier(1, 1, 0, 0);
+    animation: wiggle 3s infinite cubic-bezier(1, 1, 0, 0);
   }
 
   &:nth-child(3) {
-    animation: wiggle 5s infinite cubic-bezier(1, 1, 0, 0);
+    animation: wiggle 3s infinite cubic-bezier(1, 1, 0, 0);
   }
 
   &:nth-child(4) {
-    animation: wiggleTwo 5s infinite cubic-bezier(1, 1, 0, 0);
+    animation: wiggleTwo 3s infinite cubic-bezier(1, 1, 0, 0);
   }
 
   &:nth-child(5) {
-    animation: wiggleTwo 5s infinite cubic-bezier(1, 1, 0, 0);
+    animation: wiggleTwo 3s infinite cubic-bezier(1, 1, 0, 0);
   }
 
   &:nth-child(6) {
-    animation: wiggle 5s infinite cubic-bezier(1, 1, 0, 0);
+    animation: wiggle 3s infinite cubic-bezier(1, 1, 0, 0);
   }
 
   &:nth-child(7) {
-    animation: wiggleTwo 5s infinite cubic-bezier(1, 1, 0, 0);
+    animation: wiggleTwo 3s infinite cubic-bezier(1, 1, 0, 0);
   }
 
   &:nth-child(8) {
-    animation: wiggle 5s infinite cubic-bezier(1, 1, 0, 0);
+    animation: wiggle 3s infinite cubic-bezier(1, 1, 0, 0);
   }
 
   &-android {
     top: 18.5%;
     left: 16.9vw;
+
+    @include fullhd-down {
+      top: 16%;
+      left: 18.7vw;
+      width: 64px;
+    }
+
+    @include xl-down {
+      top: 19.5%;
+      left: 12.6vw;
+    }
+
+    @include lg-down {
+      top: 22.3%;
+      left: 12.2vw;
+      width: 54px;
+    }
   }
 
   &-python {
     top: 22.6%;
     right: 15.4vw;
+
+    @include fullhd-down {
+      top: 19.3%;
+      right: 17.5vw;
+      width: 82px;
+    }
+
+    @include xl-down {
+      top: 21.2%;
+      right: 9vw;
+    }
+
+    @include lg-down {
+      top: 21.5%;
+      right: 10.7vw;
+      width: 68px;
+    }
   }
 
   &-php {
     top: 37%;
     left: 3.8vw;
-    height: 100px;
     width: 100px;
+
+    @include fullhd-down {
+      top: 35.5%;
+      left: 9.8vw;
+      width: 90px;
+    }
+
+    @include xl-down {
+      top: 35.8%;
+      left: 2.4vw;
+    }
+
+    @include lg-down {
+      top: 37.2%;
+      width: 75px;
+    }
   }
 
   &-ruby {
     top: 41.6%;
     right: 3.9vw;
-    height: 80px;
     width: 80px;
+
+    @include fullhd-down {
+      top: 39.8%;
+      right: 9.8vw;
+      width: 72px;
+    }
+
+    @include xl-down {
+      top: 40.3%;
+      right: 2.3vw;
+    }
+
+    @include lg-down {
+      top: 38.8%;
+      width: 60px;
+    }
   }
 
   &-react-native {
     bottom: 36.6%;
     left: 13.2vw;
+
+    @include fullhd-down {
+      bottom: 35.5%;
+      left: 14.8vw;
+      width: 90px;
+    }
+
+    @include xl-down {
+      bottom: 34.5%;
+      left: 7.2vw;
+    }
+
+    @include lg-down {
+      bottom: 33.2%;
+      left: 8vw;
+      width: 75px;
+    }
   }
 
   &-ios {
     bottom: 34.2%;
     right: 11.7vw;
+
+    @include fullhd-down {
+      bottom: 33.7%;
+      right: 14.6vw;
+      width: 90px;
+    }
+
+    @include xl-down {
+      bottom: 32.9%;
+      right: 6.6vw;
+    }
+
+    @include lg-down {
+      bottom: 30.9%;
+      right: 8.8vw;
+      width: 75px;
+    }
   }
 
   &-flutter {
     bottom: 10.8%;
     left: 8vw;
+
+    @include fullhd-down {
+      bottom: 8.9%;
+      left: 12.8vw;
+      width: 82px;
+    }
+
+    @include xl-down {
+      bottom: 8.2%;
+      left: 4.8vw;
+    }
+
+    @include lg-down {
+      bottom: 5.5%;
+      left: 4.4vw;
+      width: 68px;
+    }
   }
 
   &-javascript {
     bottom: 9.1%;
     right: 8vw;
+
+    @include fullhd-down {
+      bottom: 7.5%;
+      right: 12.5vw;
+      width: 64px;
+    }
+
+    @include xl-down {
+      bottom: 6.5%;
+      right: 6.2vw;
+    }
+
+    @include lg-down {
+      bottom: 4%;
+      right: 7.7vw;
+      width: 54px;
+    }
   }
 }
 

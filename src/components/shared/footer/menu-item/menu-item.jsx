@@ -10,7 +10,7 @@ import styles from './menu-item.module.scss';
 const cx = classNames.bind(styles);
 
 const MenuItem = ({ label: sectionTitle, childItems }) => (
-  <div>
+  <div className={cx('wrapper')}>
     <Heading className={cx('title')} tag="h3" size="md" color="quaternary">
       {sectionTitle}
     </Heading>

@@ -55,7 +55,7 @@ const variantChat = {
 const State = ({ chat, designV2, dark, setOption }) => {
   const controls = useAnimation();
 
-  const [sectionRef, inView] = useInView({ threshold: 1, triggerOnce: true });
+  const [sectionRef, inView] = useInView({ threshold: 0.5, triggerOnce: true });
 
   const handleSetOption = (keyOption, wait) => {
     let timeout;

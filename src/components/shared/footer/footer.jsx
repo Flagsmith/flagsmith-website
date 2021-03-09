@@ -16,19 +16,17 @@ const Footer = ({ items }) => {
   return (
     <footer className={cx('wrapper')}>
       <div className={cx('container', 'inner')}>
-        <div className={cx('left')}>
-          <div className={cx('logo-wrapper')}>
-            <Link to="/">
-              <Logo />
-            </Link>
-          </div>
-          <span className={cx('copyright')}>
-            Creative design made by
-            <Link className={cx('icon-arrow')} to="https://pixelpoint.io/" target="_blank">
-              Pixel Point <IconArrowRight />
-            </Link>
-          </span>
+        <div className={cx('logo-wrapper')}>
+          <Link to="/">
+            <Logo />
+          </Link>
         </div>
+        <span className={cx('copyright')}>
+          Creative design made by
+          <Link className={cx('icon-arrow')} to="https://pixelpoint.io/" target="_blank">
+            Pixel Point <IconArrowRight />
+          </Link>
+        </span>
 
         <div className={cx('menu')}>
           {items.map(({ label, childItems }, index) => (

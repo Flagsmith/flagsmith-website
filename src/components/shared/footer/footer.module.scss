@@ -9,27 +9,98 @@
   padding-top: 60px;
   padding-bottom: 60px;
   border-top: 2px solid #f8f8f7;
+
+  @include lg-down {
+    padding-bottom: 40px;
+  }
+
+  @include md-down {
+    grid-template-columns: 12fr;
+    column-gap: 0;
+  }
 }
 
-.left {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.logo-wrapper {
   grid-column: span 7;
+
+  @include xl-down {
+    grid-column: span 6;
+  }
+
+  @include md-down {
+    grid-column: span 12;
+    margin-bottom: 35px;
+  }
+
+  svg {
+    @include lg-down {
+      height: 26px;
+      width: 123px;
+    }
+  }
 }
 
 .menu {
   display: flex;
   justify-content: space-between;
   grid-column: span 5;
+
+  @include fullhd-down {
+    margin-left: -30px;
+  }
+
+  @include xl-down {
+    grid-column: span 6;
+    width: 535px;
+    margin-left: 0;
+  }
+
+  @include lg-down {
+    width: 485px;
+    margin-left: -25px;
+  }
+
+  @include md-down {
+    grid-column: span 12;
+    margin-left: 0;
+    width: 100%;
+    max-width: 620px;
+    margin-bottom: 40px;
+  }
+
+  @include sm-down {
+    flex-wrap: wrap;
+    margin-bottom: 0;
+  }
 }
 
 .copyright {
   display: flex;
   font-size: $font-size-xs;
   line-height: $line-height-xs;
-
+  grid-column: span 7;
+  grid-row-start: 2;
+  margin-top: -10px;
   @include with-link-accent-secondary;
+
+  @include fullhd-down {
+    margin-top: -30px;
+  }
+
+  @include xl-down {
+    grid-column: span 6;
+  }
+
+  @include md-down {
+    grid-column: span 12;
+    grid-row-start: 3;
+    margin-top: 0;
+  }
+
+  @include xxs-down {
+    font-size: $font-size-xxs;
+    line-height: $line-height-xxs;
+  }
 
   a {
     display: flex;
@@ -38,6 +109,11 @@
     line-height: $line-height-xs;
     font-weight: 700;
     margin-left: 4px;
+
+    @include xxs-down {
+      font-size: $font-size-xxs;
+      line-height: $line-height-xxs;
+    }
 
     svg {
       margin-left: 6px;

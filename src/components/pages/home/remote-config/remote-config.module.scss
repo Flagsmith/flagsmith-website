@@ -1,36 +1,117 @@
 .wrapper {
-  margin-bottom: 220px;
+  margin-bottom: 240px;
   @include section-paddings;
+
+  @include fullhd-down {
+    margin-bottom: 215px;
+  }
+
+  @include lg-down {
+    margin-bottom: 180px;
+  }
+
+  @include md-down {
+    margin-bottom: 140px;
+  }
+
+  @include sm-down {
+    margin-bottom: 110px;
+  }
 }
 
 .inner {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   column-gap: 30px;
+
+  @include md-down {
+    column-gap: 0;
+  }
 }
 
 .title {
   margin-bottom: 30px;
+
+  @include lg-down {
+    margin-bottom: 20px;
+  }
 }
 
 .left {
   grid-column-start: 2;
   grid-column-end: 6;
   @include with-link-accent-secondary;
+
+  @include fullhd-down {
+    grid-column-start: 1;
+  }
+
+  @include lg-down {
+    max-width: 305px;
+  }
+
+  @include md-down {
+    grid-column: span 12;
+    grid-column-start: 2;
+    grid-column-end: 12;
+    max-width: 100%;
+    margin-bottom: 50px;
+  }
+
+  @include sm-down {
+    grid-column-start: 1;
+    grid-column-end: 13;
+  }
 }
 
 .right {
   grid-column-start: 7;
   grid-column-end: 13;
+
+  @include lg-down {
+    grid-column-start: 6;
+  }
+
+  @include md-down {
+    grid-column: span 12;
+    grid-column-start: 2;
+    grid-column-end: 12;
+  }
+
+  @include sm-down {
+    grid-column-start: 1;
+    grid-column-end: 13;
+  }
 }
 
 .icon {
   margin-bottom: 20px;
+
+  @include fullhd-down {
+    height: 60px;
+    width: 60px;
+  }
+
+  @include lg-down {
+    height: 50px;
+    width: 50px;
+  }
 }
 
 .description {
   margin-bottom: 30px;
   @include content;
+
+  @include xl-down {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+
+  @include lg-down {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+    margin-bottom: 25px;
+  }
 }
 
 .link {
@@ -43,31 +124,50 @@
 
 .illustration-wrapper {
   position: relative;
-  margin-top: -9px;
-  margin-left: -30px;
+  margin-top: 10px;
+
+  @include fullhd-down {
+    width: 630px;
+    margin-top: 38px;
+  }
+
+  @include xl-down {
+    width: 600px;
+    margin-top: 33px;
+    margin-left: -30px;
+  }
+
+  @include lg-down {
+    width: 540px;
+    margin-top: 48px;
+    margin-left: 0;
+  }
+
+  @include md-down {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+.window {
+  width: 95%;
+  border-radius: 10px;
+  box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
 }
 
 .popup {
   position: absolute;
-  top: 13%;
-  left: 12.8%;
-}
-
-.logo {
-  position: absolute;
-  top: 18.6%;
-  left: 19.2%;
-}
-
-.search {
-  position: absolute;
-  top: 19.2%;
-  left: 71.8%;
+  top: 14.3%;
+  left: 13%;
+  width: 87%;
+  box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
+  border-radius: 8px;
 }
 
 .item {
   position: absolute;
-  left: 20.5%;
+  left: 17.5%;
+  width: 78.6%;
 }
 
 .item-1 {
@@ -75,9 +175,9 @@
 }
 
 .item-2 {
-  top: 47.3%;
+  top: 48.5%;
 }
 
 .item-3 {
-  top: 62.2%;
+  top: 65.2%;
 }
