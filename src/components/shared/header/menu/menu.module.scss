@@ -16,6 +16,10 @@
   padding-left: 0;
   margin: 0;
   list-style: none;
+
+  @include lg-down {
+    column-gap: 50px;
+  }
 }
 
 .item {

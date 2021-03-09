@@ -1,10 +1,65 @@
 .items-wrapper {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   column-gap: 70px;
+
+  @include fullhd-down {
+    column-gap: 47px;
+  }
+
+  @include xl-down {
+    column-gap: 40px;
+  }
+
+  @include lg-down {
+    column-gap: 20px;
+  }
+
+  @include md-down {
+    column-gap: 60px;
+  }
+
+  @include sm-down {
+    column-gap: 20px;
+  }
+}
+
+.item {
+  width: 130px;
+
+  @include fullhd-down {
+    width: 120px;
+  }
+
+  @include xl-down {
+    width: 110px;
+  }
+
+  @include lg-down {
+    width: 100px;
+  }
+
+  @include sm-down {
+    width: 80px;
+  }
 }
 
 .title {
   margin-top: 0;
   margin-bottom: 15px;
+
+  @include xl-down {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+
+  @include lg-down {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+  }
+
+  @include sm-down {
+    margin-bottom: 20px;
+  }
 }

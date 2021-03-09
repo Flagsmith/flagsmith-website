@@ -23,6 +23,19 @@
   position: relative;
   margin-right: 10px;
 
+  @include lg-down {
+    margin-right: 5px;
+    margin-left: -20px;
+  }
+
+  @include md-down {
+    margin-left: -35px;
+  }
+
+  @include sm-down {
+    margin-left: -15px;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -46,6 +59,28 @@
     position: absolute;
     top: 0;
   }
+
+  @include fullhd-down {
+    width: 90px;
+    height: 90px;
+  }
+
+  @include sm-down {
+    width: 80px;
+    height: 80px;
+  }
+
+  svg {
+    @include fullhd-down {
+      width: 90px;
+      height: 90px;
+    }
+
+    @include sm-down {
+      width: 80px;
+      height: 80px;
+    }
+  }
 }
 
 .title {
@@ -55,16 +90,61 @@
   font-weight: 800;
   margin-top: 0;
   margin-bottom: 20px;
+
+  @include fullhd-down {
+    font-size: 35px;
+    line-height: 45.5px;
+  }
+
+  @include xl-down {
+    font-size: 30px;
+    line-height: 130%;
+  }
+
+  @include lg-down {
+    margin-bottom: 10px;
+  }
 }
 
 .description {
   margin-top: 0;
   margin-bottom: 0;
+
+  @include xl-down {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+
+  @include lg-down {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+  }
 }
 
 .content {
   max-width: 360px;
   padding-bottom: 210px;
+
+  @include fullhd-down {
+    max-width: 100%;
+    padding-bottom: 190px;
+  }
+
+  @include xl-down {
+    padding-bottom: 175px;
+  }
+
+  @include lg-down {
+    padding-bottom: 145px;
+  }
+
+  @include md-down {
+    padding-bottom: 115px;
+  }
+
+  @include sm-down {
+    padding-bottom: 90px;
+  }
 }
 
 .progress-bar {

@@ -2,25 +2,82 @@
   background-color: $color-secondary;
   padding-top: 150px;
   padding-bottom: 245px;
-
   @include section-paddings;
+
+  @include fullhd-down {
+    padding-top: 120px;
+    padding-bottom: 180px;
+  }
+
+  @include lg-down {
+    padding-top: 90px;
+    padding-bottom: 150px;
+  }
+
+  @include md-down {
+    padding-top: 70px;
+    padding-bottom: 120px;
+  }
+
+  @include sm-down {
+    overflow: hidden;
+    padding-bottom: 70px;
+  }
 }
 
 .inner {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   column-gap: 30px;
+
+  @include md-down {
+    column-gap: 0;
+  }
 }
 
 .title {
   max-width: 475px;
   margin-bottom: 90px;
+
+  @include fullhd-down {
+    margin-bottom: 70px;
+  }
+
+  @include lg-down {
+    margin-bottom: 50px;
+  }
+
+  @include md-down {
+    max-width: 100%;
+    margin-bottom: 60px;
+  }
+
+  @include md-down {
+    margin-bottom: 40px;
+  }
 }
 
 .left {
   position: relative;
   grid-column-start: 2;
   grid-column-end: 8;
+
+  @include fullhd-down {
+    grid-column-start: 1;
+  }
+
+  @include md-down {
+    grid-column: span 12;
+    grid-column-start: 2;
+    grid-column-end: 12;
+    margin-bottom: 90px;
+  }
+
+  @include sm-down {
+    grid-column-start: 1;
+    grid-column-end: 13;
+    margin-bottom: 85px;
+  }
 }
 
 .left-inner {
@@ -33,9 +90,75 @@
   grid-column: span 5;
   padding-top: 30px;
   padding-left: 20px;
+
+  @include fullhd-down {
+    padding-top: 25px;
+    padding-left: 10px;
+  }
+
+  @include xl-down {
+    padding-left: 0;
+  }
+
+  @include lg-down {
+    padding-top: 20px;
+  }
+
+  @include md-down {
+    grid-column: span 12;
+    grid-column-start: 2;
+    grid-column-end: 11;
+  }
+
+  @include sm-down {
+    grid-column-start: 1;
+    grid-column-end: 13;
+    padding-top: 0;
+  }
 }
 
 .illustration-wrapper {
   position: relative;
   margin-left: -290px;
+
+  @include fullhd-down {
+    margin-left: -40px;
+  }
+
+  @include xl-down {
+    margin-left: -20px;
+  }
+
+  & > div {
+    @include fullhd-down {
+      width: 780px !important;
+      height: 360px !important;
+    }
+
+    @include xl-down {
+      width: 690px !important;
+      height: 318px !important;
+    }
+
+    @include lg-down {
+      width: 557px !important;
+      height: 257px !important;
+    }
+
+    @include md-down {
+      width: 700px !important;
+      height: 323px !important;
+      margin-left: -42px;
+    }
+
+    @include sm-down {
+      width: 629px !important;
+      height: 290px !important;
+      margin-left: auto;
+    }
+
+    @include xs-down {
+      margin-left: -102px;
+    }
+  }
 }

@@ -21,6 +21,8 @@ import ShapeReactNative from './images/react-native.inline.svg';
 import ShapeIos from './images/ios.inline.svg';
 import ShapeFlutter from './images/flutter.inline.svg';
 import ShapeJavascript from './images/javascript.inline.svg';
+import ArrowLeft from './images/arrow-left.inline.svg';
+import ArrowRight from './images/arrow-right.inline.svg';
 
 const cx = classNames.bind(styles);
 
@@ -83,11 +85,14 @@ const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
     (input) => scrollPercentageStart + (scrollPercentageEnd - scrollPercentageStart) * input
   );
 
-  const hadleTabClick = (index, languageName) => {
-    const name = languageName.toLowerCase().replace(' ', '-');
+  const handleButtonLeft = () => {
+    const activeIndex = activeItemIndex === 0 ? tabs.length - 1 : activeItemIndex - 1;
+    setActiveItemIndex(activeIndex);
+  };
 
-    setActiveItemIndex(index);
-    setActiveItemName(name);
+  const handleButtonRight = () => {
+    const activeIndex = activeItemIndex < tabs.length - 1 ? activeItemIndex + 1 : 0;
+    setActiveItemIndex(activeIndex);
   };
 
   const getParallaxStyle = (index) => {
@@ -100,7 +105,7 @@ const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
 
   return (
     <section className={cx('wrapper')} ref={sectionRef}>
-      <div className="container">
+      <div className={cx('container', 'inner')}>
         <div className={cx('head')}>
           <Heading className={cx('title')} tag="h2" size="xl">
             {title}
@@ -113,31 +118,39 @@ const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
         <div className={cx('tabs-wrapper')}>
           <div className={cx('tabs')}>
             <ul className={cx('tabs-list')}>
+              <button className={cx('tabs-button')} theme="tertiary" onClick={handleButtonLeft}>
+                <ArrowLeft />
+              </button>
               {tabs.map(({ language }, index) => (
                 <li
                   className={cx('tabs-item', { active: index === activeItemIndex })}
+                  onClick={() => setActiveItemIndex(index)}
                   key={index}
-                  onClick={() => hadleTabClick(index, language)}
                 >
                   {language}
                 </li>
               ))}
+              <button className={cx('tabs-button')} theme="tertiary" onClick={handleButtonRight}>
+                <ArrowRight />
+              </button>
             </ul>
           </div>
 
           <div className={cx('tabs-content')}>
-            {tabs.map(({ codeStyle, code }, index) => (
-              <SyntaxHighlighter
-                className={cx('tabs-content-item', { active: index === activeItemIndex })}
-                language={codeStyle}
-                showLineNumbers
-                style={okaidia}
-                useInlineStyles={false}
-                key={index}
-              >
-                {code}
-              </SyntaxHighlighter>
-            ))}
+            <div className={cx('tabs-content-inner')}>
+              {tabs.map(({ codeStyle, code }, index) => (
+                <SyntaxHighlighter
+                  className={cx('tabs-content-item', { active: index === activeItemIndex })}
+                  language={codeStyle}
+                  showLineNumbers
+                  style={okaidia}
+                  useInlineStyles={false}
+                  key={index}
+                >
+                  {code}
+                </SyntaxHighlighter>
+              ))}
+            </div>
             <Logo className={cx('tabs-content-logo')} />
           </div>
         </div>
