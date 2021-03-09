@@ -1,4 +1,4 @@
-import React, { useMemo, useContext } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import MainContext from 'context/main';
@@ -24,13 +24,10 @@ const MobileMenu = ({ isOpen, onCloseButtonClick }) => {
     },
   } = useContext(MainContext);
 
-  // Graphql does not allow to filter by null values so has to do it manually
-  const menuItems = useMemo(() => filterNonRootItems(menuItemsNodes), []);
-
   return (
     <nav className={cx('wrapper', { open: isOpen })}>
       <ul className={cx('menu')}>
-        {menuItems.map(({ label, path, childItems }, index) => {
+        {menuItemsNodes.map(({ label, path, childItems }, index) => {
           const withChildItems = childItems.nodes.length > 0;
 
           return (

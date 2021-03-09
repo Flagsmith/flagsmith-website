@@ -2,6 +2,11 @@ const fs = require('fs');
 const path = require('path');
 const slash = require('slash');
 
+const filterNonRootItems = require('./src/utils/filter-non-root-items');
+
+// constants
+const SUPPORTED_MENU_TYPES = ['header', 'footer', 'mobile'];
+
 async function createRedirects({ graphql, actions }) {
   const { createRedirect } = actions;
   const result = await graphql(`
@@ -39,26 +44,10 @@ async function createRedirects({ graphql, actions }) {
 
 const getAllMenus = async (graphql) => {
   const {
-    data: { header, mobile, footer },
+    data: { header, footer, mobile },
   } = await graphql(`
     {
       header: wpMenu(slug: { eq: "header-menu" }) {
-        menuItems {
-          nodes {
-            label
-            path
-            parentId
-            childItems {
-              nodes {
-                label
-                path
-              }
-            }
-          }
-        }
-      }
-
-      mobile: wpMenu(slug: { eq: "mobile-menu" }) {
         menuItems {
           nodes {
             label
@@ -89,17 +78,34 @@ const getAllMenus = async (graphql) => {
           }
         }
       }
+
+      mobile: wpMenu(slug: { eq: "mobile-menu" }) {
+        menuItems {
+          nodes {
+            label
+            path
+            parentId
+            childItems {
+              nodes {
+                label
+                path
+              }
+            }
+          }
+        }
+      }
     }
   `);
+
   return {
     header,
-    mobile,
     footer,
+    mobile,
   };
 };
 
 // Create Pages
-async function createPages({ graphql, actions, allMenus, reporter }) {
+async function createPages({ graphql, actions, reporter, getMenus }) {
   const { createPage } = actions;
 
   const result = await graphql(`
@@ -127,7 +133,7 @@ async function createPages({ graphql, actions, allMenus, reporter }) {
     const templatePath = path.resolve(`./src/templates/${templateNamePath}.jsx`);
     const context = {
       id,
-      menus: allMenus,
+      menus: getMenus(),
     };
 
     if (fs.existsSync(templatePath)) {
@@ -144,10 +150,19 @@ async function createPages({ graphql, actions, allMenus, reporter }) {
 
 exports.createPages = async (args) => {
   const allMenus = await getAllMenus(args.graphql);
+  const getMenus = () => {
+    const menus = {};
 
+    SUPPORTED_MENU_TYPES.forEach((type) => {
+      const items = allMenus[`${type}`].menuItems.nodes;
+      menus[`${type}MenuItems`] = filterNonRootItems(items);
+    });
+    // filter non top level links for all menus
+    return menus;
+  };
   const params = {
     ...args,
-    allMenus,
+    getMenus,
   };
 
   await createPages(params);

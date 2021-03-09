@@ -30,7 +30,7 @@ const MainLayout = ({ seo, children, pageContext }) => {
   return (
     <MainContext.Provider value={pageContext}>
       {seo && <SEO {...seo} />}
-      <Header onBurgerClick={handleHeaderBurgerClick} />
+      <Header menuItems={headerMenuItems} onBurgerClick={handleHeaderBurgerClick} />
       <main>{children}</main>
       <Footer />
       <MobileMenu isOpen={isMobileMenuOpen} onCloseButtonClick={handleMobileNavCloseButtonClick} />

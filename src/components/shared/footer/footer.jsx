@@ -1,10 +1,9 @@
-import React, { useMemo, useContext } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames/bind';
 import MainContext from 'context/main';
 
 import Link from 'components/shared/link';
 import MenuItem from './menu-item/menu-item';
-import filterNonRootItems from 'utils/filter-non-root-items';
 
 import styles from './footer.module.scss';
 
@@ -22,9 +21,6 @@ const Footer = () => {
     },
   } = useContext(MainContext);
 
-  // Graphql does not allow to filter by null values so has to do it manually
-  const menuItems = useMemo(() => filterNonRootItems(menuItemsNodes), []);
-
   return (
     <footer className={cx('wrapper')}>
       <div className={cx('container', 'inner')}>
@@ -41,7 +37,7 @@ const Footer = () => {
         </span>
 
         <div className={cx('menu')}>
-          {menuItems.map(({ label, childItems }, index) => (
+          {menuItemsNodes.map(({ label, childItems }, index) => (
             <MenuItem label={label} childItems={childItems.nodes} key={index} />
           ))}
         </div>
