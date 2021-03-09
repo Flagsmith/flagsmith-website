@@ -14,13 +14,13 @@ import MainLayout from 'layouts/main';
 
 const Home = ({
   data: {
-    wpPage: { seo },
+    wpPage: { seo, acf: data },
   },
   pageContext,
 }) => {
   return (
     <MainLayout seo={seo} pageContext={pageContext}>
-      <Hero />
+      <Hero {...data.hero}/>
       <FeatureFlags />
       <ConfigureFeatures />
       <RemoteConfig />
@@ -37,7 +37,17 @@ export default Home;
 export const query = graphql`
   query($id: String!) {
     wpPage(id: { eq: $id }) {
-      id
+      acf {
+        hero {
+          title
+          description
+          button {
+            url
+            target
+            title
+          }
+        }
+      }
       ...wpPageSeo
     }
   }
