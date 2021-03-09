@@ -16,19 +16,21 @@ const Home = ({
   data: {
     wpPage: { seo },
   },
-  // pageContext: { menus, globalFields },
-}) => (
-  <MainLayout seo={seo}>
-    <Hero />
-    <FeatureFlags />
-    <ConfigureFeatures />
-    <RemoteConfig />
-    <Platform />
-    <Languages />
-    <Options />
-    <GetStarted />
-  </MainLayout>
-);
+  pageContext,
+}) => {
+  return (
+    <MainLayout seo={seo} pageContext={pageContext}>
+      <Hero />
+      <FeatureFlags />
+      <ConfigureFeatures />
+      <RemoteConfig />
+      <Platform />
+      <Languages />
+      <Options />
+      <GetStarted />
+    </MainLayout>
+  );
+};
 
 export default Home;
 

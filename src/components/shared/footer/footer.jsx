@@ -1,9 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useMemo, useContext } from 'react';
 import classNames from 'classnames/bind';
+import MainContext from 'context/main';
 
 import Link from 'components/shared/link';
 import MenuItem from './menu-item/menu-item';
+import filterNonRootItems from 'utils/filter-non-root-items';
 
 import styles from './footer.module.scss';
 
@@ -12,7 +13,18 @@ import IconArrowRight from 'icons/arrow-right.inline.svg';
 
 const cx = classNames.bind(styles);
 
-const Footer = ({ items }) => {
+const Footer = () => {
+  const {
+    menus: {
+      footer: {
+        menuItems: { nodes: menuItemsNodes },
+      },
+    },
+  } = useContext(MainContext);
+
+  // Graphql does not allow to filter by null values so has to do it manually
+  const menuItems = useMemo(() => filterNonRootItems(menuItemsNodes), []);
+
   return (
     <footer className={cx('wrapper')}>
       <div className={cx('container', 'inner')}>
@@ -29,83 +41,13 @@ const Footer = ({ items }) => {
         </span>
 
         <div className={cx('menu')}>
-          {items.map(({ label, childItems }, index) => (
-            <MenuItem label={label} childItems={childItems} key={index} />
+          {menuItems.map(({ label, childItems }, index) => (
+            <MenuItem label={label} childItems={childItems.nodes} key={index} />
           ))}
         </div>
       </div>
     </footer>
   );
-};
-
-Footer.propTypes = {
-  items: PropTypes.PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      childItems: PropTypes.PropTypes.arrayOf(
-        PropTypes.shape({
-          label: PropTypes.string.isRequired,
-          path: PropTypes.string.isRequired,
-        })
-      ).isRequired,
-    })
-  ).isRequired,
-};
-
-Footer.defaultProps = {
-  items: [
-    {
-      label: 'Product',
-      childItems: [
-        {
-          label: 'Demo Account',
-          path: '/',
-        },
-        {
-          label: 'Documentation',
-          path: '/',
-        },
-        {
-          label: 'Podcast',
-          path: '/',
-        },
-        {
-          label: 'Pricing',
-          path: '/',
-        },
-      ],
-    },
-    {
-      label: 'Company',
-      childItems: [
-        {
-          label: 'Terms of Service',
-          path: '/',
-        },
-        {
-          label: 'Privacy Policy',
-          path: '/',
-        },
-        {
-          label: 'SLA',
-          path: '/',
-        },
-      ],
-    },
-    {
-      label: 'Support',
-      childItems: [
-        {
-          label: 'Contact Us',
-          path: '/',
-        },
-        {
-          label: 'Roadmap',
-          path: '/',
-        },
-      ],
-    },
-  ],
 };
 
 export default Footer;

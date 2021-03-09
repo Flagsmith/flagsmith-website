@@ -7,10 +7,13 @@ import Footer from 'components/shared/footer';
 import SEO from 'components/shared/seo';
 import MobileMenu from 'components/shared/mobile-menu';
 
-const MainLayout = ({ seo, children }) => {
+import MainContext from 'context/main';
+
+const MainLayout = ({ seo, children, pageContext }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const handleHeaderBurgerClick = () => setIsMobileMenuOpen(true);
   const handleMobileNavCloseButtonClick = () => setIsMobileMenuOpen(false);
+
   useEffect(() => {
     if (isMobileMenuOpen) {
       // documentElement = html
@@ -23,14 +26,15 @@ const MainLayout = ({ seo, children }) => {
       document.body.style.cssText = '';
     }
   }, [isMobileMenuOpen]);
+
   return (
-    <>
+    <MainContext.Provider value={pageContext}>
       {seo && <SEO {...seo} />}
       <Header onBurgerClick={handleHeaderBurgerClick} />
       <main>{children}</main>
       <Footer />
       <MobileMenu isOpen={isMobileMenuOpen} onCloseButtonClick={handleMobileNavCloseButtonClick} />
-    </>
+    </MainContext.Provider>
   );
 };
 

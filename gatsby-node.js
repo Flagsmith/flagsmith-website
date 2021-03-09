@@ -37,8 +37,69 @@ async function createRedirects({ graphql, actions }) {
   });
 }
 
+const getAllMenus = async (graphql) => {
+  const {
+    data: { header, mobile, footer },
+  } = await graphql(`
+    {
+      header: wpMenu(slug: { eq: "header-menu" }) {
+        menuItems {
+          nodes {
+            label
+            path
+            parentId
+            childItems {
+              nodes {
+                label
+                path
+              }
+            }
+          }
+        }
+      }
+
+      mobile: wpMenu(slug: { eq: "mobile-menu" }) {
+        menuItems {
+          nodes {
+            label
+            path
+            parentId
+            childItems {
+              nodes {
+                label
+                path
+              }
+            }
+          }
+        }
+      }
+
+      footer: wpMenu(slug: { eq: "footer-menu" }) {
+        menuItems {
+          nodes {
+            label
+            path
+            parentId
+            childItems {
+              nodes {
+                label
+                path
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+  return {
+    header,
+    mobile,
+    footer,
+  };
+};
+
 // Create Pages
-async function createPages({ graphql, actions, reporter }) {
+async function createPages({ graphql, actions, allMenus, reporter }) {
   const { createPage } = actions;
 
   const result = await graphql(`
@@ -65,7 +126,8 @@ async function createPages({ graphql, actions, reporter }) {
     const templateNamePath = templateName.toLowerCase().replace(/\s/g, '-');
     const templatePath = path.resolve(`./src/templates/${templateNamePath}.jsx`);
     const context = {
-      id
+      id,
+      menus: allMenus,
     };
 
     if (fs.existsSync(templatePath)) {
@@ -81,8 +143,11 @@ async function createPages({ graphql, actions, reporter }) {
 }
 
 exports.createPages = async (args) => {
+  const allMenus = await getAllMenus(args.graphql);
+
   const params = {
-    ...args
+    ...args,
+    allMenus,
   };
 
   await createPages(params);
