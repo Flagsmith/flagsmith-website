@@ -41,7 +41,7 @@ const variantsAction = {
   }),
 };
 
-const FeatureFlags = ({ title, description }) => {
+const FeatureFlags = ({ title, description, link: { url } }) => {
   const [animationContainer, animationContainerView] = useInView({
     threshold: 0.5,
     triggerOnce: true,
@@ -104,7 +104,7 @@ const FeatureFlags = ({ title, description }) => {
             {title}
           </Heading>
           <div className={cx('description')} dangerouslySetInnerHTML={{ __html: description }} />
-          <Link className={cx('link', 'icon-arrow')} to="/">
+          <Link className={cx('link', 'icon-arrow')} to={url}>
             Learn More <IconArrowRight />
           </Link>
         </div>
@@ -116,14 +116,9 @@ const FeatureFlags = ({ title, description }) => {
 FeatureFlags.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-};
-
-FeatureFlags.defaultProps = {
-  title: 'Feature flags',
-  description: `<ul>
-    <li>Flagsmith makes it easy to create and manage features flags across web, mobile, and server-side applications.</li>
-    <li>Just wrap a section of code with a flag, and then use Flagsmith to toggle that feature on or off for different environments, users or user segments.</li>
-  </ul>`,
+  link: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default FeatureFlags;

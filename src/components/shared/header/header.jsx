@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import Link from 'components/shared/link';
 import Menu from './menu/menu';
@@ -15,6 +14,7 @@ import styles from './header.module.scss';
 const cx = classNames.bind(styles);
 
 const Header = ({ onBurgerClick }) => {
+  console.log(useContext(MainContext));
   const {
     menus: { headerMenuItems: menuItems },
   } = useContext(MainContext);

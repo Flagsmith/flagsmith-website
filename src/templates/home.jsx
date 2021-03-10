@@ -20,8 +20,8 @@ const Home = ({
 }) => {
   return (
     <MainLayout seo={seo} pageContext={pageContext}>
-      <Hero {...data.hero}/>
-      <FeatureFlags />
+      <Hero {...data.hero} />
+      <FeatureFlags {...data.section1} />
       <ConfigureFeatures />
       <RemoteConfig />
       <Platform />
@@ -45,6 +45,13 @@ export const query = graphql`
             url
             target
             title
+          }
+        }
+        section1 {
+          title
+          description
+          link {
+            url
           }
         }
       }
