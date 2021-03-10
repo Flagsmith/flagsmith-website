@@ -4,7 +4,7 @@ import React from 'react';
 
 import ConfigureFeatures from 'components/pages/home/configure-features';
 import FeatureFlags from 'components/pages/home/feature-flags';
-import GetStarted from 'components/pages/home/get-started';
+import GetStarted from 'components/shared/get-started';
 import Hero from 'components/pages/home/hero';
 import Languages from 'components/pages/home/languages';
 import Options from 'components/pages/home/options';
