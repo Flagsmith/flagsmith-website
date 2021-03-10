@@ -46,6 +46,8 @@ export const query = graphql`
             target
             title
           }
+          codeLabel
+          code
         }
         section1 {
           title

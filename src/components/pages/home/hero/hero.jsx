@@ -11,7 +11,7 @@ import styles from './hero.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Hero = ({ title, description, button }) => (
+const Hero = ({ title, description, button, codeLabel, code }) => (
   <section className={cx('wrapper')}>
     <div className={cx('container', 'inner')}>
       <Heading className={cx('title')}>{title}</Heading>
@@ -24,7 +24,7 @@ const Hero = ({ title, description, button }) => (
       >
         {button.title}
       </Button>
-      <Features />
+      <Features codeLabel={codeLabel} code={code} />
       <Logos />
     </div>
   </section>
