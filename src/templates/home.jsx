@@ -17,20 +17,18 @@ const Home = ({
     wpPage: { seo, acf: data },
   },
   pageContext,
-}) => {
-  return (
-    <MainLayout seo={seo} pageContext={pageContext}>
-      <Hero {...data.hero} />
-      <FeatureFlags {...data.section1} />
-      <ConfigureFeatures title={data.section2} />
-      <RemoteConfig {...data.section3} />
-      <Platform {...data.platform} />
-      <Languages {...data.languages} />
-      <Options {...data.options} />
-      <GetStarted />
-    </MainLayout>
-  );
-};
+}) => (
+  <MainLayout seo={seo} pageContext={pageContext}>
+    <Hero {...data.hero} />
+    <FeatureFlags {...data.section1} />
+    <ConfigureFeatures title={data.section2} />
+    <RemoteConfig {...data.section3} />
+    <Platform {...data.platform} />
+    <Languages {...data.languages} />
+    <Options {...data.options} />
+    <GetStarted />
+  </MainLayout>
+);
 
 export default Home;
 
@@ -48,6 +46,17 @@ export const query = graphql`
           }
           codeLabel
           code
+          logosTitle
+          logos {
+            altText
+            localFile {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid_withWebp_noBase64
+                }
+              }
+            }
+          }
         }
         section1 {
           title
