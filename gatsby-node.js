@@ -106,9 +106,22 @@ const getAllMenus = async (graphql) => {
 
 const getAllSharedBlocks = async (graphql) => {
   const {
-    data: { getStarted },
+    data: { header, getStarted },
   } = await graphql(`
     {
+      header: wpSharedBlock(slug: { eq: "header" }) {
+        acf {
+          button1 {
+            url
+            target
+          }
+          button2 {
+            title
+            url
+            target
+          }
+        }
+      }
       getStarted: wpSharedBlock(slug: { eq: "get-started" }) {
         acf {
           title
@@ -123,6 +136,7 @@ const getAllSharedBlocks = async (graphql) => {
     }
   `);
   return {
+    header,
     getStarted,
   };
 };

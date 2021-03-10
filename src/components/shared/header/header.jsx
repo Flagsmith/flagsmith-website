@@ -16,6 +16,14 @@ const cx = classNames.bind(styles);
 const Header = ({ onBurgerClick }) => {
   const {
     menus: { headerMenuItems: menuItems },
+    sharedBlocks: {
+      header: {
+        acf: {
+          button1: { url: button1Link, target: button1Target },
+          button2: { title: button2Title, url: button2Link, target: button2Target },
+        },
+      },
+    },
   } = useContext(MainContext);
 
   return (
@@ -27,11 +35,11 @@ const Header = ({ onBurgerClick }) => {
 
         <div className={cx('menu-wrapper')}>
           <Menu items={menuItems} />
-          <Button className={cx('button')} theme="tertiary" to="/">
+          <Button className={cx('button')} theme="tertiary" to={button1Link} target={button1Target}>
             <GithubIcon />
           </Button>
-          <Button size="md" to="/">
-            Sign in
+          <Button size="md" to={button2Link} target={button2Target}>
+            {button2Title}
           </Button>
         </div>
         <button
