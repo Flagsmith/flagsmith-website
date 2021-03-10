@@ -18,8 +18,7 @@ const GetStarted = () => {
         acf: {
           title,
           description,
-          buttonText,
-          buttonLink: { url, target },
+          button: { title: buttonTitle, url: buttonLink, target: buttonTarget },
         },
       },
     },
@@ -49,8 +48,8 @@ const GetStarted = () => {
               {title}
             </Heading>
             <p className={cx('description')}>{description}</p>
-            <Button className={cx('button')} to={url} target={target}>
-              {buttonText}
+            <Button className={cx('button')} to={buttonLink} target={buttonTarget}>
+              {buttonTitle}
             </Button>
           </div>
 

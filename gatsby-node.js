@@ -113,8 +113,8 @@ const getAllSharedBlocks = async (graphql) => {
         acf {
           title
           description
-          buttonText
-          buttonLink {
+          button {
+            title
             url
             target
           }
