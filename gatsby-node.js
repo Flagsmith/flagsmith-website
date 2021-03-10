@@ -104,8 +104,31 @@ const getAllMenus = async (graphql) => {
   };
 };
 
+const getAllSharedBlocks = async (graphql) => {
+  const {
+    data: { getStarted },
+  } = await graphql(`
+    {
+      getStarted: wpSharedBlock(slug: { eq: "get-started" }) {
+        acf {
+          title
+          description
+          buttonText
+          buttonLink {
+            url
+            target
+          }
+        }
+      }
+    }
+  `);
+  return {
+    getStarted,
+  };
+};
+
 // Create Pages
-async function createPages({ graphql, actions, reporter, getMenus }) {
+async function createPages({ graphql, actions, reporter, menus, sharedBlocks }) {
   const { createPage } = actions;
 
   const result = await graphql(`
@@ -133,7 +156,8 @@ async function createPages({ graphql, actions, reporter, getMenus }) {
     const templatePath = path.resolve(`./src/templates/${templateNamePath}.jsx`);
     const context = {
       id,
-      menus: getMenus(),
+      menus,
+      sharedBlocks,
     };
 
     if (fs.existsSync(templatePath)) {
@@ -148,21 +172,25 @@ async function createPages({ graphql, actions, reporter, getMenus }) {
   });
 }
 
+const getMenus = (allMenus) => {
+  const menus = {};
+
+  SUPPORTED_MENU_TYPES.forEach((type) => {
+    const items = allMenus[`${type}`].menuItems.nodes;
+    menus[`${type}MenuItems`] = filterNonRootItems(items);
+  });
+  // filter non top level links for all menus
+  return menus;
+};
+
 exports.createPages = async (args) => {
   const allMenus = await getAllMenus(args.graphql);
-  const getMenus = () => {
-    const menus = {};
+  const sharedBlocks = await getAllSharedBlocks(args.graphql);
 
-    SUPPORTED_MENU_TYPES.forEach((type) => {
-      const items = allMenus[`${type}`].menuItems.nodes;
-      menus[`${type}MenuItems`] = filterNonRootItems(items);
-    });
-    // filter non top level links for all menus
-    return menus;
-  };
   const params = {
     ...args,
-    getMenus,
+    menus: getMenus(allMenus),
+    sharedBlocks,
   };
 
   await createPages(params);
