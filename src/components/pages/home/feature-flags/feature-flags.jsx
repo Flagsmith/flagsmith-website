@@ -64,38 +64,33 @@ const FeatureFlags = ({ title, description }) => {
               loading="lazy"
               variants={variantsAction}
             />
-            <motion.img
-              className={cx('popup')}
-              src={popup}
-              alt=""
-              loading="lazy"
-              variants={variantsContentFade}
-              custom={0.6}
-            />
-            <motion.img
-              className={cx('item', 'item-1')}
-              src={item1}
-              alt=""
-              loading="lazy"
-              variants={variantsAction}
-              custom={0.7}
-            />
-            <motion.img
-              className={cx('item', 'item-2')}
-              src={item2}
-              alt=""
-              loading="lazy"
-              variants={variantsAction}
-              custom={0.8}
-            />
-            <motion.img
-              className={cx('item', 'item-3')}
-              src={item3}
-              alt=""
-              loading="lazy"
-              variants={variantsAction}
-              custom={0.9}
-            />
+            <motion.div className={cx('popup-wrapper')} variants={variantsContentFade} custom={0.6}>
+              <img className={cx('popup')} src={popup} alt="" loading="lazy" />
+              <motion.img
+                className={cx('item', 'item-1')}
+                src={item1}
+                alt=""
+                loading="lazy"
+                variants={variantsAction}
+                custom={0.7}
+              />
+              <motion.img
+                className={cx('item', 'item-2')}
+                src={item2}
+                alt=""
+                loading="lazy"
+                variants={variantsAction}
+                custom={0.8}
+              />
+              <motion.img
+                className={cx('item', 'item-3')}
+                src={item3}
+                alt=""
+                loading="lazy"
+                variants={variantsAction}
+                custom={0.9}
+              />
+            </motion.div>
           </motion.div>
         </div>
         <div className={cx('right')}>

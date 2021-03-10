@@ -162,29 +162,35 @@
   box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
 }
 
-.popup {
+.popup-wrapper {
   position: absolute;
   top: 14.3%;
   left: 13%;
+  height: 69%;
   width: 87%;
   box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
   border-radius: 8px;
+  overflow: hidden;
+}
+
+.popup {
+  width: 100%;
 }
 
 .item {
   position: absolute;
-  left: 17.5%;
-  width: 78.6%;
+  left: 5%;
+  width: 90.6%;
 }
 
 .item-1 {
-  top: 32.3%;
+  top: 25.6%;
 }
 
 .item-2 {
-  top: 48.5%;
+  top: 49.7%;
 }
 
 .item-3 {
-  top: 65.2%;
+  top: 74%;
 }
