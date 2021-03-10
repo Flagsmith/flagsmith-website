@@ -31,12 +31,12 @@
   text-align: center;
 
   span {
-    &.title-color-accent-secondary {
-      color: $color-accent-secondary;
+    &:nth-child(2) {
+      color: $color-accent-tertiary;
     }
 
-    &.title-color-accent-tertiary {
-      color: $color-accent-tertiary;
+    &:nth-child(3) {
+      color: $color-accent-secondary;
     }
   }
 }

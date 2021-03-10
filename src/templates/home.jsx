@@ -22,7 +22,7 @@ const Home = ({
     <MainLayout seo={seo} pageContext={pageContext}>
       <Hero {...data.hero} />
       <FeatureFlags {...data.section1} />
-      <ConfigureFeatures />
+      <ConfigureFeatures title={data.section2} />
       <RemoteConfig />
       <Platform />
       <Languages />
@@ -54,6 +54,7 @@ export const query = graphql`
             url
           }
         }
+        section2
       }
       ...wpPageSeo
     }
