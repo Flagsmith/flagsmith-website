@@ -26,7 +26,7 @@ const Home = ({
       <RemoteConfig {...data.section3} />
       <Platform {...data.platform} />
       <Languages {...data.languages} />
-      <Options />
+      <Options {...data.options} />
       <GetStarted />
     </MainLayout>
   );
@@ -80,6 +80,20 @@ export const query = graphql`
             language
             code
             codeStyle
+          }
+        }
+        options {
+          title
+          items {
+            title
+            link {
+              url
+            }
+            theme
+            imageName
+            features {
+              text
+            }
           }
         }
       }
