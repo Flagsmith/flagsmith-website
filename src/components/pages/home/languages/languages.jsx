@@ -73,7 +73,7 @@ const imageCollection = [
   },
 ];
 
-const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
+const Languages = ({ title, description, buttonText, link: { url }, items }) => {
   const sectionRef = useRef();
 
   const { scrollYProgress } = useViewportScroll();
@@ -111,7 +111,7 @@ const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
             {title}
           </Heading>
           <p className={cx('description')}>{description}</p>
-          <Link className={cx('link', 'icon-arrow')} to={buttonLink}>
+          <Link className={cx('link', 'icon-arrow')} to={url}>
             {buttonText} <IconArrowRight />
           </Link>
         </div>
@@ -121,7 +121,7 @@ const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
               <button className={cx('tabs-button')} theme="tertiary" onClick={handleButtonLeft}>
                 <ArrowLeft />
               </button>
-              {tabs.map(({ language }, index) => (
+              {items.map(({ language }, index) => (
                 <li
                   className={cx('tabs-item', { active: index === activeItemIndex })}
                   onClick={() => setActiveItemIndex(index)}
@@ -138,7 +138,7 @@ const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
 
           <div className={cx('tabs-content')}>
             <div className={cx('tabs-content-inner')}>
-              {tabs.map(({ codeStyle, code }, index) => (
+              {items.map(({ codeStyle, code }, index) => (
                 <SyntaxHighlighter
                   className={cx('tabs-content-item', { active: index === activeItemIndex })}
                   language={codeStyle}
@@ -175,255 +175,23 @@ const Languages = ({ title, description, buttonText, buttonLink, tabs }) => {
 };
 
 Languages.propTypes = {
-  tabs: PropTypes.arrayOf(
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  buttonText: PropTypes.string,
+  link: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+  }).isRequired,
+  items: PropTypes.arrayOf(
     PropTypes.shape({
       language: PropTypes.string.isRequired,
-      codeStyle: PropTypes.string.isRequired,
       code: PropTypes.string.isRequired,
+      codeStyle: PropTypes.string.isRequired,
     })
   ).isRequired,
 };
 
 Languages.defaultProps = {
-  title: 'Available for these languages',
-  description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis massa sollicitudin pellentesque sit praesent ac amet vitae.',
   buttonText: 'Learn More',
-  buttonLink: '/',
-  tabs: [
-    {
-      language: 'Rest',
-      codeStyle: 'javascript',
-      code: `import flagsmith from 'flagsmith';
-
-flagsmith.init({
-  environmentID: 'QjgYur4LQTwe5HpvbvhpzK',
-});
-
-function Main(props) {
-  if (flagsmith
-  .hasFeature("chat_widget")){
-    return <ChatWidget/>;
-  }
-}
- 
- 
- 
- 
- 
- 
- 
-      `,
-    },
-    {
-      language: 'React Native',
-      codeStyle: 'javascript',
-      code: `import React from 'react';
-import { Text, View } from 'react-native';
-
-const HelloWorldApp = () => {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
-      }}>
-      <Text>Hello, world!</Text>
-    </View>
-  )
-}
-export default HelloWorldApp;
-      `,
-    },
-    {
-      language: 'Node',
-      codeStyle: 'javascript',
-      code: `import flagsmith from 'flagsmith';
-
-flagsmith.init({
-  environmentID: 'QjgYur4LQTwe5HpvbvhpzK',
-});
-
-function Main(props) {
-  if (flagsmith
-  .hasFeature("chat_widget")){
-    return <ChatWidget/>;
-  }
-}
-      `,
-    },
-    {
-      language: 'Android',
-      codeStyle: 'kotlin',
-      code: `import flagsmith from 'flagsmith';
-
-flagsmith.init({
-  environmentID: 'QjgYur4LQTwe5HpvbvhpzK',
-});
-
-function Main(props) {
-  if (flagsmith
-  .hasFeature("chat_widget")){
-    return <ChatWidget/>;
-  }
-}
-      `,
-    },
-    {
-      language: 'IOS',
-      codeStyle: 'swift',
-      code: `import flagsmith from 'flagsmith';
-
-flagsmith.init({
-  environmentID: 'QjgYur4LQTwe5HpvbvhpzK',
-});
-
-function Main(props) {
-  if (flagsmith
-  .hasFeature("chat_widget")){
-    return <ChatWidget/>;
-  }
-}
-      `,
-    },
-    {
-      language: 'Flutter',
-      codeStyle: 'javascript',
-      code: `import flagsmith from 'flagsmith';
-
-flagsmith.init({
-  environmentID: 'QjgYur4LQTwe5HpvbvhpzK',
-});
-
-function Main(props) {
-  if (flagsmith
-  .hasFeature("chat_widget")){
-    return <ChatWidget/>;
-  }
-}
-      `,
-    },
-    {
-      language: 'Java',
-      codeStyle: 'java',
-      code: `import flagsmith from 'flagsmith';
-
-flagsmith.init({
-  environmentID: 'QjgYur4LQTwe5HpvbvhpzK',
-});
-
-function Main(props) {
-  if (flagsmith
-  .hasFeature("chat_widget")){
-    return <ChatWidget/>;
-  }
-}
-      `,
-    },
-    {
-      language: 'Python',
-      codeStyle: 'python',
-      code: `import flagsmith from 'flagsmith';
-
-flagsmith.init({
-  environmentID: 'QjgYur4LQTwe5HpvbvhpzK',
-});
-
-function Main(props) {
-  if (flagsmith
-  .hasFeature("chat_widget")){
-    return <ChatWidget/>;
-  }
-}
-      `,
-    },
-    {
-      language: 'Ruby',
-      codeStyle: 'ruby',
-      code: `import flagsmith from 'flagsmith';
-
-flagsmith.init({
-  environmentID: 'QjgYur4LQTwe5HpvbvhpzK',
-});
-
-function Main(props) {
-  if (flagsmith
-  .hasFeature("chat_widget")){
-    return <ChatWidget/>;
-  }
-}
-      `,
-    },
-    {
-      language: '.NET',
-      codeStyle: 'javascript',
-      code: `import flagsmith from 'flagsmith';
-
-flagsmith.init({
-  environmentID: 'QjgYur4LQTwe5HpvbvhpzK',
-});
-
-function Main(props) {
-  if (flagsmith
-  .hasFeature("chat_widget")){
-    return <ChatWidget/>;
-  }
-}
-      `,
-    },
-    {
-      language: 'GO',
-      codeStyle: 'go',
-      code: `import flagsmith from 'flagsmith';
-
-flagsmith.init({
-  environmentID: 'QjgYur4LQTwe5HpvbvhpzK',
-});
-
-function Main(props) {
-  if (flagsmith
-  .hasFeature("chat_widget")){
-    return <ChatWidget/>;
-  }
-}
-      `,
-    },
-    {
-      language: 'Rust',
-      codeStyle: 'rust',
-      code: `import flagsmith from 'flagsmith';
-
-flagsmith.init({
-  environmentID: 'QjgYur4LQTwe5HpvbvhpzK',
-});
-
-function Main(props) {
-  if (flagsmith
-  .hasFeature("chat_widget")){
-    return <ChatWidget/>;
-  }
-}
-      `,
-    },
-    {
-      language: 'PHP',
-      codeStyle: 'php',
-      code: `import flagsmith from 'flagsmith';
-
-flagsmith.init({
-  environmentID: 'QjgYur4LQTwe5HpvbvhpzK',
-});
-
-function Main(props) {
-  if (flagsmith
-  .hasFeature("chat_widget")){
-    return <ChatWidget/>;
-  }
-}
-      `,
-    },
-  ],
 };
 
 export default Languages;
