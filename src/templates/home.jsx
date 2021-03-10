@@ -23,7 +23,7 @@ const Home = ({
       <Hero {...data.hero} />
       <FeatureFlags {...data.section1} />
       <ConfigureFeatures title={data.section2} />
-      <RemoteConfig />
+      <RemoteConfig {...data.section3} />
       <Platform />
       <Languages />
       <Options />
@@ -55,6 +55,13 @@ export const query = graphql`
           }
         }
         section2
+        section3 {
+          title
+          description
+          link {
+            url
+          }
+        }
       }
       ...wpPageSeo
     }
