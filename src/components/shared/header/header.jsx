@@ -14,7 +14,6 @@ import styles from './header.module.scss';
 const cx = classNames.bind(styles);
 
 const Header = ({ onBurgerClick }) => {
-  console.log(useContext(MainContext));
   const {
     menus: { headerMenuItems: menuItems },
   } = useContext(MainContext);

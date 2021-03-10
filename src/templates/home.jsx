@@ -24,7 +24,7 @@ const Home = ({
       <FeatureFlags {...data.section1} />
       <ConfigureFeatures title={data.section2} />
       <RemoteConfig {...data.section3} />
-      <Platform />
+      <Platform {...data.platform} />
       <Languages />
       <Options />
       <GetStarted />
@@ -60,6 +60,14 @@ export const query = graphql`
           description
           link {
             url
+          }
+        }
+        platform {
+          title
+          items {
+            title
+            description
+            iconName
           }
         }
       }

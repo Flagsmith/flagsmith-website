@@ -27,6 +27,7 @@ const Platform = ({ title, items }) => {
       }
     }
   `);
+
   return (
     <section className={cx('wrapper')}>
       <div className={cx('container', 'inner')}>
@@ -57,38 +58,10 @@ Platform.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      iconName: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
+      iconName: PropTypes.string.isRequired,
     })
   ).isRequired,
-};
-
-Platform.defaultProps = {
-  title: 'Fully featured platform',
-  items: [
-    {
-      title: 'User traits',
-      iconName: 'traits',
-      description:
-        'Store traits against your users without modifying your back-end and target features specifically for them.',
-    },
-    {
-      title: 'Create user segments',
-      iconName: 'segments',
-      description:
-        'Create detailed user segments based on their traits, then target features based on the segment.',
-    },
-    {
-      title: 'Staged feature rollouts',
-      iconName: 'rollouts',
-      description: 'Deploy features to 1% of your user base. All good? Roll out to everybody.',
-    },
-    {
-      title: 'Track changes',
-      iconName: 'track',
-      description: 'Audit changes & rollback any mistakes or issues.',
-    },
-  ],
 };
 
 export default Platform;
