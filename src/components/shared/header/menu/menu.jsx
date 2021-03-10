@@ -17,9 +17,9 @@ const Menu = ({ items }) => (
             {label}
           </Link>
 
-          {childItems && (
-            <ul className={cx('dropdown')} key={index}>
-              {childItems.map(({ label, path }, index) => (
+          {childItems.nodes.length > 0 && (
+            <ul className={cx('dropdown')}>
+              {childItems.nodes.map(({ label, path }, index) => (
                 <li key={index}>
                   <Link className={cx('link')} to={path}>
                     {label}
@@ -38,54 +38,17 @@ Menu.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
-      path: PropTypes.string.isRequired,
-      childItems: PropTypes.arrayOf(
-        PropTypes.shape({
-          label: PropTypes.string.isRequired,
-          path: PropTypes.string.isRequired,
-        })
-      ),
+      path: PropTypes.string,
+      childItems: PropTypes.shape({
+        nodes: PropTypes.arrayOf(
+          PropTypes.shape({
+            label: PropTypes.string.isRequired,
+            path: PropTypes.string.isRequired,
+          })
+        ),
+      }),
     })
   ).isRequired,
-};
-
-Menu.defaultProps = {
-  items: [
-    {
-      label: 'Features',
-      path: '/',
-      childItems: [
-        {
-          label: 'Overview',
-          path: '/',
-        },
-        {
-          label: 'Phased Rollouts',
-          path: '/',
-        },
-        {
-          label: 'Integrations',
-          path: '/',
-        },
-        {
-          label: 'Enterprise',
-          path: '/',
-        },
-      ],
-    },
-    {
-      label: 'Solutions',
-      path: '/',
-    },
-    {
-      label: 'Resources',
-      path: '/',
-    },
-    {
-      label: 'Pricing',
-      path: '/',
-    },
-  ],
 };
 
 export default Menu;

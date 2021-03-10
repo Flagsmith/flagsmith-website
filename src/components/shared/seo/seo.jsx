@@ -5,59 +5,64 @@ import { Helmet } from 'react-helmet';
 
 import createMetaImagePath from 'utils/create-meta-image-path';
 
-const SEO = ({ data: { title, description, image, slug } = {}, facebook } = {}) => {
+const SEO = (props) => {
   const {
+    title,
+    metaDesc,
+    metaKeywords,
+    metaRobotsNoindex,
+    opengraphDescription,
+    opengraphTitle,
+    opengraphImage,
+    opengraphUrl,
+    canonical,
+  } = props;
+
+  const {
+    wp: { generalSettings: settings },
     site: {
-      siteMetadata: {
-        siteTitle,
-        siteDescription,
-        siteUrl,
-        siteImage,
-        siteLanguage,
-        authorTwitterAccount,
-      },
+      siteMetadata: { siteUrl, siteImage },
     },
   } = useStaticQuery(graphql`
-    query SEO {
+    query {
+      wp {
+        generalSettings {
+          language
+        }
+      }
       site {
         siteMetadata {
-          siteTitle
-          siteDescription
           siteUrl
           siteImage
-          siteLanguage
-          authorTwitterAccount
         }
       }
     }
   `);
 
-  const currentTitle = title || siteTitle;
-  const currentDescription = description || siteDescription;
-  const currentUrl = slug ? `${siteUrl}/${slug}` : siteUrl;
-  const currentImage = image || siteImage;
-  const currentImagePath = createMetaImagePath(currentImage, siteUrl);
+  const opengraphPreviewImage = opengraphImage
+    ? createMetaImagePath(opengraphImage, siteUrl)
+    : siteUrl + siteImage;
 
+  const isRobotsNoindexPage = metaRobotsNoindex === 'noindex';
   return (
     <Helmet
-      title={currentTitle}
+      title={title}
       htmlAttributes={{
-        lang: siteLanguage,
+        lang: settings.language,
         prefix: 'og: http://ogp.me/ns#',
       }}
     >
       {/* General */}
-      <meta name="description" content={currentDescription} />
+      <meta name="description" content={metaDesc} />
+      {metaKeywords && <meta name="keywords" content={metaKeywords} />}
+      {isRobotsNoindexPage && <meta name="robots" content="noindex" />}
       {/* Open Graph */}
-      <meta property="og:url" content={currentUrl} />
-      <meta property="og:title" content={currentTitle} />
-      <meta property="og:description" content={currentDescription} />
-      <meta property="og:image" content={currentImagePath} />
+      {opengraphUrl.startsWith(siteUrl) && <meta property="og:url" content={opengraphUrl} />}
+      <meta property="og:title" content={opengraphTitle} />
+      <meta property="og:description" content={opengraphDescription} />
+      <meta property="og:image" content={opengraphPreviewImage} />
       <meta property="og:type" content="website" />
-      {facebook && <meta property="fb:app_id" content={facebook.appId} />}
-      {/* Twitter Card tags */}
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:creator" content={authorTwitterAccount} />
+      {canonical.startsWith(siteUrl) && <link rel="canonical" href={canonical} />}
     </Helmet>
   );
 };

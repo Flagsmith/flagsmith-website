@@ -17,7 +17,7 @@ import shapeEqual from './images/shape-equal.url.svg';
 
 const cx = classNames.bind(styles);
 
-const Features = ({ code, options }) => {
+const Features = ({ codeLabel, code, options }) => {
   const [state, setState] = useState({
     chat: false,
     designV2: false,
@@ -32,7 +32,7 @@ const Features = ({ code, options }) => {
     <div className={cx('wrapper')}>
       <div className={cx('code')}>
         <div className={cx('code-panel')}>
-          <span>flagsmith-import.js</span>
+          <span>{codeLabel}</span>
         </div>
         <SyntaxHighlighter
           language="javascript"
@@ -91,6 +91,7 @@ const Features = ({ code, options }) => {
 };
 
 Features.propTypes = {
+  codeLabel: PropTypes.string.isRequired,
   code: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
@@ -101,21 +102,6 @@ Features.propTypes = {
 };
 
 Features.defaultProps = {
-  code: `import flagsmith from 'flagsmith';
-
-flagsmith.init({
-  environmentID: 'QjgYur4LQTwe5HpvbvhpzK',
-});
-  
-function Main(props) {
-  if (flagsmith
-  .hasFeature("chat_widget")){
-    return <ChatWidget/>;
-  }
-}
-   
-   
-   `,
   options: [
     {
       label: 'Design 2.0',

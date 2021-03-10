@@ -73,10 +73,10 @@ const Options = ({ title, items }) => {
         </Heading>
 
         <div className={cx('items-wrapper')}>
-          {items.map(({ title, path, theme, imageName, features }, index) => {
+          {items.map(({ title, link: { url }, theme, imageName, features }, index) => {
             const image = imageCollection[imageName];
             return (
-              <Link className={cx('item', `item-theme-${theme}`)} to={path} key={index}>
+              <Link className={cx('item', `item-theme-${theme}`)} to={url} key={index}>
                 <div className={cx('item-inner')}>
                   <Heading className={cx('item-title')} tag="h3" size="lg">
                     {title}
@@ -87,10 +87,10 @@ const Options = ({ title, items }) => {
                   </div>
                   <div className={cx('item-content')}>
                     <ul className={cx('item-features')}>
-                      {features.map((feature, index) => (
+                      {features.map(({ text }, index) => (
                         <li key={index}>
                           <IconCheck />
-                          {feature}
+                          {text}
                         </li>
                       ))}
                     </ul>
@@ -117,51 +117,17 @@ Options.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      path: PropTypes.string.isRequired,
+      link: PropTypes.shape({
+        url: PropTypes.string.isRequired,
+      }).isRequired,
       theme: PropTypes.string.isRequired,
-      features: PropTypes.arrayOf(PropTypes.any).isRequired,
+      features: PropTypes.arrayOf(
+        PropTypes.shape({
+          text: PropTypes.string.isRequired,
+        })
+      ).isRequired,
     })
   ).isRequired,
-};
-
-Options.defaultProps = {
-  title: 'Check the different options',
-  items: [
-    {
-      title: 'SaaS',
-      path: '/',
-      theme: 'accent-primary',
-      imageName: 'saas',
-      features: [
-        'Try our enterprise-grade SaaS offering hosted by Flagsmith.',
-        'Optimized over six regions across the world. Choose your location to minimize latency and manage data sovereignty',
-      ],
-    },
-    {
-      title: 'Private Cloud',
-      path: '/',
-      theme: 'quaternary',
-      imageName: 'privateCloud',
-      features: [
-        'Fully managed private deployments',
-        'Have us host in your own private instance',
-        'Fully managed private deployments',
-        'Added security',
-      ],
-    },
-    {
-      title: 'On Prem',
-      path: '/',
-      theme: 'accent-secondary',
-      imageName: 'onPrem',
-      features: [
-        'Self host',
-        'Good for privacy-conscious',
-        'With support from the Flagsmith team',
-        'OpenShift / Kubernetes operator',
-      ],
-    },
-  ],
 };
 
 export default Options;

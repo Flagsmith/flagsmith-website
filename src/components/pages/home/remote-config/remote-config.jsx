@@ -41,7 +41,7 @@ const variantsAction = {
   }),
 };
 
-const RemoteConfig = ({ title, description }) => {
+const RemoteConfig = ({ title, description, link: { url } }) => {
   const [animationContainer, animationContainerView] = useInView({
     threshold: 0.5,
     triggerOnce: true,
@@ -55,7 +55,7 @@ const RemoteConfig = ({ title, description }) => {
             {title}
           </Heading>
           <div className={cx('description')} dangerouslySetInnerHTML={{ __html: description }} />
-          <Link className={cx('link', 'icon-arrow')} to="/">
+          <Link className={cx('link', 'icon-arrow')} to={url}>
             Learn More <IconArrowRight />
           </Link>
         </div>
@@ -110,14 +110,9 @@ const RemoteConfig = ({ title, description }) => {
 RemoteConfig.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-};
-
-RemoteConfig.defaultProps = {
-  title: 'Remote config',
-  description: `<ul>
-    <li>With Flagsmith’s remote config capabilities, you can easily change or test out different feature properties without deploying new code.</li>
-    <li>Configure different elements of your features–like the font size of a header or color of a CTA button–directly through Flagsmith and release the changes to users in just a few clicks.</li>
-  </ul>`,
+  link: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default RemoteConfig;

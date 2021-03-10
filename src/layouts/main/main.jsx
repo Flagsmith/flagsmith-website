@@ -1,15 +1,19 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { graphql } from 'gatsby';
 
 import Header from 'components/shared/header';
 import Footer from 'components/shared/footer';
 import SEO from 'components/shared/seo';
 import MobileMenu from 'components/shared/mobile-menu';
 
-const MainLayout = ({ children }) => {
+import MainContext from 'context/main';
+
+const MainLayout = ({ seo, children, pageContext }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const handleHeaderBurgerClick = () => setIsMobileMenuOpen(true);
   const handleMobileNavCloseButtonClick = () => setIsMobileMenuOpen(false);
+
   useEffect(() => {
     if (isMobileMenuOpen) {
       // documentElement = html
@@ -22,16 +26,52 @@ const MainLayout = ({ children }) => {
       document.body.style.cssText = '';
     }
   }, [isMobileMenuOpen]);
+
   return (
-    <>
-      <SEO />
-      <Header onBurgerClick={handleHeaderBurgerClick}/>
+    <MainContext.Provider value={pageContext}>
+      {seo && <SEO {...seo} />}
+      <Header onBurgerClick={handleHeaderBurgerClick} />
       <main>{children}</main>
       <Footer />
-      <MobileMenu isOpen={isMobileMenuOpen} onCloseButtonClick={handleMobileNavCloseButtonClick}/>
-    </>
+      <MobileMenu isOpen={isMobileMenuOpen} onCloseButtonClick={handleMobileNavCloseButtonClick} />
+    </MainContext.Provider>
   );
 };
+
+export const query = graphql`
+  fragment wpPageSeo on WpPage {
+    seo {
+      canonical
+      cornerstone
+      focuskw
+      metaDesc
+      metaKeywords
+      metaRobotsNofollow
+      metaRobotsNoindex
+      opengraphAuthor
+      opengraphDescription
+      opengraphImage {
+        localFile {
+          childImageSharp {
+            fixed(toFormat: JPG, width: 1200, height: 630) {
+              src
+            }
+          }
+        }
+      }
+      opengraphModifiedTime
+      opengraphPublishedTime
+      opengraphPublisher
+      opengraphSiteName
+      opengraphTitle
+      opengraphType
+      opengraphUrl
+      title
+      twitterDescription
+      twitterTitle
+    }
+  }
+`;
 
 MainLayout.propTypes = {
   children: PropTypes.node.isRequired,
