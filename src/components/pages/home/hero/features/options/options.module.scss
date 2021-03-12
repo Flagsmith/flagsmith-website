@@ -238,6 +238,7 @@
   border-radius: 100px;
   outline: none;
   transition: background-color $transition-long;
+  @include no-highlight-on-tap;
 
   @include fullhd-down {
     width: 2.898rem;

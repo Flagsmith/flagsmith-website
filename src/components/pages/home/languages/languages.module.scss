@@ -259,6 +259,7 @@
     padding: 13px 18px;
     outline: none;
     border: none;
+    @include no-highlight-on-tap;
 
     @include lg-down {
       display: flex;
