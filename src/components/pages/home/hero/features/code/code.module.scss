@@ -37,13 +37,15 @@
   }
 
   pre {
+    height: 100%;
+    overflow: auto;
+
     @include fullhd-down {
       line-height: 0 !important;
     }
 
     @include lg-down {
       font-size: initial;
-      overflow: auto;
     }
   }
 
