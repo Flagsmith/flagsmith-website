@@ -27,7 +27,7 @@ const Options = ({ items, state, setState, isUserTouchedToggle }) => (
   <motion.div className={cx('wrapper')} initial="hidden" variants={variants}>
     <div className={cx('inner')}>
       <div className={cx('content')}>
-        <span className={cx('title')}>Feautures</span>
+        <span className={cx('title')}>Features</span>
 
         {items.map(({ label, key }) => (
           <div className={cx('item', key)} key={key}>
