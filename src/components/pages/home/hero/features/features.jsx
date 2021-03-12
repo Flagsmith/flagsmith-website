@@ -18,6 +18,7 @@ const cx = classNames.bind(styles);
 
 const Features = (props) => {
   const controls = useAnimation();
+  const [isUserTouchedToggle, setIsUserTouchedToggle] = useState(false);
   const [animationIsCompleted, setAnimationIsCompleted] = useState(false);
   const [sectionRef, inView] = useInView({ threshold: 0.5, triggerOnce: true });
 
@@ -27,7 +28,8 @@ const Features = (props) => {
     dark: false,
   });
 
-  const handleSetState = (key) => {
+  const handleSetState = (key, manual = true) => {
+    !isUserTouchedToggle && manual == true && setIsUserTouchedToggle(true);
     setState((prevState) => ({ ...prevState, [key]: !prevState[key] }));
   };
 
@@ -36,7 +38,7 @@ const Features = (props) => {
 
     const later = () => {
       clearTimeout(timeout);
-      handleSetState(keyOption);
+      handleSetState(keyOption, false);
     };
 
     timeout = setTimeout(later, wait);
@@ -46,8 +48,8 @@ const Features = (props) => {
     await controls.start('appear');
     setAnimationIsCompleted(true);
 
-    handleTimeout('designV2', 0);
-    handleTimeout('chat', 1000);
+    handleTimeout('chat', 0);
+    handleTimeout('designV2', 1000);
   };
 
   useEffect(() => {
@@ -59,7 +61,7 @@ const Features = (props) => {
   return (
     <motion.div className={cx('wrapper')} animate={controls} ref={sectionRef}>
       <Code {...props} />
-      <Options state={state} setState={handleSetState} />
+      <Options state={state} setState={handleSetState} isUserTouchedToggle={isUserTouchedToggle} />
       <State animationIsCompleted={animationIsCompleted} {...state} />
 
       <img
