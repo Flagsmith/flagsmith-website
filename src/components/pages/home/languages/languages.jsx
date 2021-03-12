@@ -86,12 +86,12 @@ const Languages = ({ title, description, buttonText, link: { url }, items }) => 
   );
 
   const handleButtonLeft = () => {
-    const activeIndex = activeItemIndex === 0 ? tabs.length - 1 : activeItemIndex - 1;
+    const activeIndex = activeItemIndex === 0 ? items.length - 1 : activeItemIndex - 1;
     setActiveItemIndex(activeIndex);
   };
 
   const handleButtonRight = () => {
-    const activeIndex = activeItemIndex < tabs.length - 1 ? activeItemIndex + 1 : 0;
+    const activeIndex = activeItemIndex < items.length - 1 ? activeItemIndex + 1 : 0;
     setActiveItemIndex(activeIndex);
   };
 
