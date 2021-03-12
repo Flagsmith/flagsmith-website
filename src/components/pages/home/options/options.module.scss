@@ -69,7 +69,6 @@
   &-inner {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     height: 100%;
     color: $color-primary;
     background-color: $color-tertiary;
@@ -100,8 +99,10 @@
   &:nth-child(1) {
     .item-image {
       & > div {
-        width: 287px !important;
-        height: 202px !important;
+        @include fullhd-down {
+          width: 287px !important;
+          height: 202px !important;
+        }
 
         @include xl-down {
           width: 260px !important;
@@ -116,8 +117,10 @@
 
     .item-image {
       & > div {
-        width: 251px !important;
-        height: 189px !important;
+        @include fullhd-down {
+          width: 251px !important;
+          height: 189px !important;
+        }
 
         @include xl-down {
           width: 227px !important;
@@ -201,8 +204,10 @@
   &:nth-child(3) {
     .item-image {
       & > div {
-        width: 295px !important;
-        height: 213px !important;
+        @include fullhd-down {
+          width: 295px !important;
+          height: 213px !important;
+        }
 
         @include xl-down {
           width: 268px !important;
@@ -378,6 +383,7 @@
     border-top: 2px solid $color-additional-4;
     padding-top: 20px;
     padding-bottom: 20px;
+    margin-top: auto;
 
     @include lg-down {
       grid-column-start: 2;

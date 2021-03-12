@@ -1,0 +1,127 @@
+.wrapper {
+  position: relative;
+  display: block;
+  flex: 0 0 560px;
+  text-align: left;
+  background-color: $color-primary;
+  box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
+  border-radius: 10px;
+  padding-top: 60px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+  z-index: 2;
+
+  @include fullhd-down {
+    flex: 0 0 472px;
+    padding-top: 50px;
+    padding-left: 15px;
+    padding-bottom: 20px;
+  }
+
+  @include xl-down {
+    flex: 0 0 428px;
+    padding-top: 46px;
+  }
+
+  @include lg-down {
+    flex: 0 0 340px;
+    padding-top: 40px;
+    padding-left: 15px;
+    padding-bottom: 20px;
+    overflow-y: auto;
+  }
+
+  @include md-down {
+    display: none;
+  }
+
+  pre {
+    @include fullhd-down {
+      line-height: 0 !important;
+    }
+
+    @include lg-down {
+      font-size: initial;
+      overflow: auto;
+    }
+  }
+
+  code {
+    font-size: 15px !important;
+    line-height: 24px !important;
+
+    @include fullhd-down {
+      font-size: 0.632em !important;
+      line-height: 20.24px !important;
+    }
+
+    @include xl-down {
+      font-size: 0.717rem !important;
+      line-height: 18.35px !important;
+    }
+
+    @include lg-down {
+      font-size: 12px !important;
+      line-height: 19.2px !important;
+      border-radius: 7px;
+    }
+  }
+
+  :global {
+    .linenumber {
+      font-size: 15px;
+      line-height: 24px;
+      margin-right: 25px;
+
+      @include fullhd-down {
+        font-size: 0.791rem;
+        line-height: 20.24px;
+      }
+
+      @include xl-down {
+        font-size: 0.717rem;
+        line-height: 18.35px;
+        margin-right: 20px;
+      }
+
+      @include lg-down {
+        font-size: 12px;
+        line-height: 19.2px;
+        margin-right: 18px;
+      }
+    }
+  }
+
+  @include code-highlighting;
+}
+
+.panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size: 13px;
+  line-height: 18.2px;
+  text-align: center;
+  color: $color-additional-2;
+  background-color: $color-additional-3;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 10px 10px 0 0;
+
+  @include fullhd-down {
+    font-size: 0.685rem;
+    line-height: 15.35px;
+  }
+
+  @include xl-down {
+    font-size: 0.621rem;
+    line-height: 13.92px;
+  }
+
+  @include lg-down {
+    font-size: 10px;
+    line-height: 14px;
+  }
+}

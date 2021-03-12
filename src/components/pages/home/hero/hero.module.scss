@@ -8,19 +8,24 @@
   @include section-paddings;
 
   @include fullhd-down {
+    padding-top: 110px;
     padding-bottom: 70px;
     margin-bottom: 180px;
   }
 
+  @include xl-down {
+    padding-top: 90px;
+  }
+
   @include lg-down {
-    padding-top: 110px;
+    padding-top: 100px;
     padding-bottom: 50px;
     margin-bottom: 150px;
     overflow: hidden;
   }
 
   @include md-down {
-    padding-top: 100px;
+    padding-top: 90px;
     margin-bottom: 115px;
   }
 
@@ -56,13 +61,17 @@
 }
 
 .button {
-  margin-bottom: 90px;
+  margin-bottom: 70px;
 
-  @include lg-down {
-    margin-bottom: 70px;
+  @include fullhd-down {
+    margin-bottom: 60px;
+  }
+
+  @include xl-down {
+    margin-bottom: 50px;
   }
 
   @include md-down {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 }

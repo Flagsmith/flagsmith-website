@@ -6,9 +6,9 @@
   "author": "Alex Barashkov <alex@pixelpoint.io>",
   "scripts": {
     "start": "npm run develop",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -H 0.0.0.0",
     "build": "gatsby build",
-    "serve": "gatsby serve",
+    "serve": "gatsby serve -H 0.0.0.0",
     "clean": "gatsby clean",
     "format": "prettier --write .",
     "lint": "npm run lint:js & npm run lint:styles & npm run lint:md",

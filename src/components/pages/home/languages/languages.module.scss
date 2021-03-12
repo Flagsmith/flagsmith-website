@@ -337,7 +337,7 @@
 
     @include fullhd-down {
       top: 16%;
-      left: 18.7vw;
+      left: 13.5vw;
       width: 64px;
     }
 
@@ -359,7 +359,7 @@
 
     @include fullhd-down {
       top: 19.3%;
-      right: 17.5vw;
+      right: 12vw;
       width: 82px;
     }
 
@@ -382,7 +382,7 @@
 
     @include fullhd-down {
       top: 35.5%;
-      left: 9.8vw;
+      left: 3.1vw;
       width: 90px;
     }
 
@@ -404,7 +404,7 @@
 
     @include fullhd-down {
       top: 39.8%;
-      right: 9.8vw;
+      right: 3.1vw;
       width: 72px;
     }
 
@@ -425,7 +425,7 @@
 
     @include fullhd-down {
       bottom: 35.5%;
-      left: 14.8vw;
+      left: 8.9vw;
       width: 90px;
     }
 
@@ -447,7 +447,7 @@
 
     @include fullhd-down {
       bottom: 33.7%;
-      right: 14.6vw;
+      right: 8.6vw;
       width: 90px;
     }
 
@@ -468,8 +468,8 @@
     left: 8vw;
 
     @include fullhd-down {
-      bottom: 8.9%;
-      left: 12.8vw;
+      bottom: 9%;
+      left: 6.6vw;
       width: 82px;
     }
 
@@ -491,13 +491,12 @@
 
     @include fullhd-down {
       bottom: 7.5%;
-      right: 12.5vw;
+      right: 6.2vw;
       width: 64px;
     }
 
     @include xl-down {
       bottom: 6.5%;
-      right: 6.2vw;
     }
 
     @include lg-down {

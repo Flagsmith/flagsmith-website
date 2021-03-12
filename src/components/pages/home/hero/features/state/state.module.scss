@@ -1,4 +1,35 @@
 .wrapper {
+  position: relative;
+  flex: 0 0 560px;
+  background-color: $color-tertiary;
+  box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
+  border-radius: 10px;
+  z-index: 1;
+  overflow: hidden;
+
+  @include fullhd-down {
+    flex: 0 0 472px;
+  }
+
+  @include xl-down {
+    flex: 0 0 428px;
+  }
+
+  @include lg-down {
+    flex: 0 0 340px;
+    border-radius: 7px;
+  }
+
+  @include md-down {
+    height: 365px;
+  }
+
+  @include xs-down {
+    height: 288px;
+  }
+}
+
+.inner {
   height: 100%;
   width: 100%;
   padding: 30px;
@@ -111,6 +142,7 @@
       }
 
       @include xs-down {
+        width: 89%;
         margin-top: 9px;
       }
 
@@ -182,8 +214,8 @@
       }
 
       @include lg-down {
-        width: 106%;
-        margin-left: 78px;
+        width: 107%;
+        margin-left: 85px;
       }
 
       @include md-down {
@@ -212,7 +244,7 @@
 
         @include lg-down {
           display: block;
-          margin-left: 28px;
+          margin-left: 29px;
           width: 87%;
         }
 
@@ -260,6 +292,7 @@
   border-radius: 6px;
   margin-top: 5px;
   transition: margin-top $transition-long;
+  z-index: 1;
 
   @include fullhd-down {
     width: 90%;
@@ -401,6 +434,7 @@
   @include xs-down {
     width: 12.4%;
     right: 22px;
+    box-shadow: none;
   }
 }
 

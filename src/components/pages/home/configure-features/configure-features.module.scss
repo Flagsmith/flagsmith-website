@@ -25,18 +25,18 @@
   @include xxs-down {
     margin-bottom: 120px;
   }
-}
 
-.title {
-  text-align: center;
+  .title {
+    text-align: center;
 
-  span {
-    &:nth-child(2) {
-      color: $color-accent-tertiary;
-    }
+    span {
+      &:nth-child(2) {
+        color: $color-accent-tertiary;
+      }
 
-    &:nth-child(3) {
-      color: $color-accent-secondary;
+      &:nth-child(3) {
+        color: $color-accent-secondary;
+      }
     }
   }
 }

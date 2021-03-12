@@ -1,29 +1,26 @@
 .wrapper {
   position: relative;
-  display: grid;
-  grid-template-columns: 560px 1fr 560px;
-  column-gap: 70px;
+  display: flex;
+  justify-content: center;
+  max-height: 450px;
   margin-bottom: 120px;
 
   @include fullhd-down {
-    grid-template-columns: 472px 1fr 472px;
-    column-gap: 60px;
+    max-height: 380px;
     margin-bottom: 90px;
   }
 
   @include xl-down {
-    grid-template-columns: 428px 1fr 428px;
-    column-gap: 55px;
+    max-height: 345px;
   }
 
   @include lg-down {
-    grid-template-columns: 340px 1fr 340px;
-    column-gap: 40px;
     margin-bottom: 70px;
   }
 
   @include md-down {
     display: block;
+    max-height: initial;
   }
 
   @include sm-down {
@@ -32,435 +29,29 @@
 
   @include xs-down {
     max-width: 384px;
-    margin-left: auto;
     margin-right: auto;
-  }
-}
-
-.code {
-  position: relative;
-  display: block;
-  text-align: left;
-  background-color: $color-primary;
-  box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
-  border-radius: 10px;
-  padding-top: 60px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 30px;
-  z-index: 1;
-
-  @include fullhd-down {
-    padding-top: 50px;
-    padding-left: 15px;
-    padding-bottom: 20px;
-  }
-
-  @include xl-down {
-    padding-top: 46px;
-  }
-
-  @include lg-down {
-    padding-top: 40px;
-    padding-left: 15px;
-    padding-bottom: 20px;
-    overflow-y: auto;
-  }
-
-  @include md-down {
-    display: none;
-  }
-
-  pre {
-    @include fullhd-down {
-      line-height: 0 !important;
-    }
-
-    @include lg-down {
-      font-size: initial;
-      overflow: auto;
-    }
-  }
-
-  code {
-    font-size: 15px !important;
-    line-height: 24px !important;
-
-    @include fullhd-down {
-      font-size: 0.632em !important;
-      line-height: 20.24px !important;
-    }
-
-    @include xl-down {
-      font-size: 0.717rem !important;
-      line-height: 18.35px !important;
-    }
-
-    @include lg-down {
-      font-size: 12px !important;
-      line-height: 19.2px !important;
-      border-radius: 7px;
-    }
-  }
-
-  :global {
-    .linenumber {
-      font-size: 15px;
-      line-height: 24px;
-      margin-right: 25px;
-
-      @include fullhd-down {
-        font-size: 0.791rem;
-        line-height: 20.24px;
-      }
-
-      @include xl-down {
-        font-size: 0.717rem;
-        line-height: 18.35px;
-        margin-right: 20px;
-      }
-
-      @include lg-down {
-        font-size: 12px;
-        line-height: 19.2px;
-        margin-right: 18px;
-      }
-    }
-  }
-
-  @include code-highlighting;
-
-  &-panel {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    font-size: 13px;
-    line-height: 18.2px;
-    text-align: center;
-    color: $color-additional-2;
-    background-color: $color-additional-3;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    border-radius: 10px 10px 0 0;
-
-    @include fullhd-down {
-      font-size: 0.685rem;
-      line-height: 15.35px;
-    }
-
-    @include xl-down {
-      font-size: 0.621rem;
-      line-height: 13.92px;
-    }
-
-    @include lg-down {
-      font-size: 10px;
-      line-height: 14px;
-    }
-  }
-}
-
-.options {
-  position: relative;
-
-  &-inner {
-    position: relative;
-    background-color: $color-additional-4;
-    box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
-    border-radius: 10px;
-    z-index: 1;
-
-    @include lg-down {
-      border-radius: 7px;
-    }
-
-    @include md-down {
-      display: flex;
-      justify-content: space-between;
-      background-color: transparent;
-      box-shadow: none;
-    }
-
-    & > * + * {
-      position: relative;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 2px;
-        width: 100%;
-        background-color: rgba($color-primary, 0.05);
-
-        @include md-down {
-          display: none;
-        }
-      }
-    }
-  }
-
-  &-title {
-    display: block;
-    font-size: $font-size-base;
-    line-height: 24px;
-    font-weight: 800;
-    text-align: center;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    padding-top: 40px;
-    padding-bottom: 35px;
-
-    @include fullhd-down {
-      font-size: 1.054rem;
-      line-height: 20.24px;
-      padding-top: 33px;
-      padding-bottom: 30px;
-    }
-
-    @include xl-down {
-      font-size: 0.956rem;
-      line-height: 18.35px;
-      padding-top: 30px;
-      padding-bottom: 27px;
-    }
-
-    @include lg-down {
-      font-size: 15px;
-      line-height: 18px;
-      padding-top: 30px;
-      padding-bottom: 27px;
-    }
-
-    @include md-down {
-      display: none;
-    }
-  }
-
-  &-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: $font-size-sm;
-    line-height: 25.2px;
-    font-weight: 600;
-    padding-top: 25px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 25px;
-
-    &.dark {
-      @include xs-down {
-        display: none;
-      }
-    }
-
-    @include fullhd-down {
-      font-size: 0.949rem;
-      line-height: 21.25px;
-      padding-top: 22px;
-      padding-left: 17px;
-      padding-right: 17px;
-      padding-bottom: 20px;
-    }
-
-    @include xl-down {
-      font-size: 0.86rem;
-      line-height: 19.27px;
-      padding-top: 22px;
-      padding-left: 14px;
-      padding-right: 14px;
-      padding-bottom: 16px;
-    }
-
-    @include lg-down {
-      font-size: $font-size-xxs;
-      line-height: 19.6px;
-      padding-top: 19px;
-      padding-left: 15px;
-      padding-right: 15px;
-      padding-bottom: 19px;
-    }
-
-    @include md-down {
-      font-size: $font-size-sm;
-      line-height: $line-height-sm;
-      padding-top: 30px;
-      padding-left: 0;
-      padding-right: 0;
-      padding-bottom: 30px;
-    }
-
-    @include sm-down {
-      font-size: $font-size-xs;
-      line-height: $line-height-xs;
-      padding-top: 20px;
-      padding-left: 15px;
-      padding-right: 15px;
-    }
-
-    @include xxs-down {
-      font-size: $font-size-xxs;
-      line-height: $line-height-xxs;
-    }
-  }
-
-  &-footer {
-    display: flex;
-    justify-content: center;
-    padding-top: 35px;
-    padding-bottom: 35px;
-
-    @include fullhd-down {
-      padding-top: 33px;
-      padding-bottom: 29px;
-    }
-
-    @include xl-down {
-      padding-top: 30px;
-      padding-bottom: 26px;
-    }
-
-    @include lg-down {
-      padding-top: 30px;
-      padding-bottom: 27px;
-    }
-
-    @include md-down {
-      display: none;
-    }
-
-    svg {
-      @include fullhd-down {
-        height: 2.108rem;
-        width: 2.111rem;
-      }
-
-      @include xl-down {
-        height: 1.917rem;
-        width: 1.912rem;
-      }
-
-      @include lg-down {
-        height: 30px;
-        width: 30px;
-      }
-    }
-  }
-}
-
-.switch-button {
-  position: relative;
-  height: 30px;
-  width: 55px;
-  background-color: $color-quaternary;
-  border-radius: 100px;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  transition: background-color $transition-long;
-
-  @include fullhd-down {
-    width: 2.898rem;
-    height: 1.583rem;
-  }
-
-  @include xl-down {
-    width: 2.629rem;
-    height: 1.438rem;
-  }
-
-  @include lg-down {
-    width: 42px;
-    height: 23px;
-  }
-
-  @include md-down {
-    height: 30px;
-    width: 55px;
-    margin-left: 20px;
-  }
-
-  @include sm-down {
-    width: 48px;
-    height: 26px;
-    margin-left: 15px;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 20px;
-    height: 20px;
-    background-color: $color-tertiary;
-    border-radius: 100%;
-    cursor: pointer;
-    transition: all $transition-long;
-
-    @include fullhd-down {
-      top: 4px;
-      height: 1.054rem;
-      width: 1.054rem;
-    }
-
-    @include xl-down {
-      height: 0.956rem;
-      width: 0.956rem;
-    }
-
-    @include lg-down {
-      height: 15px;
-      width: 15px;
-    }
-
-    @include md-down {
-      top: 5px;
-      width: 20px;
-      height: 20px;
-    }
-
-    @include sm-down {
-      top: 4px;
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  &.checked {
-    background-color: $color-accent-secondary;
-
-    &::after {
-      left: 53%;
-    }
-  }
-}
-
-.state {
-  position: relative;
-  background-color: $color-tertiary;
-  box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
-  border-radius: 10px;
-  z-index: 1;
-  overflow: hidden;
-
-  @include lg-down {
-    border-radius: 7px;
-  }
-
-  @include md-down {
-    height: 365px;
-  }
-
-  @include xs-down {
-    height: 288px;
+    margin-left: auto;
   }
 }
 
 .shape {
   position: absolute;
+
+  @include fullhd-down {
+    width: 420px;
+  }
+
+  @include xl-down {
+    width: 380px;
+  }
+
+  @include lg-down {
+    width: 370px;
+  }
+
+  @include md-down {
+    width: 340px;
+  }
 }
 
 .shape-1 {
@@ -470,25 +61,21 @@
   @include fullhd-down {
     top: -117px;
     left: -135px;
-    width: 420px;
   }
 
   @include xl-down {
     top: -117px;
     left: -115px;
-    width: 380px;
   }
 
   @include lg-down {
     top: -100px;
     left: -120px;
-    width: 370px;
   }
 
   @include md-down {
     top: -30px;
     left: -125px;
-    width: 340px;
   }
 
   @include sm-down {
@@ -504,25 +91,21 @@
   @include fullhd-down {
     top: -50px;
     right: -50px;
-    width: 420px;
   }
 
   @include xl-down {
     top: -45px;
     right: -45px;
-    width: 380px;
   }
 
   @include lg-down {
     top: -40px;
     right: -70px;
-    width: 370px;
   }
 
   @include md-down {
     top: 105px;
     right: -40px;
-    width: 340px;
   }
 
   @include sm-down {
@@ -530,23 +113,22 @@
   }
 }
 
-.shape-addition {
+.shape-sum {
+  position: absolute;
   top: 50%;
-  left: -110px;
-  transform: translateY(-50%);
+  left: 50%;
+  width: 150px;
+  transform: translateX(-50%) translateY(-50%);
 
   @include fullhd-down {
-    left: -92px;
     width: 126px;
   }
 
   @include xl-down {
-    left: -85px;
     width: 114px;
   }
 
   @include lg-down {
-    left: -70px;
     width: 100px;
   }
 
@@ -555,27 +137,34 @@
   }
 }
 
-.shape-equal {
-  top: 50%;
-  right: -110px;
-  transform: translateY(-50%);
+.shape-addition {
+  margin-left: -170px;
 
   @include fullhd-down {
-    right: -92px;
-    width: 126px;
+    margin-left: -143px;
   }
 
   @include xl-down {
-    right: -85px;
-    width: 114px;
+    margin-left: -130px;
   }
 
   @include lg-down {
-    right: -70px;
-    width: 100px;
+    margin-left: -110px;
+  }
+}
+
+.shape-equal {
+  margin-left: 170px;
+
+  @include fullhd-down {
+    margin-left: 143px;
   }
 
-  @include md-down {
-    display: none;
+  @include xl-down {
+    margin-left: 130px;
+  }
+
+  @include lg-down {
+    margin-left: 110px;
   }
 }
