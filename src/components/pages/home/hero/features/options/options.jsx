@@ -23,11 +23,11 @@ const variants = {
   },
 };
 
-const Options = ({ items, state, setState }) => (
+const Options = ({ items, state, setState, isUserTouchedToggle }) => (
   <motion.div className={cx('wrapper')} initial="hidden" variants={variants}>
     <div className={cx('inner')}>
       <div className={cx('content')}>
-        <span className={cx('title')}>feautures</span>
+        <span className={cx('title')}>Feautures</span>
 
         {items.map(({ label, key }) => (
           <div className={cx('item', key)} key={key}>
@@ -35,6 +35,7 @@ const Options = ({ items, state, setState }) => (
             <button
               className={cx('switch-button', {
                 checked: state[key],
+                isUserTouchedToggle,
               })}
               onClick={() => setState(key)}
             />
