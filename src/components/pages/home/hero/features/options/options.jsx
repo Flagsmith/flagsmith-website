@@ -69,12 +69,12 @@ Options.propTypes = {
 Options.defaultProps = {
   items: [
     {
-      label: 'Design 2.0',
-      key: 'designV2',
-    },
-    {
       label: 'Chat',
       key: 'chat',
+    },
+    {
+      label: 'Design 2.0',
+      key: 'designV2',
     },
     {
       label: 'Dark mode',
