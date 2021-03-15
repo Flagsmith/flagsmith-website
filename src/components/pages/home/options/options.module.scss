@@ -66,6 +66,14 @@
   text-decoration: none;
   z-index: 2;
 
+  &:hover {
+    .item-link {
+      svg {
+        animation: bounce 0.3s;
+      }
+    }
+  }
+
   &-inner {
     display: flex;
     flex-direction: column;
@@ -474,5 +482,19 @@
   @include sm-down {
     right: -145px;
     bottom: 294px;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(20px);
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }

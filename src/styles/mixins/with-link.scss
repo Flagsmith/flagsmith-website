@@ -11,6 +11,8 @@
     &.icon-arrow {
       &:hover {
         svg {
+          animation: bounce 0.3s;
+
           path {
             stroke: $color-accent-secondary;
           }
@@ -43,6 +45,8 @@
     &.icon-arrow {
       &:hover {
         svg {
+          animation: bounce 0.3s;
+
           path {
             stroke: $color-accent-secondary;
           }
@@ -75,6 +79,8 @@
     &.icon-arrow {
       &:hover {
         svg {
+          animation: bounce 0.3s;
+
           path {
             stroke: $color-accent-secondary;
           }
@@ -107,6 +113,8 @@
     &.icon-arrow {
       &:hover {
         svg {
+          animation: bounce 0.3s;
+
           path {
             stroke: $color-accent-primary;
           }
@@ -123,5 +131,19 @@
         }
       }
     }
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(20px);
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }
