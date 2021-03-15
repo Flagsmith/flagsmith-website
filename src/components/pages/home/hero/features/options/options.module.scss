@@ -369,11 +369,18 @@
       #7733ff 100%
     );
 
-    animation: rotate 3s infinite;
+    animation: rotate 2.5s infinite;
   }
 }
 
 @keyframes rotate {
+  0%,
+  30% {
+    transform: rotate(0deg);
+  }
+
+  60%,
+  90%,
   100% {
     transform: rotate(360deg);
   }
