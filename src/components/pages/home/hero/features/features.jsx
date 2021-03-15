@@ -48,8 +48,8 @@ const Features = (props) => {
     await controls.start('appear');
     setAnimationIsCompleted(true);
 
-    handleTimeout('chat', 0);
-    handleTimeout('designV2', 1000);
+    handleTimeout('designV2', 0);
+    handleTimeout('chat', 1000);
   };
 
   useEffect(() => {

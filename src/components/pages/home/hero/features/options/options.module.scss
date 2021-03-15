@@ -360,21 +360,20 @@
     left: 0;
     margin: -15px;
     border-radius: inherit;
-    background-image: linear-gradient(249.26deg, #33bbff 0%, #7733ff 100%);
-    animation: rotate 2s infinite;
+    background-image: linear-gradient(
+      249.26deg,
+      #33bbff 0%,
+      #33bbff 24.23%,
+      #ecb3ff 51.8%,
+      #7733ff 77%,
+      #7733ff 100%
+    );
+    animation: rotate 1.5s linear infinite;
   }
 }
 
 @keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  50% {
-    transform: rotate(180deg);
-  }
-
   100% {
-    transform: rotate(0deg);
+    transform: rotate(360deg);
   }
 }
