@@ -45,11 +45,17 @@ const Features = (props) => {
   };
 
   const animationSequence = async () => {
+    let timeoutAnimationComplete;
+
     await controls.start('appear');
-    setAnimationIsCompleted(true);
 
     handleTimeout('chat', 0);
     handleTimeout('designV2', 1000);
+
+    timeoutAnimationComplete = setTimeout(() => {
+      clearTimeout(timeoutAnimationComplete);
+      setAnimationIsCompleted(true);
+    }, 2000);
   };
 
   useEffect(() => {
