@@ -1,0 +1,29 @@
+.with-arrow {
+  &:hover {
+    svg {
+      animation: bounce 0.3s;
+    }
+  }
+
+  svg {
+    margin-left: 10px;
+
+    path {
+      transition: fill $transition-base;
+    }
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}

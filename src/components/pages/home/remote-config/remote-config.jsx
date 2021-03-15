@@ -10,7 +10,6 @@ import { MOTION_EASY } from 'constants/constants';
 import styles from './remote-config.module.scss';
 
 import Icon from './images/icon.inline.svg';
-import IconArrowRight from 'icons/arrow-right.inline.svg';
 import window from './images/window.url.svg';
 import popup from './images/popup.url.svg';
 import item1 from './images/item-1.url.svg';
@@ -55,8 +54,8 @@ const RemoteConfig = ({ title, description, link: { url } }) => {
             {title}
           </Heading>
           <div className={cx('description')} dangerouslySetInnerHTML={{ __html: description }} />
-          <Link className={cx('link', 'icon-arrow')} to={url}>
-            Learn More <IconArrowRight />
+          <Link className={cx('link')} to={url} withArrow>
+            Learn More
           </Link>
         </div>
         <div className={cx('right')} ref={animationContainer}>

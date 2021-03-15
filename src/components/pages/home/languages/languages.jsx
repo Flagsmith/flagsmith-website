@@ -11,7 +11,6 @@ import useSectionOffset from 'hooks/use-section-offset';
 
 import styles from './languages.module.scss';
 import Logo from 'images/logo.inline.svg';
-import IconArrowRight from 'icons/arrow-right.inline.svg';
 
 import ShapeAndroid from './images/android.inline.svg';
 import ShapePython from './images/python.inline.svg';
@@ -111,8 +110,8 @@ const Languages = ({ title, description, buttonText, link: { url }, items }) => 
             {title}
           </Heading>
           <p className={cx('description')}>{description}</p>
-          <Link className={cx('link', 'icon-arrow')} to={url}>
-            {buttonText} <IconArrowRight />
+          <Link className={cx('link')} to={url} withArrow>
+            {buttonText}
           </Link>
         </div>
         <div className={cx('tabs-wrapper')}>

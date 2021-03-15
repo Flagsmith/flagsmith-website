@@ -8,11 +8,9 @@
       color: $color-accent-secondary;
     }
 
-    &.icon-arrow {
+    &[data-with-arrow='true'] {
       &:hover {
         svg {
-          animation: bounce 0.3s;
-
           path {
             fill: $color-accent-secondary;
           }
@@ -20,11 +18,8 @@
       }
 
       svg {
-        margin-left: 10px;
-
         path {
           fill: $color-primary;
-          transition: fill $transition-base;
         }
       }
     }
@@ -41,11 +36,9 @@
       color: $color-accent-secondary;
     }
 
-    &.icon-arrow {
+    &[data-with-arrow='true'] {
       &:hover {
         svg {
-          animation: bounce 0.3s;
-
           path {
             fill: $color-accent-secondary;
           }
@@ -53,11 +46,8 @@
       }
 
       svg {
-        margin-left: 10px;
-
         path {
           fill: $color-quaternary;
-          transition: fill $transition-base;
         }
       }
     }
@@ -74,11 +64,9 @@
       color: $color-accent-secondary;
     }
 
-    &.icon-arrow {
+    &[data-with-arrow='true'] {
       &:hover {
         svg {
-          animation: bounce 0.3s;
-
           path {
             fill: $color-accent-secondary;
           }
@@ -86,11 +74,8 @@
       }
 
       svg {
-        margin-left: 10px;
-
         path {
           fill: $color-accent-primary;
-          transition: fill $transition-base;
         }
       }
     }
@@ -107,11 +92,9 @@
       color: $color-accent-primary;
     }
 
-    &.icon-arrow {
+    &[data-with-arrow='true'] {
       &:hover {
         svg {
-          animation: bounce 0.3s;
-
           path {
             fill: $color-accent-primary;
           }
@@ -119,27 +102,10 @@
       }
 
       svg {
-        margin-left: 10px;
-
         path {
           fill: $color-accent-secondary;
-          transition: fill $transition-base;
         }
       }
     }
-  }
-}
-
-@keyframes bounce {
-  0% {
-    transform: translateX(0);
-  }
-
-  50% {
-    transform: translateX(5px);
-  }
-
-  100% {
-    transform: translateX(0);
   }
 }
