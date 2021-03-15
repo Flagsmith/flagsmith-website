@@ -243,7 +243,7 @@
 
       svg {
         path {
-          stroke: $color-accent-primary;
+          fill: $color-accent-primary;
         }
       }
     }
@@ -267,7 +267,7 @@
 
       svg {
         path {
-          stroke: $color-quaternary;
+          fill: $color-quaternary;
         }
       }
     }
@@ -291,7 +291,7 @@
 
       svg {
         path {
-          stroke: $color-accent-secondary;
+          fill: $color-accent-secondary;
         }
       }
     }
@@ -408,10 +408,6 @@
 
     svg {
       margin-left: 10px;
-
-      path {
-        stroke-width: 2;
-      }
     }
   }
 }
@@ -491,7 +487,7 @@
   }
 
   50% {
-    transform: translateX(20px);
+    transform: translateX(15px);
   }
 
   100% {

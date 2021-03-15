@@ -14,7 +14,7 @@
           animation: bounce 0.3s;
 
           path {
-            stroke: $color-accent-secondary;
+            fill: $color-accent-secondary;
           }
         }
       }
@@ -23,9 +23,8 @@
         margin-left: 10px;
 
         path {
-          stroke: $color-primary;
-          stroke-width: 2;
-          transition: stroke $transition-base;
+          fill: $color-primary;
+          transition: fill $transition-base;
         }
       }
     }
@@ -48,7 +47,7 @@
           animation: bounce 0.3s;
 
           path {
-            stroke: $color-accent-secondary;
+            fill: $color-accent-secondary;
           }
         }
       }
@@ -57,9 +56,8 @@
         margin-left: 10px;
 
         path {
-          stroke: $color-quaternary;
-          stroke-width: 2;
-          transition: stroke $transition-base;
+          fill: $color-quaternary;
+          transition: fill $transition-base;
         }
       }
     }
@@ -82,7 +80,7 @@
           animation: bounce 0.3s;
 
           path {
-            stroke: $color-accent-secondary;
+            fill: $color-accent-secondary;
           }
         }
       }
@@ -91,9 +89,8 @@
         margin-left: 10px;
 
         path {
-          stroke: $color-accent-primary;
-          stroke-width: 2;
-          transition: stroke $transition-base;
+          fill: $color-accent-primary;
+          transition: fill $transition-base;
         }
       }
     }
@@ -116,7 +113,7 @@
           animation: bounce 0.3s;
 
           path {
-            stroke: $color-accent-primary;
+            fill: $color-accent-primary;
           }
         }
       }
@@ -125,9 +122,8 @@
         margin-left: 10px;
 
         path {
-          stroke: $color-accent-secondary;
-          stroke-width: 2;
-          transition: stroke $transition-base;
+          fill: $color-accent-secondary;
+          transition: fill $transition-base;
         }
       }
     }
@@ -140,7 +136,7 @@
   }
 
   50% {
-    transform: translateX(20px);
+    transform: translateX(15px);
   }
 
   100% {
