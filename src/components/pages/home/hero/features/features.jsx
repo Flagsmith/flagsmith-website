@@ -61,7 +61,12 @@ const Features = (props) => {
   return (
     <motion.div className={cx('wrapper')} animate={controls} ref={sectionRef}>
       <Code {...props} />
-      <Options state={state} setState={handleSetState} isUserTouchedToggle={isUserTouchedToggle} />
+      <Options
+        state={state}
+        setState={handleSetState}
+        isUserTouchedToggle={isUserTouchedToggle}
+        animationIsCompleted={animationIsCompleted}
+      />
       <State animationIsCompleted={animationIsCompleted} {...state} />
 
       <img

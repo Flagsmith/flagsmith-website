@@ -334,9 +334,13 @@
   border-radius: 100px;
   z-index: -1;
   margin: -9px;
-  opacity: 1;
+  opacity: 0;
   overflow: hidden;
   transition: opacity $transition-base;
+
+  &.active {
+    opacity: 1;
+  }
 
   &::before {
     content: '';
@@ -369,7 +373,7 @@
       #7733ff 100%
     );
 
-    animation: rotate 3s infinite;
+    animation: rotate 2.5s infinite;
   }
 }
 
@@ -379,7 +383,6 @@
     transform: rotate(0deg);
   }
 
-  60%,
   90%,
   100% {
     transform: rotate(360deg);

@@ -23,7 +23,7 @@ const variants = {
   },
 };
 
-const Options = ({ items, state, setState, isUserTouchedToggle }) => (
+const Options = ({ items, state, setState, isUserTouchedToggle, animationIsCompleted }) => (
   <motion.div className={cx('wrapper')} initial="hidden" variants={variants}>
     <div className={cx('inner')}>
       <div className={cx('content')}>
@@ -41,7 +41,9 @@ const Options = ({ items, state, setState, isUserTouchedToggle }) => (
                 })}
                 onClick={() => setState(key)}
               >
-                {withBorderGradient && <span className={cx('border-gradient')} />}
+                {withBorderGradient && (
+                  <span className={cx('border-gradient', { active: animationIsCompleted })} />
+                )}
               </button>
             </div>
           );
@@ -64,6 +66,8 @@ Options.propTypes = {
     })
   ).isRequired,
   handleSetState: PropTypes.func.isRequired,
+  isUserTouchedToggle: PropTypes.bool.isRequired,
+  animationIsCompleted: PropTypes.bool.isRequired,
 };
 
 Options.defaultProps = {
