@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 
 import { motion } from 'framer-motion';
+import { MOTION_EASY } from 'constants/constants';
+
 import styles from './options.module.scss';
 
 import Logo from './images/logo.inline.svg';
@@ -20,6 +22,23 @@ const variants = {
     opacity: 1,
     transform: 'scale(1)',
     transition: { delay: 0.5, type: 'spring', damping: 13 },
+  },
+};
+
+const variantsBorder = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: { duration: 2.5, ease: MOTION_EASY },
+  },
+};
+
+const variantsBorderGradient = {
+  visible: {
+    rotate: 360,
+    transition: { repeat: Infinity, duration: 2.5, ease: MOTION_EASY },
   },
 };
 
@@ -42,7 +61,17 @@ const Options = ({ items, state, setState, isUserTouchedToggle, animationIsCompl
                 onClick={() => setState(key)}
               >
                 {withBorderGradient && (
-                  <span className={cx('border-gradient', { active: animationIsCompleted })} />
+                  <motion.span
+                    className={cx('border')}
+                    initial="hidden"
+                    animate={animationIsCompleted && !isUserTouchedToggle ? 'visible' : 'hidden'}
+                    variants={variantsBorder}
+                  >
+                    <motion.span
+                      className={cx('border-gradient')}
+                      variants={variantsBorderGradient}
+                    />
+                  </motion.span>
                 )}
               </button>
             </div>
