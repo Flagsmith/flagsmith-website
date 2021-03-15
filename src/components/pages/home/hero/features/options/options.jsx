@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import { useInView } from 'react-intersection-observer';
 
 import { motion } from 'framer-motion';
 import { MOTION_EASY } from 'constants/constants';
@@ -42,50 +43,57 @@ const variantsBorderGradient = {
   },
 };
 
-const Options = ({ items, state, setState, isUserTouchedToggle, animationIsCompleted }) => (
-  <motion.div className={cx('wrapper')} initial="hidden" variants={variants}>
-    <div className={cx('inner')}>
-      <div className={cx('content')}>
-        <span className={cx('title')}>Features</span>
+const Options = ({ items, state, setState, isUserTouchedToggle, animationIsCompleted }) => {
+  const [sectionRef, inView] = useInView({ threshold: 0.5 });
+  return (
+    <motion.div className={cx('wrapper')} initial="hidden" variants={variants} ref={sectionRef}>
+      <div className={cx('inner')}>
+        <div className={cx('content')}>
+          <span className={cx('title')}>Features</span>
 
-        {items.map(({ label, key }) => {
-          const withBorderGradient = key === 'dark';
-          return (
-            <div className={cx('item', key)} key={key}>
-              {label}
-              <button
-                className={cx('switch-button', {
-                  checked: state[key],
-                  isUserTouchedToggle,
-                })}
-                onClick={() => setState(key)}
-              >
-                {withBorderGradient && (
-                  <motion.span
-                    className={cx('border')}
-                    initial="hidden"
-                    animate={animationIsCompleted && !isUserTouchedToggle ? 'visible' : 'hidden'}
-                    variants={variantsBorder}
-                  >
+          {items.map(({ label, key }) => {
+            const withBorderGradient = key === 'dark';
+            return (
+              <div className={cx('item', key)} key={key}>
+                {label}
+                <button
+                  className={cx('switch-button', {
+                    checked: state[key],
+                    isUserTouchedToggle,
+                  })}
+                  onClick={() => setState(key)}
+                >
+                  {withBorderGradient && (
                     <motion.span
-                      className={cx('border-gradient')}
-                      variants={variantsBorderGradient}
-                    />
-                  </motion.span>
-                )}
-              </button>
-            </div>
-          );
-        })}
+                      className={cx('border')}
+                      initial="hidden"
+                      animate={
+                        animationIsCompleted && !isUserTouchedToggle && inView
+                          ? 'visible'
+                          : 'hidden'
+                      }
+                      variants={variantsBorder}
+                    >
+                      <motion.span
+                        className={cx('border-gradient')}
+                        variants={variantsBorderGradient}
+                      />
+                    </motion.span>
+                  )}
+                </button>
+              </div>
+            );
+          })}
 
-        <div className={cx('footer')}>
-          <Logo />
+          <div className={cx('footer')}>
+            <Logo />
+          </div>
         </div>
+        <div></div>
       </div>
-      <div></div>
-    </div>
-  </motion.div>
-);
+    </motion.div>
+  );
+};
 
 Options.propTypes = {
   items: PropTypes.arrayOf(
