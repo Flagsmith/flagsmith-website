@@ -55,7 +55,7 @@ const Features = (props) => {
     timeoutAnimationComplete = setTimeout(() => {
       clearTimeout(timeoutAnimationComplete);
       setAnimationIsCompleted(true);
-    }, 2000);
+    }, 1000);
   };
 
   useEffect(() => {
