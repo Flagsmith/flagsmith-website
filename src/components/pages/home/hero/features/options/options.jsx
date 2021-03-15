@@ -29,18 +29,23 @@ const Options = ({ items, state, setState, isUserTouchedToggle }) => (
       <div className={cx('content')}>
         <span className={cx('title')}>Feautures</span>
 
-        {items.map(({ label, key }) => (
-          <div className={cx('item', key)} key={key}>
-            {label}
-            <button
-              className={cx('switch-button', {
-                checked: state[key],
-                isUserTouchedToggle,
-              })}
-              onClick={() => setState(key)}
-            />
-          </div>
-        ))}
+        {items.map(({ label, key }) => {
+          const withBorderGradient = key === 'dark';
+          return (
+            <div className={cx('item', key)} key={key}>
+              {label}
+              <button
+                className={cx('switch-button', {
+                  checked: state[key],
+                  isUserTouchedToggle,
+                })}
+                onClick={() => setState(key)}
+              >
+                {withBorderGradient && <span className={cx('border-gradient')} />}
+              </button>
+            </div>
+          );
+        })}
 
         <div className={cx('footer')}>
           <Logo />
