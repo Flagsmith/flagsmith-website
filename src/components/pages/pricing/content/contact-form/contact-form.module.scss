@@ -1,19 +1,8 @@
 .wrapper {
   position: relative;
-  padding-top: 60px;
-  padding-bottom: 40px;
-
-  @include xl-down {
-    padding-bottom: 35px;
-  }
-
-  @include lg-down {
-    padding-top: 0;
-  }
-
-  @include md-down {
-    @include section-paddings;
-  }
+  padding-top: 150px;
+  padding-bottom: 140px;
+  @include section-paddings;
 }
 
 .inner {
@@ -112,26 +101,36 @@
   }
 
   .title {
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 
     @include fullhd-down {
       font-size: $font-size-lg;
       line-height: $line-height-lg;
     }
 
-    @include xl-down {
-      margin-bottom: 35px;
-    }
-
     @include lg-down {
       font-size: 35px;
       line-height: 45.5px;
-      margin-bottom: 30px;
     }
+  }
+}
 
-    @include sm-down {
-      margin-bottom: 25px;
-    }
+.description {
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
+  margin-top: 0;
+  margin-bottom: 40px;
+
+  @include xl-down {
+    margin-bottom: 35px;
+  }
+
+  @include lg-down {
+    margin-bottom: 30px;
+  }
+
+  @include sm-down {
+    margin-bottom: 25px;
   }
 }
 
