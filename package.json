@@ -21,6 +21,7 @@
     "lint:md:fix": "markdownlint --fix --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@hookform/resolvers": "^1.3.5",
     "@svgr/webpack": "^5.5.0",
     "classnames": "^2.2.6",
     "framer-motion": "^3.7.0",
@@ -32,9 +33,11 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "react-hook-form": "^6.15.4",
     "react-intersection-observer": "^8.31.0",
     "react-syntax-highlighter": "^15.4.3",
-    "sass": "^1.32.8"
+    "sass": "^1.32.8",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.0.0",

@@ -88,6 +88,18 @@
     &-quaternary {
       color: $color-quaternary;
     }
+
+    &-accent-primary {
+      color: $color-accent-primary;
+    }
+
+    &-accent-secondary {
+      color: $color-accent-secondary;
+    }
+
+    &-accent-tertiary {
+      color: $color-accent-tertiary;
+    }
   }
 
   &.highlighted-words-color {

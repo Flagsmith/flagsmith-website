@@ -47,7 +47,13 @@ Button.defaultProps = {
 Button.propTypes = {
   className: PropTypes.string,
   to: PropTypes.string,
-  theme: PropTypes.oneOf(['primary', 'tertiary', 'accent-primary', 'accent-tertiary']),
+  theme: PropTypes.oneOf([
+    'primary',
+    'tertiary',
+    'accent-primary',
+    'accent-secondary',
+    'accent-tertiary',
+  ]),
   size: PropTypes.oneOf(['lg', 'md']),
   disabled: PropTypes.bool,
   children: PropTypes.node.isRequired,

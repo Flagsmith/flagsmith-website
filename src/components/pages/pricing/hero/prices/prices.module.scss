@@ -1,0 +1,428 @@
+.wrapper {
+  position: relative;
+}
+
+.inner {
+  position: relative;
+
+  @include lg-down {
+    overflow: auto;
+    padding-left: 40px;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      background: transparent;
+    }
+  }
+
+  @include md-down {
+    padding-left: 0;
+  }
+}
+
+.items-wrapper {
+  display: flex;
+  padding-bottom: 35px;
+  @include section-paddings;
+
+  &::after {
+    content: '';
+
+    @include lg-down {
+      flex: 0 0 40px;
+    }
+
+    @include md-down {
+      flex: 0 0 35px;
+    }
+
+    @include sm-down {
+      flex: 0 0 15px;
+    }
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 360px;
+  margin-right: 30px;
+  background-color: $color-tertiary;
+  box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
+  border-radius: 10px;
+  padding-top: 30px;
+  padding-bottom: 40px;
+  z-index: 1;
+
+  @include fullhd-down {
+    flex: 0 0 300px;
+  }
+
+  @include xl-down {
+    flex: 0 0 270px;
+  }
+
+  @include lg-down {
+    padding-bottom: 45px;
+    margin-right: 20px;
+  }
+
+  &.accent-primary {
+    .price-label {
+      color: $color-accent-primary;
+    }
+
+    .features {
+      li {
+        span {
+          color: $color-accent-primary;
+        }
+
+        &.enable {
+          svg {
+            circle {
+              fill: $color-accent-primary;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.accent-secondary {
+    .price-label {
+      color: $color-accent-secondary;
+    }
+
+    .features {
+      li {
+        span {
+          color: $color-accent-secondary;
+        }
+
+        &.enable {
+          svg {
+            circle {
+              fill: $color-accent-secondary;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.accent-tertiary {
+    background-color: $color-primary;
+
+    .title {
+      color: $color-tertiary;
+    }
+
+    .description {
+      color: $color-accent-tertiary;
+    }
+
+    .price-label {
+      color: $color-accent-tertiary;
+    }
+
+    .features {
+      li {
+        color: $color-tertiary;
+
+        span {
+          color: $color-accent-tertiary;
+        }
+
+        &.enable {
+          svg {
+            circle {
+              fill: $color-accent-tertiary;
+            }
+
+            path {
+              stroke: $color-primary;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 370px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 30px;
+
+  @include fullhd-down {
+    height: 365px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include xl-down {
+    height: 325px;
+    margin-bottom: 35px;
+    margin-bottom: 20px;
+  }
+
+  @include lg-down {
+    margin-bottom: 35px;
+  }
+}
+
+.head-inner {
+  margin-bottom: 20px;
+}
+
+.title {
+  margin-bottom: 5px;
+}
+
+.description {
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  @include xl-down {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+  }
+}
+
+.price-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: 25px;
+}
+
+.price {
+  position: relative;
+  font-weight: bold;
+  font-size: 100px;
+  line-height: 100%;
+  color: $color-quaternary;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include xl-down {
+    font-size: 80px;
+    line-height: 80px;
+    left: 6px;
+    margin-bottom: 5px;
+  }
+
+  &::before {
+    content: '$';
+    position: absolute;
+    top: 15px;
+    left: -22px;
+    font-size: 30px;
+    line-height: 30px;
+
+    @include xl-down {
+      top: 9px;
+      left: -18px;
+      font-size: $font-size-md;
+      line-height: $line-height-md;
+    }
+  }
+}
+
+.price-text {
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
+  color: $color-additional-6;
+  margin-bottom: 30px;
+
+  @include xl-down {
+    margin-bottom: 25px;
+  }
+}
+
+.price-label {
+  font-size: 30px;
+  line-height: 30px;
+  font-family: $font-family-tertiary;
+  font-weight: 700;
+
+  @include xl-down {
+    font-size: 26px;
+    line-height: 33.8px;
+  }
+}
+
+.image-wrapper {
+  position: relative;
+  height: 180px;
+  margin-top: 25px;
+
+  @include xl-down {
+    height: 150px;
+  }
+
+  & > div {
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+  }
+
+  &.free {
+    & > div {
+      @include xl-down {
+        width: 147px !important;
+        height: 139px !important;
+      }
+    }
+  }
+
+  &.enterprise {
+    & > div {
+      @include fullhd-down {
+        width: 281px !important;
+        height: 180px !important;
+      }
+
+      @include xl-down {
+        width: 250px !important;
+        height: 149px !important;
+      }
+    }
+  }
+}
+
+.features {
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
+  text-align: left;
+  list-style: none;
+  padding-left: 30px;
+  padding-right: 28px;
+  margin: 0;
+
+  @include fullhd-down {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include xl-down {
+    font-size: $font-size-xxs;
+    line-height: $line-height-xxs;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+
+    @include fullhd-down {
+      align-items: flex-start;
+    }
+
+    @include lg-down {
+      margin-bottom: 20px;
+    }
+
+    svg {
+      flex-shrink: 0;
+      margin-right: 10px;
+
+      @include xl-down {
+        height: 18px;
+        width: 18px;
+      }
+    }
+
+    span {
+      font-weight: 700;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.switch-button-wrapper {
+  position: relative;
+  display: flex;
+  margin-bottom: 30px;
+  z-index: 1;
+
+  @include lg-down {
+    justify-content: center;
+    margin-left: 15px;
+  }
+
+  span {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+    font-weight: bold;
+    color: $color-additional-6;
+    transition: color $transition-base;
+
+    &.active {
+      color: $color-primary;
+    }
+  }
+}
+
+.switch-button {
+  position: relative;
+  width: 55px;
+  height: 30px;
+  cursor: pointer;
+  background-color: $color-quaternary;
+  border: none;
+  border-radius: 100px;
+  outline: none;
+  transition: background-color $transition-long;
+  margin-left: 15px;
+  margin-right: 15px;
+  @include no-highlight-on-tap;
+
+  @include sm-down {
+    width: 48px;
+    height: 26px;
+  }
+
+  &::after {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    content: '';
+    background-color: $color-tertiary;
+    border-radius: 100%;
+    transition: all $transition-long;
+
+    @include sm-down {
+      top: 4px;
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  &.checked {
+    &::after {
+      left: 53%;
+    }
+  }
+}

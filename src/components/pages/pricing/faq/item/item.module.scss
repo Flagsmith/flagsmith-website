@@ -1,0 +1,120 @@
+.wrapper {
+  padding-bottom: 40px;
+  border-bottom: 2px solid $color-additional-4;
+  margin-bottom: 40px;
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  &.open {
+    .icon {
+      background-color: $color-accent-secondary;
+
+      svg {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 30px;
+    line-height: 39px;
+    font-weight: 700;
+    text-align: left;
+    background-color: transparent;
+    border: none;
+    padding-right: 0;
+    padding-left: 0;
+    outline: none;
+    cursor: pointer;
+    @include no-highlight-on-tap;
+
+    @include md-down {
+      font-size: $font-size-md;
+      line-height: $line-height-md;
+    }
+
+    @include sm-down {
+      font-size: 22px;
+      line-height: 28.6px;
+      align-items: flex-start;
+    }
+  }
+}
+
+.icon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: $color-primary;
+  border-radius: 100%;
+  margin-right: 25px;
+  flex-shrink: 0;
+  transition: background-color $transition-base;
+
+  @include md-down {
+    height: 32px;
+    width: 32px;
+    margin-right: 15px;
+  }
+
+  @include sm-down {
+    height: 28px;
+    width: 28px;
+  }
+
+  svg {
+    transition: transform $transition-base;
+
+    @include sm-down {
+      width: 8px;
+      height: 12px;
+    }
+  }
+}
+
+.description-wrapper {
+  margin-left: 0;
+  overflow: hidden;
+}
+
+.description {
+  max-width: 1035px;
+  padding-top: 15px;
+  padding-left: 65px;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  @include fullhd-down {
+    max-width: 985px;
+  }
+
+  @include md-down {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+    padding-left: 45px;
+  }
+
+  @include sm-down {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+    padding-top: 10px;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

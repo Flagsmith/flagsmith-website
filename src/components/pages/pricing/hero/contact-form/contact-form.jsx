@@ -1,0 +1,113 @@
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import classNames from 'classnames/bind';
+import { graphql, useStaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
+
+import Heading from 'components/shared/heading';
+import Input from 'components/shared/input';
+import Button from 'components/shared/button';
+import Link from 'components/shared/link';
+
+import styles from './contact-form.module.scss';
+
+const cx = classNames.bind(styles);
+
+const validationSchema = yup.object().shape({
+  name: yup.string().trim().required('Name is a required field'),
+  email: yup
+    .string()
+    .trim()
+    .email('Must be a valid email')
+    .required('Business email is a required field'),
+  phone: yup.string().trim().required('Phone number is a required field'),
+  website: yup.string().trim().required('Wibsite is a required field'),
+});
+
+const ContactForm = (props) => {
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit = async (values) => {
+    console.log('Form submit: ' + values);
+    setIsLoading(true);
+  };
+
+  const {
+    illustration: {
+      childImageSharp: { fixed: illustration },
+    },
+  } = useStaticQuery(graphql`
+    query {
+      illustration: file(relativePath: { eq: "pages/pricing/hero/contact-form/illustration.png" }) {
+        childImageSharp {
+          fixed(height: 370) {
+            ...GatsbyImageSharpFixed_withWebp_noBase64
+          }
+        }
+      }
+    }
+  `);
+
+  return (
+    <div className={cx('wrapper')}>
+      <div className={cx('inner')}>
+        <div className={cx('image-wrapper')}>
+          <Img fixed={illustration} alt="" />
+        </div>
+        <div className={cx('content')}>
+          <Heading className={cx('title')} size="lg">
+            Contact Us!
+          </Heading>
+          <form className={cx('form')} onSubmit={handleSubmit(onSubmit)} noValidate>
+            <Input
+              name="name"
+              placeholder="Your name"
+              autoComplete="name"
+              error={errors?.name?.message}
+              ref={register}
+            />
+            <Input
+              name="email"
+              placeholder="Your business email"
+              autoComplete="email"
+              error={errors?.email?.message}
+              ref={register}
+            />
+            <Input
+              name="phone"
+              placeholder="Your phone number (include your country code)"
+              autoComplete="tel"
+              error={errors?.phone?.message}
+              ref={register}
+            />
+            <Input
+              name="website"
+              placeholder="Website to install Flagsmith on"
+              autoComplete="url"
+              error={errors?.website?.message}
+              ref={register}
+            />
+
+            <div className={cx('form-footer')}>
+              <Button className={cx('button')} type="submit" loading={isLoading}>
+                Book a demo
+              </Button>
+              <span className={cx('form-footer-text')}>or</span>
+              <Link className={cx('link')} to="/" withArrow>
+                Start free trial
+              </Link>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ContactForm;

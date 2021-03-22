@@ -1,0 +1,32 @@
+.wrapper {
+  padding-top: 150px;
+  @include section-paddings;
+
+  @include fullhd-down {
+    padding-top: 120px;
+  }
+
+  @include lg-down {
+    padding-top: 90px;
+  }
+
+  @include md-down {
+    padding-top: 70px;
+  }
+}
+
+.inner {
+  max-width: 1270px;
+
+  @include fullhd-down {
+    max-width: 1070px;
+  }
+
+  @include xl-down {
+    max-width: 970px;
+  }
+
+  @include lg-down {
+    max-width: 940px;
+  }
+}

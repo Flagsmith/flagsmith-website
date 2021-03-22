@@ -70,6 +70,17 @@
     }
   }
 
+  &-accent-secondary {
+    color: $color-tertiary;
+    background: $color-accent-secondary;
+    box-shadow: 0px 10px 20px rgba(123, 81, 251, 0.2);
+
+    &:hover:not(:disabled) {
+      background: $color-accent-secondary-hover;
+      box-shadow: none;
+    }
+  }
+
   &-accent-tertiary {
     color: $color-primary;
     background: $color-accent-tertiary;

@@ -25,7 +25,23 @@
 @font-face {
   font-family: 'Bitter';
   font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/bitter-bold.woff2') format('woff2'),
+    url('/fonts/bitter-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Bitter';
+  font-style: normal;
   font-weight: 800;
   src: url('/fonts/bitter-extra-bold.woff2') format('woff2'),
     url('/fonts/bitter-extra-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/caveat-bold.woff2') format('woff2'),
+    url('/fonts/caveat-bold.woff') format('woff');
 }
