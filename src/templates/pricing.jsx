@@ -2,24 +2,25 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import Hero from 'components/pages/pricing/hero';
-import FAQ from 'components/pages/pricing/faq';
-import GetStarted from 'components/shared/get-started';
-
 import MainLayout from 'layouts/main';
+import Content from 'components/pages/pricing/content';
 
 const Pricing = ({
   data: {
     wpPage: { seo, acf: data },
   },
   pageContext,
-}) => (
-  <MainLayout seo={seo} pageContext={pageContext}>
-    <Hero {...data.heroPricing} />
-    <FAQ items={data.faq} />
-    <GetStarted />
-  </MainLayout>
-);
+}) => {
+  const contentProps = {
+    hero: data.heroPricing,
+    faq: data.faq,
+  };
+  return (
+    <MainLayout seo={seo} pageContext={pageContext}>
+      <Content {...contentProps} />
+    </MainLayout>
+  );
+};
 
 export default Pricing;
 

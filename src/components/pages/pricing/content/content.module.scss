@@ -22,7 +22,9 @@
   }
 
   .title {
+    position: relative;
     margin-bottom: 10px;
+    z-index: 1;
 
     @include md-down {
       max-width: 460px;
@@ -66,8 +68,10 @@
 }
 
 .description {
+  position: relative;
   margin-top: 0;
   margin-bottom: 60px;
+  z-index: 1;
 
   @include xl-down {
     font-size: $font-size-sm;
@@ -209,7 +213,8 @@
 
   &.on-prem {
     .shape-1 {
-      left: 70px;
+      top: -40px;
+      left: 50px;
 
       @include fullhd-down {
         left: -50px;
@@ -239,7 +244,8 @@
     }
 
     .shape-2 {
-      right: 75px;
+      right: 50px;
+      bottom: -50px;
 
       @include fullhd-down {
         right: -40px;

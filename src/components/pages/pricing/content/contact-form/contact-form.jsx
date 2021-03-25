@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -26,7 +27,7 @@ const validationSchema = yup.object().shape({
   website: yup.string().trim().required('Wibsite is a required field'),
 });
 
-const ContactForm = (props) => {
+const ContactForm = ({ title, description }) => {
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(validationSchema),
   });
@@ -55,15 +56,16 @@ const ContactForm = (props) => {
   `);
 
   return (
-    <div className={cx('wrapper')}>
+    <div className={cx('wrapper')} id="contactForm">
       <div className={cx('inner')}>
         <div className={cx('image-wrapper')}>
           <Img fixed={illustration} alt="" />
         </div>
         <div className={cx('content')}>
           <Heading className={cx('title')} size="lg">
-            Contact Us!
+            {title}
           </Heading>
+          <p className={cx('description')}>{description}</p>
           <form className={cx('form')} onSubmit={handleSubmit(onSubmit)} noValidate>
             <Input
               name="name"
@@ -108,6 +110,16 @@ const ContactForm = (props) => {
       </div>
     </div>
   );
+};
+
+ContactForm.defaultProps = {
+  title: 'Contact Us!',
+  description: `Flagmith's on-premise and private cloud hosting solutions offer an added level of control for companies that take privacy and compliance seriously.`,
+};
+
+ContactForm.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 };
 
 export default ContactForm;
