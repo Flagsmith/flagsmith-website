@@ -1,7 +1,8 @@
 .wrapper {
-  background-color: $color-secondary;
   padding-top: 150px;
   padding-bottom: 245px;
+  background-color: $color-secondary;
+
   @include section-paddings;
 
   @include fullhd-down {
@@ -20,8 +21,8 @@
   }
 
   @include sm-down {
-    overflow: hidden;
     padding-bottom: 70px;
+    overflow: hidden;
   }
 }
 
@@ -37,15 +38,7 @@
 
 .title {
   max-width: 475px;
-  margin-bottom: 90px;
-
-  @include fullhd-down {
-    margin-bottom: 70px;
-  }
-
-  @include lg-down {
-    margin-bottom: 50px;
-  }
+  margin-bottom: 15px;
 
   @include md-down {
     max-width: 100%;
@@ -119,7 +112,7 @@
 
 .illustration-wrapper {
   position: relative;
-  margin-left: -290px;
+  margin-left: -130px;
 
   @include fullhd-down {
     margin-left: -40px;
@@ -132,28 +125,28 @@
   & > div {
     @include fullhd-down {
       width: 780px !important;
-      height: 360px !important;
+      height: 514px !important;
     }
 
     @include xl-down {
       width: 690px !important;
-      height: 318px !important;
+      height: 454px !important;
     }
 
     @include lg-down {
       width: 557px !important;
-      height: 257px !important;
+      height: 367px !important;
     }
 
     @include md-down {
       width: 700px !important;
-      height: 323px !important;
+      height: 461px !important;
       margin-left: -42px;
     }
 
     @include sm-down {
       width: 629px !important;
-      height: 290px !important;
+      height: 414px !important;
       margin-left: auto;
     }
 

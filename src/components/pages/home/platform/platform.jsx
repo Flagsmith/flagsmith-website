@@ -20,7 +20,7 @@ const Platform = ({ title, items }) => {
     query {
       illustration: file(relativePath: { eq: "pages/home/platform/illustration.png" }) {
         childImageSharp {
-          fixed(width: 1040, quality: 95) {
+          fixed(width: 820, quality: 95) {
             ...GatsbyImageSharpFixed_withWebp_noBase64
           }
         }
