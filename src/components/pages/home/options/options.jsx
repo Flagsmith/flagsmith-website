@@ -31,7 +31,7 @@ const Options = ({ title, items }) => {
     query {
       illustrationSaas: file(relativePath: { eq: "pages/home/options/illustration-saas.png" }) {
         childImageSharp {
-          fixed(height: 246) {
+          fixed(height: 250) {
             ...GatsbyImageSharpFixed_withWebp_noBase64
           }
         }
@@ -41,7 +41,7 @@ const Options = ({ title, items }) => {
         relativePath: { eq: "pages/home/options/illustration-private-cloud.png" }
       ) {
         childImageSharp {
-          fixed(height: 230) {
+          fixed(height: 211) {
             ...GatsbyImageSharpFixed_withWebp_noBase64
           }
         }
@@ -51,7 +51,7 @@ const Options = ({ title, items }) => {
         relativePath: { eq: "pages/home/options/illustration-on-prem.png" }
       ) {
         childImageSharp {
-          fixed(height: 260) {
+          fixed(height: 240) {
             ...GatsbyImageSharpFixed_withWebp_noBase64
           }
         }

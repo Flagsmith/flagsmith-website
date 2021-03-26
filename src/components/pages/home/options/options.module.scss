@@ -1,9 +1,9 @@
 .wrapper {
   position: relative;
-  background-color: $color-secondary;
   padding-top: 120px;
   padding-bottom: 180px;
   overflow: hidden;
+  background-color: $color-secondary;
 
   @include section-paddings;
 
@@ -26,9 +26,9 @@
 
 .title {
   position: relative;
-  text-align: center;
-  margin-bottom: 90px;
   z-index: 1;
+  margin-bottom: 90px;
+  text-align: center;
 
   @include fullhd-down {
     margin-bottom: 70px;
@@ -63,8 +63,8 @@
 
 .item {
   position: relative;
-  text-decoration: none;
   z-index: 2;
+  text-decoration: none;
 
   &:hover {
     .item-link {
@@ -78,19 +78,19 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-left: 30px;
     color: $color-primary;
     background-color: $color-tertiary;
-    box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
     border-radius: 10px;
-    padding-top: 30px;
-    padding-left: 30px;
-    padding-right: 30px;
+    box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
 
     @include lg-down {
       display: grid;
-      align-items: center;
       grid-template-columns: 290px 1fr;
       column-gap: 30px;
+      align-items: center;
       padding-bottom: 30px;
     }
 
@@ -109,12 +109,12 @@
       & > div {
         @include fullhd-down {
           width: 287px !important;
-          height: 202px !important;
+          height: 195px !important;
         }
 
         @include xl-down {
           width: 260px !important;
-          height: 183px !important;
+          height: 177px !important;
         }
       }
     }
@@ -126,46 +126,45 @@
     .item-image {
       & > div {
         @include fullhd-down {
-          width: 251px !important;
-          height: 189px !important;
+          width: 300px !important;
+          height: 162px !important;
         }
 
         @include xl-down {
-          width: 227px !important;
-          height: 171px !important;
+          width: 270px !important;
+          height: 146px !important;
         }
       }
     }
 
     &::before,
     &::after {
-      content: '';
       position: absolute;
       top: 50%;
-      height: 150px;
-      width: 150px;
-      transform: translateY(-50%);
-      cursor: initial;
-      background-size: contain;
-      background-repeat: no-repeat;
       z-index: -1;
+      width: 150px;
+      height: 150px;
+      cursor: initial;
+      content: '';
+      background-repeat: no-repeat;
+      background-size: contain;
+      transform: translateY(-50%);
 
       @include fullhd-down {
-        height: 126px;
         width: 126px;
+        height: 126px;
       }
 
       @include xl-down {
-        height: 114px;
         width: 114px;
+        height: 114px;
         margin-top: 32px;
       }
 
       @include lg-down {
-        height: 100px;
         width: 100px;
+        height: 100px;
         margin-top: 0;
-
         transform: translateX(-50%);
       }
     }
@@ -203,8 +202,8 @@
       @include lg-down {
         top: auto;
         right: auto;
-        left: 50%;
         bottom: -75px;
+        left: 50%;
       }
     }
   }
@@ -214,12 +213,12 @@
       & > div {
         @include fullhd-down {
           width: 295px !important;
-          height: 213px !important;
+          height: 208px !important;
         }
 
         @include xl-down {
           width: 268px !important;
-          height: 193px !important;
+          height: 189px !important;
         }
       }
     }
@@ -309,12 +308,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 260px;
-    margin-bottom: 30px;
-
-    @include fullhd-down {
-      height: 210px;
-    }
+    height: 265px;
+    margin-bottom: 20px;
 
     @include xl-down {
       height: 200px;
@@ -346,24 +341,24 @@
 
   &-features {
     padding-left: 0;
-    list-style: none;
     margin: 0;
+    list-style: none;
 
     li {
       display: flex;
       align-items: flex-start;
+      margin-bottom: 15px;
       font-size: $font-size-xs;
       line-height: $line-height-xs;
-      margin-bottom: 15px;
 
       @include fullhd-down {
         margin-bottom: 17px;
       }
 
       @include xl-down {
+        margin-bottom: 15px;
         font-size: $font-size-xxs;
         line-height: 21px;
-        margin-bottom: 15px;
       }
 
       &:last-child {
@@ -385,25 +380,25 @@
   &-link {
     display: flex;
     align-items: center;
-    font-size: $font-size-xs;
-    line-height: $line-height-xs;
-    font-weight: 700;
-    border-top: 2px solid $color-additional-4;
     padding-top: 20px;
     padding-bottom: 20px;
     margin-top: auto;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    line-height: $line-height-xs;
+    border-top: 2px solid $color-additional-4;
 
     @include lg-down {
       grid-column-start: 2;
-      border-top: none;
       padding-top: 0;
       padding-bottom: 0;
+      border-top: none;
     }
 
     @include sm-down {
-      border-top: 2px solid $color-additional-4;
       padding-top: 20px;
       padding-bottom: 15px;
+      border-top: 2px solid $color-additional-4;
     }
 
     svg {
@@ -458,8 +453,8 @@
 }
 
 .shape-2 {
-  bottom: -60px;
   right: -135px;
+  bottom: -60px;
 
   @include fullhd-down {
     right: -100px;
