@@ -13,7 +13,7 @@ steps:
         from_secret: docker_password
     when:
       branch:
-        - master
+        - main
       event:
         exclude:
           - custom
