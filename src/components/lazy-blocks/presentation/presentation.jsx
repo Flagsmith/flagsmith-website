@@ -7,6 +7,7 @@ import Button from 'components/shared/button';
 import FeatureFlagsIllustration from 'components/shared/feature-flags-illustration';
 import Heading from 'components/shared/heading';
 import Link from 'components/shared/link';
+import RemoteConfigIllustration from 'components/shared/remote-config-illustration';
 
 import shape from './images/shape.svg';
 import styles from './presentation.module.scss';
@@ -15,6 +16,7 @@ const cx = classNames.bind(styles);
 
 const htmlIllustrations = {
   featureFlags: FeatureFlagsIllustration,
+  remoteConfig: RemoteConfigIllustration,
 };
 
 const Presentation = ({
