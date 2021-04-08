@@ -1,5 +1,4 @@
 import classNames from 'classnames/bind';
-import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
@@ -7,14 +6,8 @@ import { useInView } from 'react-intersection-observer';
 import Heading from 'components/shared/heading/heading';
 import Link from 'components/shared/link/link';
 import RemoteConfigIllustration from 'components/shared/remote-config-illustration';
-import { MOTION_EASY } from 'constants/constants';
 
 import Icon from './images/icon.inline.svg';
-import item1 from './images/item-1.url.svg';
-import item2 from './images/item-2.url.svg';
-import item3 from './images/item-3.url.svg';
-import popup from './images/popup.url.svg';
-import window from './images/window.url.svg';
 import styles from './remote-config.module.scss';
 
 const cx = classNames.bind(styles);
