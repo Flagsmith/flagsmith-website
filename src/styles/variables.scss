@@ -19,9 +19,11 @@ $color-additional-3: #342a39;
 $color-additional-4: #f8f8f7;
 $color-additional-5: #2a1f2f;
 $color-additional-6: #8e8792;
+$color-additional-7: #c0bcc2;
+$color-additional-8: #f1ede4;
 
 // Fonts
-$font-family-primary: 'Open-sans', arial, sans-serif;
+$font-family-primary: 'Open Sans', arial, sans-serif;
 $font-family-secondary: 'Bitter', arial, sans-serif;
 $font-family-tertiary: 'Caveat', arial, sans-serif;
 
@@ -64,3 +66,10 @@ $breakpoint-md-down: 1024px - 0.02px;
 $breakpoint-sm-down: 768px - 0.02px;
 $breakpoint-xs-down: 576px - 0.02px;
 $breakpoint-xxs-down: 414px - 0.02px;
+
+// Container
+$container-width-lg: 940px;
+$container-side-gap-lg: calc((100vw - #{$container-width-lg}) / -2);
+
+$container-width-md: 700px;
+$container-side-gap-md: calc((100vw - #{$container-width-md}) / -2);

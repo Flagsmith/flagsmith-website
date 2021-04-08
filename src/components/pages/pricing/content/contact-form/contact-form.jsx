@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import classNames from 'classnames/bind';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
 
+import Button from 'components/shared/button';
 import Heading from 'components/shared/heading';
 import Input from 'components/shared/input';
-import Button from 'components/shared/button';
 import Link from 'components/shared/link';
 
 import styles from './contact-form.module.scss';
@@ -35,7 +35,7 @@ const ContactForm = ({ title, description }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async (values) => {
-    console.log('Form submit: ' + values);
+    console.log(`Form submit: ${values}`);
     setIsLoading(true);
   };
 
@@ -66,7 +66,7 @@ const ContactForm = ({ title, description }) => {
             {title}
           </Heading>
           <p className={cx('description')}>{description}</p>
-          <form className={cx('form')} onSubmit={handleSubmit(onSubmit)} noValidate>
+          <form className={cx('form')} noValidate onSubmit={handleSubmit(onSubmit)}>
             <Input
               name="name"
               placeholder="Your name"

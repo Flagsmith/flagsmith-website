@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
+import React from 'react';
 
+import Button from 'components/shared/button';
 import Heading from 'components/shared/heading';
 
+import IconCheck from './images/check.inline.svg';
 import styles from './options.module.scss';
 
-import IconCheck from './images/check.inline.svg';
-import Button from 'components/shared/button';
 
 const cx = classNames.bind(styles);
 
@@ -19,7 +19,7 @@ const Options = ({ items }) => (
           {title}
         </Heading>
 
-        <div className={cx('image')}></div>
+        <div className={cx('image')} />
         <Button className={cx('button')} theme={theme} to="#contactForm">
           Contact us
         </Button>

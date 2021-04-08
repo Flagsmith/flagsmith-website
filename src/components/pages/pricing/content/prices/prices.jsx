@@ -1,37 +1,28 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { graphql, useStaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 
-import Heading from 'components/shared/heading';
 import Button from 'components/shared/button';
+import Heading from 'components/shared/heading';
 
-import styles from './prices.module.scss';
 import Check from './images/check.inline.svg';
 import UnCheck from './images/uncheck.inline.svg';
+import styles from './prices.module.scss';
 
 const cx = classNames.bind(styles);
 
 const Prices = ({ items }) => {
   const [payType, setPayType] = useState('yearly');
 
-  const {
-    illustrationFree: {
-      childImageSharp: { fixed: illustrationFree },
-    },
-    illustrationEnterprise: {
-      childImageSharp: { fixed: illustrationEnterprise },
-    },
-  } = useStaticQuery(graphql`
+  const { illustrationFree, illustrationEnterprise } = useStaticQuery(graphql`
     query {
       illustrationFree: file(
         relativePath: { eq: "pages/pricing/hero/prices/illustration-free.png" }
       ) {
         childImageSharp {
-          fixed(height: 170) {
-            ...GatsbyImageSharpFixed_withWebp_noBase64
-          }
+          gatsbyImageData(width: 180, quality: 80, placeholder: NONE)
         }
       }
 
@@ -39,9 +30,7 @@ const Prices = ({ items }) => {
         relativePath: { eq: "pages/pricing/hero/prices/illustration-enterprice.png" }
       ) {
         childImageSharp {
-          fixed(height: 180) {
-            ...GatsbyImageSharpFixed_withWebp_noBase64
-          }
+          gatsbyImageData(width: 330, quality: 80, placeholder: NONE)
         }
       }
     }
@@ -107,7 +96,7 @@ const Prices = ({ items }) => {
                     )}
                     {!price && (
                       <div className={cx('image-wrapper', imageName)}>
-                        <Img fixed={image} alt="" />
+                        <GatsbyImage image={getImage(image)} alt="" />
                       </div>
                     )}
                   </div>
@@ -121,14 +110,12 @@ const Prices = ({ items }) => {
                   </Button>
                 </div>
                 <ul className={cx('features')}>
-                  {features.map(({ text, enable }, index) => {
-                    return (
-                      <li className={cx({ enable })} key={index}>
-                        {enable ? <Check /> : <UnCheck />}
-                        <div dangerouslySetInnerHTML={{ __html: text }} />
-                      </li>
-                    );
-                  })}
+                  {features.map(({ text, enable }, index) => (
+                    <li className={cx({ enable })} key={index}>
+                      {enable ? <Check /> : <UnCheck />}
+                      <div dangerouslySetInnerHTML={{ __html: text }} />
+                    </li>
+                  ))}
                 </ul>
               </div>
             );

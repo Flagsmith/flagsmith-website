@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import styles from './heading.module.scss';
 
@@ -44,7 +44,7 @@ const Heading = (props) => {
 Heading.propTypes = {
   className: PropTypes.string,
   tag: PropTypes.string,
-  size: PropTypes.oneOf(['xxl', 'xl', 'lg', 'md']),
+  size: PropTypes.oneOf(['xxl', 'xl', 'lg', 'md', 'sm']),
   color: PropTypes.oneOf([
     'primary',
     'tertiary',

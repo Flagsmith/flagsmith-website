@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
 import classNames from 'classnames/bind';
+import { motion, useAnimation } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import Code from './code';
-import Options from './options';
-import State from './state';
-
 import styles from './features.module.scss';
-
 import shape1 from './images/shape-1.url.svg';
 import shape2 from './images/shape-2.url.svg';
 import shapeAddition from './images/shape-addition.url.svg';
 import shapeEqual from './images/shape-equal.url.svg';
+import Options from './options';
+import State from './state';
 
 const cx = classNames.bind(styles);
 

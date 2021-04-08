@@ -1,15 +1,14 @@
-import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import MainContext from 'context/main';
+import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 
-import Link from 'components/shared/link';
 import Button from 'components/shared/button';
-import SubMenu from './sub-menu';
-
+import Link from 'components/shared/link';
+import MainContext from 'context/main';
 import GithubIcon from 'icons/github.inline.svg';
 
 import styles from './mobile-menu.module.scss';
+import SubMenu from './sub-menu';
 
 const cx = classNames.bind(styles);
 

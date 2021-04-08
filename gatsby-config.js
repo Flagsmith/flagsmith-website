@@ -78,7 +78,10 @@ module.exports = {
       options: {
         additionalData: '@import "./src/styles/variables.scss" , "./src/styles/mixins.scss";',
         cssLoaderOptions: {
-          camelCase: true,
+          modules: {
+            namedExport: false,
+            exportLocalsConvention: 'camelCase',
+          },
         },
       },
     },
@@ -106,6 +109,7 @@ module.exports = {
         },
       },
     },
+    `gatsby-plugin-image`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

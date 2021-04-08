@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 
-import Heading from 'components/shared/heading/heading';
-import Prices from './prices';
-import ContactForm from './contact-form';
-import FAQ from './faq';
-import Options from './options';
 import GetStarted from 'components/shared/get-started';
+import Heading from 'components/shared/heading/heading';
 
+import ContactForm from './contact-form';
 import styles from './content.module.scss';
-
+import FAQ from './faq';
 import CloudIcon from './images/icon-cloud.inline.svg';
 import OnPremIcon from './images/icon-on-prem.inline.svg';
-
 import shape1 from './images/shape-1.svg';
 import shape2 from './images/shape-2.svg';
+import Options from './options';
+import Prices from './prices';
 
 const cx = classNames.bind(styles);
 
@@ -24,7 +22,7 @@ const iconsCollection = {
   onPrem: OnPremIcon,
 };
 
-const Content = ({ tabs, hero: { title, description, prices }, faq, options }) => {
+const Content = ({ tabs, hero: { title, description, prices }, faq, options, getStartedProps }) => {
   const [tabNameActive, setTabNameActive] = useState('cloud');
 
   return (
@@ -43,8 +41,8 @@ const Content = ({ tabs, hero: { title, description, prices }, faq, options }) =
                   className={cx('tab', { active: tabNameActive === key })}
                   role="button"
                   tabIndex="0"
-                  onClick={handleTabClick}
                   key={index}
+                  onClick={handleTabClick}
                 >
                   <Icon />
                   <div className={cx('tab-content')}>
@@ -81,7 +79,7 @@ const Content = ({ tabs, hero: { title, description, prices }, faq, options }) =
       </section>
 
       {tabNameActive === 'cloud' && <FAQ items={faq} />}
-      {tabNameActive === 'cloud' && <GetStarted />}
+      {tabNameActive === 'cloud' && <GetStarted {...getStartedProps} withPaddings />}
       {tabNameActive === 'onPrem' && <ContactForm />}
     </>
   );

@@ -1,5 +1,6 @@
 .wrapper {
   margin-bottom: 240px;
+
   @include section-paddings;
 
   @include fullhd-down {
@@ -40,6 +41,7 @@
 .left {
   grid-column-start: 2;
   grid-column-end: 6;
+
   @include with-link-accent-secondary;
 
   @include fullhd-down {
@@ -88,19 +90,20 @@
   margin-bottom: 20px;
 
   @include fullhd-down {
-    height: 60px;
     width: 60px;
+    height: 60px;
   }
 
   @include lg-down {
-    height: 50px;
     width: 50px;
+    height: 50px;
   }
 }
 
 .description {
   margin-bottom: 30px;
-  @include content;
+
+  @include list-style($color-primary, 20px, 0, 6px);
 
   @include xl-down {
     font-size: $font-size-sm;
@@ -108,9 +111,9 @@
   }
 
   @include lg-down {
+    margin-bottom: 25px;
     font-size: $font-size-xs;
     line-height: $line-height-xs;
-    margin-bottom: 25px;
   }
 }
 
@@ -118,8 +121,8 @@
   display: flex;
   align-items: center;
   font-size: $font-size-xs;
-  line-height: $line-height-xs;
   font-weight: 700;
+  line-height: $line-height-xs;
 }
 
 .illustration-wrapper {
@@ -152,18 +155,18 @@
 .window {
   width: 95%;
   border-radius: 10px;
-  box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
+  box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
 }
 
 .popup-wrapper {
   position: absolute;
   top: 14.3%;
   left: 13%;
-  height: 69%;
   width: 87%;
-  box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
-  border-radius: 8px;
+  height: 69%;
   overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
 }
 
 .popup {

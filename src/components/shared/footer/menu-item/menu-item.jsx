@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import Heading from 'components/shared/heading';
 import Link from 'components/shared/link';
@@ -11,7 +11,7 @@ const cx = classNames.bind(styles);
 
 const MenuItem = ({ label: sectionTitle, childItems }) => (
   <div className={cx('wrapper')}>
-    <Heading className={cx('title')} tag="h3" size="md" color="quaternary">
+    <Heading className={cx('title')} tag="h3" size="sm" color="quaternary">
       {sectionTitle}
     </Heading>
 

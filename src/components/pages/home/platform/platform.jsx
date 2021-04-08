@@ -1,28 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { graphql, useStaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import Heading from 'components/shared/heading/heading';
-import Item from './item';
 
+import Item from './item';
 import styles from './platform.module.scss';
 
 const cx = classNames.bind(styles);
 
 const Platform = ({ title, items }) => {
-  const {
-    illustration: {
-      childImageSharp: { fixed: illustration },
-    },
-  } = useStaticQuery(graphql`
+  const { illustration } = useStaticQuery(graphql`
     query {
       illustration: file(relativePath: { eq: "pages/home/platform/illustration.png" }) {
         childImageSharp {
-          fixed(width: 820, quality: 95) {
-            ...GatsbyImageSharpFixed_withWebp_noBase64
-          }
+          gatsbyImageData(width: 820, quality: 85, placeholder: NONE)
         }
       }
     }
@@ -38,15 +32,13 @@ const Platform = ({ title, items }) => {
             </Heading>
 
             <div className={cx('illustration-wrapper')}>
-              <Img fixed={illustration} alt="" />
+              <GatsbyImage image={getImage(illustration)} alt="" />
             </div>
           </div>
         </div>
 
         <div className={cx('items-wrapper')}>
-          {items.map((props, index) => {
-            return <Item {...props} key={index} />;
-          })}
+          {items.map((props, index) => <Item {...props} key={index} />)}
         </div>
       </div>
     </section>

@@ -1,20 +1,21 @@
-import React from 'react';
 import classNames from 'classnames/bind';
-
 import { motion } from 'framer-motion';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
-import { MOTION_EASY } from 'constants/constants';
-import styles from './state.module.scss';
+import React from 'react';
 
-import Avatar from './images/avatar.inline.svg';
-import AvatarDefault from './images/avatar-default.inline.svg';
-import Search from './images/search.inline.svg';
-import Action1 from './images/action-1.inline.svg';
-import Action2 from './images/action-2.inline.svg';
+import { MOTION_EASY } from 'constants/constants';
+
+
 import Action1Default from './images/action-1-default.inline.svg';
+import Action1 from './images/action-1.inline.svg';
 import Action2Default from './images/action-2-default.inline.svg';
+import Action2 from './images/action-2.inline.svg';
+import AvatarDefault from './images/avatar-default.inline.svg';
+import Avatar from './images/avatar.inline.svg';
 import chatIcon from './images/chat.svg';
+import Search from './images/search.inline.svg';
+import styles from './state.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -99,7 +100,7 @@ const State = ({ chat, designV2, dark, animationIsCompleted }) => {
         <motion.div
           initial={!animationIsCompleted ? 'visible' : 'hidden'}
           variants={variantsContentFade}
-          animate={'visible'}
+          animate="visible"
         >
           <Search className={cx('search')} />
         </motion.div>

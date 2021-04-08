@@ -5,19 +5,19 @@
 }
 
 .input-inner {
-  font-size: $font-size-sm;
-  line-height: $line-height-sm;
-  border: none;
-  color: $color-primary;
+  width: 100%;
+  max-width: 100%;
   padding-top: 3.5px;
-  padding-left: 0;
   padding-right: 20px;
   padding-bottom: 3.5px;
-  outline: none;
-  max-width: 100%;
-  width: 100%;
-  -webkit-appearance: none;
+  padding-left: 0;
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+  color: $color-primary;
   resize: none;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
 
   @include lg-down {
     font-size: $font-size-xs;
@@ -34,16 +34,16 @@
 
     &::-webkit-input-placeholder {
       opacity: 0;
-      transform: translateY(-10px);
       transition: transform $transition-base, opacity $transition-base;
+      transform: translateY(-10px);
     }
   }
 }
 
 .input-error {
   position: absolute;
+  bottom: -20px;
+  left: 0;
   font-size: $font-size-xxxs;
   line-height: $line-height-xxxs;
-  left: 0;
-  bottom: -20px;
 }

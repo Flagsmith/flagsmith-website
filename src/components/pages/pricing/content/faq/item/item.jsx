@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 
 import Heading from 'components/shared/heading';
-import styles from './item.module.scss';
+
 
 import Arrow from './images/arrow.inline.svg';
+import styles from './item.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -18,7 +19,7 @@ const variantsAnimation = {
 };
 
 const Item = ({ id, title, description, index }) => {
-  const [isOpen, setIsOpen] = useState(index === 0 ? true : false);
+  const [isOpen, setIsOpen] = useState(index === 0);
 
   const handleClick = () => setIsOpen((isOpen) => !isOpen);
 
@@ -28,9 +29,9 @@ const Item = ({ id, title, description, index }) => {
         <Heading
           className={cx('title')}
           tag="button"
-          onClick={handleClick}
           aria-expanded={isOpen}
           aria-controls={id}
+          onClick={handleClick}
         >
           <span className={cx('icon')}>
             <Arrow />

@@ -1,7 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-
+import PropTypes from 'prop-types';
+import React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { okaidia } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
@@ -16,9 +15,9 @@ const Code = ({ codeLabel, code }) => (
     </div>
     <SyntaxHighlighter
       language="javascript"
-      showLineNumbers
       style={okaidia}
       useInlineStyles={false}
+      showLineNumbers
     >
       {code}
     </SyntaxHighlighter>

@@ -2,6 +2,7 @@
   position: relative;
   padding-top: 180px;
   padding-bottom: 210px;
+
   @include section-paddings;
 
   @include fullhd-down {
@@ -36,8 +37,9 @@
 }
 
 .head {
-  text-align: center;
   margin-bottom: 55px;
+  text-align: center;
+
   @include with-link-accent-secondary;
 
   @include fullhd-down {
@@ -55,19 +57,19 @@
 
 .description {
   max-width: 740px;
-  margin-left: auto;
-  margin-right: auto;
   margin-top: 0;
+  margin-right: auto;
   margin-bottom: 20px;
+  margin-left: auto;
 
   @include fullhd-down {
     margin-bottom: 15px;
   }
 
   @include xl-down {
+    max-width: 630px;
     font-size: $font-size-sm;
     line-height: $line-height-sm;
-    max-width: 630px;
   }
 
   @include lg-down {
@@ -79,8 +81,8 @@
 .link {
   display: inline-block;
   font-size: $font-size-xs;
-  line-height: $line-height-xs;
   font-weight: 700;
+  line-height: $line-height-xs;
 }
 
 .tabs-wrapper {
@@ -95,11 +97,11 @@
 
 .tabs {
   width: 230px;
-  background: $color-additional-5;
-  box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
-  border-radius: 10px 0 0 10px;
   padding-top: 15px;
   padding-bottom: 15px;
+  background: $color-additional-5;
+  border-radius: 10px 0 0 10px;
+  box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
 
   @include fullhd-down {
     width: 190px;
@@ -111,10 +113,10 @@
 
   @include lg-down {
     width: 100%;
-    border-radius: 10px 10px 0 0;
     padding-top: 0;
     padding-bottom: 0;
     overflow: hidden;
+    border-radius: 10px 10px 0 0;
   }
 
   &-list {
@@ -130,16 +132,16 @@
   }
 
   &-item {
-    font-size: $font-size-xxxs;
-    line-height: $line-height-xxxs;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: $color-tertiary;
-    text-transform: uppercase;
     padding-top: 10px;
-    padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 10px;
+    padding-left: 30px;
+    font-size: $font-size-xxxs;
+    font-weight: 700;
+    line-height: $line-height-xxxs;
+    color: $color-tertiary;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     cursor: pointer;
     transition: background-color $transition-base;
 
@@ -153,8 +155,8 @@
 
       @include lg-down {
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
       }
     }
   }
@@ -167,16 +169,16 @@
   &-content {
     position: relative;
     display: block;
-    text-align: left;
-    height: 600px;
     width: 780px;
-    background-color: $color-primary;
-    box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
-    border-radius: 10px;
+    height: 600px;
     padding-top: 30px;
-    padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 30px;
+    padding-left: 20px;
+    text-align: left;
+    background-color: $color-primary;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
 
     @include fullhd-down {
       width: 660px;
@@ -188,11 +190,11 @@
     }
 
     @include lg-down {
-      height: 520px;
       width: 100%;
-      border-radius: 0 0 10px 10px;
+      height: 520px;
       padding-top: 20px;
       padding-bottom: 20px;
+      border-radius: 0 0 10px 10px;
     }
 
     @include sm-down {
@@ -234,8 +236,8 @@
     position: absolute;
     right: 15px;
     bottom: 15px;
-    height: 20px;
     width: 95px;
+    height: 20px;
 
     @include lg-down {
       width: 76px;
@@ -249,10 +251,11 @@
 
   &-button {
     display: none;
-    background-color: transparent;
     padding: 13px 18px;
-    outline: none;
+    background-color: transparent;
     border: none;
+    outline: none;
+
     @include no-highlight-on-tap;
 
     @include lg-down {
@@ -268,8 +271,8 @@
   top: 50%;
   left: 50%;
   z-index: 1;
-  height: 122px;
   width: 122px;
+  height: 122px;
   stroke: $color-accent-primary;
   stroke-linecap: round;
   transform: translateX(-50%) translateY(-50%) rotate(-90deg);
@@ -283,8 +286,8 @@
 
 .shape {
   position: absolute;
-  display: flex;
   z-index: -1;
+  display: flex;
 
   @include md-down {
     display: none;
@@ -437,23 +440,23 @@
   }
 
   &-ios {
-    bottom: 34.2%;
     right: 11.7vw;
+    bottom: 34.2%;
 
     @include fullhd-down {
-      bottom: 33.7%;
       right: 8.6vw;
+      bottom: 33.7%;
       width: 90px;
     }
 
     @include xl-down {
-      bottom: 32.9%;
       right: 6.6vw;
+      bottom: 32.9%;
     }
 
     @include lg-down {
-      bottom: 30.9%;
       right: 8.8vw;
+      bottom: 30.9%;
       width: 75px;
     }
   }
@@ -481,12 +484,12 @@
   }
 
   &-javascript {
-    bottom: 9.1%;
     right: 8vw;
+    bottom: 9.1%;
 
     @include fullhd-down {
-      bottom: 7.5%;
       right: 6.2vw;
+      bottom: 7.5%;
       width: 64px;
     }
 
@@ -495,8 +498,8 @@
     }
 
     @include lg-down {
-      bottom: 4%;
       right: 7.7vw;
+      bottom: 4%;
       width: 54px;
     }
   }
@@ -506,9 +509,11 @@
   0% {
     transform: translateZ(-10px);
   }
+
   50% {
     transform: translate3d(0, 10px, 0);
   }
+
   to {
     transform: translateZ(-10px);
   }
@@ -518,9 +523,11 @@
   0% {
     transform: translateZ(0);
   }
+
   50% {
     transform: translate3d(0, -10px, 0);
   }
+
   to {
     transform: translateZ(0);
   }

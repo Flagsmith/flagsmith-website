@@ -1,10 +1,11 @@
 .wrapper {
   position: relative;
-  text-align: center;
-  background-color: $color-secondary;
   padding-top: 130px;
   padding-bottom: 90px;
   margin-bottom: 210px;
+  text-align: center;
+  background-color: $color-secondary;
+
   @include section-paddings;
 
   @include fullhd-down {

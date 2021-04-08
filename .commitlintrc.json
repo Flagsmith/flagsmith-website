@@ -6,6 +6,7 @@
       "always",
       [
         "components",
+        "lazy-blocks",
         "constants",
         "hooks",
         "icons",

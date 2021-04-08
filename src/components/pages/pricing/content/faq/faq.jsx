@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import Item from './item';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import styles from './faq.module.scss';
+import Item from './item';
 
 const cx = classNames.bind(styles);
 

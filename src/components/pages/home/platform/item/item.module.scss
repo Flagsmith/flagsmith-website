@@ -37,21 +37,21 @@
   }
 
   &::before {
-    content: '';
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translateX(-50%);
-    height: 100%;
     width: 1px;
+    height: 100%;
+    content: '';
     background-color: $color-additional-1;
+    transform: translateX(-50%);
   }
 }
 
 .icon-wrapper {
   position: relative;
-  margin-top: -25px;
   z-index: 1;
+  margin-top: -25px;
 }
 
 .icon {
@@ -84,12 +84,12 @@
 }
 
 .title {
-  font-size: $font-size-lg;
-  line-height: $line-height-lg;
-  font-family: $font-family-secondary;
-  font-weight: 800;
   margin-top: 0;
   margin-bottom: 20px;
+  font-family: $font-family-secondary;
+  font-size: $font-size-lg;
+  font-weight: 800;
+  line-height: $line-height-lg;
 
   @include fullhd-down {
     font-size: 35px;
@@ -150,9 +150,9 @@
 .progress-bar {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  z-index: 1;
   width: 3px;
   background-color: $color-quaternary;
   border-radius: 6px;
-  z-index: 1;
+  transform: translateX(-50%);
 }

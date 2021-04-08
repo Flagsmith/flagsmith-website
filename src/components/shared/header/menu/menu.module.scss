@@ -24,13 +24,14 @@
 
 .item {
   position: relative;
+
   @include with-link-primary;
 
   &:hover {
     .dropdown {
-      transform: translate(calc(-50% + 35px), 0);
       visibility: visible;
       opacity: 1;
+      transform: translate(calc(-50% + 35px), 0);
     }
   }
 }
@@ -39,37 +40,37 @@
   position: relative;
   display: flex;
   align-items: center;
-  font-size: $font-size-xs;
-  line-height: $line-height-xs;
-  font-weight: 600;
   height: 100%;
   padding-top: 25px;
   padding-bottom: 25px;
+  font-size: $font-size-xs;
+  font-weight: 600;
+  line-height: $line-height-xs;
 }
 
 .dropdown {
   position: absolute;
   left: 50%;
-  transform: translate(calc(-50% + 35px), 15px);
-  background-color: $color-tertiary;
-  box-shadow: 0px 50px 100px rgba(30, 13, 38, 0.25);
-  border-radius: 10px;
   padding-top: 20px;
-  padding-left: 30px;
   padding-right: 60px;
   padding-bottom: 20px;
+  padding-left: 30px;
   list-style: none;
   visibility: hidden;
+  background-color: $color-tertiary;
+  border-radius: 10px;
+  box-shadow: 0 50px 100px rgba(30, 13, 38, 0.25);
   opacity: 0;
   transition: all $transition-base;
+  transform: translate(calc(-50% + 35px), 15px);
 
   &::before {
-    content: '';
     position: absolute;
     top: 0;
     left: 50%;
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
+    content: '';
     border-right: 8px solid transparent;
     border-bottom: 8px solid $color-tertiary;
     border-left: 8px solid transparent;
@@ -80,10 +81,10 @@
     white-space: nowrap;
 
     a {
-      font-size: $font-size-xxs;
-      line-height: $line-height-xxs;
       padding-top: 10px;
       padding-bottom: 10px;
+      font-size: $font-size-xxs;
+      line-height: $line-height-xxs;
     }
   }
 }

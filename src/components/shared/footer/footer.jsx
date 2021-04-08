@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
 import classNames from 'classnames/bind';
-import MainContext from 'context/main';
+import React, { useContext } from 'react';
 
 import Link from 'components/shared/link';
-import MenuItem from './menu-item/menu-item';
+import MainContext from 'context/main';
+import Logo from 'images/logo.inline.svg';
 
 import styles from './footer.module.scss';
+import MenuItem from './menu-item/menu-item';
 
-import Logo from 'images/logo.inline.svg';
+
 
 const cx = classNames.bind(styles);
 

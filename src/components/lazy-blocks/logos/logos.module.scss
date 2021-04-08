@@ -1,0 +1,33 @@
+.wrapper {
+  @include section-paddings;
+}
+
+.items-wrapper {
+  display: grid;
+  grid-template-columns: repeat(8, 130px);
+  justify-content: space-between;
+}
+
+.item {
+  max-width: 100%;
+}
+
+.text {
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: center;
+
+  @include xl-down {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+
+  @include lg-down {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+  }
+
+  @include sm-down {
+    margin-bottom: 20px;
+  }
+}

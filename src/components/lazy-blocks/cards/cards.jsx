@@ -1,0 +1,98 @@
+import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
+import React from 'react';
+
+import Heading from 'components/shared/heading';
+import Link from 'components/shared/link';
+import Arrow from 'icons/arrow-right.inline.svg';
+
+import styles from './cards.module.scss';
+
+const cx = classNames.bind(styles);
+
+const Cards = ({
+  title,
+  titleHighlightColor,
+  description,
+  items,
+  withBackground,
+  marginBottom,
+}) => {
+  const onlyLogo = items.every(({ text }) => !text);
+
+  return (
+    <section
+      className={cx('wrapper', {
+        'with-background': withBackground,
+        primary: withBackground,
+        [`margin-bottom-${marginBottom}`]: marginBottom,
+      })}
+    >
+      <div className="container">
+        {(title || description) && (
+          <div className={cx('header')}>
+            {title && (
+              <Heading
+                className={cx('title')}
+                tag="h2"
+                size="lg"
+                highlightedWordsColor={titleHighlightColor}
+                innerHTML={title}
+                highlightedWordsWithoutWrap={false}
+              />
+            )}
+            {description && (
+              <p className={cx('description')} dangerouslySetInnerHTML={{ __html: description }} />
+            )}
+          </div>
+        )}
+        <ul className={cx('items-wrapper', { withText: !onlyLogo, onlyLogo })}>
+          {items.map(({ logo, text, url }, index) => (
+            <li className={cx('item')} key={index}>
+              <Link className={cx('item-inner')} to={url}>
+                <img className={cx('logo')} loading="lazy" src={logo.url} alt={logo.alt} />
+                {!onlyLogo && (
+                  <>
+                    <p className={cx('text')}>{text}</p>
+                    <span className={cx('learn-more')}>
+                      Learn more
+                      <Arrow />
+                    </span>
+                  </>
+                )}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+};
+
+Cards.propTypes = {
+  title: PropTypes.string,
+  titleHighlightColor: PropTypes.oneOf(['primary', 'secondary']),
+  description: PropTypes.string,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      logo: PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        alt: PropTypes.string.isRequired,
+      }).isRequired,
+      text: PropTypes.string,
+      url: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  withBackground: PropTypes.bool,
+  marginBottom: PropTypes.oneOf(['xl', 'lg', 'md', 'sm', 'xs']),
+};
+
+Cards.defaultProps = {
+  title: '',
+  titleHighlightColor: 'primary',
+  description: '',
+  withBackground: false,
+  marginBottom: null,
+};
+
+export default Cards;

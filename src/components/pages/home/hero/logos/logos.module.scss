@@ -1,8 +1,8 @@
 .items-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   column-gap: 70px;
+  justify-content: center;
 
   @include fullhd-down {
     column-gap: 47px;

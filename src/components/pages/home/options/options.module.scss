@@ -80,6 +80,7 @@
     height: 100%;
     padding-top: 30px;
     padding-right: 30px;
+    padding-bottom: 15px;
     padding-left: 30px;
     color: $color-primary;
     background-color: $color-tertiary;
@@ -91,16 +92,13 @@
       grid-template-columns: 290px 1fr;
       column-gap: 30px;
       align-items: center;
-      padding-bottom: 30px;
     }
 
     @include sm-down {
       display: block;
-      padding-bottom: 0;
-    }
-
-    @include xxs-down {
-      padding: 15px;
+      padding-top: 15px;
+      padding-right: 15px;
+      padding-left: 15px;
     }
   }
 
@@ -381,7 +379,6 @@
     display: flex;
     align-items: center;
     padding-top: 20px;
-    padding-bottom: 20px;
     margin-top: auto;
     font-size: $font-size-xs;
     font-weight: 700;
@@ -391,13 +388,11 @@
     @include lg-down {
       grid-column-start: 2;
       padding-top: 0;
-      padding-bottom: 0;
       border-top: none;
     }
 
     @include sm-down {
       padding-top: 20px;
-      padding-bottom: 15px;
       border-top: 2px solid $color-additional-4;
     }
 

@@ -49,8 +49,8 @@
 }
 
 .logo-wrapper {
-  display: flex;
   z-index: 1;
+  display: flex;
 
   @include lg-down {
     max-width: 123px;

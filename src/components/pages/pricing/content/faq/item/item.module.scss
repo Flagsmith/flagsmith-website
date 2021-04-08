@@ -1,11 +1,11 @@
 .wrapper {
   padding-bottom: 40px;
-  border-bottom: 2px solid $color-additional-4;
   margin-bottom: 40px;
+  border-bottom: 2px solid $color-additional-4;
 
   &:last-child {
-    border-bottom: none;
     margin-bottom: 0;
+    border-bottom: none;
   }
 
   &.open {
@@ -22,16 +22,17 @@
     display: flex;
     align-items: center;
     width: 100%;
-    font-size: 30px;
-    line-height: 39px;
-    font-weight: 700;
-    text-align: left;
-    background-color: transparent;
-    border: none;
     padding-right: 0;
     padding-left: 0;
-    outline: none;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 39px;
+    text-align: left;
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+
     @include no-highlight-on-tap;
 
     @include md-down {
@@ -40,9 +41,9 @@
     }
 
     @include sm-down {
+      align-items: flex-start;
       font-size: 22px;
       line-height: 28.6px;
-      align-items: flex-start;
     }
   }
 }
@@ -50,25 +51,25 @@
 .icon {
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-shrink: 0;
   align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
+  margin-right: 25px;
   background-color: $color-primary;
   border-radius: 100%;
-  margin-right: 25px;
-  flex-shrink: 0;
   transition: background-color $transition-base;
 
   @include md-down {
-    height: 32px;
     width: 32px;
+    height: 32px;
     margin-right: 15px;
   }
 
   @include sm-down {
-    height: 28px;
     width: 28px;
+    height: 28px;
   }
 
   svg {
@@ -98,15 +99,15 @@
   }
 
   @include md-down {
+    padding-left: 45px;
     font-size: $font-size-sm;
     line-height: $line-height-sm;
-    padding-left: 45px;
   }
 
   @include sm-down {
+    padding-top: 10px;
     font-size: $font-size-xs;
     line-height: $line-height-xs;
-    padding-top: 10px;
   }
 
   p {

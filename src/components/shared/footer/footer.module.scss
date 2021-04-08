@@ -34,16 +34,16 @@
 
   svg {
     @include lg-down {
-      height: 26px;
       width: 123px;
+      height: 26px;
     }
   }
 }
 
 .menu {
   display: flex;
-  justify-content: space-between;
   grid-column: span 5;
+  justify-content: space-between;
 
   @include fullhd-down {
     margin-left: -30px;
@@ -62,10 +62,10 @@
 
   @include md-down {
     grid-column: span 12;
-    margin-left: 0;
     width: 100%;
     max-width: 620px;
     margin-bottom: 40px;
+    margin-left: 0;
   }
 
   @include sm-down {
@@ -76,12 +76,13 @@
 
 .copyright {
   display: flex;
+  grid-row-start: 2;
+  grid-column: span 7;
   align-items: center;
+  margin-top: -10px;
   font-size: $font-size-xs;
   line-height: $line-height-xs;
-  grid-column: span 7;
-  grid-row-start: 2;
-  margin-top: -10px;
+
   @include with-link-accent-secondary;
 
   @include fullhd-down {
@@ -93,8 +94,8 @@
   }
 
   @include md-down {
-    grid-column: span 12;
     grid-row-start: 3;
+    grid-column: span 12;
     margin-top: 0;
   }
 
@@ -106,10 +107,10 @@
   a {
     display: flex;
     align-items: center;
-    font-size: $font-size-xs;
-    line-height: $line-height-xs;
-    font-weight: 700;
     margin-left: 4px;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    line-height: $line-height-xs;
 
     @include xxs-down {
       font-size: $font-size-xxs;

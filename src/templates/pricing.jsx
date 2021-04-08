@@ -2,12 +2,13 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import MainLayout from 'layouts/main';
 import Content from 'components/pages/pricing/content';
+import MainLayout from 'layouts/main';
 
 const Pricing = ({
   data: {
     wpPage: { seo, acf: data },
+    wpSharedBlock: { getStarted },
   },
   pageContext,
 }) => {
@@ -15,9 +16,15 @@ const Pricing = ({
     hero: data.heroPricing,
     faq: data.faq,
   };
+  const getStartedProps = {
+    title: getStarted.title,
+    description: getStarted.description,
+    buttonText: getStarted.button.title,
+    buttonUrl: getStarted.button.url,
+  };
   return (
     <MainLayout seo={seo} pageContext={pageContext}>
-      <Content {...contentProps} />
+      <Content {...contentProps} getStartedProps={getStartedProps} />
     </MainLayout>
   );
 };
@@ -55,6 +62,16 @@ export const query = graphql`
         }
       }
       ...wpPageSeo
+    }
+    wpSharedBlock(slug: { eq: "get-started" }) {
+      getStarted: acf {
+        title
+        description
+        button {
+          title
+          url
+        }
+      }
     }
   }
 `;

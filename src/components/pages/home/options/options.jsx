@@ -1,39 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { graphql, useStaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import Heading from 'components/shared/heading/heading';
 import Link from 'components/shared/link/link';
+import IconArrowRight from 'icons/arrow-right.inline.svg';
 
-import styles from './options.module.scss';
-
+import IconCheck from './images/check.inline.svg';
 import shape1 from './images/shape-1.url.svg';
 import shape2 from './images/shape-2.url.svg';
-import IconCheck from './images/check.inline.svg';
-import IconArrowRight from 'icons/arrow-right.inline.svg';
+import styles from './options.module.scss';
 
 const cx = classNames.bind(styles);
 
 const Options = ({ title, items }) => {
-  const {
-    illustrationSaas: {
-      childImageSharp: { fixed: illustrationSaas },
-    },
-    illustrationPrivateCloud: {
-      childImageSharp: { fixed: illustrationPrivateCloud },
-    },
-    illustrationOnPrem: {
-      childImageSharp: { fixed: illustrationOnPrem },
-    },
-  } = useStaticQuery(graphql`
+  const { illustrationSaas, illustrationPrivateCloud, illustrationOnPrem } = useStaticQuery(graphql`
     query {
       illustrationSaas: file(relativePath: { eq: "pages/home/options/illustration-saas.png" }) {
         childImageSharp {
-          fixed(height: 250) {
-            ...GatsbyImageSharpFixed_withWebp_noBase64
-          }
+          gatsbyImageData(width: 250, quality: 80, placeholder: NONE)
         }
       }
 
@@ -41,9 +28,7 @@ const Options = ({ title, items }) => {
         relativePath: { eq: "pages/home/options/illustration-private-cloud.png" }
       ) {
         childImageSharp {
-          fixed(height: 211) {
-            ...GatsbyImageSharpFixed_withWebp_noBase64
-          }
+          gatsbyImageData(width: 211, quality: 80, placeholder: NONE)
         }
       }
 
@@ -51,9 +36,7 @@ const Options = ({ title, items }) => {
         relativePath: { eq: "pages/home/options/illustration-on-prem.png" }
       ) {
         childImageSharp {
-          fixed(height: 240) {
-            ...GatsbyImageSharpFixed_withWebp_noBase64
-          }
+          gatsbyImageData(width: 240, quality: 80, placeholder: NONE)
         }
       }
     }
@@ -83,7 +66,7 @@ const Options = ({ title, items }) => {
                   </Heading>
 
                   <div className={cx('item-image')}>
-                    <Img fixed={image} alt="" />
+                    <GatsbyImage image={getImage(image)} alt="" />
                   </div>
                   <div className={cx('item-content')}>
                     <ul className={cx('item-features')}>

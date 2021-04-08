@@ -1,0 +1,112 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // This is the height of illustration. Needs to be updated on every breakpoint where illustration's height gets changed
+  min-height: 500px;
+
+  @include section-paddings;
+
+  @include fullhd-down {
+    min-height: 420px;
+  }
+
+  @include xl-down {
+    min-height: 380px;
+  }
+
+  @include xxs-down {
+    min-height: initial;
+  }
+
+  &.with-margins {
+    // Dirty solution, feel free to change margin-bottom value of this block and margin-bottom of the block above in order to remove this line, thanks
+    min-height: initial !important;
+    margin-bottom: 350px;
+
+    @include fullhd-down {
+      margin-bottom: 295px;
+    }
+
+    @include xl-down {
+      margin-bottom: 280px;
+    }
+
+    @include lg-down {
+      margin-bottom: 230px;
+    }
+
+    @include md-down {
+      margin-bottom: 200px;
+    }
+
+    @include xxs-down {
+      margin-bottom: 120px;
+    }
+  }
+}
+
+.text {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+
+  &.type_1 {
+    strong {
+      &:nth-child(1) {
+        color: $color-accent-primary;
+      }
+
+      &:nth-child(2) {
+        color: $color-accent-tertiary;
+      }
+
+      &:nth-child(3) {
+        color: $color-accent-secondary;
+      }
+    }
+  }
+
+  &.type_2 {
+    font-size: 50px;
+    line-height: 1.3;
+
+    strong {
+      &:nth-child(1) {
+        color: $color-accent-tertiary;
+      }
+
+      &:nth-child(2) {
+        color: $color-accent-secondary;
+      }
+
+      &:nth-child(3) {
+        color: $color-accent-primary;
+      }
+    }
+  }
+
+  strong {
+    font-weight: inherit;
+  }
+}
+
+.illustration {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  @include fullhd-down {
+    width: 420px;
+  }
+
+  @include xl-down {
+    width: 380px;
+  }
+
+  @include xxs-down {
+    max-width: 100%;
+  }
+}

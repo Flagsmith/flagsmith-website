@@ -229,6 +229,7 @@
   border-radius: 100px;
   outline: none;
   transition: background-color $transition-long;
+
   @include no-highlight-on-tap;
 
   @include fullhd-down {
@@ -315,28 +316,28 @@
 }
 
 .border {
-  display: block;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  border-radius: 100px;
   z-index: -1;
+  display: block;
   margin: -9px;
   overflow: hidden;
+  border-radius: 100px;
 
   &::before {
-    content: '';
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: 1;
+    margin: 3px;
+    content: '';
     background-color: $color-secondary;
     border-radius: 100px;
-    margin: 3px;
-    z-index: 1;
   }
 }
 
@@ -347,14 +348,15 @@
   bottom: 0;
   left: 0;
   margin: -15px;
+  background-image:
+    linear-gradient(
+      249.26deg,
+      #3bf 0%,
+      #3bf 24.23%,
+      #ecb3ff 51.8%,
+      #73f 77%,
+      #73f 100%
+    );
   border-radius: inherit;
-  background-image: linear-gradient(
-    249.26deg,
-    #33bbff 0%,
-    #33bbff 24.23%,
-    #ecb3ff 51.8%,
-    #7733ff 77%,
-    #7733ff 100%
-  );
   transition: opacity $transition-base;
 }

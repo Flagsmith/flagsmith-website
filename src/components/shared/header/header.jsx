@@ -1,15 +1,16 @@
-import React, { useContext } from 'react';
 import classNames from 'classnames/bind';
-import Link from 'components/shared/link';
-import Menu from './menu/menu';
+import React, { useContext } from 'react';
 
-import Logo from 'images/logo.inline.svg';
+import Link from 'components/shared/link';
 import MainContext from 'context/main';
+import GithubIcon from 'icons/github.inline.svg';
+import Logo from 'images/logo.inline.svg';
 
 import Button from '../button/button';
-import GithubIcon from 'icons/github.inline.svg';
+
 
 import styles from './header.module.scss';
+import Menu from './menu/menu';
 
 const cx = classNames.bind(styles);
 
@@ -48,9 +49,9 @@ const Header = ({ onBurgerClick }) => {
           aria-label="Open Mobile Menu"
           onClick={onBurgerClick}
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span />
+          <span />
+          <span />
         </button>
       </div>
     </header>

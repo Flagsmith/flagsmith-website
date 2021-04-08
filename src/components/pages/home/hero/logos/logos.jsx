@@ -1,7 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import Img from 'gatsby-image';
+import PropTypes from 'prop-types';
+import React from 'react';
+
 import styles from './logos.module.scss';
 
 const cx = classNames.bind(styles);

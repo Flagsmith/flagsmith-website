@@ -1,12 +1,11 @@
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { graphql } from 'gatsby';
 
-import Header from 'components/shared/header';
 import Footer from 'components/shared/footer';
-import SEO from 'components/shared/seo';
+import Header from 'components/shared/header';
 import MobileMenu from 'components/shared/mobile-menu';
-
+import SEO from 'components/shared/seo';
 import MainContext from 'context/main';
 
 const MainLayout = ({ seo, children, pageContext }) => {

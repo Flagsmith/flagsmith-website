@@ -1,8 +1,8 @@
 .wrapper {
-  font-family: $font-family-secondary;
-  font-weight: 800;
   margin-top: 0;
   margin-bottom: 0;
+  font-family: $font-family-secondary;
+  font-weight: 800;
 
   &.size {
     &-xxl {
@@ -71,6 +71,21 @@
     }
 
     &-md {
+      font-size: 30px;
+      line-height: 39px;
+
+      @include fullhd-down {
+        font-size: 28px;
+        line-height: 36.4px;
+      }
+
+      @include xl-down {
+        font-size: 26px;
+        line-height: 33.8px;
+      }
+    }
+
+    &-sm {
       font-size: $font-size-md;
       line-height: $line-height-md;
     }
@@ -126,8 +141,8 @@
   }
 
   a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
     transition: $transition-base;
 
     &:hover {

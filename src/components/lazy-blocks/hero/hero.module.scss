@@ -1,0 +1,124 @@
+.wrapper {
+  position: relative;
+  padding-top: 180px;
+  padding-bottom: 180px;
+  overflow: hidden;
+  text-align: center;
+  background-color: $color-secondary;
+
+  @include section-paddings;
+
+  @include lg-down {
+    padding-top: 150px;
+    padding-bottom: 150px;
+  }
+
+  @include md-down {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  @include sm-down {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+
+.inner {
+  z-index: 1;
+}
+
+.title {
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.description {
+  max-width: 1010px;
+  margin-top: 0;
+  margin-right: auto;
+  margin-bottom: 30px;
+  margin-left: auto;
+
+  @include with-link-accent-secondary;
+
+  @include fullhd-down {
+    max-width: 850px;
+  }
+
+  @include xl-down {
+    max-width: 770px;
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+
+  @include lg-down {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+  }
+
+  @include md-down {
+    max-width: 580px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+
+  @include xs-down {
+    flex-direction: column;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.button {
+  margin-right: 30px;
+
+  @include lg-down {
+    margin-right: 20px;
+  }
+
+  @include sm-down {
+    margin-right: 15px;
+  }
+
+  @include xs-down {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+
+    @include xs-down {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.github-button-wrapper {
+  > span {
+    display: block;
+    height: 28px;
+  }
+}
+
+.illustration {
+  position: absolute !important;
+  bottom: 0;
+  left: 50%;
+  width: 2048px;
+  transform: translateX(-50%);
+}

@@ -40,3 +40,99 @@ body {
     max-width: initial;
   }
 }
+
+.container-sm {
+  position: relative;
+  max-width: 1010px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include content;
+
+  @include fullhd-down {
+    max-width: 850px;
+  }
+
+  @include xl-down {
+    max-width: 780px;
+  }
+
+  @include md-down {
+    max-width: 700px;
+  }
+
+  @include sm-down {
+    max-width: initial;
+  }
+}
+
+.section-with-container {
+  @include section-paddings;
+}
+
+// TODO: Need to split styles into separate files for better readability purpose
+// Section margins
+.margin-bottom-xl {
+  margin-bottom: 180px;
+
+  @include fullhd-down {
+    margin-bottom: 150px;
+  }
+
+  @include lg-down {
+    margin-bottom: 120px;
+  }
+}
+
+.margin-bottom-lg {
+  margin-bottom: 150px;
+
+  @include xl-down {
+    margin-bottom: 120px;
+  }
+
+  @include sm-down {
+    margin-bottom: 90px;
+  }
+}
+
+.margin-bottom-md {
+  margin-bottom: 120px;
+
+  @include sm-down {
+    margin-bottom: 90px;
+  }
+}
+
+.margin-bottom-sm {
+  margin-bottom: 90px;
+
+  @include md-down {
+    margin-bottom: 60px;
+  }
+}
+
+.margin-bottom-xs {
+  margin-bottom: 60px;
+}
+
+.margin-bottom-xxs {
+  margin-bottom: 30px;
+}
+
+.with-background {
+  padding-top: 150px;
+  padding-bottom: 150px;
+
+  &.primary {
+    background-color: $color-secondary;
+  }
+
+  &.secondary {
+    background-color: $color-additional-4;
+  }
+}
+
+.gatsby-image-wrapper [data-main-image] {
+  transition: none !important;
+}

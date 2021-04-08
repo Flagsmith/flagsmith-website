@@ -1,19 +1,20 @@
-import React, { useRef } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { motion, useViewportScroll, useTransform } from 'framer-motion';
+import PropTypes from 'prop-types';
+import React, { useRef } from 'react';
+
 import useSectionOffset from 'hooks/use-section-offset';
 
-import styles from './item.module.scss';
 
-import TraitsIcon from './images/traits.inline.svg';
-import TraitsIconActive from './images/traits-active.inline.svg';
-import SegmentsIcon from './images/segments.inline.svg';
-import SegmentsIconActive from './images/segments-active.inline.svg';
-import RolloutsIcon from './images/rollouts.inline.svg';
 import RolloutsIconActive from './images/rollouts-active.inline.svg';
-import TrackIcon from './images/track.inline.svg';
+import RolloutsIcon from './images/rollouts.inline.svg';
+import SegmentsIconActive from './images/segments-active.inline.svg';
+import SegmentsIcon from './images/segments.inline.svg';
 import TrackIconActive from './images/track-active.inline.svg';
+import TrackIcon from './images/track.inline.svg';
+import TraitsIconActive from './images/traits-active.inline.svg';
+import TraitsIcon from './images/traits.inline.svg';
+import styles from './item.module.scss';
 
 const iconCollection = {
   traits: TraitsIcon,

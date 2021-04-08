@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { useInView } from 'react-intersection-observer';
 
-import { motion } from 'framer-motion';
 import { MOTION_EASY } from 'constants/constants';
 
+import Logo from './images/logo.inline.svg';
 import styles from './options.module.scss';
 
-import Logo from './images/logo.inline.svg';
 
 const cx = classNames.bind(styles);
 
@@ -89,7 +89,7 @@ const Options = ({ items, state, setState, isUserTouchedToggle, animationIsCompl
             <Logo />
           </div>
         </div>
-        <div></div>
+        <div />
       </div>
     </motion.div>
   );

@@ -1,5 +1,6 @@
 .wrapper {
   padding-top: 150px;
+
   @include section-paddings;
 
   @include fullhd-down {

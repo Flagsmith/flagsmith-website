@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+
 const slash = require('slash');
 
 const filterNonRootItems = require('./src/utils/filter-non-root-items');

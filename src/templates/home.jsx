@@ -2,33 +2,42 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
-import ConfigureFeatures from 'components/pages/home/configure-features';
 import FeatureFlags from 'components/pages/home/feature-flags';
-import GetStarted from 'components/shared/get-started';
 import Hero from 'components/pages/home/hero';
 import Languages from 'components/pages/home/languages';
 import Options from 'components/pages/home/options';
 import Platform from 'components/pages/home/platform';
 import RemoteConfig from 'components/pages/home/remote-config';
+import GetStarted from 'components/shared/get-started';
+import RainbowText from 'components/shared/rainbow-text';
 import MainLayout from 'layouts/main';
 
 const Home = ({
   data: {
     wpPage: { seo, acf: data },
+    wpSharedBlock: { getStarted },
   },
   pageContext,
-}) => (
-  <MainLayout seo={seo} pageContext={pageContext}>
-    <Hero {...data.hero} />
-    <FeatureFlags {...data.section1} />
-    <ConfigureFeatures title={data.section2} />
-    <RemoteConfig {...data.section3} />
-    <Platform {...data.platform} />
-    <Languages {...data.languages} />
-    <Options {...data.options} />
-    <GetStarted />
-  </MainLayout>
-);
+}) => {
+  const getStartedProps = {
+    title: getStarted.title,
+    description: getStarted.description,
+    buttonText: getStarted.button.title,
+    buttonUrl: getStarted.button.url,
+  };
+  return (
+    <MainLayout seo={seo} pageContext={pageContext}>
+      <Hero {...data.hero} />
+      <FeatureFlags {...data.section1} />
+      <RainbowText text={data.section2} withMargins />
+      <RemoteConfig {...data.section3} />
+      <Platform {...data.platform} />
+      <Languages {...data.languages} />
+      <Options {...data.options} />
+      <GetStarted {...getStartedProps} withPaddings />
+    </MainLayout>
+  );
+};
 
 export default Home;
 
@@ -109,6 +118,16 @@ export const query = graphql`
         }
       }
       ...wpPageSeo
+    }
+    wpSharedBlock(slug: { eq: "get-started" }) {
+      getStarted: acf {
+        title
+        description
+        button {
+          title
+          url
+        }
+      }
     }
   }
 `;

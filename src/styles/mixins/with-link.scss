@@ -1,7 +1,7 @@
 @mixin with-link-primary {
   a:not(.button) {
-    text-decoration: none;
     color: $color-primary;
+    text-decoration: none;
     transition: color $transition-base;
 
     &:hover {
@@ -28,8 +28,8 @@
 
 @mixin with-link-quaternary {
   a:not(.button) {
-    text-decoration: none;
     color: $color-quaternary;
+    text-decoration: none;
     transition: color $transition-base;
 
     &:hover {
@@ -56,8 +56,8 @@
 
 @mixin with-link-accent-primary {
   a:not(.button) {
-    text-decoration: none;
     color: $color-accent-primary;
+    text-decoration: none;
     transition: color $transition-base;
 
     &:hover {
@@ -84,8 +84,8 @@
 
 @mixin with-link-accent-secondary {
   a:not(.button) {
-    text-decoration: none;
     color: $color-accent-secondary;
+    text-decoration: none;
     transition: color $transition-base;
 
     &:hover {

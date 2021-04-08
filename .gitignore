@@ -72,3 +72,4 @@ yarn-error.log
 .vscode/snipsnap.code-snippets
 
 .wordpress-cache
+.stylelintcache

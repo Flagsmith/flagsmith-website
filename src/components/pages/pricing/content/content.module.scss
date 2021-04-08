@@ -1,10 +1,10 @@
 .wrapper {
   position: relative;
-  text-align: center;
-  background-color: $color-secondary;
   padding-top: 150px;
   padding-bottom: 115px;
   overflow: hidden;
+  text-align: center;
+  background-color: $color-secondary;
 
   @include fullhd-down {
     padding-top: 130px;
@@ -23,13 +23,13 @@
 
   .title {
     position: relative;
-    margin-bottom: 10px;
     z-index: 1;
+    margin-bottom: 10px;
 
     @include md-down {
       max-width: 460px;
-      margin-left: auto;
       margin-right: auto;
+      margin-left: auto;
     }
 
     @include sm-down {
@@ -40,10 +40,10 @@
       position: relative;
 
       &::after {
-        content: '';
         position: absolute;
         width: 50px;
         height: 30px;
+        content: '';
         background-image: url(./images/flag.svg);
 
         @include lg-down {
@@ -69,9 +69,9 @@
 
 .description {
   position: relative;
+  z-index: 1;
   margin-top: 0;
   margin-bottom: 60px;
-  z-index: 1;
 
   @include xl-down {
     font-size: $font-size-sm;
@@ -89,17 +89,18 @@
 
   @include sm-down {
     max-width: 290px;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
   }
 }
 
 .tabs {
   position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
-  z-index: 1;
+
   @include section-paddings;
 
   @include lg-down {
@@ -118,27 +119,28 @@
 .tab {
   position: relative;
   display: flex;
-  align-items: center;
-  text-align: left;
   flex: 0 0 270px;
-  background-color: $color-tertiary;
-  box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
-  border-radius: 6px;
+  align-items: center;
   padding-top: 15px;
-  padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 15px;
+  padding-left: 20px;
   margin-right: 30px;
   overflow: hidden;
+  text-align: left;
   cursor: pointer;
+  background-color: $color-tertiary;
+  border-radius: 6px;
   outline: none;
+  box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
+
   @include no-highlight-on-tap;
 
   @include lg-down {
     flex: 0 0 260px;
-    margin-right: 20px;
     padding-top: 12px;
     padding-bottom: 8px;
+    margin-right: 20px;
   }
 
   @include sm-down {
@@ -148,12 +150,12 @@
   }
 
   &::after {
-    content: '';
     position: absolute;
     top: 0;
     left: 0;
-    height: 4px;
     width: 100%;
+    height: 4px;
+    content: '';
     background-color: $color-additional-1;
     transition: background-color $transition-base;
   }
@@ -202,10 +204,10 @@
 }
 
 .tab-description {
-  font-size: $font-size-xxs;
-  line-height: $line-height-xxs;
   margin-top: 0;
   margin-bottom: 0;
+  font-size: $font-size-xxs;
+  line-height: $line-height-xxs;
 }
 
 .content {
@@ -223,8 +225,8 @@
       @include xl-down {
         top: -17px;
         left: -38px;
-        height: 538px;
         width: 500px;
+        height: 538px;
       }
 
       @include lg-down {
@@ -254,8 +256,8 @@
       @include xl-down {
         right: -37px;
         bottom: -21px;
-        height: 475px;
         width: 500px;
+        height: 475px;
       }
 
       @include lg-down {
@@ -310,17 +312,17 @@
 }
 
 .shape-2 {
-  bottom: -55px;
   right: -154px;
+  bottom: -55px;
 
   @include fullhd-down {
-    bottom: -25px;
     right: -214px;
+    bottom: -25px;
   }
 
   @include lg-down {
-    bottom: 5px;
     right: -200px;
+    bottom: 5px;
   }
 
   @include md-down {

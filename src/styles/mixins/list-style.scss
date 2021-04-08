@@ -1,0 +1,29 @@
+@mixin list-style($bullet-color, $li-margin-bottom, $ul-padding-left, $bullet-size) {
+  ul {
+    padding-left: $ul-padding-left;
+    margin: 0;
+    list-style-type: none;
+
+    li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: $li-margin-bottom;
+      list-style: none;
+
+      &::before {
+        position: absolute;
+        top: 12px;
+        left: 0;
+        width: $bullet-size;
+        height: $bullet-size;
+        content: '';
+        background-color: $bullet-color;
+        border-radius: 50%;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

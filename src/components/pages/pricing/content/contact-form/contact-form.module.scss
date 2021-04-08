@@ -2,25 +2,26 @@
   position: relative;
   padding-top: 150px;
   padding-bottom: 140px;
+
   @include section-paddings;
 }
 
 .inner {
   position: relative;
+  z-index: 1;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   max-width: 1070px;
-  background-color: $color-tertiary;
-  box-shadow: 0px 10px 30px rgba(30, 13, 38, 0.1), 0px 5px 10px rgba(30, 13, 38, 0.1);
-  border-radius: 10px;
   padding-top: 45px;
-  padding-left: 75px;
   padding-right: 30px;
   padding-bottom: 60px;
-  margin-left: auto;
+  padding-left: 75px;
   margin-right: auto;
-  z-index: 1;
+  margin-left: auto;
+  background-color: $color-tertiary;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
 
   @include xl-down {
     max-width: 970px;
@@ -34,16 +35,16 @@
 
   @include md-down {
     flex-direction: column;
-    padding-left: 40px;
     padding-right: 40px;
     padding-bottom: 50px;
+    padding-left: 40px;
   }
 
   @include sm-down {
     padding-top: 30px;
-    padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 40px;
+    padding-left: 30px;
   }
 }
 
@@ -77,9 +78,9 @@
 
 .content {
   display: flex;
-  align-items: flex-start;
-  flex-direction: column;
   flex: 0 0 490px;
+  flex-direction: column;
+  align-items: flex-start;
 
   @include xl-down {
     flex: 0 0 440px;
@@ -116,10 +117,10 @@
 }
 
 .description {
-  font-size: $font-size-xs;
-  line-height: $line-height-xs;
   margin-top: 0;
   margin-bottom: 40px;
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
 
   @include xl-down {
     margin-bottom: 35px;
@@ -165,6 +166,7 @@
 .form-footer {
   display: flex;
   align-items: center;
+
   @include with-link-accent-secondary;
 
   @include sm-down {
@@ -173,13 +175,13 @@
 }
 
 .form-footer-text {
+  padding-right: 25px;
+  margin-left: 30px;
   font-size: $font-size-xs;
-  line-height: $line-height-xs;
   font-weight: bold;
+  line-height: $line-height-xs;
   color: $color-additional-6;
   text-transform: uppercase;
-  margin-left: 30px;
-  padding-right: 25px;
 
   @include sm-down {
     display: none;
@@ -188,8 +190,8 @@
 
 .button {
   @include lg-down {
-    font-size: $font-size-xs;
     padding: 17px 25px;
+    font-size: $font-size-xs;
   }
 
   @include sm-down {
@@ -200,6 +202,6 @@
 
 .link {
   font-size: $font-size-xs;
-  line-height: $line-height-xs;
   font-weight: bold;
+  line-height: $line-height-xs;
 }

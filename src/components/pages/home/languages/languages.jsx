@@ -1,27 +1,26 @@
-import React, { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import { useViewportScroll, motion, useTransform } from 'framer-motion';
+import PropTypes from 'prop-types';
+import React, { useRef, useState } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { okaidia } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { useViewportScroll, motion, useTransform } from 'framer-motion';
 
 import Heading from 'components/shared/heading/heading';
 import Link from 'components/shared/link/link';
 import useSectionOffset from 'hooks/use-section-offset';
-
-import styles from './languages.module.scss';
 import Logo from 'images/logo.inline.svg';
 
 import ShapeAndroid from './images/android.inline.svg';
-import ShapePython from './images/python.inline.svg';
-import ShapePhp from './images/php.inline.svg';
-import ShapeRuby from './images/ruby.inline.svg';
-import ShapeReactNative from './images/react-native.inline.svg';
-import ShapeIos from './images/ios.inline.svg';
-import ShapeFlutter from './images/flutter.inline.svg';
-import ShapeJavascript from './images/javascript.inline.svg';
 import ArrowLeft from './images/arrow-left.inline.svg';
 import ArrowRight from './images/arrow-right.inline.svg';
+import ShapeFlutter from './images/flutter.inline.svg';
+import ShapeIos from './images/ios.inline.svg';
+import ShapeJavascript from './images/javascript.inline.svg';
+import ShapePhp from './images/php.inline.svg';
+import ShapePython from './images/python.inline.svg';
+import ShapeReactNative from './images/react-native.inline.svg';
+import ShapeRuby from './images/ruby.inline.svg';
+import styles from './languages.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -123,8 +122,8 @@ const Languages = ({ title, description, buttonText, link: { url }, items }) => 
               {items.map(({ language }, index) => (
                 <li
                   className={cx('tabs-item', { active: index === activeItemIndex })}
-                  onClick={() => setActiveItemIndex(index)}
                   key={index}
+                  onClick={() => setActiveItemIndex(index)}
                 >
                   {language}
                 </li>
@@ -141,10 +140,10 @@ const Languages = ({ title, description, buttonText, link: { url }, items }) => 
                 <SyntaxHighlighter
                   className={cx('tabs-content-item', { active: index === activeItemIndex })}
                   language={codeStyle}
-                  showLineNumbers
                   style={okaidia}
                   useInlineStyles={false}
                   key={index}
+                  showLineNumbers
                 >
                   {code}
                 </SyntaxHighlighter>
@@ -156,8 +155,7 @@ const Languages = ({ title, description, buttonText, link: { url }, items }) => 
       </div>
 
       <div>
-        {imageCollection.map(({ name, Icon }, index) => {
-          return (
+        {imageCollection.map(({ name, Icon }, index) => (
             <motion.div
               className={cx('shape', `shape-${name}`)}
               style={getParallaxStyle(index)}
@@ -166,8 +164,7 @@ const Languages = ({ title, description, buttonText, link: { url }, items }) => 
             >
               <Icon />
             </motion.div>
-          );
-        })}
+          ))}
       </div>
     </section>
   );
