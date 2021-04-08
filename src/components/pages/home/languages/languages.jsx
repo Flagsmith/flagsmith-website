@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useViewportScroll, motion, useTransform } from 'framer-motion';
+import { useViewportScroll, motion, transform } from 'framer-motion';
 import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
@@ -71,13 +71,21 @@ const imageCollection = [
   },
 ];
 
-const Languages = ({ title, description, buttonText, link: { url }, items }) => {
+const Languages = ({
+  title,
+  description,
+  buttonText,
+  link: { url },
+  items,
+  initiallySelectedItemNumber,
+}) => {
   const sectionRef = useRef();
 
   const { scrollYProgress } = useViewportScroll();
   const { scrollPercentageStart, scrollPercentageEnd } = useSectionOffset(sectionRef);
 
-  const [activeItemIndex, setActiveItemIndex] = useState(0);
+  // We subtract from initiallySelectedItemNumber because arrays are starting from 0
+  const [activeItemIndex, setActiveItemIndex] = useState(initiallySelectedItemNumber - 1 || 0);
 
   const inputRange = variantsIntervals.map(
     (input) => scrollPercentageStart + (scrollPercentageEnd - scrollPercentageStart) * input
@@ -94,7 +102,7 @@ const Languages = ({ title, description, buttonText, link: { url }, items }) => 
   };
 
   const getParallaxStyle = (index) => {
-    const marginTop = useTransform(scrollYProgress, inputRange, variantsParallax[index]);
+    const marginTop = transform(scrollYProgress, inputRange, variantsParallax[index]);
 
     return {
       marginTop,
@@ -156,15 +164,15 @@ const Languages = ({ title, description, buttonText, link: { url }, items }) => 
 
       <div>
         {imageCollection.map(({ name, Icon }, index) => (
-            <motion.div
-              className={cx('shape', `shape-${name}`)}
-              style={getParallaxStyle(index)}
-              key={index}
-              aria-hidden
-            >
-              <Icon />
-            </motion.div>
-          ))}
+          <motion.div
+            className={cx('shape', `shape-${name}`)}
+            style={getParallaxStyle(index)}
+            key={index}
+            aria-hidden
+          >
+            <Icon />
+          </motion.div>
+        ))}
       </div>
     </section>
   );
@@ -184,10 +192,12 @@ Languages.propTypes = {
       codeStyle: PropTypes.string.isRequired,
     })
   ).isRequired,
+  initiallySelectedItemNumber: PropTypes.number,
 };
 
 Languages.defaultProps = {
   buttonText: 'Learn More',
+  initiallySelectedItemNumber: 0,
 };
 
 export default Languages;

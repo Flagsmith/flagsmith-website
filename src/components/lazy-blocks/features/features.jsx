@@ -31,7 +31,7 @@ const Features = ({ title, titleHighlightColor, items, columns, withBackground, 
         {items.map(({ title, titleHighlightColor, content }, index) => {
           const featureNumber = index + 1;
           return (
-            <li key={index}>
+            <li className={cx('item')} key={index}>
               <span className={cx('item-number')}>{featureNumber}</span>
               <Heading
                 className={cx('item-title')}

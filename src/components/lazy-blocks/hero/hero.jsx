@@ -28,12 +28,12 @@ const Hero = ({
     query {
       flagsIllustration: file(relativePath: { eq: "lazy-blocks/hero/flags-illustration.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 1920, quality: 80, placeholder: NONE)
+          gatsbyImageData(width: 2048, quality: 95, placeholder: NONE)
         }
       }
       dronesIllustration: file(relativePath: { eq: "lazy-blocks/hero/drones-illustration.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 1920, quality: 80, placeholder: NONE)
+          gatsbyImageData(width: 2048, quality: 95, placeholder: NONE)
         }
       }
     }

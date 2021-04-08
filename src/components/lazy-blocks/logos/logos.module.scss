@@ -6,6 +6,18 @@
   display: grid;
   grid-template-columns: repeat(8, 130px);
   justify-content: space-between;
+
+  @include lg-down {
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  @include md-down {
+    grid-template-columns: repeat(4, 100px);
+  }
+
+  @include xs-down {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .item {

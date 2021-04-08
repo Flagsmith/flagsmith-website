@@ -60,6 +60,7 @@ const Features = (props) => {
     if (inView) {
       animationSequence();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView]);
 
   return (

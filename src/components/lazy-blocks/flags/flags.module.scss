@@ -3,8 +3,12 @@
 }
 
 .title {
-  margin-bottom: 80px;
+  margin-bottom: 60px;
   text-align: center;
+
+  @include lg-down {
+    margin-bottom: 40px;
+  }
 }
 
 .items-wrapper {
@@ -17,6 +21,20 @@
   margin-top: 0;
   margin-bottom: 0;
   list-style-type: none;
+
+  @include lg-down {
+    row-gap: 60px;
+    column-gap: 20px;
+  }
+
+  @include md-down {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 40px;
+  }
+
+  @include sm-down {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .logo {

@@ -6,20 +6,56 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   column-gap: 30px;
+
+  @include md-down {
+    row-gap: 25px;
+    column-gap: 0;
+  }
 }
 
 .title {
   grid-column: 2 / 6;
+
+  @include md-down {
+    grid-column: 2 / 12;
+  }
+
+  @include sm-down {
+    grid-column: 1 / 13;
+  }
 }
 
 .content-wrapper {
   @include with-link-accent-secondary;
 
   grid-column: 7 / 11;
+
+  @include fullhd-down {
+    grid-column: 7 / 12;
+  }
+
+  @include md-down {
+    grid-column: 2 / 12;
+  }
+
+  @include sm-down {
+    grid-column: 1 / 13;
+  }
 }
 
 .content {
   margin-bottom: 30px;
+
+  @include xl-down {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+
+  @include lg-down {
+    margin-bottom: 25px;
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+  }
 
   &:last-child {
     margin-bottom: 0;
@@ -28,6 +64,10 @@
   > * {
     margin-top: 0;
     margin-bottom: 20px;
+
+    @include lg-down {
+      margin-bottom: 15px;
+    }
 
     &:last-child {
       margin-bottom: 0;
@@ -69,6 +109,10 @@
   font-weight: 700;
   line-height: $line-height-xs;
 
+  @include lg-down {
+    margin-bottom: 25px;
+  }
+
   @include xxs-down {
     font-size: $font-size-xxs;
     line-height: $line-height-xxs;
@@ -85,12 +129,29 @@
 
 .buttons-wrapper {
   display: flex;
+
+  @include xs-down {
+    flex-direction: column;
+  }
 }
 
 .button {
   margin-right: 30px;
 
+  @include lg-down {
+    margin-right: 15px;
+  }
+
+  @include xs-down {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
   &:last-of-type {
     margin-right: 0;
+
+    @include xs-down {
+      margin-bottom: 0;
+    }
   }
 }

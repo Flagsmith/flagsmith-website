@@ -3,6 +3,7 @@
   display: inline-block;
   font-weight: 700;
   line-height: 1;
+  text-align: center;
   text-decoration: none;
   white-space: nowrap;
   vertical-align: top;
@@ -72,7 +73,7 @@
 
   &-accent-secondary {
     color: $color-tertiary;
-    background: $color-accent-secondary;
+    background-color: $color-accent-secondary;
     box-shadow: 0 10px 20px rgba(123, 81, 251, 0.2);
 
     &:hover:not(:disabled) {
@@ -88,17 +89,6 @@
 
     &:hover:not(:disabled) {
       background: $color-accent-tertiary-hover;
-      box-shadow: none;
-    }
-  }
-
-  &-accent-secondary {
-    color: $color-tertiary;
-    background-color: $color-accent-secondary;
-    box-shadow: 0 10px 20px rgba(123, 81, 251, 0.2);
-
-    &:hover:not(:disabled) {
-      background: $color-accent-secondary-hover;
       box-shadow: none;
     }
   }

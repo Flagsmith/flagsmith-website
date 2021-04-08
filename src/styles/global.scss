@@ -124,6 +124,21 @@ body {
   padding-top: 150px;
   padding-bottom: 150px;
 
+  @include lg-down {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  @include md-down {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  @include sm-down {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
   &.primary {
     background-color: $color-secondary;
   }

@@ -4,11 +4,19 @@
 
 .header {
   margin-bottom: 60px;
+
+  @include lg-down {
+    margin-bottom: 40px;
+  }
 }
 
 .title {
   margin-bottom: 10px;
   text-align: center;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .description {
@@ -17,6 +25,16 @@
   text-align: center;
 
   @include with-link-accent-secondary;
+
+  @include xl-down {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+
+  @include lg-down {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+  }
 }
 
 .items-wrapper {
@@ -30,6 +48,20 @@
     grid-template-columns: repeat(4, 1fr);
     row-gap: 30px;
     column-gap: 30px;
+
+    @include xl-down {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include lg-down {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include sm-down {
+      grid-template-columns: repeat(1, 1fr);
+      row-gap: 20px;
+      column-gap: 0;
+    }
 
     .item-inner {
       align-items: flex-start;
@@ -49,6 +81,24 @@
     grid-template-columns: repeat(5, 1fr);
     row-gap: 20px;
     column-gap: 20px;
+
+    @include xl-down {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include lg-down {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include sm-down {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include xs-down {
+      grid-template-columns: repeat(1, 290px);
+      column-gap: 0;
+      justify-content: center;
+    }
 
     .item {
       height: 200px;
@@ -86,6 +136,11 @@
   margin-bottom: 30px;
   font-size: $font-size-sm;
   line-height: $line-height-sm;
+
+  @include xl-down {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+  }
 }
 
 .learn-more {
