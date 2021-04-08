@@ -22,7 +22,7 @@ const Prices = ({ items }) => {
         relativePath: { eq: "pages/pricing/hero/prices/illustration-free.png" }
       ) {
         childImageSharp {
-          gatsbyImageData(width: 180, quality: 80, placeholder: NONE)
+          gatsbyImageData(width: 180)
         }
       }
 
@@ -30,7 +30,7 @@ const Prices = ({ items }) => {
         relativePath: { eq: "pages/pricing/hero/prices/illustration-enterprice.png" }
       ) {
         childImageSharp {
-          gatsbyImageData(width: 330, quality: 80, placeholder: NONE)
+          gatsbyImageData(width: 330)
         }
       }
     }

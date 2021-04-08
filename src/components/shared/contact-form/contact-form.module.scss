@@ -43,14 +43,13 @@
   @include md-down {
     flex-direction: column;
     padding-right: 40px;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     padding-left: 40px;
   }
 
   @include sm-down {
     padding-top: 30px;
     padding-right: 30px;
-    padding-bottom: 40px;
     padding-left: 30px;
   }
 }
@@ -61,25 +60,40 @@
   }
 
   & > div {
-    @include xl-down {
-      width: 370px !important;
-      height: 342px !important;
-    }
-
-    @include lg-down {
-      width: 350px !important;
-      height: 323px !important;
+    @include md-down {
+      width: 400px;
+      height: 325px;
     }
 
     @include sm-down {
-      width: 300px !important;
-      height: 278px !important;
+      width: 350px;
     }
 
     @include xxs-down {
-      width: 260px !important;
-      height: 238px !important;
+      width: 260px;
+      height: 240px;
     }
+  }
+}
+
+.illustration {
+  position: absolute !important;
+  top: 50%;
+  left: 0;
+  height: 530px;
+  margin-top: -265px;
+
+  @include xl-down {
+    left: 30px;
+    width: 45%;
+  }
+
+  @include md-down {
+    position: relative !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin-top: 0;
   }
 }
 
@@ -135,11 +149,11 @@
     flex: initial;
     order: 1;
     width: 100%;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
   }
 
   @include sm-down {
-    margin-bottom: 40px;
+    margin-bottom: 10px;
   }
 }
 

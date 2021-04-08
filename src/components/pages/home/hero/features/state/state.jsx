@@ -1,11 +1,10 @@
 import classNames from 'classnames/bind';
 import { motion } from 'framer-motion';
 import { graphql, useStaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React from 'react';
 
 import { MOTION_EASY } from 'constants/constants';
-
 
 import Action1Default from './images/action-1-default.inline.svg';
 import Action1 from './images/action-1.inline.svg';
@@ -54,17 +53,11 @@ const variantChat = {
 };
 
 const State = ({ chat, designV2, dark, animationIsCompleted }) => {
-  const {
-    illustration: {
-      childImageSharp: { fixed: illustration },
-    },
-  } = useStaticQuery(graphql`
+  const { illustration } = useStaticQuery(graphql`
     query {
-      illustration: file(relativePath: { eq: "pages/home/hero/features/state/illustration.png" }) {
+      illustration: file(relativePath: { eq: "pages/home/hero/features/state/illustration.jpg" }) {
         childImageSharp {
-          fixed(width: 560) {
-            ...GatsbyImageSharpFixed_withWebp_noBase64
-          }
+          gatsbyImageData(width: 560)
         }
       }
     }
@@ -74,7 +67,7 @@ const State = ({ chat, designV2, dark, animationIsCompleted }) => {
     <div className={cx('wrapper')}>
       <motion.div className={cx('inner', { dark }, { designV2 })}>
         <div className={cx('illustration-wrapper')}>
-          <Img className={cx('illustration')} fadeIn={false} fixed={illustration} alt="" />
+          <GatsbyImage className={cx('illustration')} image={getImage(illustration)} alt="" />
         </div>
 
         {designV2 && (

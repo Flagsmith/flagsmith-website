@@ -20,7 +20,7 @@ const Options = ({ title, items }) => {
     query {
       illustrationSaas: file(relativePath: { eq: "pages/home/options/illustration-saas.png" }) {
         childImageSharp {
-          gatsbyImageData(width: 250, quality: 80, placeholder: NONE)
+          gatsbyImageData(width: 250)
         }
       }
 
@@ -28,7 +28,7 @@ const Options = ({ title, items }) => {
         relativePath: { eq: "pages/home/options/illustration-private-cloud.png" }
       ) {
         childImageSharp {
-          gatsbyImageData(width: 211, quality: 80, placeholder: NONE)
+          gatsbyImageData(width: 211)
         }
       }
 
@@ -36,7 +36,7 @@ const Options = ({ title, items }) => {
         relativePath: { eq: "pages/home/options/illustration-on-prem.png" }
       ) {
         childImageSharp {
-          gatsbyImageData(width: 240, quality: 80, placeholder: NONE)
+          gatsbyImageData(width: 240)
         }
       }
     }

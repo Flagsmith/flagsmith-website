@@ -66,9 +66,9 @@ const ContactForm = ({
 
   const { illustration } = useStaticQuery(graphql`
     query {
-      illustration: file(relativePath: { eq: "pages/pricing/hero/contact-form/illustration.png" }) {
+      illustration: file(relativePath: { eq: "pages/pricing/hero/contact-form/illustration.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 370, quality: 80, placeholder: NONE)
+          gatsbyImageData(width: 520)
         }
       }
     }
@@ -86,7 +86,7 @@ const ContactForm = ({
       <div className={cx('inner-wrapper')}>
         <div className={cx('inner')}>
           <div className={cx('image-wrapper')}>
-            <GatsbyImage image={getImage(illustration)} alt="" />
+            <GatsbyImage className={cx('illustration')} image={getImage(illustration)} alt="" />
           </div>
           <div className={cx('content')}>
             <div className={cx('header')}>

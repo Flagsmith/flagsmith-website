@@ -109,6 +109,16 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        // Defaults used for gatsbyImageData and StaticImage
+        defaults: {
+          placeholder: 'none',
+          quality: 80,
+        },
+      },
+    },
     `gatsby-plugin-image`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
