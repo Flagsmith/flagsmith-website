@@ -1,7 +1,16 @@
 .wrapper {
+  @include section-paddings;
+
+  &:global(.with-background) {
+    overflow: hidden;
+  }
+}
+
+.inner-wrapper {
   position: relative;
-  padding-top: 150px;
-  padding-bottom: 140px;
+  max-width: 1070px;
+  margin-right: auto;
+  margin-left: auto;
 
   @include section-paddings;
 
@@ -10,7 +19,12 @@
     padding-bottom: 120px;
   }
 
+  @include xl-down {
+    max-width: 970px;
+  }
+
   @include lg-down {
+    max-width: 940px;
     padding-top: 90px;
     padding-bottom: 70px;
   }
@@ -26,23 +40,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1070px;
   padding-top: 45px;
   padding-right: 30px;
   padding-bottom: 60px;
   padding-left: 75px;
-  margin-right: auto;
-  margin-left: auto;
   background-color: $color-tertiary;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
 
-  @include xl-down {
-    max-width: 970px;
-  }
-
   @include lg-down {
-    max-width: 940px;
     padding-top: 40px;
     padding-bottom: 55px;
   }
@@ -50,14 +56,13 @@
   @include md-down {
     flex-direction: column;
     padding-right: 40px;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     padding-left: 40px;
   }
 
   @include sm-down {
     padding-top: 30px;
     padding-right: 30px;
-    padding-bottom: 40px;
     padding-left: 30px;
   }
 }
@@ -68,25 +73,74 @@
   }
 
   & > div {
-    @include xl-down {
-      width: 370px !important;
-      height: 342px !important;
-    }
-
-    @include lg-down {
-      width: 350px !important;
-      height: 323px !important;
+    @include md-down {
+      width: 400px;
+      height: 325px;
     }
 
     @include sm-down {
-      width: 300px !important;
-      height: 278px !important;
+      width: 350px;
     }
 
     @include xxs-down {
-      width: 260px !important;
-      height: 238px !important;
+      width: 260px;
+      height: 240px;
     }
+  }
+}
+
+.illustration {
+  position: absolute !important;
+  top: 50%;
+  left: 0;
+  height: 530px;
+  margin-top: -265px;
+
+  @include xl-down {
+    left: 30px;
+    width: 45%;
+  }
+
+  @include md-down {
+    position: relative !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin-top: 0;
+  }
+}
+
+.header {
+  margin-bottom: 40px;
+
+  @include xl-down {
+    margin-bottom: 35px;
+  }
+
+  @include lg-down {
+    margin-bottom: 30px;
+  }
+
+  @include sm-down {
+    margin-bottom: 25px;
+  }
+}
+
+.title {
+  margin-bottom: 10px;
+
+  @include fullhd-down {
+    font-size: $font-size-lg;
+    line-height: $line-height-lg;
+  }
+
+  @include lg-down {
+    font-size: 35px;
+    line-height: 45.5px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -108,33 +162,21 @@
     flex: initial;
     order: 1;
     width: 100%;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
   }
 
   @include sm-down {
-    margin-bottom: 40px;
-  }
-
-  .title {
     margin-bottom: 10px;
-
-    @include fullhd-down {
-      font-size: $font-size-lg;
-      line-height: $line-height-lg;
-    }
-
-    @include lg-down {
-      font-size: 35px;
-      line-height: 45.5px;
-    }
   }
 }
 
 .description {
   margin-top: 0;
-  margin-bottom: 40px;
+  margin-bottom: 0;
   font-size: $font-size-xs;
   line-height: $line-height-xs;
+
+  @include with-link-accent-secondary;
 
   @include fullhd-down {
     margin-bottom: 30px;
@@ -215,4 +257,74 @@
   font-size: $font-size-xs;
   font-weight: bold;
   line-height: $line-height-xs;
+}
+
+.shape {
+  position: absolute;
+
+  @include fullhd-down {
+    width: 420px;
+  }
+
+  @include xl-down {
+    width: 380px;
+  }
+
+  @include sm-down {
+    width: 320px;
+  }
+
+  @include xxs-down {
+    width: 250px;
+  }
+}
+
+.shape-1 {
+  top: -90px;
+  left: -160px;
+
+  @include fullhd-down {
+    top: -70px;
+    left: -140px;
+  }
+
+  @include xl-down {
+    top: -60px;
+    left: -120px;
+  }
+
+  @include sm-down {
+    top: -50px;
+    left: -90px;
+  }
+
+  @include xs-down {
+    top: -40px;
+    left: -80px;
+  }
+}
+
+.shape-2 {
+  right: -160px;
+  bottom: -90px;
+
+  @include fullhd-down {
+    right: -140px;
+    bottom: -70px;
+  }
+
+  @include xl-down {
+    right: -120px;
+    bottom: -60px;
+  }
+
+  @include sm-down {
+    right: -90px;
+    bottom: -50px;
+  }
+
+  @include xs-down {
+    right: -80px;
+    bottom: -40px;
+  }
 }

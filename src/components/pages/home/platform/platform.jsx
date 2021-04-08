@@ -16,7 +16,7 @@ const Platform = ({ title, items }) => {
     query {
       illustration: file(relativePath: { eq: "pages/home/platform/illustration.png" }) {
         childImageSharp {
-          gatsbyImageData(width: 820, quality: 85, placeholder: NONE)
+          gatsbyImageData(width: 820)
         }
       }
     }
@@ -38,7 +38,9 @@ const Platform = ({ title, items }) => {
         </div>
 
         <div className={cx('items-wrapper')}>
-          {items.map((props, index) => <Item {...props} key={index} />)}
+          {items.map((props, index) => (
+            <Item {...props} key={index} />
+          ))}
         </div>
       </div>
     </section>

@@ -9,7 +9,6 @@ import { MOTION_EASY } from 'constants/constants';
 import Logo from './images/logo.inline.svg';
 import styles from './options.module.scss';
 
-
 const cx = classNames.bind(styles);
 
 const variants = {

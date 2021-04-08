@@ -1,5 +1,9 @@
 .wrapper {
   @include section-paddings;
+
+  &:global(.with-background) {
+    overflow: hidden;
+  }
 }
 
 .inner {
@@ -8,17 +12,58 @@
   column-gap: 30px;
   align-items: center;
 
+  @include md-down {
+    row-gap: 45px;
+    column-gap: 0;
+  }
+
   &.left {
     .content-wrapper {
       grid-column: 2 / 6;
+
+      @include fullhd-down {
+        grid-column: 1 / 6;
+      }
+
+      @include md-down {
+        grid-column: 2 / 12;
+      }
+
+      @include sm-down {
+        grid-column: 1 / 13;
+      }
     }
 
     .illustration-wrapper {
       grid-column: 7 / 13;
+
+      @include md-down {
+        grid-column: 2 / 12;
+      }
+
+      @include sm-down {
+        grid-column: 1 / 13;
+      }
     }
 
     .shape {
       right: -135px;
+
+      @include fullhd-down {
+        right: -95px;
+      }
+
+      @include xl-down {
+        right: -75px;
+      }
+
+      @include sm-down {
+        right: -45px;
+      }
+
+      @include xxs-down {
+        right: -20px;
+      }
     }
   }
 
@@ -27,19 +72,58 @@
 
     .content-wrapper {
       grid-column: 8 / 12;
+
+      @include fullhd-down {
+        grid-column: 8 / 13;
+      }
+
+      @include md-down {
+        grid-column: 2 / 12;
+      }
+
+      @include sm-down {
+        grid-column: 1 / 13;
+      }
     }
 
     .illustration-wrapper {
       grid-column: 1 / 7;
+
+      @include md-down {
+        grid-column: 2 / 12;
+      }
+
+      @include sm-down {
+        grid-column: 1 / 13;
+      }
     }
 
     .shape {
       left: -135px;
+
+      @include fullhd-down {
+        left: -95px;
+      }
+
+      @include xl-down {
+        left: -75px;
+      }
+
+      @include sm-down {
+        left: -45px;
+      }
+
+      @include xxs-down {
+        left: -20px;
+      }
     }
   }
 }
 
 .content-wrapper {
+  position: relative;
+  z-index: 1;
+
   @include with-link-accent-secondary;
 }
 
@@ -47,10 +131,23 @@
   display: block;
   height: 70px;
   margin-bottom: 30px;
+
+  @include fullhd-down {
+    height: 60px;
+  }
+
+  @include lg-down {
+    height: 50px;
+    margin-bottom: 25px;
+  }
 }
 
 .title {
   margin-bottom: 30px;
+
+  @include lg-down {
+    margin-bottom: 25px;
+  }
 
   &:last-child {
     margin-bottom: 0;
@@ -60,6 +157,17 @@
 .content {
   margin-bottom: 30px;
 
+  @include xl-down {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+
+  @include lg-down {
+    margin-bottom: 25px;
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+  }
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -67,6 +175,10 @@
   > * {
     margin-top: 0;
     margin-bottom: 20px;
+
+    @include lg-down {
+      margin-bottom: 15px;
+    }
 
     &:last-child {
       margin-bottom: 0;
@@ -108,6 +220,10 @@
   font-weight: 700;
   line-height: $line-height-xs;
 
+  @include lg-down {
+    margin-bottom: 25px;
+  }
+
   @include xxs-down {
     font-size: $font-size-xxs;
     line-height: $line-height-xxs;
@@ -124,13 +240,30 @@
 
 .buttons-wrapper {
   display: flex;
+
+  @include xs-down {
+    flex-direction: column;
+  }
 }
 
 .button {
   margin-right: 30px;
 
+  @include lg-down {
+    margin-right: 25px;
+  }
+
+  @include xs-down {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
   &:last-of-type {
     margin-right: 0;
+
+    @include xs-down {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -147,6 +280,22 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+
+  @include fullhd-down {
+    width: 420px;
+  }
+
+  @include xl-down {
+    width: 380px;
+  }
+
+  @include sm-down {
+    width: 320px;
+  }
+
+  @include xxs-down {
+    width: 250px;
+  }
 }
 
 .image {

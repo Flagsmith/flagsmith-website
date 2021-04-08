@@ -51,6 +51,7 @@
 
   @include xl-down {
     max-width: 770px;
+    margin-bottom: 25px;
     font-size: $font-size-sm;
     line-height: $line-height-sm;
   }
@@ -74,6 +75,10 @@
   justify-content: center;
   margin-bottom: 30px;
 
+  @include lg-down {
+    margin-bottom: 25px;
+  }
+
   @include xs-down {
     flex-direction: column;
   }
@@ -87,11 +92,7 @@
   margin-right: 30px;
 
   @include lg-down {
-    margin-right: 20px;
-  }
-
-  @include sm-down {
-    margin-right: 15px;
+    margin-right: 25px;
   }
 
   @include xs-down {
@@ -121,4 +122,12 @@
   left: 50%;
   width: 2048px;
   transform: translateX(-50%);
+
+  @include xl-down {
+    width: 1500px;
+  }
+
+  @include md-down {
+    width: 1000px;
+  }
 }

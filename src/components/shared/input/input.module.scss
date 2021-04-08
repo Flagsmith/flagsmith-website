@@ -34,9 +34,14 @@
 
     &::-webkit-input-placeholder {
       opacity: 0;
-      transition: transform $transition-base, opacity $transition-base;
       transform: translateY(-10px);
     }
+  }
+
+  &::-webkit-input-placeholder {
+    opacity: 1;
+    transition: transform $transition-base, opacity $transition-base;
+    transform: translateY(0);
   }
 }
 

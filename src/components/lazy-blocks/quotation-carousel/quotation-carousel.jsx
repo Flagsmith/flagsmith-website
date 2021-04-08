@@ -16,13 +16,14 @@ const cx = classNames.bind(styles);
 SwiperCore.use([Navigation, Pagination, A11y]);
 
 const QuotationCarousel = ({ items, withBackground, marginBottom }) => {
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+  const paginationRef = useRef(null);
+  const prevButtonRef = useRef(null);
+  const nextButtonRef = useRef(null);
   const [showSwiper, setShowSwiper] = useState(false);
 
   useEffect(() => {
-    setShowSwiper(Boolean(prevRef.current && nextRef.current));
-  }, [prevRef, nextRef]);
+    setShowSwiper(paginationRef.current && prevButtonRef.current && nextButtonRef.current);
+  }, [paginationRef, prevButtonRef, nextButtonRef]);
 
   return (
     <div
@@ -35,24 +36,33 @@ const QuotationCarousel = ({ items, withBackground, marginBottom }) => {
       <div className="container">
         <Quote className={cx('quote')} aria-hidden />
         <div className={cx('slider-wrapper')}>
-          <button className={cx('button')} type="button" aria-label="Previous slide" ref={prevRef}>
+          <button
+            className={cx('button')}
+            type="button"
+            aria-label="Previous slide"
+            ref={prevButtonRef}
+          >
             <Arrow className={cx('arrow')} />
           </button>
           {showSwiper && (
             <Swiper
               className={cx('items-wrapper')}
               pagination={{
+                el: paginationRef.current,
                 bulletClass: cx('bullet'),
                 bulletActiveClass: cx('active'),
                 clickable: true,
               }}
               navigation={{
-                prevEl: prevRef.current,
-                nextEl: nextRef.current,
-                disabledClass: 'disabled',
+                prevEl: prevButtonRef.current,
+                nextEl: nextButtonRef.current,
+              }}
+              breakpoints={{
+                768: { autoHeight: false },
               }}
               slidesPerView={1}
               loop
+              autoHeight
             >
               {items.map(({ text, author }, index) => (
                 <SwiperSlide key={index}>
@@ -64,9 +74,15 @@ const QuotationCarousel = ({ items, withBackground, marginBottom }) => {
               ))}
             </Swiper>
           )}
-          <button className={cx('button')} type="button" aria-label="Next slide" ref={nextRef}>
+          <button
+            className={cx('button')}
+            type="button"
+            aria-label="Next slide"
+            ref={nextButtonRef}
+          >
             <Arrow className={cx('arrow', 'flipped')} />
           </button>
+          <div className="swiper-pagination" ref={paginationRef} />
         </div>
       </div>
     </div>

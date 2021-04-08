@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import classNames from 'classnames/bind';
 import { graphql, useStaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -39,17 +39,11 @@ const ContactForm = ({ title, description }) => {
     setIsLoading(true);
   };
 
-  const {
-    illustration: {
-      childImageSharp: { fixed: illustration },
-    },
-  } = useStaticQuery(graphql`
+  const { illustration } = useStaticQuery(graphql`
     query {
-      illustration: file(relativePath: { eq: "pages/pricing/hero/contact-form/illustration.png" }) {
+      illustration: file(relativePath: { eq: "pages/pricing/hero/contact-form/illustration.jpg" }) {
         childImageSharp {
-          fixed(height: 370) {
-            ...GatsbyImageSharpFixed_withWebp_noBase64
-          }
+          gatsbyImageData(width: 520)
         }
       }
     }
@@ -59,7 +53,7 @@ const ContactForm = ({ title, description }) => {
     <div className={cx('wrapper')} id="contactForm">
       <div className={cx('inner')}>
         <div className={cx('image-wrapper')}>
-          <Img fixed={illustration} alt="" />
+          <GatsbyImage className={cx('illustration')} image={getImage(illustration)} alt="" />
         </div>
         <div className={cx('content')}>
           <Heading className={cx('title')} size="lg">
