@@ -1,44 +1,76 @@
 .wrapper {
   position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(2, 440px);
-  column-gap: 30px;
+
+  @include sm-down {
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      background: transparent;
+    }
+  }
+}
+
+.items-wrapper {
+  display: flex;
   justify-content: center;
   padding-top: 60px;
   padding-bottom: 30px;
+
+  @include section-paddings;
+
+  @include lg-down {
+    padding-top: 0;
+  }
+
+  @include sm-down {
+    justify-content: stretch;
+  }
+
+  &::after {
+    content: '';
+
+    @include sm-down {
+      flex: 0 0 15px;
+    }
+  }
 }
 
 .item {
+  z-index: 1;
   display: flex;
+  flex: 0 0 440px;
   flex-direction: column;
-  height: 100%;
   padding-top: 30px;
   padding-right: 30px;
   padding-left: 30px;
+  margin-right: 30px;
   color: $color-primary;
   background-color: $color-tertiary;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
 
-  &.accent-primary {
-    .features {
-      svg {
-        circle {
-          fill: $color-accent-primary;
-        }
-      }
-    }
+  &:last-of-type {
+    margin-right: 0;
   }
 
-  &.accent-secondary {
-    .features {
-      svg {
-        circle {
-          fill: $color-accent-secondary;
-        }
-      }
-    }
+  @include fullhd-down {
+    flex: 0 0 370px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  @include xl-down {
+    flex: 0 0 340px;
+  }
+
+  @include lg-down {
+    margin-right: 20px;
+  }
+
+  @include xs-down {
+    flex: 0 0 270px;
   }
 }
 
@@ -46,12 +78,31 @@
   margin-bottom: 20px;
 }
 
-.image {
+.image-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 210px;
   margin-bottom: 30px;
+}
+
+.image {
+  height: 210px;
+
+  img {
+    object-fit: contain !important;
+  }
+
+  @include fullhd-down {
+    height: 175px;
+  }
+
+  @include xl-down {
+    height: 155px;
+  }
+
+  @include sm-down {
+    height: 120px;
+  }
 }
 
 .content {
@@ -71,6 +122,11 @@
     font-size: $font-size-xs;
     line-height: $line-height-xs;
 
+    @include xl-down {
+      font-size: $font-size-xxs;
+      line-height: 1.5;
+    }
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -79,6 +135,10 @@
       flex-shrink: 0;
       margin-top: 2px;
       margin-right: 10px;
+
+      circle {
+        fill: $color-accent-primary;
+      }
     }
   }
 }

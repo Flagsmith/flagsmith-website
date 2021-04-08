@@ -191,6 +191,11 @@
   }
 
   .tab-title {
+    @include fullhd-down {
+      font-size: $font-size-md;
+      line-height: $line-height-md;
+    }
+
     @include lg-down {
       font-size: 22px;
       line-height: 28.6px;
@@ -208,6 +213,7 @@
   margin-bottom: 0;
   font-size: $font-size-xxs;
   line-height: $line-height-xxs;
+  color: $color-additional-6;
 }
 
 .content {
@@ -219,6 +225,7 @@
       left: 50px;
 
       @include fullhd-down {
+        top: -55px;
         left: -50px;
       }
 
@@ -251,6 +258,7 @@
 
       @include fullhd-down {
         right: -40px;
+        bottom: -25px;
       }
 
       @include xl-down {
@@ -262,11 +270,12 @@
 
       @include lg-down {
         right: -167px;
+        bottom: 5px;
       }
 
       @include md-down {
-        right: -188px;
-        bottom: -10px;
+        right: -170px;
+        bottom: 0;
       }
 
       @include sm-down {

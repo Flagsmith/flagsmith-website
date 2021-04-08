@@ -12,12 +12,25 @@
   margin-right: auto;
   margin-left: auto;
 
+  @include section-paddings;
+
+  @include fullhd-down {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
   @include xl-down {
     max-width: 970px;
   }
 
   @include lg-down {
     max-width: 940px;
+    padding-top: 90px;
+    padding-bottom: 70px;
+  }
+
+  @include md-down {
+    padding-top: 75px;
   }
 }
 
@@ -164,6 +177,19 @@
   line-height: $line-height-xs;
 
   @include with-link-accent-secondary;
+
+  @include fullhd-down {
+    margin-bottom: 30px;
+  }
+
+  @include lg-down {
+    font-size: $font-size-xxs;
+    line-height: 1.5;
+  }
+
+  @include sm-down {
+    margin-bottom: 25px;
+  }
 }
 
 .form {
@@ -179,11 +205,7 @@
 
   > div {
     &:last-child {
-      @include xl-down {
-        margin-top: 50px;
-      }
-
-      @include lg-down {
+      @include fullhd-down {
         margin-top: 45px;
       }
 
