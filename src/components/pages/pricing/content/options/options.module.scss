@@ -98,12 +98,19 @@
   margin-bottom: 20px;
 }
 
-.image {
+.image-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 210px;
   margin-bottom: 30px;
+}
+
+.image {
+  height: 210px;
+
+  img {
+    object-fit: contain !important;
+  }
 
   @include fullhd-down {
     height: 175px;

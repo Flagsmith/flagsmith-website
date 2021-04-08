@@ -109,6 +109,7 @@ Content.defaultProps = {
     {
       theme: 'accent-primary',
       title: 'Private cloud',
+      imageName: 'privateCloud',
       features: [
         {
           text: `Flagsmith's single-tenancy private cloud solution provides the benefits of cloud performance on a secure, dedicated infrastructure without having to manage it yourself.`,
@@ -121,6 +122,7 @@ Content.defaultProps = {
     {
       theme: 'accent-secondary',
       title: 'On-premise',
+      imageName: 'onPremise',
       features: [
         {
           text:
