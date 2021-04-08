@@ -5,12 +5,12 @@ import React from 'react';
 
 import { MOTION_EASY } from 'constants/constants';
 
-import styles from './feature-flags-illustration.module.scss';
 import item1 from './images/item-1.url.svg';
 import item2 from './images/item-2.url.svg';
 import item3 from './images/item-3.url.svg';
 import popup from './images/popup.url.svg';
 import window from './images/window.url.svg';
+import styles from './remote-config-illustration.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -36,9 +36,9 @@ const variantsAction = {
   }),
 };
 
-const FeatureFlagsIllustration = ({ className, animate }) => (
+const RemoteConfigIllustration = ({ className, animate }) => (
   <motion.div
-    className={cx('wrapper', className)}
+    className={cx('illustration-wrapper', className)}
     initial="hidden"
     animate={animate && 'visible'}
     aria-hidden
@@ -80,14 +80,14 @@ const FeatureFlagsIllustration = ({ className, animate }) => (
   </motion.div>
 );
 
-FeatureFlagsIllustration.propTypes = {
+RemoteConfigIllustration.propTypes = {
   className: PropTypes.string,
   animate: PropTypes.bool,
 };
 
-FeatureFlagsIllustration.defaultProps = {
+RemoteConfigIllustration.defaultProps = {
   className: '',
   animate: false,
 };
 
-export default FeatureFlagsIllustration;
+export default RemoteConfigIllustration;

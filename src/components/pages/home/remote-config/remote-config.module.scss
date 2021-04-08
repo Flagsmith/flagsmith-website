@@ -125,7 +125,7 @@
   line-height: $line-height-xs;
 }
 
-.illustration-wrapper {
+.illustration {
   position: relative;
   margin-top: 10px;
 
@@ -150,43 +150,4 @@
     width: 100%;
     margin-top: 0;
   }
-}
-
-.window {
-  width: 95%;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
-}
-
-.popup-wrapper {
-  position: absolute;
-  top: 14.3%;
-  left: 13%;
-  width: 87%;
-  height: 69%;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
-}
-
-.popup {
-  width: 100%;
-}
-
-.item {
-  position: absolute;
-  left: 5%;
-  width: 90.6%;
-}
-
-.item-1 {
-  top: 25.6%;
-}
-
-.item-2 {
-  top: 49.7%;
-}
-
-.item-3 {
-  top: 74%;
 }
