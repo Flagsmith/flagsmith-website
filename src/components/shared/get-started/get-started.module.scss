@@ -149,6 +149,7 @@
   }
 
   @include xxs-down {
-    width: 100%;
+    top: 10px;
+    width: 230px;
   }
 }
