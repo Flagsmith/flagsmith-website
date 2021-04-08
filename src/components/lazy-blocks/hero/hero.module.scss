@@ -118,16 +118,7 @@
 
 .illustration {
   position: absolute !important;
+  right: 0%;
   bottom: 0;
-  left: 50%;
-  width: 2048px;
-  transform: translateX(-50%);
-
-  @include xl-down {
-    width: 1500px;
-  }
-
-  @include md-down {
-    width: 1000px;
-  }
+  left: 0%;
 }
