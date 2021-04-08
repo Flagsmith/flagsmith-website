@@ -8,8 +8,6 @@ import Logo from 'images/logo.inline.svg';
 import styles from './footer.module.scss';
 import MenuItem from './menu-item/menu-item';
 
-
-
 const cx = classNames.bind(styles);
 
 const Footer = () => {
@@ -26,7 +24,7 @@ const Footer = () => {
           </Link>
         </div>
         <span className={cx('copyright')}>
-          Creative design made by
+          Creative design by
           <Link to="https://pixelpoint.io/" target="_blank" withArrow>
             Pixel Point
           </Link>
