@@ -2,10 +2,10 @@ import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
+import ContactForm from 'components/shared/contact-form';
 import GetStarted from 'components/shared/get-started';
 import Heading from 'components/shared/heading/heading';
 
-import ContactForm from './contact-form';
 import styles from './content.module.scss';
 import FAQ from './faq';
 import CloudIcon from './images/icon-cloud.inline.svg';
@@ -27,7 +27,7 @@ const Content = ({ tabs, hero: { title, description, prices }, faq, options, get
 
   return (
     <>
-      <section className={cx('wrapper')}>
+      <section className={cx('wrapper', 'margin-bottom-lg')}>
         <div className={cx('container', 'inner')}>
           <Heading className={cx('title')} highlightedWordsColor="secondary" innerHTML={title} />
           <p className={cx('description')}>{description}</p>
@@ -80,7 +80,14 @@ const Content = ({ tabs, hero: { title, description, prices }, faq, options, get
 
       {tabNameActive === 'cloud' && <FAQ items={faq} />}
       {tabNameActive === 'cloud' && <GetStarted {...getStartedProps} withPaddings />}
-      {tabNameActive === 'onPrem' && <ContactForm />}
+      {tabNameActive === 'onPrem' && (
+        <ContactForm
+          id="contactForm"
+          title="Contact Us!"
+          description={`Flagmith's on-premise and private cloud hosting solutions offer an added level of control for companies that take privacy and compliance seriously.`}
+          marginBottom="lg"
+        />
+      )}
     </>
   );
 };

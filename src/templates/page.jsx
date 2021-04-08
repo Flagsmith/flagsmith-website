@@ -13,6 +13,7 @@ import Logos from 'components/lazy-blocks/logos';
 import Presentation from 'components/lazy-blocks/presentation';
 import PresentationWithoutIllustration from 'components/lazy-blocks/presentation-without-illustration';
 import QuotationCarousel from 'components/lazy-blocks/quotation-carousel';
+import ContactForm from 'components/shared/contact-form';
 import GetStarted from 'components/shared/get-started';
 import RainbowText from 'components/shared/rainbow-text';
 import MainLayout from 'layouts/main';
@@ -79,6 +80,7 @@ const components = {
   presentation: Presentation,
   presentationwithoutillustration: PresentationWithoutIllustration,
   quotationcarousel: QuotationCarousel,
+  contactform: ContactForm,
   getstarted: GetStarted,
   rainbowtext: RainbowText,
 };
