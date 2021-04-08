@@ -22,7 +22,7 @@ const iconsCollection = {
   onPrem: OnPremIcon,
 };
 
-const Content = ({ tabs, hero: { title, description, prices, options }, faq, getStartedProps }) => {
+const Content = ({ hero: { title, description, tabs, prices, options }, faq, getStartedProps }) => {
   const [tabNameActive, setTabNameActive] = useState('cloud');
 
   return (
@@ -33,7 +33,7 @@ const Content = ({ tabs, hero: { title, description, prices, options }, faq, get
           <p className={cx('description')}>{description}</p>
 
           <div className={cx('tabs')}>
-            {tabs.map(({ key, title, description }, index) => {
+            {tabs.map(({ iconName: key, title, description }, index) => {
               const Icon = iconsCollection[key];
               const handleTabClick = () => setTabNameActive(key);
               return (
@@ -43,6 +43,7 @@ const Content = ({ tabs, hero: { title, description, prices, options }, faq, get
                   tabIndex="0"
                   key={index}
                   onClick={handleTabClick}
+                  onKeyDown={handleTabClick}
                 >
                   <Icon />
                   <div className={cx('tab-content')}>
@@ -92,69 +93,56 @@ const Content = ({ tabs, hero: { title, description, prices, options }, faq, get
   );
 };
 
-Content.defaultProps = {
-  tabs: [
-    {
-      key: 'cloud',
-      title: 'Cloud',
-      description: 'Flagsmith as a service',
-    },
-    {
-      key: 'onPrem',
-      title: 'On Prem',
-      description: 'In your enviroment',
-    },
-  ],
-};
-
 Content.propTypes = {
-  hero: PropTypes.objectOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      prices: PropTypes.arrayOf(
-        PropTypes.shape({
+  hero: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    tabs: PropTypes.arrayOf(
+      PropTypes.shape({
+        iconName: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+    prices: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string,
+        price: PropTypes.string,
+        priceLabel: PropTypes.string,
+        imageName: PropTypes.string,
+        button: PropTypes.shape({
+          url: PropTypes.string.isRequired,
+          target: PropTypes.string,
           title: PropTypes.string.isRequired,
-          description: PropTypes.string,
-          price: PropTypes.string,
-          priceLabel: PropTypes.string,
-          imageName: PropTypes.string,
-          button: PropTypes.shape({
-            url: PropTypes.string.isRequired,
-            target: PropTypes.string,
-            title: PropTypes.string.isRequired,
-          }).isRequired,
-          features: PropTypes.arrayOf(
-            PropTypes.shape({
-              text: PropTypes.string.isRequired,
-              enable: PropTypes.bool,
-            })
-          ).isRequired,
-          theme: PropTypes.string,
-        })
-      ).isRequired,
-    })
-  ).isRequired,
-
-  tabs: PropTypes.arrayOf(
+        }).isRequired,
+        features: PropTypes.arrayOf(
+          PropTypes.shape({
+            text: PropTypes.string.isRequired,
+            enable: PropTypes.bool,
+          })
+        ).isRequired,
+        theme: PropTypes.string,
+      })
+    ).isRequired,
+    options: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        features: PropTypes.arrayOf(
+          PropTypes.shape({
+            text: PropTypes.string.isRequired,
+          })
+        ).isRequired,
+      })
+    ).isRequired,
+  }).isRequired,
+  faq: PropTypes.arrayOf(
     PropTypes.shape({
-      key: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
     })
   ).isRequired,
-
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      theme: PropTypes.string.isRequired,
-      features: PropTypes.arrayOf(
-        PropTypes.shape({
-          text: PropTypes.string.isRequired,
-        })
-      ).isRequired,
-    })
-  ).isRequired,
+  getStartedProps: PropTypes.shape({}).isRequired,
 };
 
 export default Content;

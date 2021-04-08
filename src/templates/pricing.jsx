@@ -38,6 +38,11 @@ export const query = graphql`
         heroPricing {
           title
           description
+          tabs {
+            iconName
+            title
+            description
+          }
           prices {
             title
             description
