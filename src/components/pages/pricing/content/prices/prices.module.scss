@@ -269,46 +269,11 @@
 
 .image-wrapper {
   position: relative;
-  height: 180px;
+  width: 90%;
+  max-height: 180px;
   margin-top: 25px;
-
-  @include xl-down {
-    height: 150px;
-  }
-
-  & > div {
-    position: absolute !important;
-    top: 50%;
-    left: 50%;
-    width: max-content;
-    height: 100%;
-    transform: translateY(-50%) translateX(-50%);
-  }
-
-  &.free {
-    & > div {
-      height: 170px;
-
-      @include xl-down {
-        width: 147px !important;
-        height: 139px !important;
-      }
-    }
-  }
-
-  &.enterprise {
-    & > div {
-      @include fullhd-down {
-        width: 281px !important;
-        height: 180px !important;
-      }
-
-      @include xl-down {
-        width: 250px !important;
-        height: 149px !important;
-      }
-    }
-  }
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .features {

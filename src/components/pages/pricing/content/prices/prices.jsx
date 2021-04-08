@@ -18,19 +18,17 @@ const Prices = ({ items }) => {
 
   const { illustrationFree, illustrationEnterprise } = useStaticQuery(graphql`
     query {
-      illustrationFree: file(
-        relativePath: { eq: "pages/pricing/hero/prices/illustration-free.png" }
-      ) {
+      illustrationFree: file(relativePath: { eq: "pages/pricing/hero/prices/free.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 180)
+          gatsbyImageData(width: 280)
         }
       }
 
       illustrationEnterprise: file(
-        relativePath: { eq: "pages/pricing/hero/prices/illustration-enterprice.png" }
+        relativePath: { eq: "pages/pricing/hero/prices/enterprise.jpg" }
       ) {
         childImageSharp {
-          gatsbyImageData(width: 330)
+          gatsbyImageData(width: 260)
         }
       }
     }
