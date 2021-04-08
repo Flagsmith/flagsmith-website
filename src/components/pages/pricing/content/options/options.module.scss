@@ -72,26 +72,6 @@
   @include xs-down {
     flex: 0 0 270px;
   }
-
-  &.accent-primary {
-    .features {
-      svg {
-        circle {
-          fill: $color-accent-primary;
-        }
-      }
-    }
-  }
-
-  &.accent-secondary {
-    .features {
-      svg {
-        circle {
-          fill: $color-accent-secondary;
-        }
-      }
-    }
-  }
 }
 
 .title {
@@ -155,6 +135,10 @@
       flex-shrink: 0;
       margin-top: 2px;
       margin-right: 10px;
+
+      circle {
+        fill: $color-accent-primary;
+      }
     }
   }
 }

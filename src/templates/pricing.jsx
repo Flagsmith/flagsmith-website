@@ -55,6 +55,13 @@ export const query = graphql`
             }
             theme
           }
+          options {
+            title
+            imageName
+            features {
+              text
+            }
+          }
         }
         faq {
           title

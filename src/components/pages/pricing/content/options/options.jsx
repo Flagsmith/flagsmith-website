@@ -41,18 +41,18 @@ const Options = ({ items }) => {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('items-wrapper')}>
-        {items.map(({ title, theme, features, imageName }, index) => {
+        {items.map(({ title, features, imageName }, index) => {
           const image = imageCollection[imageName];
           return (
-            <div className={cx('item', theme)} key={index}>
-              <Heading className={cx('title')} tag="h3" size="lg" color={theme}>
+            <div className={cx('item')} key={index}>
+              <Heading className={cx('title')} tag="h3" size="lg">
                 {title}
               </Heading>
 
               <div className={cx('image-wrapper')}>
                 <GatsbyImage className={cx('image')} image={getImage(image)} alt="" />
               </div>
-              <Button className={cx('button')} theme={theme} to="#contactForm">
+              <Button className={cx('button')} theme="accent-primary" to="#contactForm">
                 Contact us
               </Button>
               <div className={cx('content')}>
@@ -77,7 +77,6 @@ Options.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      theme: PropTypes.string.isRequired,
       imageName: PropTypes.string.isRequired,
       features: PropTypes.arrayOf(
         PropTypes.shape({

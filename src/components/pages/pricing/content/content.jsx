@@ -22,7 +22,7 @@ const iconsCollection = {
   onPrem: OnPremIcon,
 };
 
-const Content = ({ tabs, hero: { title, description, prices }, faq, options, getStartedProps }) => {
+const Content = ({ tabs, hero: { title, description, prices, options }, faq, getStartedProps }) => {
   const [tabNameActive, setTabNameActive] = useState('cloud');
 
   return (
@@ -103,39 +103,6 @@ Content.defaultProps = {
       key: 'onPrem',
       title: 'On Prem',
       description: 'In your enviroment',
-    },
-  ],
-  options: [
-    {
-      theme: 'accent-primary',
-      title: 'Private cloud',
-      imageName: 'privateCloud',
-      features: [
-        {
-          text: `Flagsmith's single-tenancy private cloud solution provides the benefits of cloud performance on a secure, dedicated infrastructure without having to manage it yourself.`,
-        },
-        {
-          text: `It's flexible and reliable, and can help teams looking to optimize resources or meet specific compliance requirements.`,
-        },
-      ],
-    },
-    {
-      theme: 'accent-secondary',
-      title: 'On-premise',
-      imageName: 'onPremise',
-      features: [
-        {
-          text:
-            'For teams looking to manage their infrastructure, Flagsmith can be hosted entirely on-premise.',
-        },
-        {
-          text:
-            'Co-locating feature flags provides It maximum application-level security and minimizes service-to-service latency.',
-        },
-        {
-          text: 'Deploying on-prem gives you full control.',
-        },
-      ],
     },
   ],
 };
