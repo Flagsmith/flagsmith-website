@@ -99,7 +99,6 @@ export const query = graphql`
             code
             codeStyle
           }
-          initiallySelectedItemNumber
         }
         options {
           title
