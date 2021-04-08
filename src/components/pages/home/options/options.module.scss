@@ -104,36 +104,12 @@
 
   &:nth-child(1) {
     .item-image {
-      & > div {
-        @include fullhd-down {
-          width: 287px !important;
-          height: 195px !important;
-        }
-
-        @include xl-down {
-          width: 260px !important;
-          height: 177px !important;
-        }
-      }
+      padding: 0 11px;
     }
   }
 
   &:nth-child(2) {
     z-index: 1;
-
-    .item-image {
-      & > div {
-        @include fullhd-down {
-          width: 300px !important;
-          height: 162px !important;
-        }
-
-        @include xl-down {
-          width: 270px !important;
-          height: 146px !important;
-        }
-      }
-    }
 
     &::before,
     &::after {
@@ -208,17 +184,7 @@
 
   &:nth-child(3) {
     .item-image {
-      & > div {
-        @include fullhd-down {
-          width: 295px !important;
-          height: 208px !important;
-        }
-
-        @include xl-down {
-          width: 268px !important;
-          height: 189px !important;
-        }
-      }
+      padding: 0 28px;
     }
   }
 

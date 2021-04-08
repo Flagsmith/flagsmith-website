@@ -18,25 +18,25 @@ const cx = classNames.bind(styles);
 const Options = ({ title, items }) => {
   const { illustrationSaas, illustrationPrivateCloud, illustrationOnPrem } = useStaticQuery(graphql`
     query {
-      illustrationSaas: file(relativePath: { eq: "pages/home/options/illustration-saas.png" }) {
+      illustrationSaas: file(relativePath: { eq: "pages/home/options/illustration-saas.jpeg" }) {
         childImageSharp {
-          gatsbyImageData(width: 250)
+          gatsbyImageData(width: 368)
         }
       }
 
       illustrationPrivateCloud: file(
-        relativePath: { eq: "pages/home/options/illustration-private-cloud.png" }
+        relativePath: { eq: "pages/home/options/illustration-private-cloud.jpeg" }
       ) {
         childImageSharp {
-          gatsbyImageData(width: 211)
+          gatsbyImageData(width: 390)
         }
       }
 
       illustrationOnPrem: file(
-        relativePath: { eq: "pages/home/options/illustration-on-prem.png" }
+        relativePath: { eq: "pages/home/options/illustration-on-prem.jpeg" }
       ) {
         childImageSharp {
-          gatsbyImageData(width: 240)
+          gatsbyImageData(width: 340)
         }
       }
     }

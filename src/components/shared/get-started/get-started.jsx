@@ -16,7 +16,7 @@ const GetStarted = ({ title, description, buttonText, buttonUrl, withPaddings, m
     query {
       illustration: file(relativePath: { eq: "pages/home/get-started/illustration.png" }) {
         childImageSharp {
-          gatsbyImageData(width: 735)
+          gatsbyImageData(width: 734)
         }
       }
     }
