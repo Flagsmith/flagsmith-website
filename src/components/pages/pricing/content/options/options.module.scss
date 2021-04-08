@@ -40,7 +40,7 @@
 .item {
   z-index: 1;
   display: flex;
-  flex: 0 0 440px;
+  flex: 0 0 450px;
   flex-direction: column;
   padding-top: 30px;
   padding-right: 30px;
@@ -75,33 +75,34 @@
 }
 
 .title {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  text-align: left;
 }
 
 .image-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 .image {
-  height: 210px;
-
-  img {
-    object-fit: contain !important;
-  }
+  width: 330px;
+  height: 240px;
 
   @include fullhd-down {
-    height: 175px;
+    width: 240px;
+    height: 173px;
   }
 
   @include xl-down {
+    width: 215px;
     height: 155px;
   }
 
   @include sm-down {
-    height: 120px;
+    width: 165px;
+    height: 119px;
   }
 }
 

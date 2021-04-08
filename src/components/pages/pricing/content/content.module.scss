@@ -1,7 +1,7 @@
 .wrapper {
   position: relative;
   padding-top: 150px;
-  padding-bottom: 115px;
+  padding-bottom: 120px;
   overflow: hidden;
   text-align: center;
   background-color: $color-secondary;
@@ -222,7 +222,7 @@
   &.on-prem {
     .shape-1 {
       top: -40px;
-      left: 50px;
+      left: 35px;
 
       @include fullhd-down {
         top: -55px;
@@ -254,7 +254,7 @@
 
     .shape-2 {
       right: 50px;
-      bottom: -50px;
+      bottom: -65px;
 
       @include fullhd-down {
         right: -40px;
