@@ -4,6 +4,20 @@
   padding-bottom: 140px;
 
   @include section-paddings;
+
+  @include fullhd-down {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  @include lg-down {
+    padding-top: 90px;
+    padding-bottom: 70px;
+  }
+
+  @include md-down {
+    padding-top: 75px;
+  }
 }
 
 .inner {
@@ -122,12 +136,13 @@
   font-size: $font-size-xs;
   line-height: $line-height-xs;
 
-  @include xl-down {
-    margin-bottom: 35px;
+  @include fullhd-down {
+    margin-bottom: 30px;
   }
 
   @include lg-down {
-    margin-bottom: 30px;
+    font-size: $font-size-xxs;
+    line-height: 1.5;
   }
 
   @include sm-down {
@@ -148,11 +163,7 @@
 
   > div {
     &:last-child {
-      @include xl-down {
-        margin-top: 50px;
-      }
-
-      @include lg-down {
+      @include fullhd-down {
         margin-top: 45px;
       }
 
