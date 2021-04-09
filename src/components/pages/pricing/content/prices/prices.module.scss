@@ -268,12 +268,8 @@
 }
 
 .image-wrapper {
-  position: relative;
-  width: 90%;
   max-height: 180px;
   margin-top: 25px;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .features {
@@ -299,6 +295,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 15px;
+    color: $color-additional-6;
 
     @include fullhd-down {
       align-items: flex-start;
@@ -325,6 +322,10 @@
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+  .enable {
+    color: $color-primary;
   }
 }
 
