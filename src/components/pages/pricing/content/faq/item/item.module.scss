@@ -1,5 +1,5 @@
 .wrapper {
-  padding-bottom: 40px;
+  padding-bottom: 35px;
   margin-bottom: 40px;
   border-bottom: 2px solid $color-additional-4;
 
@@ -13,6 +13,9 @@
       background-color: $color-accent-secondary;
 
       svg {
+        // fix position center
+        margin-top: 2px;
+        margin-left: -1px;
         transform: rotate(90deg);
       }
     }
