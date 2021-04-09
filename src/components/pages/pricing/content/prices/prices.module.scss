@@ -183,7 +183,9 @@
 }
 
 .head-inner {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .title {
@@ -268,8 +270,14 @@
 }
 
 .image-wrapper {
-  max-height: 180px;
-  margin-top: 25px;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  margin-top: auto;
 }
 
 .features {
