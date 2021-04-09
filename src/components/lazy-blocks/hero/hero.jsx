@@ -28,12 +28,20 @@ const Hero = ({
     query {
       flagsIllustration: file(relativePath: { eq: "lazy-blocks/hero/flags-illustration.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 1920, breakpoints: [414, 768, 1024, 1280, 1440, 1920, 2880, 3840])
+          gatsbyImageData(
+            width: 2048
+            breakpoints: [414, 768, 1024, 1280, 1440, 1920, 2880, 3840]
+            quality: 95
+          )
         }
       }
       dronesIllustration: file(relativePath: { eq: "lazy-blocks/hero/drones-illustration.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 1920, breakpoints: [414, 768, 1024, 1280, 1440, 1920, 2880, 3840])
+          gatsbyImageData(
+            width: 2048
+            breakpoints: [414, 768, 1024, 1280, 1440, 1920, 2880, 3840]
+            quality: 95
+          )
         }
       }
     }
