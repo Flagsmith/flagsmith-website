@@ -56,12 +56,12 @@ const Options = ({ title, items }) => {
         </Heading>
 
         <div className={cx('items-wrapper')}>
-          {items.map(({ title, link: { url }, theme, imageName, features }, index) => {
+          {items.map(({ title, link: { url }, imageName, features }, index) => {
             const image = imageCollection[imageName];
             return (
-              <Link className={cx('item', `item-theme-${theme}`)} to={url} key={index}>
+              <Link className={cx('item')} to={url} key={index}>
                 <div className={cx('item-inner')}>
-                  <Heading className={cx('item-title')} tag="h3" size="lg">
+                  <Heading className={cx('item-title')} tag="h3" size="lg" color="quaternary">
                     {title}
                   </Heading>
 
@@ -103,7 +103,6 @@ Options.propTypes = {
       link: PropTypes.shape({
         url: PropTypes.string.isRequired,
       }).isRequired,
-      theme: PropTypes.string.isRequired,
       features: PropTypes.arrayOf(
         PropTypes.shape({
           text: PropTypes.string.isRequired,
