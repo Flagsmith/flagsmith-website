@@ -62,9 +62,9 @@ const ContactForm = ({
         input_3: values.phone,
         input_5: values.website,
       }).then(() => {
-        reset();
         setIsLoading(false);
         setServerResponse('success');
+        reset();
       });
     } catch (error) {
       setIsLoading(false);
@@ -157,7 +157,7 @@ const ContactForm = ({
                     Book a demo
                   </Button>
                   <span className={cx('form-footer-text')}>or</span>
-                  <Link className={cx('link')} to="/" withArrow>
+                  <Link className={cx('link')} to="https://app.flagsmith.com/signup" withArrow>
                     Start free trial
                   </Link>
                 </div>

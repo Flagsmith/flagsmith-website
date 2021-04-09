@@ -51,7 +51,7 @@
   }
 
   &.invalid {
-    border-color: rgba($color-error, 0.25);
+    border-color: $color-error;
   }
 }
 
