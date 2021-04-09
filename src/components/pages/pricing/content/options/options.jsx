@@ -52,7 +52,7 @@ const Options = ({ items }) => {
               <div className={cx('image-wrapper')}>
                 <GatsbyImage className={cx('image')} image={getImage(image)} alt="" />
               </div>
-              <Button className={cx('button')} theme="accent-primary" to="#contactForm">
+              <Button className={cx('button')} theme="accent-primary" to="#contact-us">
                 Contact us
               </Button>
               <div className={cx('content')}>
