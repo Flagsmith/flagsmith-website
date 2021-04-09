@@ -24,14 +24,14 @@
     padding-top: 0;
   }
 
-  @include xs-down {
+  @include sm-down {
     justify-content: stretch;
   }
 
   &::after {
     content: '';
 
-    @include xs-down {
+    @include sm-down {
       flex: 0 0 15px;
     }
   }
