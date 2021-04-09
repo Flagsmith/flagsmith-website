@@ -47,22 +47,25 @@ const Cards = ({
           </div>
         )}
         <ul className={cx('items-wrapper', { withText: !onlyLogo, onlyLogo })}>
-          {items.map(({ logo, text, url }, index) => (
-            <li className={cx('item')} key={index}>
-              <Link className={cx('item-inner')} to={url}>
-                <img className={cx('logo')} loading="lazy" src={logo.url} alt={logo.alt} />
-                {!onlyLogo && (
-                  <>
-                    <p className={cx('text')}>{text}</p>
-                    <span className={cx('learn-more')}>
-                      Learn more
-                      <Arrow />
-                    </span>
-                  </>
-                )}
-              </Link>
-            </li>
-          ))}
+          {items.map(({ logo, text, url }, index) => {
+            const Tag = url ? Link : 'div';
+            return (
+              <li className={cx('item', { withHover: url })} key={index}>
+                <Tag className={cx('item-inner')} to={url || null}>
+                  <img className={cx('logo')} loading="lazy" src={logo.url} alt={logo.alt} />
+                  {!onlyLogo && (
+                    <>
+                      <p className={cx('text')}>{text}</p>
+                      <span className={cx('learn-more')}>
+                        Learn more
+                        <Arrow />
+                      </span>
+                    </>
+                  )}
+                </Tag>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
@@ -80,7 +83,7 @@ Cards.propTypes = {
         alt: PropTypes.string.isRequired,
       }).isRequired,
       text: PropTypes.string,
-      url: PropTypes.string.isRequired,
+      url: PropTypes.string,
     })
   ).isRequired,
   withBackground: PropTypes.bool,

@@ -18,7 +18,7 @@
   }
 
   @include xs-down {
-    min-height: 480px;
+    min-height: 500px;
   }
 
   &.with-margins {
@@ -49,15 +49,15 @@
 
   &.type_1 {
     strong {
-      &:nth-child(1) {
+      &:nth-of-type(1) {
         color: $color-accent-primary;
       }
 
-      &:nth-child(2) {
+      &:nth-of-type(2) {
         color: $color-accent-tertiary;
       }
 
-      &:nth-child(3) {
+      &:nth-of-type(3) {
         color: $color-accent-secondary;
       }
     }
@@ -88,15 +88,15 @@
     }
 
     strong {
-      &:nth-child(1) {
+      &:nth-of-type(1) {
         color: $color-accent-tertiary;
       }
 
-      &:nth-child(2) {
+      &:nth-of-type(2) {
         color: $color-accent-secondary;
       }
 
-      &:nth-child(3) {
+      &:nth-of-type(3) {
         color: $color-accent-primary;
       }
     }
@@ -122,6 +122,6 @@
   }
 
   @include xs-down {
-    width: 480px;
+    width: 500px;
   }
 }

@@ -205,11 +205,15 @@
       height: 320px;
     }
 
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
     code {
       font-size: 17px !important;
       line-height: 27.2px !important;
 
-      @include lg-down {
+      @include xl-down {
         font-size: 15px !important;
         line-height: $line-height-xs !important;
       }
@@ -238,11 +242,6 @@
     bottom: 15px;
     width: 95px;
     height: 20px;
-
-    @include lg-down {
-      width: 76px;
-      height: 16px;
-    }
 
     path {
       fill: $color-tertiary;

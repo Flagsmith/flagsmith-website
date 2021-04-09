@@ -103,7 +103,7 @@
 .description {
   margin-bottom: 30px;
 
-  @include list-style($color-primary, 20px, 0, 6px);
+  @include list-style;
 
   @include xl-down {
     font-size: $font-size-sm;

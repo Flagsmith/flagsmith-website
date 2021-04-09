@@ -32,7 +32,7 @@ const RainbowText = ({ text, type, withBackground, withMargins, marginBottom }) 
           className={cx('text', `type_${type}`)}
           tag="p"
           size="xl"
-          color="quaternary"
+          color="primary"
           highlightedWordsWithoutWrap={false}
           innerHTML={text}
         />

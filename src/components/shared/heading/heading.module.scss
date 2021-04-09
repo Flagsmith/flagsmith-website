@@ -5,6 +5,10 @@
   font-weight: 800;
   line-height: 1.3;
 
+  @include lg-down {
+    @include convert-br-into-space;
+  }
+
   &.size {
     &-xxl {
       font-size: $font-size-xxl;

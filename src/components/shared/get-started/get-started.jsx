@@ -31,7 +31,7 @@ const GetStarted = ({ title, description, buttonText, buttonUrl, withPaddings, m
             <Heading className={cx('title')} tag="h2">
               {title}
             </Heading>
-            <p className={cx('description')}>{description}</p>
+            {description && <p className={cx('description')}>{description}</p>}
             <Button className={cx('button')} to={buttonUrl}>
               {buttonText}
             </Button>
@@ -48,7 +48,7 @@ const GetStarted = ({ title, description, buttonText, buttonUrl, withPaddings, m
 
 GetStarted.propTypes = {
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   buttonText: PropTypes.string.isRequired,
   buttonUrl: PropTypes.string.isRequired,
   withPaddings: PropTypes.bool,
@@ -56,6 +56,7 @@ GetStarted.propTypes = {
 };
 
 GetStarted.defaultProps = {
+  description: '',
   withPaddings: false,
   marginBottom: null,
 };

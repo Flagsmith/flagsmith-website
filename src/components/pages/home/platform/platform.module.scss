@@ -45,8 +45,13 @@
     margin-bottom: 60px;
   }
 
-  @include md-down {
+  @include sm-down {
     margin-bottom: 40px;
+    text-align: center;
+  }
+
+  @include xs-down {
+    text-align: left;
   }
 }
 
@@ -122,36 +127,44 @@
     margin-left: -20px;
   }
 
+  @include sm-down {
+    margin-left: -40px;
+    text-align: center;
+  }
+
+  @include xs-down {
+    margin-left: -60px;
+  }
+
+  @include xxs-down {
+    margin-left: -80px;
+  }
+
   & > div {
     @include fullhd-down {
-      width: 780px !important;
-      height: 514px !important;
+      width: 780px;
     }
 
     @include xl-down {
-      width: 690px !important;
-      height: 454px !important;
+      width: 690px;
     }
 
     @include lg-down {
-      width: 557px !important;
-      height: 367px !important;
+      width: 557px;
     }
 
     @include md-down {
-      width: 700px !important;
-      height: 461px !important;
+      width: 700px;
       margin-left: -42px;
     }
 
     @include sm-down {
-      width: 629px !important;
-      height: 414px !important;
-      margin-left: auto;
+      width: 629px;
+      margin-left: 0;
     }
 
     @include xs-down {
-      margin-left: -102px;
+      width: 500px;
     }
   }
 }

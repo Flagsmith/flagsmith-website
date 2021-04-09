@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Heading from 'components/shared/heading';
+import Link from 'components/shared/link';
 
 import styles from './features.module.scss';
 
@@ -28,7 +29,7 @@ const Features = ({ title, titleHighlightColor, items, columns, withBackground, 
         />
       )}
       <ul className={cx('items-wrapper', `columns-${columns}`)}>
-        {items.map(({ title, titleHighlightColor, content }, index) => {
+        {items.map(({ title, titleHighlightColor, content, linkText, linkUrl }, index) => {
           const featureNumber = index + 1;
           return (
             <li className={cx('item')} key={index}>
@@ -44,6 +45,11 @@ const Features = ({ title, titleHighlightColor, items, columns, withBackground, 
               />
               {content && (
                 <div className={cx('item-content')} dangerouslySetInnerHTML={{ __html: content }} />
+              )}
+              {linkText && linkUrl && (
+                <Link className={cx('item-link')} to={linkUrl} withArrow>
+                  {linkText}
+                </Link>
               )}
             </li>
           );
@@ -61,6 +67,8 @@ Features.propTypes = {
       title: PropTypes.string.isRequired,
       titleHighlightColor: PropTypes.oneOf(['primary', 'secondary']),
       content: PropTypes.string,
+      linkText: PropTypes.string,
+      linkUrl: PropTypes.string,
     })
   ).isRequired,
   columns: PropTypes.oneOf(['2', '3', '4']).isRequired,

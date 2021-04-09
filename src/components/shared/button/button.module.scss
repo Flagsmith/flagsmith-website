@@ -98,3 +98,24 @@
   pointer-events: none;
   opacity: 0.25;
 }
+
+.loading {
+  pointer-events: none;
+
+  > span {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 40px;
+    height: 40px;
+    content: '';
+    background: url('./svg/loader.svg') no-repeat center;
+    transform: translate(-50%, -50%);
+  }
+}
