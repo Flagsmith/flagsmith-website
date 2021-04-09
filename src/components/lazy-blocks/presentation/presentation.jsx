@@ -14,6 +14,10 @@ import styles from './presentation.module.scss';
 
 const cx = classNames.bind(styles);
 
+function calculateImageWrapperPaddingTop(width, height) {
+  return `${((Math.round(height) / Math.round(width)) * 100).toFixed(2)}%`;
+}
+
 const htmlIllustrations = {
   featureFlags: FeatureFlagsIllustration,
   remoteConfig: RemoteConfigIllustration,
@@ -41,9 +45,6 @@ const Presentation = ({
     triggerOnce: true,
   });
 
-  const [imageWidth, setImageWidth] = useState(null);
-  const imageRef = useRef(null);
-
   const shouldRenderButtonsWrapper =
     (accentButtonText && accentButtonUrl) || (primaryButtonText && primaryButtonUrl);
 
@@ -51,21 +52,12 @@ const Presentation = ({
 
   const withHTMLIllustration = htmlIllustration && HTMLIllustration;
 
-  useEffect(() => {
-    if (imageRef?.current) {
-      if (imageRef?.current?.complete) {
-        const image = imageRef.current;
-        const isSVG = image.src.endsWith('.svg');
-        setImageWidth(isSVG ? image.naturalWidth : image.naturalWidth / 2);
-      } else {
-        imageRef?.current?.addEventListener('load', (event) => {
-          const image = event.currentTarget;
-          const isSVG = image.src.endsWith('.svg');
-          setImageWidth(isSVG ? image.naturalWidth : image.naturalWidth / 2);
-        });
+  const imageWrapperStyles = image
+    ? {
+        width: image.width / 2,
+        paddingTop: calculateImageWrapperPaddingTop(image.width, image.height),
       }
-    }
-  }, [imageRef?.current?.src, imageRef?.current?.complete, imageRef?.current?.naturalWidth]);
+    : null;
 
   return (
     <section
@@ -119,15 +111,15 @@ const Presentation = ({
             <img className={cx('shape')} loading="lazy" src={shape} alt="" aria-hidden />
           )}
           {image && (
-            <img
-              className={cx('image')}
-              width={imageWidth}
-              loading="lazy"
-              src={image.url}
-              ref={imageRef}
-              alt=""
-              aria-hidden
-            />
+            <div className={cx('image-wrapper')} style={imageWrapperStyles}>
+              <img
+                className={cx('image')}
+                loading="lazy"
+                srcSet={image.srcset}
+                alt=""
+                aria-hidden
+              />
+            </div>
           )}
         </div>
       </div>
@@ -149,7 +141,9 @@ Presentation.propTypes = {
   primaryButtonText: PropTypes.string,
   primaryButtonUrl: PropTypes.string,
   image: PropTypes.shape({
-    url: PropTypes.string.isRequired,
+    width: PropTypes.string.isRequired,
+    height: PropTypes.string.isRequired,
+    srcset: PropTypes.string.isRequired,
   }),
   htmlIllustration: PropTypes.oneOf(Object.keys(htmlIllustrations)),
   withBackground: PropTypes.bool,
