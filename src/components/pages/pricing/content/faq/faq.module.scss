@@ -1,5 +1,19 @@
 .wrapper {
   @include section-paddings;
+
+  margin-bottom: 195px;
+
+  @include fullhd-down {
+    margin-bottom: 155px;
+  }
+
+  @include lg-down {
+    margin-bottom: 115px;
+  }
+
+  @include md-down {
+    margin-bottom: 80px;
+  }
 }
 
 .inner {

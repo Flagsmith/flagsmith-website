@@ -80,7 +80,7 @@ const Content = ({ hero: { title, description, tabs, prices, options }, faq, get
       </section>
 
       {tabNameActive === 'cloud' && <FAQ items={faq} />}
-      {tabNameActive === 'cloud' && <GetStarted {...getStartedProps} withPaddings />}
+      {tabNameActive === 'cloud' && <GetStarted {...getStartedProps} withIndents />}
       {tabNameActive === 'onPrem' && (
         <ContactForm
           id="contact-us"

@@ -34,7 +34,7 @@ const Home = ({
       <Platform {...data.platform} />
       <Languages {...data.languages} />
       <Options {...data.options} />
-      <GetStarted {...getStartedProps} withPaddings />
+      <GetStarted {...getStartedProps} withIndents />
     </MainLayout>
   );
 };
