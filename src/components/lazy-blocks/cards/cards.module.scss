@@ -117,9 +117,11 @@
   box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
   transition: box-shadow $transition-base, background-color $transition-base;
 
-  &:hover {
-    background-color: $color-additional-4;
-    box-shadow: none;
+  &.with-hover {
+    &:hover {
+      background-color: $color-additional-4;
+      box-shadow: none;
+    }
   }
 }
 
