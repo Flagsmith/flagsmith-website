@@ -183,7 +183,9 @@
 }
 
 .head-inner {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .title {
@@ -268,12 +270,14 @@
 }
 
 .image-wrapper {
-  position: relative;
-  width: 90%;
-  max-height: 180px;
-  margin-top: 25px;
-  margin-right: auto;
-  margin-left: auto;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  margin-top: auto;
 }
 
 .features {
@@ -299,6 +303,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 15px;
+    color: $color-additional-6;
 
     @include fullhd-down {
       align-items: flex-start;
@@ -325,6 +330,10 @@
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+  .enable {
+    color: $color-primary;
   }
 }
 

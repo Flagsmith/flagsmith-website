@@ -47,7 +47,7 @@ const Content = ({ hero: { title, description, tabs, prices, options }, faq, get
                 >
                   <Icon />
                   <div className={cx('tab-content')}>
-                    <Heading className={cx('tab-title')} size="md">
+                    <Heading className={cx('tab-title')} tag="h3" size="sm" color="quaternary">
                       {title}
                     </Heading>
                     <p className={cx('tab-description')}>{description}</p>
