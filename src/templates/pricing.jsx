@@ -47,7 +47,6 @@ export const query = graphql`
             title
             description
             price
-            priceLabel
             imageName
             button {
               title
@@ -59,6 +58,7 @@ export const query = graphql`
               enable
             }
             theme
+            isMostPopular
           }
           options {
             title

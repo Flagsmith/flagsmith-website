@@ -70,10 +70,6 @@
   }
 
   &.accent-primary {
-    .price-label {
-      color: $color-accent-primary;
-    }
-
     .features {
       li {
         span {
@@ -92,10 +88,6 @@
   }
 
   &.accent-secondary {
-    .price-label {
-      color: $color-accent-secondary;
-    }
-
     .features {
       li {
         span {
@@ -121,10 +113,6 @@
     }
 
     .description {
-      color: $color-accent-tertiary;
-    }
-
-    .price-label {
       color: $color-accent-tertiary;
     }
 
@@ -257,16 +245,10 @@
   }
 }
 
-.price-label {
-  font-family: $font-family-tertiary;
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 30px;
-
-  @include xl-down {
-    font-size: 26px;
-    line-height: 33.8px;
-  }
+.most-popular {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .image-wrapper {

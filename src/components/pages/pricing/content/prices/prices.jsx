@@ -8,13 +8,14 @@ import Button from 'components/shared/button';
 import Heading from 'components/shared/heading';
 
 import Check from './images/check.inline.svg';
+import MostPopular from './images/most-popular.inline.svg';
 import UnCheck from './images/uncheck.inline.svg';
 import styles from './prices.module.scss';
 
 const cx = classNames.bind(styles);
 
 const Prices = ({ items }) => {
-  const [payType, setPayType] = useState('yearly');
+  // const [payType, setPayType] = useState('yearly');
 
   const { illustrationFree, illustrationEnterprise } = useStaticQuery(graphql`
     query {
@@ -39,17 +40,17 @@ const Prices = ({ items }) => {
     enterprise: illustrationEnterprise,
   };
 
-  const isPayTypeMonthly = payType === 'monthly';
-  const isPayTypeYearly = payType === 'yearly';
+  // const isPayTypeMonthly = payType === 'monthly';
+  // const isPayTypeYearly = payType === 'yearly';
 
-  const handlePayType = () => {
-    const type = isPayTypeYearly ? 'monthly' : 'yearly';
-    setPayType(type);
-  };
+  // const handlePayType = () => {
+  //   const type = isPayTypeYearly ? 'monthly' : 'yearly';
+  //   setPayType(type);
+  // };
 
   return (
     <div className={cx('wrapper')}>
-      <div className={cx('switch-button-wrapper')}>
+      {/* <div className={cx('switch-button-wrapper')}>
         <span className={cx({ active: isPayTypeYearly })}>Pay Yearly</span>
         <button
           className={cx('switch-button', {
@@ -58,7 +59,7 @@ const Prices = ({ items }) => {
           onClick={handlePayType}
         />
         <span className={cx({ active: isPayTypeMonthly })}>Pay Monthly</span>
-      </div>
+      </div> */}
 
       <div className={cx('inner')}>
         <div className={cx('items-wrapper')}>
@@ -67,11 +68,11 @@ const Prices = ({ items }) => {
               title,
               description,
               price,
-              priceLabel,
               imageName,
               button: { title: buttonTitle, url: buttonUrl, target: buttonTarget },
               features,
               theme,
+              isMostPopular,
             } = item;
 
             const image = imageCollection[imageName];
@@ -87,9 +88,12 @@ const Prices = ({ items }) => {
                       <div className={cx('price-wrapper')}>
                         <span className={cx('price')}>{price}</span>
                         <span className={cx('price-text')}>
-                          Billed {isPayTypeMonthly ? 'monthly' : 'yearly'}
+                          {/* Billed {isPayTypeMonthly ? 'monthly' : 'yearly'} */}
+                          Billed monthly
                         </span>
-                        <span className={cx('price-label')}>{priceLabel}</span>
+                        {isMostPopular && (
+                          <MostPopular className={cx('most-popular')} aria-label="Most Popular" />
+                        )}
                       </div>
                     )}
                     {!price && (
@@ -130,7 +134,6 @@ Prices.propTypes = {
       title: PropTypes.string.isRequired,
       description: PropTypes.string,
       price: PropTypes.string,
-      priceLabel: PropTypes.string,
       imageName: PropTypes.string,
       button: PropTypes.shape({
         url: PropTypes.string.isRequired,
@@ -144,6 +147,7 @@ Prices.propTypes = {
         })
       ).isRequired,
       theme: PropTypes.string,
+      isMostPopular: PropTypes.bool,
     })
   ).isRequired,
 };
