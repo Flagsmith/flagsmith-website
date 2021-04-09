@@ -2,21 +2,21 @@
   @include section-paddings;
 
   &.with-paddings {
-    padding-top: 230px;
+    padding-top: 195px;
     padding-bottom: 180px;
 
     @include fullhd-down {
-      padding-top: 190px;
+      padding-top: 155px;
       padding-bottom: 145px;
     }
 
     @include lg-down {
-      padding-top: 150px;
+      padding-top: 115px;
       padding-bottom: 105px;
     }
 
     @include md-down {
-      padding-top: 115px;
+      padding-top: 80px;
       padding-bottom: 75px;
     }
   }
