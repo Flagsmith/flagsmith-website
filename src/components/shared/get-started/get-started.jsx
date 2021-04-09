@@ -11,7 +11,7 @@ import styles from './get-started.module.scss';
 
 const cx = classNames.bind(styles);
 
-const GetStarted = ({ title, description, buttonText, buttonUrl, withPaddings, marginBottom }) => {
+const GetStarted = ({ title, description, buttonText, buttonUrl, withIndents, marginBottom }) => {
   const { illustration } = useStaticQuery(graphql`
     query {
       illustration: file(relativePath: { eq: "pages/home/get-started/illustration.png" }) {
@@ -23,7 +23,7 @@ const GetStarted = ({ title, description, buttonText, buttonUrl, withPaddings, m
   `);
   return (
     <section
-      className={cx('wrapper', { withPaddings, [`margin-bottom-${marginBottom}`]: marginBottom })}
+      className={cx('wrapper', { withIndents, [`margin-bottom-${marginBottom}`]: marginBottom })}
     >
       <div className="container">
         <div className={cx('inner')}>
@@ -53,13 +53,13 @@ GetStarted.propTypes = {
   description: PropTypes.string,
   buttonText: PropTypes.string.isRequired,
   buttonUrl: PropTypes.string.isRequired,
-  withPaddings: PropTypes.bool,
+  withIndents: PropTypes.bool,
   marginBottom: PropTypes.oneOf(['xl', 'lg', 'md', 'sm', 'xs']),
 };
 
 GetStarted.defaultProps = {
   description: '',
-  withPaddings: false,
+  withIndents: false,
   marginBottom: null,
 };
 

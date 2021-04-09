@@ -1,23 +1,19 @@
 .wrapper {
   @include section-paddings;
 
-  &.with-paddings {
-    padding-top: 195px;
-    padding-bottom: 180px;
+  &.with-indents {
+    margin-bottom: 180px;
 
     @include fullhd-down {
-      padding-top: 155px;
-      padding-bottom: 145px;
+      margin-bottom: 145px;
     }
 
     @include lg-down {
-      padding-top: 115px;
-      padding-bottom: 105px;
+      margin-bottom: 105px;
     }
 
     @include md-down {
-      padding-top: 80px;
-      padding-bottom: 75px;
+      margin-bottom: 75px;
     }
   }
 }
