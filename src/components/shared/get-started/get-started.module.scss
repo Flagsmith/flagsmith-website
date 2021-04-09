@@ -80,13 +80,21 @@
   }
 }
 
+.header {
+  margin-bottom: 40px;
+
+  @include lg-down {
+    margin-bottom: 30px;
+  }
+}
+
 .title {
   margin-bottom: 10px;
 }
 
 .description {
   margin-top: 0;
-  margin-bottom: 40px;
+  margin-bottom: 0;
 
   @include xl-down {
     font-size: $font-size-sm;
@@ -94,7 +102,6 @@
   }
 
   @include lg-down {
-    margin-bottom: 30px;
     font-size: $font-size-xs;
     line-height: $line-height-xs;
   }

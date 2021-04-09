@@ -109,12 +109,13 @@ const Presentation = ({
           )}
           {image && !withHTMLIllustration && (
             <div className={cx('image-wrapper')}>
-              <div>
+              <div className={cx('image-inner')}>
                 <div style={{ maxWidth: image.width / 2, display: 'block' }}>
                   <img
                     src={imgPlaceholderData}
                     alt=""
                     style={{ maxWidth: '100%', display: 'block', position: 'static' }}
+                    aria-hidden
                   />
                 </div>
                 <img

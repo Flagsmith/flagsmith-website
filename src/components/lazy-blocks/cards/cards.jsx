@@ -50,7 +50,7 @@ const Cards = ({
           {items.map(({ logo, text, url }, index) => {
             const Tag = url ? Link : 'div';
             return (
-              <li className={cx('item', { withHover: url })} key={index}>
+              <li className={cx('item')} key={index}>
                 <Tag className={cx('item-inner')} to={url || null}>
                   <img className={cx('logo')} loading="lazy" src={logo.url} alt={logo.alt} />
                   {!onlyLogo && (

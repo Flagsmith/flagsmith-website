@@ -28,10 +28,12 @@ const GetStarted = ({ title, description, buttonText, buttonUrl, withPaddings, m
       <div className="container">
         <div className={cx('inner')}>
           <div className={cx('content')}>
-            <Heading className={cx('title')} tag="h2">
-              {title}
-            </Heading>
-            {description && <p className={cx('description')}>{description}</p>}
+            <div className={cx('header')}>
+              <Heading className={cx('title')} tag="h2">
+                {title}
+              </Heading>
+              {description && <p className={cx('description')}>{description}</p>}
+            </div>
             <Button className={cx('button')} to={buttonUrl}>
               {buttonText}
             </Button>
