@@ -83,7 +83,7 @@ const Content = ({ hero: { title, description, tabs, prices, options }, faq, get
       {tabNameActive === 'cloud' && <GetStarted {...getStartedProps} withPaddings />}
       {tabNameActive === 'onPrem' && (
         <ContactForm
-          id="contactForm"
+          id="contact-us"
           title="Contact Us!"
           description={`Flagmith's on-premise and private cloud hosting solutions offer an added level of control for companies that take privacy and compliance seriously.`}
           marginBottom="lg"
