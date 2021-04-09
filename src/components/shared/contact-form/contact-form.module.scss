@@ -14,23 +14,12 @@
 
   @include section-paddings;
 
-  @include fullhd-down {
-    padding-top: 120px;
-    padding-bottom: 120px;
-  }
-
   @include xl-down {
     max-width: 970px;
   }
 
   @include lg-down {
     max-width: 940px;
-    padding-top: 90px;
-    padding-bottom: 70px;
-  }
-
-  @include md-down {
-    padding-top: 75px;
   }
 }
 
