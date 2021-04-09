@@ -53,7 +53,7 @@
     max-width: 780px;
     padding-top: 40px;
     padding-bottom: 40px;
-    padding-left: 50px;
+    padding-left: 20px;
   }
 
   @include sm-down {
@@ -148,8 +148,15 @@
     transform: translateX(-50%);
   }
 
+  @include xs-down {
+    width: 370px;
+    margin-top: -66px;
+    margin-left: -10px;
+  }
+
   @include xxs-down {
     top: 10px;
-    width: 230px;
+    width: 270px;
+    margin-top: -69px;
   }
 }

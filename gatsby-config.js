@@ -77,6 +77,7 @@ module.exports = {
       resolve: 'gatsby-plugin-sass',
       options: {
         additionalData: '@import "./src/styles/variables.scss" , "./src/styles/mixins.scss";',
+        useResolveUrlLoader: true,
         cssLoaderOptions: {
           modules: {
             namedExport: false,

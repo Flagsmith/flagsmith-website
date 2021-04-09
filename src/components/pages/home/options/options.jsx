@@ -16,36 +16,36 @@ import styles from './options.module.scss';
 const cx = classNames.bind(styles);
 
 const Options = ({ title, items }) => {
-  const { illustrationSaas, illustrationPrivateCloud, illustrationOnPrem } = useStaticQuery(graphql`
+  const { saasIllustration, privateCloudIllustration, onPremIllustration } = useStaticQuery(graphql`
     query {
-      illustrationSaas: file(relativePath: { eq: "pages/home/options/illustration-saas.jpeg" }) {
+      saasIllustration: file(relativePath: { eq: "pages/home/options/saas-illustration.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 368)
+          gatsbyImageData(width: 390)
         }
       }
 
-      illustrationPrivateCloud: file(
-        relativePath: { eq: "pages/home/options/illustration-private-cloud.jpeg" }
+      privateCloudIllustration: file(
+        relativePath: { eq: "pages/home/options/private-cloud-illustration.jpg" }
       ) {
         childImageSharp {
           gatsbyImageData(width: 390)
         }
       }
 
-      illustrationOnPrem: file(
-        relativePath: { eq: "pages/home/options/illustration-on-prem.jpeg" }
+      onPremIllustration: file(
+        relativePath: { eq: "pages/home/options/on-prem-illustration.jpg" }
       ) {
         childImageSharp {
-          gatsbyImageData(width: 340)
+          gatsbyImageData(width: 390)
         }
       }
     }
   `);
 
   const imageCollection = {
-    saas: illustrationSaas,
-    privateCloud: illustrationPrivateCloud,
-    onPrem: illustrationOnPrem,
+    saas: saasIllustration,
+    privateCloud: privateCloudIllustration,
+    onPrem: onPremIllustration,
   };
 
   return (

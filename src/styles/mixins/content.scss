@@ -1,5 +1,5 @@
 @mixin content {
-  @include list-style($color-accent-secondary, 10px, 30px, 8px);
+  @include list-style;
 
   > * {
     margin-top: 0;

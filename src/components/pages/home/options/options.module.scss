@@ -80,7 +80,7 @@
     height: 100%;
     padding-top: 30px;
     padding-right: 30px;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
     padding-left: 30px;
     color: $color-primary;
     background-color: $color-tertiary;
@@ -98,13 +98,8 @@
       display: block;
       padding-top: 15px;
       padding-right: 15px;
+      padding-bottom: 15px;
       padding-left: 15px;
-    }
-  }
-
-  &:nth-child(1) {
-    .item-image {
-      padding: 0 11px;
     }
   }
 
@@ -179,12 +174,6 @@
         bottom: -75px;
         left: 50%;
       }
-    }
-  }
-
-  &:nth-child(3) {
-    .item-image {
-      padding: 0 28px;
     }
   }
 
@@ -344,7 +333,7 @@
   &-link {
     display: flex;
     align-items: center;
-    padding-top: 20px;
+    padding-top: 15px;
     margin-top: auto;
     font-size: $font-size-xs;
     font-weight: 700;
@@ -355,11 +344,6 @@
       grid-column-start: 2;
       padding-top: 0;
       border-top: none;
-    }
-
-    @include sm-down {
-      padding-top: 20px;
-      border-top: 2px solid $color-additional-4;
     }
 
     svg {

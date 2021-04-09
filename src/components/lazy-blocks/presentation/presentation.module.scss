@@ -157,6 +157,8 @@
 .content {
   margin-bottom: 30px;
 
+  @include list-style;
+
   @include xl-down {
     font-size: $font-size-sm;
     line-height: $line-height-sm;
@@ -182,32 +184,6 @@
 
     &:last-child {
       margin-bottom: 0;
-    }
-  }
-
-  ul,
-  ol {
-    padding-left: 0;
-    list-style-type: none;
-
-    li {
-      position: relative;
-      padding-left: 35px;
-      margin-bottom: 20px;
-
-      &::before {
-        position: absolute;
-        top: 6px;
-        left: 0;
-        width: 20px;
-        height: 20px;
-        content: '';
-        background-image: url(./images/check.svg);
-      }
-
-      &:last-child {
-        margin-bottom: 0;
-      }
     }
   }
 }

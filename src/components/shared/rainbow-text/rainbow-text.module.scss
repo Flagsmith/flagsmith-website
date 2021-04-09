@@ -18,7 +18,7 @@
   }
 
   @include xs-down {
-    min-height: 480px;
+    min-height: 500px;
   }
 
   &.with-margins {
@@ -122,6 +122,6 @@
   }
 
   @include xs-down {
-    width: 480px;
+    width: 500px;
   }
 }

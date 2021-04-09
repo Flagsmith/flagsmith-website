@@ -8,7 +8,6 @@ import Logo from 'images/logo.inline.svg';
 
 import Button from '../button/button';
 
-
 import styles from './header.module.scss';
 import Menu from './menu/menu';
 

@@ -36,6 +36,12 @@
     display: none;
   }
 
+  ::-webkit-scrollbar {
+    @include lg-down {
+      display: none;
+    }
+  }
+
   pre {
     height: 100%;
     overflow: auto;
@@ -46,6 +52,10 @@
 
     @include lg-down {
       font-size: initial;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
     }
   }
 
