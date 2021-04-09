@@ -2,7 +2,7 @@
   position: relative;
   padding-top: 120px;
   padding-bottom: 180px;
-  margin-bottom: 35px;
+  margin-bottom: 230px;
   overflow: hidden;
   background-color: $color-secondary;
 
@@ -11,11 +11,17 @@
   @include fullhd-down {
     padding-top: 90px;
     padding-bottom: 150px;
+    margin-bottom: 190px;
   }
 
   @include lg-down {
     padding-top: 70px;
     padding-bottom: 90px;
+    margin-bottom: 150px;
+  }
+
+  @include md-down {
+    margin-bottom: 115px;
   }
 }
 
