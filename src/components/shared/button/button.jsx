@@ -26,6 +26,7 @@ const Button = (props) => {
     'wrapper',
     `theme-${theme}`,
     `size-${size}`,
+    { loading },
     { disabled },
     additionalClassName
   );
@@ -42,6 +43,7 @@ Button.defaultProps = {
   to: null,
   theme: 'primary',
   size: 'lg',
+  loading: false,
   disabled: false,
 };
 
@@ -56,6 +58,7 @@ Button.propTypes = {
     'accent-tertiary',
   ]),
   size: PropTypes.oneOf(['lg', 'md']),
+  loading: PropTypes.bool,
   disabled: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };

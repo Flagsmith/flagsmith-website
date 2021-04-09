@@ -1,7 +1,6 @@
 .input {
   position: relative;
   width: 100%;
-  border-bottom: 2px solid #e6e4e7;
 }
 
 .input-inner {
@@ -12,11 +11,14 @@
   padding-bottom: 3.5px;
   padding-left: 0;
   font-size: $font-size-sm;
+  font-weight: 600;
   line-height: $line-height-sm;
   color: $color-primary;
   resize: none;
   border: none;
+  border-bottom: 2px solid $color-additional-9;
   outline: none;
+  transition: color, border-bottom $transition-base;
   -webkit-appearance: none;
 
   @include lg-down {
@@ -25,12 +27,12 @@
   }
 
   &::placeholder {
-    font-weight: 600;
     color: $color-additional-6;
   }
 
   &:focus {
     color: $color-primary;
+    border-color: $color-accent-secondary;
 
     &::-webkit-input-placeholder {
       opacity: 0;
@@ -38,17 +40,26 @@
     }
   }
 
+  &:hover {
+    border-color: $color-additional-7;
+  }
+
   &::-webkit-input-placeholder {
     opacity: 1;
     transition: transform $transition-base, opacity $transition-base;
     transform: translateY(0);
   }
+
+  &.invalid {
+    border-color: rgba($color-error, 0.25);
+  }
 }
 
 .input-error {
   position: absolute;
-  bottom: -20px;
+  bottom: -25px;
   left: 0;
-  font-size: $font-size-xxxs;
-  line-height: $line-height-xxxs;
+  font-size: $font-size-xxs;
+  line-height: $line-height-xxs;
+  color: $color-error;
 }

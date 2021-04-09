@@ -145,6 +145,7 @@
 }
 
 .content {
+  position: relative;
   display: flex;
   flex: 0 0 490px;
   flex-direction: column;
@@ -257,6 +258,57 @@
   font-size: $font-size-xs;
   font-weight: bold;
   line-height: $line-height-xs;
+}
+
+.error {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  font-size: $font-size-xxs;
+  line-height: 1.5;
+  color: $color-error;
+}
+
+.message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.message-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+  background-color: $color-accent-primary;
+  border-radius: 100%;
+
+  svg {
+    width: 31px;
+    height: 24px;
+  }
+}
+
+.message-title {
+  margin-bottom: 5px;
+  font-family: $font-family-secondary;
+  font-size: $font-size-lg;
+  font-weight: 800;
+  line-height: $line-height-lg;
+}
+
+.message-description {
+  font-size: $font-size-base;
+  line-height: $line-height-base;
 }
 
 .shape {
