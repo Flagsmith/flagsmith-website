@@ -98,7 +98,6 @@ const ContactForm = ({
           </div>
           <div className={cx('content')}>
             <motion.div
-              className={cx('content-inner')}
               animate={
                 serverResponse === 'success' && {
                   opacity: 0,

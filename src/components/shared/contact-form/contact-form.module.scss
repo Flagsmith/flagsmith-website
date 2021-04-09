@@ -142,6 +142,7 @@
 
   @include md-down {
     flex: initial;
+    align-items: stretch;
     order: 1;
     width: 100%;
     margin-bottom: 20px;
