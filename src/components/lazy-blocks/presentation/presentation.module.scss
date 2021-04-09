@@ -274,9 +274,16 @@
   }
 }
 
-.image {
-  display: block;
+.image-wrapper {
+  position: relative;
   max-width: 100%;
   margin-right: auto;
   margin-left: auto;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
