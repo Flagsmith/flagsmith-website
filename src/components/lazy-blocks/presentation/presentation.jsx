@@ -14,10 +14,6 @@ import styles from './presentation.module.scss';
 
 const cx = classNames.bind(styles);
 
-function calculateImageWrapperPaddingTop(width, height) {
-  return `${((Math.round(height) / Math.round(width)) * 100).toFixed(2)}%`;
-}
-
 const htmlIllustrations = {
   featureFlags: FeatureFlagsIllustration,
   remoteConfig: RemoteConfigIllustration,
@@ -52,12 +48,13 @@ const Presentation = ({
 
   const withHTMLIllustration = htmlIllustration && HTMLIllustration;
 
-  const imageWrapperStyles = image
-    ? {
-        width: image.width / 2,
-        paddingTop: calculateImageWrapperPaddingTop(image.width, image.height),
-      }
-    : null;
+  let imgPlaceholderData;
+
+  if (image) {
+    imgPlaceholderData = `data:image/svg+xml;charset=utf-8,%3Csvg height='${
+      image.height / 2
+    }' width='${image.width / 2}' xmlns='http://www.w3.org/2000/svg' version='1.1'%3E%3C/svg%3E`;
+  }
 
   return (
     <section
@@ -110,15 +107,24 @@ const Presentation = ({
           {withHTMLIllustration && withBackground && (
             <img className={cx('shape')} loading="lazy" src={shape} alt="" aria-hidden />
           )}
-          {image && (
-            <div className={cx('image-wrapper')} style={imageWrapperStyles}>
-              <img
-                className={cx('image')}
-                loading="lazy"
-                srcSet={image.srcset}
-                alt=""
-                aria-hidden
-              />
+          {image && !withHTMLIllustration && (
+            <div className={cx('image-wrapper')}>
+              <div>
+                <div style={{ maxWidth: image.width / 2, display: 'block' }}>
+                  <img
+                    src={imgPlaceholderData}
+                    alt=""
+                    style={{ maxWidth: '100%', display: 'block', position: 'static' }}
+                  />
+                </div>
+                <img
+                  className={cx('image')}
+                  loading="lazy"
+                  srcSet={image.srcset}
+                  alt=""
+                  aria-hidden
+                />
+              </div>
             </div>
           )}
         </div>

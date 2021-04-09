@@ -279,6 +279,24 @@
   max-width: 100%;
   margin-right: auto;
   margin-left: auto;
+
+  > div {
+    position: relative;
+    display: inline-block;
+
+    > img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      max-width: none;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+  }
 }
 
 .image {
