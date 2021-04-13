@@ -1,0 +1,48 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  max-width: 1010px;
+  padding-top: 35px;
+  padding-right: 35px;
+  padding-bottom: 100px;
+  padding-left: 35px;
+  margin-right: auto;
+  margin-bottom: 90px;
+  margin-left: auto;
+  background-color: $color-secondary;
+  border-radius: 10px;
+}
+
+.icon {
+  flex-shrink: 0;
+  margin-right: 35px;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  margin-top: 5px;
+}
+
+.title {
+  margin-bottom: 15px;
+}
+
+.info {
+  display: block;
+  margin-bottom: 15px;
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
+  color: $color-additional-6;
+}
+
+.description {
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.illustration {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

@@ -7,6 +7,7 @@ const filterNonRootItems = require('./src/utils/filter-non-root-items');
 
 // constants
 const SUPPORTED_MENU_TYPES = ['header', 'footer', 'mobile'];
+const POSTS_PER_PAGE = 9;
 
 async function createRedirects({ graphql, actions }) {
   const { createRedirect } = actions;
@@ -187,6 +188,78 @@ async function createPages({ graphql, actions, reporter, menus, sharedBlocks }) 
   });
 }
 
+// Create Blog Pages
+async function createBlogPages({ graphql, actions, menus, sharedBlocks }) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allWpPage(filter: { template: { templateName: { eq: "Blog" } } }) {
+        nodes {
+          id
+          uri
+          acf {
+            featuredPost {
+              post {
+                ... on WpPost {
+                  id
+                }
+              }
+            }
+          }
+        }
+      }
+      allWpPost(sort: { fields: date, order: DESC }) {
+        nodes {
+          id
+        }
+      }
+    }
+  `);
+
+  if (result.errors) {
+    throw new Error(result.errors);
+  }
+
+  const {
+    data: { allWpPage, allWpPost },
+  } = result;
+
+  const blogPages = allWpPage.nodes;
+  const blogPosts = allWpPost.nodes;
+
+  const template = path.resolve('./src/templates/blog.jsx');
+
+  blogPages.forEach((blogPage) => {
+    const context = {
+      id: blogPage.id,
+      featuredPostId: blogPage.acf.featuredPost.post.id,
+      menus,
+      sharedBlocks,
+    };
+
+    // Omit feature post since it is not included in posts list
+    const postsWithoutFeaturedPost = blogPosts.filter(
+      (post) => post.id !== blogPage.acf.featuredPost.post.id
+    );
+
+    const pageCount = Math.ceil(postsWithoutFeaturedPost.length / POSTS_PER_PAGE);
+    const makePath = (i) => (i === 0 ? blogPage.uri : `${blogPage.uri}${i + 1}`);
+    Array.from({ length: pageCount }).forEach((_, i) => {
+      createPage({
+        path: makePath(i),
+        component: slash(template),
+        context: {
+          ...context,
+          limit: POSTS_PER_PAGE,
+          skip: i * POSTS_PER_PAGE,
+          pageCount,
+          currentPage: i + 1,
+        },
+      });
+    });
+  });
+}
+
 const getMenus = (allMenus) => {
   const menus = {};
 
@@ -208,6 +281,7 @@ exports.createPages = async (args) => {
     sharedBlocks,
   };
 
-  await createPages(params);
   await createRedirects(params);
+  await createPages(params);
+  await createBlogPages(params);
 };
