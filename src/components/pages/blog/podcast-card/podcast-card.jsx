@@ -30,14 +30,15 @@ const PodcastCard = ({ title, episode, duration, button }) => {
       <div className={cx('head')}>
         <IconPlay className={cx('icon')} />
         <div className={cx('title')}>
-          <Heading tag="h2" size="lg" color="tertiary">
+          <Heading className={cx('heading')} tag="h2" size="lg" color="tertiary">
             {title}
           </Heading>
-          <span className={cx('episode')}>Eps.{episode}</span>
+          <span className={cx('episode')}>Eps. {episode}</span>
           <span className={cx()}>{duration}</span>
         </div>
       </div>
       <SoundWave className={cx('wave')} />
+      {/* TODO: make sound wave animation */}
       <Button className={cx('button')} to={button.url} theme="accent-tertiary">
         {button.title}
       </Button>
