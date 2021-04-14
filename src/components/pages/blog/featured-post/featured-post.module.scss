@@ -15,6 +15,15 @@
     padding-bottom: 90px;
     padding-left: 20px;
   }
+
+  @include md-down {
+    flex-direction: column;
+    padding-top: 25px;
+    padding-right: 60px;
+    padding-bottom: 50px;
+    padding-left: 60px;
+    margin-bottom: 70px;
+  }
 }
 
 .icon {
@@ -101,5 +110,9 @@
 
   @include lg-down {
     width: 530px;
+  }
+
+  @include md-down {
+    width: 490px;
   }
 }

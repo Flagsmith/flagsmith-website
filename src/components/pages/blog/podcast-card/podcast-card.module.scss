@@ -19,6 +19,12 @@
     padding-bottom: 50px;
     padding-left: 20px;
   }
+
+  @include md-down {
+    padding-top: 25px;
+    padding-right: 60px;
+    padding-left: 60px;
+  }
 }
 
 .head {
@@ -31,6 +37,11 @@
 
   @include lg-down {
     margin-bottom: 20px;
+  }
+
+  @include md-down {
+    flex-direction: column;
+    margin-bottom: 5px;
   }
 }
 
@@ -87,6 +98,10 @@
   @include lg-down {
     margin-bottom: 15px;
   }
+
+  @include md-down {
+    margin-bottom: 10px;
+  }
 }
 
 .button {
@@ -115,5 +130,9 @@
 
   @include lg-down {
     width: 580px;
+  }
+
+  @include md-down {
+    width: 470px;
   }
 }

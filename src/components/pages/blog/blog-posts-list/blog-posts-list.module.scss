@@ -12,6 +12,11 @@
   @include lg-down {
     margin-top: 140px;
   }
+
+  @include md-down {
+    margin-top: 120px;
+    margin-bottom: 120px;
+  }
 }
 
 .inner {
@@ -28,13 +33,25 @@
   @include lg-down {
     max-width: 620px;
   }
+
+  @include md-down {
+    max-width: 580px;
+  }
 }
 
 .title {
   margin-bottom: 90px;
   text-align: center;
+
+  @include md-down {
+    margin-bottom: 70px;
+  }
 }
 
 .item {
   margin-bottom: 90px;
+
+  @include md-down {
+    margin-bottom: 70px;
+  }
 }

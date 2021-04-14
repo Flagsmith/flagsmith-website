@@ -1,6 +1,5 @@
 .wrapper {
   display: flex;
-  margin-top: 90px;
 
   @include with-link-primary;
 }
@@ -10,6 +9,17 @@
   align-items: center;
   font-weight: 700;
   cursor: pointer;
+
+  @include md-down {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+
+  svg {
+    @include md-down {
+      width: 32px;
+    }
+  }
 
   &.previous {
     margin-right: auto;
