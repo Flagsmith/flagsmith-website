@@ -24,7 +24,7 @@ const Footer = () => {
           </Link>
         </div>
         <p className={cx('copyright')}>
-          Creative design made by
+          Creative design by
           <Link to="https://pixelpoint.io/" target="_blank" withArrow>
             Pixel Point
           </Link>
