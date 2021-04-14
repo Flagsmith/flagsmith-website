@@ -38,7 +38,7 @@ const FeaturedPost = ({
   const fullDate = new Date(date).toLocaleString('en-US', {
     year: 'numeric',
     month: 'long',
-    day: '2-digit',
+    day: 'numeric',
   });
 
   return (
