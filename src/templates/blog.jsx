@@ -5,59 +5,10 @@ import React from 'react';
 import BlogPostsList from 'components/pages/blog/blog-posts-list';
 import MainLayout from 'layouts/main';
 
-const items = [
-  {
-    title: 'Deployment is not a release; a step-by-step example with feature flags',
-    info: 'By Ben Rometsch on April 6th, 2021',
-    description: 'Guide for using feature flags to decouple deployment and release',
-    link: {
-      url: '/',
-      title: 'Read More',
-    },
-  },
-  {
-    title: 'Deployment is not a release; a step-by-step example with feature flags',
-    info: 'By Ben Rometsch on April 6th, 2021',
-    description: 'Guide for using feature flags to decouple deployment and release',
-    link: {
-      url: '/',
-      title: 'Read More',
-    },
-  },
-  {
-    title: 'Deployment is not a release; a step-by-step example with feature flags',
-    info: 'By Ben Rometsch on April 6th, 2021',
-    description: 'Guide for using feature flags to decouple deployment and release',
-    link: {
-      url: '/',
-      title: 'Read More',
-    },
-  },
-  {
-    title: 'The difference between feature flags and remote configuration',
-    info: 'By Ben Rometsch on April 6th, 2021',
-    description:
-      'Exploring the difference between feature flags and remote config, and use cases for each',
-    link: {
-      url: '/',
-      title: 'Read More',
-    },
-  },
-];
-
-const podcastCard = {
-  title: 'Ruby on Rails, Basecamp & HEY',
-  episode: '9',
-  duration: '63:69',
-  button: {
-    url: '/',
-    title: 'See all podcasts',
-  },
-};
-
 const Blog = ({
   data: {
-    wpPage: { seo, title, acf: data },
+    wpPage: { seo, title, uri, acf: data },
+    allWpPost: { nodes: posts },
   },
   pageContext,
 }) => (
@@ -65,8 +16,8 @@ const Blog = ({
     <BlogPostsList
       pageTitle={title}
       featuredPost={data.featuredPost}
-      items={items}
-      podcastCard={podcastCard}
+      posts={posts}
+      rootPath={uri}
     />
   </MainLayout>
 );
@@ -74,9 +25,10 @@ const Blog = ({
 export default Blog;
 
 export const query = graphql`
-  query($id: String!) {
+  query($id: String!, $featuredPostId: String!, $skip: Int!, $limit: Int!) {
     wpPage(id: { eq: $id }) {
       title
+      uri
       acf {
         featuredPost {
           post {
@@ -98,6 +50,41 @@ export const query = graphql`
         }
       }
       ...wpPageSeo
+    }
+    allWpPost(
+      filter: { id: { ne: $featuredPostId } }
+      sort: { fields: date, order: DESC }
+      limit: $limit
+      skip: $skip
+    ) {
+      nodes {
+        featuredImage {
+          node {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(width: 330)
+              }
+            }
+          }
+        }
+        tags {
+          nodes {
+            name
+          }
+        }
+        title
+        author {
+          node {
+            firstName
+            lastName
+          }
+        }
+        date(formatString: "YYYY-MM-DD")
+        acf {
+          description: shortDescription
+        }
+        url: uri
+      }
     }
   }
 `;
