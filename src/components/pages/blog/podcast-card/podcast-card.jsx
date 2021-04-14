@@ -52,8 +52,17 @@ const PodcastCard = ({ title, episode, duration, button }) => {
   );
 };
 
-PodcastCard.propTypes = {};
+PodcastCard.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
-PodcastCard.defaultProps = {};
+PodcastCard.defaultProps = {
+  episode: '9',
+  duration: '63:69',
+  button: {
+    url: '/podcasts',
+    title: 'See all podcasts',
+  },
+};
 
 export default PodcastCard;
