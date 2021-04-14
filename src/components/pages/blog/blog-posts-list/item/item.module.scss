@@ -6,9 +6,23 @@
 
   @include with-link-accent-secondary;
 
-  &:last-of-type {
-    margin-bottom: 0;
+  &.with-image {
+    display: flex;
+    max-width: 1010px;
+
+    .inner {
+      max-width: 490px;
+    }
   }
+}
+
+.image-wrapper {
+  flex-shrink: 0;
+  margin-right: 60px;
+}
+
+.image {
+  border-radius: 10px;
 }
 
 .title {
