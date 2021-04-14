@@ -1,20 +1,15 @@
 .wrapper {
   position: relative;
-  max-width: 1010px;
   padding-top: 35px;
   padding-right: 35px;
   padding-bottom: 100px;
   padding-left: 35px;
-  margin-right: auto;
-  margin-bottom: 90px;
-  margin-left: auto;
   color: $color-tertiary;
   background: $color-primary;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
 
   @include fullhd-down {
-    max-width: 850px;
     padding-bottom: 70px;
   }
 }
@@ -22,6 +17,10 @@
 .head {
   display: flex;
   margin-bottom: 40px;
+
+  @include xl-down {
+    margin-bottom: 35px;
+  }
 }
 
 .icon {
@@ -30,6 +29,11 @@
   @include fullhd-down {
     width: 55px;
     margin-right: 20px;
+  }
+
+  @include xl-down {
+    width: 50px;
+    margin-right: 15px;
   }
 }
 
@@ -67,4 +71,8 @@
   right: 0;
   bottom: 0;
   border-radius: 0 0 10px 10px;
+
+  @include xl-down {
+    width: 730px;
+  }
 }

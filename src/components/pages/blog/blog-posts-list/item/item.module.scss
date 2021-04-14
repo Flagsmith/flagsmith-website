@@ -1,7 +1,6 @@
 .wrapper {
   max-width: 750px;
   margin-right: auto;
-  margin-bottom: 90px;
   margin-left: auto;
 
   @include with-link-accent-secondary;
@@ -10,20 +9,26 @@
     max-width: 630px;
   }
 
+  @include xl-down {
+    max-width: 570px;
+  }
+
   &.with-image {
     display: flex;
-    max-width: 1010px;
+    max-width: 880px;
+    margin-right: auto;
+    margin-left: initial;
 
     @include fullhd-down {
-      max-width: 850px;
+      max-width: 740px;
     }
 
-    .inner {
-      max-width: 490px;
+    @include xl-down {
+      max-width: 770px;
+    }
 
-      @include fullhd-down {
-        max-width: 410px;
-      }
+    @include lg-down {
+      max-width: 620px;
     }
   }
 }

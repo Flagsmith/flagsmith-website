@@ -1,15 +1,8 @@
 .wrapper {
   display: flex;
-  max-width: 1010px;
   margin-top: 90px;
-  margin-right: auto;
-  margin-left: auto;
 
   @include with-link-primary;
-
-  @include fullhd-down {
-    max-width: 850px;
-  }
 }
 
 .item {

@@ -18,7 +18,7 @@ const BlogPostsList = ({ pageTitle, featuredPost, posts, rootPath }) => {
   const { pageCount, currentPage } = useContext(MainContext);
   return (
     <section className={cx('wrapper')}>
-      <div className="container">
+      <div className={cx('container', 'inner')}>
         <Heading className={cx('title')} tag="h1" size="xl">
           {pageTitle}
         </Heading>
@@ -27,7 +27,9 @@ const BlogPostsList = ({ pageTitle, featuredPost, posts, rootPath }) => {
           const { tags } = post;
           const hasPodcastTag = Boolean(tags?.nodes.find((tag) => tag?.name === 'podcast'));
           return (
-            <div key={index}>{hasPodcastTag ? <PodcastCard {...post} /> : <Item {...post} />}</div>
+            <div className={cx('item')} key={index}>
+              {hasPodcastTag ? <PodcastCard {...post} /> : <Item {...post} />}
+            </div>
           );
         })}
         <Pagination pageCount={pageCount} currentPage={currentPage} rootPath={rootPath} />

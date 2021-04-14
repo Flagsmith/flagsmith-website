@@ -37,7 +37,7 @@ const Item = ({
           />
         </div>
       )}
-      <div className={cx('inner')}>
+      <div className={cx('content')}>
         <Heading className={cx('title')} tag="h2" size="lg">
           {title}
         </Heading>

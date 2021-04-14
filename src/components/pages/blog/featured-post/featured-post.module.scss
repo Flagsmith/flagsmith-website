@@ -1,20 +1,13 @@
 .wrapper {
   position: relative;
   display: flex;
-  max-width: 1010px;
   padding-top: 35px;
   padding-right: 35px;
   padding-bottom: 100px;
   padding-left: 35px;
-  margin-right: auto;
   margin-bottom: 90px;
-  margin-left: auto;
   background-color: $color-secondary;
   border-radius: 10px;
-
-  @include fullhd-down {
-    max-width: 850px;
-  }
 }
 
 .icon {
@@ -24,6 +17,11 @@
   @include fullhd-down {
     width: 55px;
     margin-right: 20px;
+  }
+
+  @include xl-down {
+    width: 50px;
+    margin-right: 15px;
   }
 }
 
