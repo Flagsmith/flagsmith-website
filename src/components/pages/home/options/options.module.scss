@@ -66,6 +66,12 @@
     grid-template-columns: 12fr;
     row-gap: 50px;
   }
+
+  @include sm-down {
+    max-width: 390px;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 
 .item {
@@ -77,8 +83,14 @@
 
   @include hover {
     .item-link {
+      color: $color-accent-primary;
+
       svg {
         animation: bounce 0.3s;
+
+        path {
+          fill: $color-accent-primary;
+        }
       }
     }
   }
@@ -93,6 +105,7 @@
       z-index: -1;
       width: 150px;
       height: 150px;
+      pointer-events: none;
       cursor: initial;
       content: '';
       background-repeat: no-repeat;
@@ -151,7 +164,7 @@
       @include lg-down {
         top: auto;
         right: auto;
-        bottom: -75px;
+        bottom: -80px;
         left: 50%;
       }
     }
@@ -180,10 +193,10 @@
 
   @include sm-down {
     display: block;
-    padding-top: 15px;
-    padding-right: 15px;
-    padding-bottom: 15px;
-    padding-left: 15px;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 20px;
+    padding-left: 25px;
   }
 }
 
@@ -193,19 +206,16 @@
   @include lg-down {
     grid-column-start: 2;
   }
+
+  @include xs-down {
+    font-size: 30px !important;
+  }
 }
 
 .item-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 265px;
-  margin-bottom: 20px;
-
-  @include xl-down {
-    height: 200px;
-    margin-bottom: 20px;
-  }
+  margin-bottom: 30px;
+  line-height: 0;
+  text-align: center;
 
   @include lg-down {
     grid-row-start: 1;
@@ -282,11 +292,10 @@
   line-height: $line-height-xs;
   color: $color-accent-secondary;
   border-top: 2px solid $color-additional-4;
+  transition: color $transition-base;
 
   @include lg-down {
     grid-column-start: 2;
-    padding-top: 0;
-    border-top: none;
   }
 
   svg {
@@ -294,6 +303,7 @@
 
     & > path {
       fill: $color-accent-secondary;
+      transition: fill $transition-base;
     }
   }
 }

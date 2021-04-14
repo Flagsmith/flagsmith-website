@@ -67,7 +67,12 @@ const State = ({ chat, designV2, dark, animationIsCompleted }) => {
     <div className={cx('wrapper')}>
       <motion.div className={cx('inner', { dark }, { designV2 })}>
         <div className={cx('illustration-wrapper')}>
-          <GatsbyImage className={cx('illustration')} image={getImage(illustration)} alt="" />
+          <GatsbyImage
+            className={cx('illustration')}
+            image={getImage(illustration)}
+            imgStyle={{ objectPosition: 'right top' }}
+            alt=""
+          />
         </div>
 
         {designV2 && (
