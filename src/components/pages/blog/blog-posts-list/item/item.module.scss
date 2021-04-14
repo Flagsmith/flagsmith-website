@@ -6,12 +6,24 @@
 
   @include with-link-accent-secondary;
 
+  @include fullhd-down {
+    max-width: 630px;
+  }
+
   &.with-image {
     display: flex;
     max-width: 1010px;
 
+    @include fullhd-down {
+      max-width: 850px;
+    }
+
     .inner {
       max-width: 490px;
+
+      @include fullhd-down {
+        max-width: 410px;
+      }
     }
   }
 }
@@ -19,6 +31,11 @@
 .image-wrapper {
   flex-shrink: 0;
   margin-right: 60px;
+
+  @include fullhd-down {
+    width: 280px;
+    margin-right: 50px;
+  }
 }
 
 .image {

@@ -12,6 +12,11 @@
   background: $color-primary;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
+
+  @include fullhd-down {
+    max-width: 850px;
+    padding-bottom: 70px;
+  }
 }
 
 .head {
@@ -21,6 +26,11 @@
 
 .icon {
   margin-right: 35px;
+
+  @include fullhd-down {
+    width: 55px;
+    margin-right: 20px;
+  }
 }
 
 .title {
@@ -40,6 +50,11 @@
 
 .wave {
   margin-bottom: 35px;
+
+  @include fullhd-down {
+    width: 100%;
+    margin-bottom: 25px;
+  }
 }
 
 .button {

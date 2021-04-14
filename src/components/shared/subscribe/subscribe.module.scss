@@ -13,14 +13,28 @@
   padding-left: 80px;
   background: $color-accent-tertiary;
   border-radius: 10px;
+
+  @include fullhd-down {
+    max-width: 1070px;
+    padding-right: 50px;
+    padding-left: 60px;
+  }
 }
 
 .content {
   flex-basis: 630px;
+
+  @include fullhd-down {
+    flex-basis: 620px;
+  }
 }
 
 .description {
   margin-bottom: 40px;
+
+  @include fullhd-down {
+    margin-bottom: 30px;
+  }
 
   p {
     &:first-of-type {
@@ -56,4 +70,8 @@
 
 .illustration {
   flex-shrink: 0;
+
+  @include fullhd-down {
+    width: 320px;
+  }
 }

@@ -6,6 +6,10 @@
   margin-left: auto;
 
   @include with-link-primary;
+
+  @include fullhd-down {
+    max-width: 850px;
+  }
 }
 
 .item {

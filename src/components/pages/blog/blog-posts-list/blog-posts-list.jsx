@@ -19,7 +19,9 @@ const BlogPostsList = ({ pageTitle, featuredPost, posts, rootPath }) => {
   return (
     <section className={cx('wrapper')}>
       <div className="container">
-        <Heading className={cx('title')}>{pageTitle}</Heading>
+        <Heading className={cx('title')} tag="h1" size="xl">
+          {pageTitle}
+        </Heading>
         <FeaturedPost {...featuredPost} />
         {posts.map((post, index) => {
           const { tags } = post;

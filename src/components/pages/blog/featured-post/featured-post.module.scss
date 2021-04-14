@@ -11,11 +11,20 @@
   margin-left: auto;
   background-color: $color-secondary;
   border-radius: 10px;
+
+  @include fullhd-down {
+    max-width: 850px;
+  }
 }
 
 .icon {
   flex-shrink: 0;
   margin-right: 35px;
+
+  @include fullhd-down {
+    width: 55px;
+    margin-right: 20px;
+  }
 }
 
 .inner {
@@ -45,4 +54,8 @@
   position: absolute;
   right: 0;
   bottom: 0;
+
+  @include fullhd-down {
+    width: 750px;
+  }
 }
