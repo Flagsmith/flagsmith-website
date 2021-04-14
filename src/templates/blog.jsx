@@ -3,7 +3,18 @@ import { graphql } from 'gatsby';
 import React from 'react';
 
 import BlogPostsList from 'components/pages/blog/blog-posts-list';
+import Subscribe from 'components/shared/subscribe';
 import MainLayout from 'layouts/main';
+
+const subscribe = {
+  title: 'Subscribe',
+  description: '<p>Learn more about CI/CD, AB Testing and all that great stuff</p>',
+  emailPlaceholder: 'Email for subscribe...',
+  button: {
+    url: '/',
+    title: 'Subscribe',
+  },
+};
 
 const Blog = ({
   data: {
@@ -19,6 +30,7 @@ const Blog = ({
       posts={posts}
       rootPath={uri}
     />
+    <Subscribe {...subscribe} />
   </MainLayout>
 );
 
