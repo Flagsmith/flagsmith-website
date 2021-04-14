@@ -31,7 +31,9 @@ const Subscribe = ({ title, description, emailPlaceholder, button }) => {
           <div className={cx('description')} dangerouslySetInnerHTML={{ __html: description }} />
           <form className={cx('form')}>
             <input type="email" placeholder={emailPlaceholder} />
-            <Button to={button.url}>{button.title}</Button>
+            <Button className={cx('button')} to={button.url}>
+              {button.title}
+            </Button>
           </form>
         </div>
         <div className={cx('illustration')}>

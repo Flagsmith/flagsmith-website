@@ -12,6 +12,13 @@
   @include fullhd-down {
     padding-bottom: 70px;
   }
+
+  @include lg-down {
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+    padding-left: 20px;
+  }
 }
 
 .head {
@@ -20,6 +27,10 @@
 
   @include xl-down {
     margin-bottom: 35px;
+  }
+
+  @include lg-down {
+    margin-bottom: 20px;
   }
 }
 
@@ -35,14 +46,27 @@
     width: 50px;
     margin-right: 15px;
   }
+
+  @include lg-down {
+    width: 45px;
+  }
 }
 
 .title {
   margin-top: 5px;
+
+  @include lg-down {
+    margin-top: 10px;
+  }
 }
 
 .heading {
   margin-bottom: 5px;
+}
+
+.info {
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
 }
 
 .episode {
@@ -59,20 +83,37 @@
     width: 100%;
     margin-bottom: 25px;
   }
+
+  @include lg-down {
+    margin-bottom: 15px;
+  }
 }
 
 .button {
   position: relative;
   z-index: 1;
+
+  @include lg-down {
+    padding-top: 17px;
+    padding-right: 25px;
+    padding-bottom: 17px;
+    padding-left: 25px;
+    font-size: $font-size-xs;
+  }
 }
 
 .illustration {
   position: absolute;
   right: 0;
   bottom: 0;
+  max-width: 100%;
   border-radius: 0 0 10px 10px;
 
   @include xl-down {
     width: 730px;
+  }
+
+  @include lg-down {
+    width: 580px;
   }
 }

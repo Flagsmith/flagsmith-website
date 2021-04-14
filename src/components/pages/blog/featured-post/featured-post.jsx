@@ -52,7 +52,9 @@ const FeaturedPost = ({
           By {firstName} {lastName} on {fullDate}
         </span>
         <p className={cx('description')}>{description}</p>
-        <Button to={url}>Read more</Button>
+        <Button className={cx('button')} to={url}>
+          Read more
+        </Button>
       </div>
       <GatsbyImage
         className={cx('illustration')}

@@ -8,6 +8,13 @@
   margin-bottom: 90px;
   background-color: $color-secondary;
   border-radius: 10px;
+
+  @include lg-down {
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 90px;
+    padding-left: 20px;
+  }
 }
 
 .icon {
@@ -23,12 +30,20 @@
     width: 50px;
     margin-right: 15px;
   }
+
+  @include lg-down {
+    width: 45px;
+  }
 }
 
 .inner {
   position: relative;
   z-index: 1;
   margin-top: 5px;
+
+  @include lg-down {
+    margin-top: 10px;
+  }
 }
 
 .title {
@@ -41,19 +56,50 @@
   font-size: $font-size-xs;
   line-height: $line-height-xs;
   color: $color-additional-6;
+
+  @include lg-down {
+    margin-bottom: 10px;
+    font-size: $font-size-xxs;
+    line-height: $line-height-xxs;
+  }
 }
 
 .description {
   margin-top: 0;
   margin-bottom: 40px;
+
+  @include lg-down {
+    margin-bottom: 30px;
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+}
+
+.button {
+  @include lg-down {
+    padding-top: 17px;
+    padding-right: 25px;
+    padding-bottom: 17px;
+    padding-left: 25px;
+    font-size: $font-size-xs;
+  }
 }
 
 .illustration {
   position: absolute;
   right: 0;
   bottom: 0;
+  max-width: 100%;
 
   @include fullhd-down {
     width: 750px;
+  }
+
+  @include xl-down {
+    width: 670px;
+  }
+
+  @include lg-down {
+    width: 530px;
   }
 }

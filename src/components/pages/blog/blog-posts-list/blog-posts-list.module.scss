@@ -8,6 +8,10 @@
     margin-top: 150px;
     margin-bottom: 150px;
   }
+
+  @include lg-down {
+    margin-top: 140px;
+  }
 }
 
 .inner {
@@ -19,6 +23,10 @@
 
   @include xl-down {
     max-width: 770px;
+  }
+
+  @include lg-down {
+    max-width: 620px;
   }
 }
 
