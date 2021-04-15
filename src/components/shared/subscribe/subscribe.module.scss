@@ -80,6 +80,7 @@
 
   @include sm-down {
     flex-basis: initial;
+    width: 100%;
     margin-bottom: 30px;
   }
 }
@@ -164,11 +165,13 @@
 }
 
 .button {
-  padding-top: 17px;
-  padding-right: 25px;
-  padding-bottom: 17px;
-  padding-left: 25px;
-  font-size: $font-size-xs;
+  @include lg-down {
+    padding-top: 17px;
+    padding-right: 25px;
+    padding-bottom: 17px;
+    padding-left: 25px;
+    font-size: $font-size-xs;
+  }
 }
 
 .illustration {
