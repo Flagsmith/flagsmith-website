@@ -1,13 +1,13 @@
 .wrapper {
   display: flex;
-
-  @include with-link-primary;
 }
 
 .item {
   display: flex;
   align-items: center;
   font-weight: 700;
+  color: $color-primary;
+  text-decoration: none;
   cursor: pointer;
 
   @include md-down {
@@ -15,9 +15,21 @@
     line-height: $line-height-sm;
   }
 
+  &:hover {
+    svg {
+      circle {
+        fill: $color-primary-hover;
+      }
+    }
+  }
+
   svg {
     @include md-down {
       width: 32px;
+    }
+
+    circle {
+      transition: fill $transition-base;
     }
   }
 
