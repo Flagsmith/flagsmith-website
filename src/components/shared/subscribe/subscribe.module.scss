@@ -86,7 +86,9 @@
 }
 
 .title {
-  font-size: 45px;
+  @include sm-down {
+    font-size: 45px;
+  }
 }
 
 .description {
@@ -176,6 +178,7 @@
 
 .illustration {
   flex-shrink: 0;
+  max-width: 100%;
 
   @include fullhd-down {
     width: 320px;

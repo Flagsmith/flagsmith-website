@@ -108,8 +108,17 @@
 .title {
   margin-bottom: 15px;
 
+  @include xl-down {
+    font-size: 35px;
+  }
+
   @include lg-down {
     margin-bottom: 5px;
+    font-size: 30px;
+  }
+
+  @include md-down {
+    font-size: 28px;
   }
 }
 
@@ -122,11 +131,8 @@
 
   @include lg-down {
     margin-bottom: 10px;
-  }
-
-  @include sm-down {
     font-size: $font-size-xxs;
-    line-height: $line-height-xxs;
+    line-height: 1.5;
   }
 }
 

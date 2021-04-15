@@ -29,8 +29,8 @@ const PodcastCard = ({ title, episode, duration, button }) => {
     <div className={cx('wrapper')}>
       <div className={cx('head')}>
         <IconPlay className={cx('icon')} />
-        <div className={cx('title')}>
-          <Heading className={cx('heading')} tag="h2" size="lg" color="tertiary">
+        <div className={cx('title-wrapper')}>
+          <Heading className={cx('title')} tag="h2" size="lg" color="tertiary">
             {title}
           </Heading>
           <div className={cx('info')}>
