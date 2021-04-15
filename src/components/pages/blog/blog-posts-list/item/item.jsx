@@ -29,7 +29,7 @@ const Item = ({
   return (
     <div className={cx('wrapper', { withImage: featuredImage })}>
       {featuredImage && (
-        <div className={cx('image-wrapper')}>
+        <div className={cx('image-wrapper', 'sm-hidden')}>
           <GatsbyImage
             className={cx('image')}
             image={getImage(featuredImage.node.localFile)}
@@ -41,6 +41,15 @@ const Item = ({
         <Heading className={cx('title')} tag="h2" size="lg">
           {title}
         </Heading>
+        {featuredImage && (
+          <div className={cx('image-wrapper', 'sm-visible')}>
+            <GatsbyImage
+              className={cx('image')}
+              image={getImage(featuredImage.node.localFile)}
+              alt=""
+            />
+          </div>
+        )}
         <span className={cx('info')}>
           By {firstName} {lastName} on {fullDate}
         </span>

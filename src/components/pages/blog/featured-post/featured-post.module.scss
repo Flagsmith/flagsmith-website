@@ -24,6 +24,13 @@
     padding-left: 60px;
     margin-bottom: 70px;
   }
+
+  @include sm-down {
+    padding-top: 30px;
+    padding-right: 25px;
+    padding-bottom: 190px;
+    padding-left: 25px;
+  }
 }
 
 .icon {
@@ -94,10 +101,13 @@
   }
 }
 
-.illustration {
+.illustration-wrapper {
   position: absolute;
   right: 0;
   bottom: 0;
+}
+
+.illustration {
   max-width: 100%;
 
   @include fullhd-down {

@@ -52,6 +52,10 @@
 
   @include sm-down {
     flex-direction: column;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
   }
 }
 
@@ -73,6 +77,15 @@
   @include md-down {
     flex-basis: 300px;
   }
+
+  @include sm-down {
+    flex-basis: initial;
+    margin-bottom: 30px;
+  }
+}
+
+.title {
+  font-size: 45px;
 }
 
 .description {

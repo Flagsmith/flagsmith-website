@@ -25,6 +25,13 @@
     padding-right: 60px;
     padding-left: 60px;
   }
+
+  @include sm-down {
+    padding-top: 30px;
+    padding-right: 25px;
+    padding-bottom: 120px;
+    padding-left: 25px;
+  }
 }
 
 .head {
@@ -61,6 +68,10 @@
   @include lg-down {
     width: 45px;
   }
+
+  @include sm-down {
+    margin-bottom: 15px;
+  }
 }
 
 .title {
@@ -68,6 +79,10 @@
 
   @include lg-down {
     margin-top: 10px;
+  }
+
+  @include sm-down {
+    margin-top: 0;
   }
 }
 
@@ -102,6 +117,10 @@
   @include md-down {
     margin-bottom: 10px;
   }
+
+  @include sm-down {
+    margin-bottom: 20px;
+  }
 }
 
 .button {
@@ -117,10 +136,13 @@
   }
 }
 
-.illustration {
+.illustration-wrapper {
   position: absolute;
   right: 0;
   bottom: 0;
+}
+
+.illustration {
   max-width: 100%;
   border-radius: 0 0 10px 10px;
 
@@ -134,5 +156,9 @@
 
   @include md-down {
     width: 470px;
+  }
+
+  @include sm-down {
+    width: 100%;
   }
 }

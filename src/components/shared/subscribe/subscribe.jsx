@@ -27,7 +27,9 @@ const Subscribe = ({ title, description, emailPlaceholder, button }) => {
     <section className={cx('wrapper')}>
       <div className={cx('container', 'inner')}>
         <div className={cx('content')}>
-          <Heading tag="h2">{title}</Heading>
+          <Heading className={cx('title')} tag="h2">
+            {title}
+          </Heading>
           <div className={cx('description')} dangerouslySetInnerHTML={{ __html: description }} />
           <form className={cx('form')}>
             <input type="email" placeholder={emailPlaceholder} />
