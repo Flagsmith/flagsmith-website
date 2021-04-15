@@ -56,14 +56,12 @@ const FeaturedPost = ({
           Read more
         </Button>
       </div>
-      <div className={cx('illustration-wrapper')}>
-        <GatsbyImage
-          className={cx('illustration')}
-          image={getImage(bookIllustration)}
-          alt=""
-          aria-hidden
-        />
-      </div>
+      <GatsbyImage
+        className={cx('illustration')}
+        image={getImage(bookIllustration)}
+        alt=""
+        aria-hidden
+      />
     </div>
   );
 };

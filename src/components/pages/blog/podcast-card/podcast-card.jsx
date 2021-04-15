@@ -44,14 +44,12 @@ const PodcastCard = ({ title, episode, duration, button }) => {
       <Button className={cx('button')} to={button.url} theme="accent-tertiary">
         {button.title}
       </Button>
-      <div className={cx('illustration-wrapper')}>
-        <GatsbyImage
-          className={cx('illustration')}
-          image={getImage(playerIllustration)}
-          alt=""
-          aria-hidden
-        />
-      </div>
+      <GatsbyImage
+        className={cx('illustration')}
+        image={getImage(playerIllustration)}
+        alt=""
+        aria-hidden
+      />
     </div>
   );
 };

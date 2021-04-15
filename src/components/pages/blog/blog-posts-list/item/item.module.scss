@@ -83,6 +83,7 @@
 }
 
 .image {
+  width: 330px;
   border-radius: 10px;
 
   @include fullhd-down {

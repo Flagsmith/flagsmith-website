@@ -101,13 +101,10 @@
   }
 }
 
-.illustration-wrapper {
-  position: absolute;
+.illustration {
+  position: absolute !important;
   right: 0;
   bottom: 0;
-}
-
-.illustration {
   max-width: 100%;
 
   @include fullhd-down {
