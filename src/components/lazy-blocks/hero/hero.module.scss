@@ -121,4 +121,8 @@
   right: 0%;
   bottom: 0;
   left: 0%;
+
+  @include md-down {
+    display: none;
+  }
 }

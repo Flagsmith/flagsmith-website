@@ -11,25 +11,40 @@ const cx = classNames.bind(styles);
 const Menu = ({ items }) => (
   <nav className={cx('wrapper')}>
     <ul className={cx('list')}>
-      {items.map(({ label, path, childItems }, index) => (
-        <li className={cx('item')} key={index}>
-          <Link className={cx('link')} to={path}>
-            {label}
-          </Link>
+      {items.map(({ label, path, childItems }, index) => {
+        const withSubMenu = childItems.nodes.length > 0;
 
-          {childItems.nodes.length > 0 && (
-            <ul className={cx('dropdown')}>
-              {childItems.nodes.map(({ label, path }, index) => (
-                <li key={index}>
-                  <Link className={cx('link')} to={path}>
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </li>
-      ))}
+        const handleLinkClick = (event) => {
+          event.preventDefault();
+        };
+
+        return (
+          <li className={cx('item')} key={index}>
+            {path === '/' ? (
+              // eslint-disable-next-line jsx-a11y/anchor-is-valid
+              <a className={cx('link')} href="#" onClick={handleLinkClick}>
+                {label}
+              </a>
+            ) : (
+              <Link className={cx('link')} to={path}>
+                {label}
+              </Link>
+            )}
+
+            {withSubMenu && (
+              <ul className={cx('dropdown')}>
+                {childItems.nodes.map(({ label, path }, index) => (
+                  <li key={index}>
+                    <Link className={cx('link')} to={path}>
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        );
+      })}
     </ul>
   </nav>
 );

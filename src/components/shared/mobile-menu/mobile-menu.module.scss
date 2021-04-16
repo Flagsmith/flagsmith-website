@@ -16,13 +16,6 @@
   transition-property: transform, visibility;
   transform: translateX(100%);
 
-  @include section-paddings;
-
-  @include sm-down {
-    @include safe-area(padding-left, left, 30px);
-    @include safe-area(padding-right, right, 30px);
-  }
-
   &.open {
     visibility: visible;
     transform: translateX(0);
@@ -35,6 +28,13 @@
   margin-bottom: 0;
   overflow-y: auto;
   list-style-type: none;
+
+  @include section-paddings;
+
+  @include sm-down {
+    @include safe-area(padding-left, left, 30px);
+    @include safe-area(padding-right, right, 30px);
+  }
 }
 
 .item {
@@ -61,6 +61,13 @@
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 60px;
   column-gap: 20px;
+
+  @include section-paddings;
+
+  @include sm-down {
+    @include safe-area(padding-left, left, 30px);
+    @include safe-area(padding-right, right, 30px);
+  }
 
   &::before {
     position: absolute;

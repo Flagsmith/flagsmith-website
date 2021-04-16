@@ -78,15 +78,12 @@
   grid-row-start: 2;
   grid-column: span 7;
   align-items: center;
-  margin-top: -10px;
+  margin-top: -25px;
+  margin-bottom: 0;
   font-size: $font-size-xs;
   line-height: $line-height-xs;
 
   @include with-link-accent-secondary;
-
-  @include fullhd-down {
-    margin-top: -30px;
-  }
 
   @include xl-down {
     grid-column: span 6;

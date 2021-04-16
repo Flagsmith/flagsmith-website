@@ -23,12 +23,12 @@ const Footer = () => {
             <Logo />
           </Link>
         </div>
-        <span className={cx('copyright')}>
+        <p className={cx('copyright')}>
           Creative design by
           <Link to="https://pixelpoint.io/" target="_blank" withArrow>
             Pixel Point
           </Link>
-        </span>
+        </p>
 
         <div className={cx('menu')}>
           {menuItems.map(({ label, childItems }, index) => (

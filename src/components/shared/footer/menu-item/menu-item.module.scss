@@ -9,10 +9,10 @@
   }
 
   .title {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 
     @include lg-down {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       font-size: 22px;
       line-height: 28.6px;
     }
@@ -30,16 +30,12 @@
   list-style: none;
 
   li {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 
     @include with-link-primary;
 
-    @include fullhd-down {
-      margin-bottom: 25px;
-    }
-
     @include lg-down {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     &:last-child {
@@ -49,6 +45,7 @@
 }
 
 .link {
+  display: block;
   font-size: $font-size-xs;
   line-height: $line-height-xs;
 }

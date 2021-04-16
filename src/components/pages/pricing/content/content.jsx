@@ -35,10 +35,14 @@ const Content = ({ hero: { title, description, tabs, prices, options }, faq, get
           <div className={cx('tabs')}>
             {tabs.map(({ iconName: key, title, description }, index) => {
               const Icon = iconsCollection[key];
+              const isActive = tabNameActive === key;
+              const headingColor = isActive ? 'quaternary' : 'primary';
+
               const handleTabClick = () => setTabNameActive(key);
+
               return (
                 <div
-                  className={cx('tab', { active: tabNameActive === key })}
+                  className={cx('tab', { active: isActive })}
                   role="button"
                   tabIndex="0"
                   key={index}
@@ -47,7 +51,7 @@ const Content = ({ hero: { title, description, tabs, prices, options }, faq, get
                 >
                   <Icon />
                   <div className={cx('tab-content')}>
-                    <Heading className={cx('tab-title')} tag="h3" size="sm" color="quaternary">
+                    <Heading className={cx('tab-title')} tag="h3" size="sm" color={headingColor}>
                       {title}
                     </Heading>
                     <p className={cx('tab-description')}>{description}</p>

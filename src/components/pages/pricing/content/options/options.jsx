@@ -45,7 +45,7 @@ const Options = ({ items }) => {
           const image = imageCollection[imageName];
           return (
             <div className={cx('item')} key={index}>
-              <Heading className={cx('title')} tag="h3" size="lg">
+              <Heading className={cx('title')} tag="h3" size="lg" color="quaternary">
                 {title}
               </Heading>
 

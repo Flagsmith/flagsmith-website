@@ -35,21 +35,20 @@
     padding-top: 70px;
     padding-right: 80px;
     padding-bottom: 65px;
-    padding-left: 70px;
+    padding-left: 50px;
   }
 
   @include xl-down {
     max-width: 970px;
     padding-top: 55px;
     padding-bottom: 50px;
-    padding-left: 60px;
   }
 
   @include lg-down {
     max-width: 780px;
     padding-top: 40px;
     padding-bottom: 40px;
-    padding-left: 20px;
+    padding-left: 40px;
   }
 
   @include sm-down {
@@ -86,6 +85,10 @@
 
 .title {
   margin-bottom: 10px;
+
+  @include md-down {
+    font-size: 45px !important;
+  }
 }
 
 .description {
@@ -135,9 +138,9 @@
   }
 
   @include md-down {
-    top: -25px;
-    right: 9px;
-    width: 353px;
+    top: -26px;
+    right: -2px;
+    width: 365px;
   }
 
   @include sm-down {
@@ -147,7 +150,7 @@
     left: 50%;
     grid-row-start: 1;
     margin-top: -65px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     transform: translateX(-50%);
   }
 

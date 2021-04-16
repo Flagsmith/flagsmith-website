@@ -50,6 +50,7 @@ const Prices = ({ items }) => {
 
   return (
     <div className={cx('wrapper')}>
+      {/* TODO: FIX CSS BEFORE UNCOMMENTING, thanks! (paddings/margins/overflow on mobile) */}
       {/* <div className={cx('switch-button-wrapper')}>
         <span className={cx({ active: isPayTypeYearly })}>Pay Yearly</span>
         <button

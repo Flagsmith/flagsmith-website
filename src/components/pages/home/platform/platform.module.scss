@@ -81,6 +81,10 @@
 .left-inner {
   position: sticky;
   top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 
 .items-wrapper {

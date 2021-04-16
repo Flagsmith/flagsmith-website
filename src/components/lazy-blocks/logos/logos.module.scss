@@ -3,25 +3,53 @@
 }
 
 .items-wrapper {
-  display: grid;
-  grid-template-columns: repeat(8, 130px);
-  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 70px;
+  justify-content: center;
+
+  @include fullhd-down {
+    column-gap: 47px;
+  }
+
+  @include xl-down {
+    column-gap: 40px;
+  }
 
   @include lg-down {
-    grid-template-columns: repeat(8, 1fr);
+    column-gap: 20px;
   }
 
   @include md-down {
-    grid-template-columns: repeat(4, 100px);
+    column-gap: 60px;
   }
 
-  @include xs-down {
-    grid-template-columns: repeat(4, 1fr);
+  @include sm-down {
+    column-gap: 20px;
   }
 }
 
 .item {
-  max-width: 100%;
+  width: 130px;
+  // fix issue of images stretching
+  object-fit: contain;
+  height: 100%;
+
+  @include fullhd-down {
+    width: 120px;
+  }
+
+  @include xl-down {
+    width: 110px;
+  }
+
+  @include lg-down {
+    width: 100px;
+  }
+
+  @include sm-down {
+    width: 80px;
+  }
 }
 
 .text {

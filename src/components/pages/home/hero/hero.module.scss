@@ -9,24 +9,20 @@
   @include section-paddings;
 
   @include fullhd-down {
-    padding-top: 110px;
+    padding-top: 130px;
     padding-bottom: 70px;
     margin-bottom: 180px;
   }
 
-  @include xl-down {
-    padding-top: 90px;
-  }
-
   @include lg-down {
-    padding-top: 100px;
+    padding-top: 110px;
     padding-bottom: 50px;
     margin-bottom: 150px;
     overflow: hidden;
   }
 
   @include md-down {
-    padding-top: 90px;
+    padding-top: 100px;
     margin-bottom: 115px;
   }
 
