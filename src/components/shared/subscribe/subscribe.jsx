@@ -1,10 +1,14 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import classNames from 'classnames/bind';
+import { motion } from 'framer-motion';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
 
+import IconCheck from 'icons/check.inline.svg';
 import sendGravityFormData from 'utils/send-gravity-form-data';
 
 import Button from '../button';
@@ -15,19 +19,38 @@ import styles from './subscribe.module.scss';
 const cx = classNames.bind(styles);
 
 const FORM_ID = 4;
+// It is used for proper loading animation because most of the time we get response from the server almost immediately
+const APPEAR_AND_EXIT_ANIMATION_DURATION = 0.5; // seconds
 
-const Subscribe = ({ title, description, emailPlaceholder, button }) => {
-  const { register, handleSubmit, reset } = useForm();
+const validationSchema = yup.object().shape({
+  email: yup
+    .string()
+    .trim()
+    .email('Must be a valid email')
+    .required('Please enter your email address.'),
+});
+
+const Subscribe = ({ title, description, emailPlaceholder, buttonText }) => {
+  const { register, handleSubmit, errors, reset } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [serverResponse, setServerResponse] = useState(null);
 
   const onSubmit = (values) => {
+    setIsLoading(true);
     try {
       sendGravityFormData(FORM_ID, {
         input_1: values.email,
       }).then(() => {
+        setIsLoading(false);
+        setServerResponse('success');
         reset();
       });
     } catch (error) {
-      console.log(error.message);
+      setIsLoading(false);
+      setServerResponse('error');
     }
   };
   const { subscribeIllustration } = useStaticQuery(graphql`
@@ -45,22 +68,62 @@ const Subscribe = ({ title, description, emailPlaceholder, button }) => {
     <section className={cx('wrapper')}>
       <div className={cx('container', 'inner')}>
         <div className={cx('content')}>
-          <Heading className={cx('title')} tag="h2">
-            {title}
-          </Heading>
-          <div className={cx('description')} dangerouslySetInnerHTML={{ __html: description }} />
-          <form className={cx('form')} noValidate onSubmit={handleSubmit(onSubmit)}>
-            <input
-              type="email"
-              name="email"
-              autoComplete="email"
-              placeholder={emailPlaceholder}
-              ref={register}
-            />
-            <Button className={cx('button')} type="submit">
-              {button.title}
-            </Button>
-          </form>
+          <motion.div
+            animate={
+              serverResponse === 'success' && {
+                opacity: 0,
+                transition: { duration: APPEAR_AND_EXIT_ANIMATION_DURATION },
+              }
+            }
+          >
+            <Heading className={cx('title')} tag="h2">
+              {title}
+            </Heading>
+            <div className={cx('description')} dangerouslySetInnerHTML={{ __html: description }} />
+            <form className={cx('form')} noValidate onSubmit={handleSubmit(onSubmit)}>
+              <input
+                type="email"
+                name="email"
+                autoComplete="email"
+                placeholder={emailPlaceholder}
+                ref={register}
+              />
+              <Button className={cx('button')} type="submit" loading={isLoading}>
+                {buttonText}
+              </Button>
+              <span className={cx('error')}>{errors?.email?.message}</span>
+              {serverResponse === 'error' && (
+                <motion.span
+                  className={cx('error')}
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: { duration: APPEAR_AND_EXIT_ANIMATION_DURATION },
+                  }}
+                >
+                  Something went wrong, please, reload the page.
+                </motion.span>
+              )}
+            </form>
+          </motion.div>
+          {serverResponse === 'success' && (
+            <motion.div
+              className={cx('message')}
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                transition: { delay: APPEAR_AND_EXIT_ANIMATION_DURATION },
+              }}
+            >
+              <div className={cx('message-icon')}>
+                <IconCheck />
+              </div>
+              <span className={cx('message-title')}>Success!</span>
+              <span className={cx('message-description')}>
+                Now you will be up to date with the latest new.
+              </span>
+            </motion.div>
+          )}
         </div>
         <div className={cx('illustration')}>
           <GatsbyImage image={getImage(subscribeIllustration)} alt="" />
@@ -74,10 +137,7 @@ Subscribe.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   emailPlaceholder: PropTypes.string.isRequired,
-  button: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
+  buttonText: PropTypes.string.isRequired,
 };
 
 export default Subscribe;
