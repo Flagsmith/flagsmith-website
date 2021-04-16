@@ -6,19 +6,10 @@ import BlogPostsList from 'components/pages/blog/blog-posts-list';
 import Subscribe from 'components/shared/subscribe';
 import MainLayout from 'layouts/main';
 
-const subscribe = {
-  title: 'Subscribe',
-  description: '<p>Learn more about CI/CD, AB Testing and all that great stuff</p>',
-  emailPlaceholder: 'Email for subscribe...',
-  button: {
-    url: '/',
-    title: 'Subscribe',
-  },
-};
-
 const Blog = ({
   data: {
     wpPage: { seo, title, uri, acf: data },
+    wpSharedBlock: { subscribe },
     allWpPost: { nodes: posts },
   },
   pageContext,
@@ -63,6 +54,14 @@ export const query = graphql`
       }
       ...wpPageSeo
     }
+    wpSharedBlock(slug: { eq: "subscribe" }) {
+      subscribe: acf {
+        title
+        description
+        emailPlaceholder
+        buttonText
+      }
+    }
     allWpPost(
       filter: { id: { ne: $featuredPostId } }
       sort: { fields: date, order: DESC }
@@ -94,6 +93,11 @@ export const query = graphql`
         date(formatString: "YYYY-MM-DD")
         acf {
           description: shortDescription
+          podcast {
+            ... on WpPodcast {
+              content
+            }
+          }
         }
         url: uri
       }
