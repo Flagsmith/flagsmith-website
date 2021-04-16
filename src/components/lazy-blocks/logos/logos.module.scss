@@ -31,6 +31,9 @@
 
 .item {
   width: 130px;
+  // fix issue of images stretching
+  object-fit: contain;
+  height: 100%;
 
   @include fullhd-down {
     width: 120px;
