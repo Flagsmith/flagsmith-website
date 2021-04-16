@@ -5,6 +5,7 @@ import React from 'react';
 
 import Heading from 'components/shared/heading';
 import Link from 'components/shared/link';
+import getLocaleDate from 'utils/get-locale-date';
 
 import styles from './item.module.scss';
 
@@ -20,12 +21,7 @@ const Item = ({
   acf: { description },
   url,
 }) => {
-  const fullDate = new Date(date).toLocaleString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-
+  const fullDate = getLocaleDate(date);
   return (
     <div className={cx('wrapper', { withImage: featuredImage })}>
       {featuredImage && (

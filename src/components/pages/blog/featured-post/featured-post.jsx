@@ -6,6 +6,7 @@ import React from 'react';
 
 import Button from 'components/shared/button';
 import Heading from 'components/shared/heading';
+import getLocaleDate from 'utils/get-locale-date';
 
 import styles from './featured-post.module.scss';
 import IconStar from './images/star.inline.svg';
@@ -35,11 +36,7 @@ const FeaturedPost = ({
     }
   `);
 
-  const fullDate = new Date(date).toLocaleString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  const fullDate = getLocaleDate(date);
 
   return (
     <div className={cx('wrapper')}>
