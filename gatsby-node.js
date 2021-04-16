@@ -9,6 +9,10 @@ const filterNonRootItems = require('./src/utils/filter-non-root-items');
 const SUPPORTED_MENU_TYPES = ['header', 'footer', 'mobile'];
 const POSTS_PER_PAGE = 9;
 
+// removes all the spaces from a string
+// stripSpaces(string: String) -> String
+const stripSpaces = (string) => string.replace(/\s+/g, ' ');
+
 async function createRedirects({ graphql, actions }) {
   const { createRedirect } = actions;
   const result = await graphql(`
@@ -108,7 +112,7 @@ const getAllMenus = async (graphql) => {
 
 const getAllSharedBlocks = async (graphql) => {
   const {
-    data: { header, getStarted },
+    data: { header, getStarted, subscribe },
   } = await graphql(`
     {
       header: wpSharedBlock(slug: { eq: "header" }) {
@@ -135,11 +139,20 @@ const getAllSharedBlocks = async (graphql) => {
           }
         }
       }
+      subscribe: wpSharedBlock(slug: { eq: "subscribe" }) {
+        acf {
+          title
+          description
+          emailPlaceholder
+          buttonText
+        }
+      }
     }
   `);
   return {
     header,
     getStarted,
+    subscribe,
   };
 };
 

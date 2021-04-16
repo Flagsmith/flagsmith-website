@@ -9,7 +9,6 @@ import MainLayout from 'layouts/main';
 const Blog = ({
   data: {
     wpPage: { seo, title, uri, acf: data },
-    wpSharedBlock: { subscribe },
     allWpPost: { nodes: posts },
   },
   pageContext,
@@ -21,7 +20,7 @@ const Blog = ({
       posts={posts}
       rootPath={uri}
     />
-    <Subscribe {...subscribe} />
+    <Subscribe />
   </MainLayout>
 );
 
@@ -53,14 +52,6 @@ export const query = graphql`
         }
       }
       ...wpPageSeo
-    }
-    wpSharedBlock(slug: { eq: "subscribe" }) {
-      subscribe: acf {
-        title
-        description
-        emailPlaceholder
-        buttonText
-      }
     }
     allWpPost(
       filter: { id: { ne: $featuredPostId } }

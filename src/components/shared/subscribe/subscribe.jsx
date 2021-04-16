@@ -3,11 +3,11 @@ import classNames from 'classnames/bind';
 import { motion } from 'framer-motion';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
+import MainContext from 'context/main';
 import IconCheck from 'icons/check.inline.svg';
 import sendGravityFormData from 'utils/send-gravity-form-data';
 
@@ -30,7 +30,15 @@ const validationSchema = yup.object().shape({
     .required('Please enter your email address.'),
 });
 
-const Subscribe = ({ title, description, emailPlaceholder, buttonText }) => {
+const Subscribe = () => {
+  const {
+    sharedBlocks: {
+      subscribe: {
+        acf: { title, description, emailPlaceholder, buttonText },
+      },
+    },
+  } = useContext(MainContext);
+
   const { register, handleSubmit, errors, reset } = useForm({
     resolver: yupResolver(validationSchema),
   });
@@ -131,13 +139,6 @@ const Subscribe = ({ title, description, emailPlaceholder, buttonText }) => {
       </div>
     </section>
   );
-};
-
-Subscribe.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  emailPlaceholder: PropTypes.string.isRequired,
-  buttonText: PropTypes.string.isRequired,
 };
 
 export default Subscribe;
