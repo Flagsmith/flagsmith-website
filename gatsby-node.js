@@ -273,6 +273,52 @@ async function createBlogPages({ graphql, actions, menus, sharedBlocks }) {
   });
 }
 
+// Create Blog Posts
+async function createPosts({ graphql, actions, reporter, menus, sharedBlocks }) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allWpPost {
+        nodes {
+          id
+          content
+          uri
+        }
+      }
+    }
+  `);
+
+  if (result.errors) {
+    throw new Error(result.errors);
+  }
+  const posts = result.data.allWpPost.nodes;
+
+  posts.forEach(({ id, content, uri }) => {
+    const templatePath = path.resolve('./src/templates/blog-post.jsx');
+
+    const context = {
+      id,
+      menus,
+      content,
+      sharedBlocks,
+    };
+
+    if (content) {
+      context.content = stripSpaces(content);
+    }
+
+    if (fs.existsSync(templatePath)) {
+      createPage({
+        path: uri,
+        component: slash(templatePath),
+        context,
+      });
+    } else {
+      reporter.error('Template Blog Post was not found');
+    }
+  });
+}
+
 const getMenus = (allMenus) => {
   const menus = {};
 
@@ -297,4 +343,5 @@ exports.createPages = async (args) => {
   await createRedirects(params);
   await createPages(params);
   await createBlogPages(params);
+  await createPosts(params);
 };

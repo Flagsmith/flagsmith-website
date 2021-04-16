@@ -1,0 +1,28 @@
+.wrapper {
+  margin-top: 180px;
+  margin-bottom: 150px;
+}
+
+.inner {
+  max-width: 1010px;
+}
+
+.title {
+  margin-bottom: 30px;
+}
+
+.info {
+  display: block;
+  margin-bottom: 90px;
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
+  color: $color-additional-6;
+}
+
+.content {
+  @include content;
+
+  a {
+    font-weight: 700;
+  }
+}
