@@ -1,25 +1,5 @@
 @mixin content {
-  @include list-style;
-
-  > * {
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 15px;
-    margin-left: 0;
-
-    @include xl-down {
-      font-size: $font-size-sm;
-      line-height: $line-height-sm;
-    }
-
-    &:first-child {
-      margin-top: 0;
-    }
-
-    &:last-child(:not(blockquote)) {
-      margin-bottom: 0;
-    }
-  }
+  @include with-link-accent-secondary;
 
   > h1,
   > h2,
@@ -29,109 +9,133 @@
   > h6 {
     font-family: $font-family-secondary;
     font-weight: 800;
+    line-height: $line-height-secondary;
   }
 
-  > h1,
-  > h2 {
-    font-size: 35px;
-    line-height: 1.3;
+  > h1 {
+    width: fit-content;
+    margin-top: 180px;
+    margin-right: auto;
+    margin-bottom: 90px;
+    margin-left: auto;
+    font-size: $font-size-xl;
 
-    @include xl-down {
-      font-size: 30px;
+    @include fullhd-down {
+      margin-top: 150px;
+      font-size: 50px;
+    }
+
+    @include lg-down {
+      margin-top: 140px;
+      font-size: 45px;
+    }
+
+    @include md-down {
+      margin-top: 120px;
+      margin-bottom: 70px;
+      font-size: $font-size-lg;
+    }
+
+    @include sm-down {
+      font-size: 35px;
     }
   }
 
-  > h3,
-  > h4 {
+  > h2 {
+    margin-top: 60px;
+    margin-bottom: 15px;
+    font-size: $font-size-lg;
+
+    @include fullhd-down {
+      font-size: 35px;
+    }
+
+    @include lg-down {
+      font-size: 30px;
+    }
+
+    @include md-down {
+      font-size: 28px;
+    }
+  }
+
+  > h3 {
+    margin-top: 45px;
+    margin-bottom: 15px;
     font-size: 30px;
 
     @include fullhd-down {
       font-size: 28px;
     }
 
-    @include xl-down {
+    @include lg-down {
       font-size: 26px;
+    }
+
+    @include md-down {
+      font-size: $font-size-md;
     }
   }
 
-  > h5,
-  > h6 {
+  > h4 {
+    margin-top: 30px;
+    margin-bottom: 15px;
     font-size: $font-size-md;
-    line-height: $line-height-md;
 
-    @include xl-down {
+    @include fullhd-down {
       font-size: 22px;
+    }
+
+    @include lg-down {
+      font-size: $font-size-base;
+    }
+  }
+
+  > p,
+  > ul,
+  > ol {
+    line-height: $line-height-primary;
+
+    @include lg-down {
+      font-size: $font-size-sm;
+    }
+
+    @include sm-down {
+      font-size: $font-size-xs;
+    }
+  }
+
+  > p {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  > ul,
+  > ol {
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    li {
+      margin-bottom: 10px;
+      line-height: $line-height-primary;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    ::marker {
+      font-weight: bold;
+      line-height: $line-height-primary;
+      color: $color-accent-secondary;
     }
   }
 
   > ul {
-    margin-top: 30px;
-    margin-bottom: 30px;
-
-    @include sm-down {
-      padding-left: 0;
-    }
+    padding-left: 20px;
   }
 
-  article {
-    padding-right: 0;
-    padding-left: 0;
-  }
-
-  blockquote {
-    position: relative;
-    padding-left: 35px;
-    margin-top: 150px;
-    margin-bottom: 150px;
-
-    @include xl-down {
-      margin-top: 120px;
-      margin-bottom: 120px;
-    }
-
-    @include lg-down {
-      margin-top: 90px;
-      margin-bottom: 90px;
-    }
-
-    @include sm-down {
-      padding-left: 20px;
-    }
-
-    p {
-      margin-top: 0;
-      margin-bottom: 0;
-      font-family: $font-family-secondary;
-      font-size: $font-size-lg;
-      font-weight: 800;
-      line-height: $line-height-lg;
-
-      @include fullhd-down {
-        font-size: 35px;
-        line-height: 1.3;
-      }
-
-      @include xl-down {
-        font-size: 30px;
-      }
-
-      @include sm-down {
-        font-size: 26px;
-      }
-
-      @include xs-down {
-        font-size: $font-size-md;
-      }
-    }
-
-    &::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 6px;
-      height: 100%;
-      content: '';
-      background-color: $color-accent-secondary;
-    }
+  > ol {
+    padding-left: 22px;
   }
 }
