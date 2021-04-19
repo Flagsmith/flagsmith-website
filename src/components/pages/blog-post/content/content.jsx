@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
+import parse, { attributesToProps } from 'html-react-parser';
 import PropTypes from 'prop-types';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { okaidia } from 'react-syntax-highlighter/dist/cjs/styles/prism';
@@ -28,6 +29,32 @@ const Content = ({
   const fullDate = getLocaleDate(date);
   const pageUrl = `${process.env.GATSBY_DEFAULT_SITE_URL}${url}`;
 
+  const reactedContent = parse(content, {
+    htmlparser2: {
+      lowerCaseAttributeNames: true,
+    },
+    replace: (domNode) => {
+      // if (domNode.type === 'tag' && domNode.attribs.class === 'code-content') {
+      //   console.log(domNode);
+      // }
+      if (domNode.type === 'tag' && domNode.name === 'pre' && domNode.children[0].name === 'code') {
+        console.log(domNode);
+        return (
+          <div className={cx('code-wrapper')}>
+            <SyntaxHighlighter
+              language="php"
+              style={okaidia}
+              useInlineStyles={false}
+              showLineNumbers
+            >
+              {domNode.children[0].children[0].data}
+            </SyntaxHighlighter>
+          </div>
+        );
+      }
+    },
+  });
+  // console.log(content);
   return (
     <div className={cx('wrapper')}>
       <div className={cx('container', 'inner')}>
@@ -50,7 +77,7 @@ const Content = ({
             </LinkedinShareButton>
           </div>
         </div>
-        <div className={cx('content')} dangerouslySetInnerHTML={{ __html: content }} />
+        <div className={cx('content')}>{reactedContent}</div>
       </div>
     </div>
   );

@@ -60,11 +60,17 @@
 
 .info-wrapper {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 75px;
+  margin-bottom: 85px;
 
   @include md-down {
-    margin-bottom: 55px;
+    margin-bottom: 65px;
+  }
+
+  @include sm-down {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
@@ -79,12 +85,25 @@
     font-size: $font-size-xxs;
     line-height: $line-height-xxs;
   }
+
+  @include sm-down {
+    margin-bottom: 10px;
+  }
 }
 
 .social-icons {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+
   button {
-    margin-left: 5px;
+    margin-right: 10px;
+    margin-left: 13px;
     outline: none;
+
+    @include sm-down {
+      margin-left: 0;
+    }
   }
 }
 
