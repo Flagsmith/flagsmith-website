@@ -8,12 +8,12 @@ import MainLayout from 'layouts/main';
 
 const BlogPost = ({
   data: {
-    wpPost: { seo, title, author, date },
+    wpPost: { seo, title, author, date, url },
   },
   pageContext,
 }) => (
   <MainLayout seo={seo} pageContext={pageContext}>
-    <Content title={title} author={author} date={date} />
+    <Content title={title} author={author} date={date} url={url} />
     <Subscribe />
   </MainLayout>
 );
@@ -29,6 +29,7 @@ export const query = graphql`
         }
       }
       date(formatString: "YYYY-MM-DD")
+      url: uri
       ...wpPostSeo
     }
   }

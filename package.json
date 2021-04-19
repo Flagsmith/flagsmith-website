@@ -41,6 +41,7 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^6.15.4",
     "react-intersection-observer": "^8.31.0",
+    "react-share": "^4.4.0",
     "react-syntax-highlighter": "^15.4.3",
     "sass": "^1.32.8",
     "swiper": "^6.5.0",
