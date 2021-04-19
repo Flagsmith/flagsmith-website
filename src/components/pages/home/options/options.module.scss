@@ -214,7 +214,6 @@
 
 .item-image {
   margin-bottom: 30px;
-  line-height: 0;
   text-align: center;
 
   @include lg-down {
@@ -225,6 +224,10 @@
 
   @include sm-down {
     margin-bottom: 20px;
+  }
+
+  & > div {
+    display: block !important;
   }
 }
 
