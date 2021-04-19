@@ -25,7 +25,7 @@ const variantsContent = {
   visible: (custom) => ({
     opacity: 1,
     clipPath: 'polygon(0 0, 0 100%, 100% 100%, 100% 0)',
-    transition: { delay: custom, duration: 0.7, ease: MOTION_EASY },
+    transition: { delay: custom, duration: 1, ease: MOTION_EASY },
   }),
 };
 
@@ -35,7 +35,7 @@ const variantsContentFade = {
   },
   visible: (custom) => ({
     opacity: 1,
-    transition: { delay: custom, duration: 0.7, ease: MOTION_EASY },
+    transition: { delay: custom, duration: 1, ease: MOTION_EASY },
   }),
 };
 
