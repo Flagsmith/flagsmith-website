@@ -48,7 +48,7 @@ const Features = (props) => {
     await controls.start('appear');
 
     handleTimeout('chat', 0);
-    handleTimeout('designV2', 1000);
+    handleTimeout('designV2', 1500);
 
     timeoutAnimationComplete = setTimeout(() => {
       clearTimeout(timeoutAnimationComplete);
