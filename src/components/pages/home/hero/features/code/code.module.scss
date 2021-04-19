@@ -46,10 +46,6 @@
     height: 100%;
     overflow: auto;
 
-    @include fullhd-down {
-      line-height: 0 !important;
-    }
-
     @include lg-down {
       font-size: initial;
     }
@@ -59,23 +55,20 @@
     }
   }
 
-  code {
-    font-size: 15px !important;
-    line-height: 24px !important;
+  .codes {
+    font-size: 15px;
+    line-height: 1;
 
     @include fullhd-down {
-      font-size: 0.632em !important;
-      line-height: 20.24px !important;
+      font-size: 0.632em;
     }
 
     @include xl-down {
-      font-size: 0.717rem !important;
-      line-height: 18.35px !important;
+      font-size: 0.717rem;
     }
 
     @include lg-down {
-      font-size: 12px !important;
-      line-height: 19.2px !important;
+      font-size: 12px;
       border-radius: 7px;
     }
   }
@@ -84,21 +77,18 @@
     .linenumber {
       margin-right: 5px;
       font-size: 15px;
-      line-height: 24px;
+      line-height: 1.6;
 
       @include fullhd-down {
         font-size: 0.791rem;
-        line-height: 20.24px;
       }
 
       @include xl-down {
         font-size: 0.717rem;
-        line-height: 18.35px;
       }
 
       @include lg-down {
         font-size: 12px;
-        line-height: 19.2px;
       }
     }
   }
@@ -114,7 +104,7 @@
   padding-top: 6px;
   padding-bottom: 6px;
   font-size: 13px;
-  line-height: 18.2px;
+  line-height: 1.4;
   color: $color-additional-2;
   text-align: center;
   background-color: $color-additional-3;
@@ -122,16 +112,13 @@
 
   @include fullhd-down {
     font-size: 0.685rem;
-    line-height: 15.35px;
   }
 
   @include xl-down {
     font-size: 0.621rem;
-    line-height: 13.92px;
   }
 
   @include lg-down {
     font-size: 10px;
-    line-height: 14px;
   }
 }
