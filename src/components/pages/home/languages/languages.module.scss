@@ -207,11 +207,10 @@
 
     code {
       font-size: 17px !important;
-      line-height: 27.2px !important;
+      line-height: 1.6 !important;
 
       @include xl-down {
         font-size: 15px !important;
-        line-height: $line-height-xs !important;
       }
     }
 
