@@ -2,7 +2,7 @@
 export default function createMetaImagePath(image, siteUrl) {
   switch (typeof image) {
     case 'object':
-      return siteUrl + image.childImageSharp.fluid;
+      return siteUrl + image.childImageSharp;
     default:
       return siteUrl + image;
   }
