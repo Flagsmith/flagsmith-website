@@ -4,7 +4,6 @@
   padding-bottom: 180px;
   overflow: hidden;
   text-align: center;
-  background-color: $color-secondary;
 
   @include section-paddings;
 
@@ -21,6 +20,10 @@
   @include sm-down {
     padding-top: 100px;
     padding-bottom: 100px;
+  }
+
+  &.with-background {
+    background-color: $color-secondary;
   }
 }
 

@@ -25,7 +25,7 @@ const variantsContent = {
   visible: (custom) => ({
     opacity: 1,
     clipPath: 'polygon(0 0, 0 100%, 100% 100%, 100% 0)',
-    transition: { delay: custom, duration: 0.7, ease: MOTION_EASY },
+    transition: { delay: custom, duration: 0.8, ease: MOTION_EASY },
   }),
 };
 
@@ -35,7 +35,7 @@ const variantsContentFade = {
   },
   visible: (custom) => ({
     opacity: 1,
-    transition: { delay: custom, duration: 0.7, ease: MOTION_EASY },
+    transition: { delay: custom, duration: 0.8, ease: MOTION_EASY },
   }),
 };
 
@@ -52,6 +52,17 @@ const variantChat = {
   }),
 };
 
+const illustrationWrapperVariants = {
+  initial: {},
+  animate: {
+    top: 0,
+    right: 0,
+    left: 0,
+    width: '100%',
+    transition: { duration: 0.3, ease: MOTION_EASY },
+  },
+};
+
 const State = ({ chat, designV2, dark, animationIsCompleted }) => {
   const { illustration } = useStaticQuery(graphql`
     query {
@@ -66,14 +77,19 @@ const State = ({ chat, designV2, dark, animationIsCompleted }) => {
   return (
     <div className={cx('wrapper')}>
       <motion.div className={cx('inner', { dark }, { designV2 })}>
-        <div className={cx('illustration-wrapper')}>
+        <motion.div
+          className={cx('illustration-wrapper')}
+          initial="initial"
+          variants={illustrationWrapperVariants}
+          animate={!designV2 ? 'initial' : 'animate'}
+        >
           <GatsbyImage
             className={cx('illustration')}
             image={getImage(illustration)}
             imgStyle={{ objectPosition: 'right top' }}
             alt=""
           />
-        </div>
+        </motion.div>
 
         {designV2 && (
           <motion.div

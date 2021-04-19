@@ -59,9 +59,15 @@
   position: relative;
   grid-column-start: 2;
   grid-column-end: 8;
+  margin-top: -30px;
 
   @include fullhd-down {
     grid-column-start: 1;
+    margin-top: -25px;
+  }
+
+  @include lg-down {
+    margin-top: -20px;
   }
 
   @include md-down {
@@ -80,30 +86,31 @@
 
 .left-inner {
   position: sticky;
-  top: 80px;
+  top: 90px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
+
+  @include fullhd-down {
+    top: 70px;
+  }
+
+  @include xl-down {
+    top: 50px;
+  }
 }
 
 .items-wrapper {
   position: relative;
   grid-column: span 5;
-  padding-top: 30px;
   padding-left: 20px;
 
   @include fullhd-down {
-    padding-top: 25px;
     padding-left: 10px;
   }
 
   @include xl-down {
     padding-left: 0;
-  }
-
-  @include lg-down {
-    padding-top: 20px;
   }
 
   @include md-down {
@@ -146,15 +153,15 @@
 
   & > div {
     @include fullhd-down {
-      width: 780px;
+      width: 700px;
     }
 
     @include xl-down {
-      width: 690px;
+      width: 620px;
     }
 
     @include lg-down {
-      width: 557px;
+      width: 550px;
     }
 
     @include md-down {
@@ -163,7 +170,7 @@
     }
 
     @include sm-down {
-      width: 629px;
+      width: 630px;
       margin-left: 0;
     }
 
