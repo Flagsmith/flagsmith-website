@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import parse, { attributesToProps } from 'html-react-parser';
+import parse from 'html-react-parser';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share';
@@ -29,31 +29,39 @@ const Content = ({
   const fullDate = getLocaleDate(date);
   const pageUrl = `${process.env.GATSBY_DEFAULT_SITE_URL}${url}`;
 
-  const reactedContent = parse(content, {
-    htmlparser2: {
-      lowerCaseAttributeNames: true,
-    },
-    replace: (domNode) => {
-      // if (domNode.type === 'tag' && domNode.attribs.class === 'code-content') {
-      //   console.log(domNode);
-      // }
-      if (domNode.type === 'tag' && domNode.name === 'pre' && domNode.children[0].name === 'code') {
-        console.log(domNode);
-        return (
-          <div className={cx('code-wrapper')}>
-            <SyntaxHighlighter
-              language="php"
-              style={okaidia}
-              useInlineStyles={false}
-              showLineNumbers
-            >
-              {domNode.children[0].children[0].data}
-            </SyntaxHighlighter>
-          </div>
-        );
-      }
-    },
-  });
+  let reactedContent;
+
+  if (content) {
+    reactedContent = parse(content, {
+      htmlparser2: {
+        lowerCaseAttributeNames: true,
+      },
+      replace: (domNode) => {
+        // if (domNode.type === 'tag' && domNode.attribs.class === 'code-content') {
+        //   console.log(domNode);
+        // }
+        if (
+          domNode.type === 'tag' &&
+          domNode.name === 'pre' &&
+          domNode.children[0].name === 'code'
+        ) {
+          return (
+            <div className={cx('code-wrapper')}>
+              <SyntaxHighlighter
+                language="php"
+                style={okaidia}
+                useInlineStyles={false}
+                showLineNumbers
+              >
+                {domNode.children[0].children[0].data}
+              </SyntaxHighlighter>
+            </div>
+          );
+        }
+        return undefined;
+      },
+    });
+  }
   // console.log(content);
   return (
     <div className={cx('wrapper')}>
@@ -83,4 +91,15 @@ const Content = ({
   );
 };
 
+Content.propTypes = {
+  title: PropTypes.string.isRequired,
+  author: PropTypes.shape({
+    node: PropTypes.shape({
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+    }),
+  }).isRequired,
+  date: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+};
 export default Content;
