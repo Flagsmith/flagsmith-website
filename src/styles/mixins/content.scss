@@ -138,4 +138,101 @@
   > ol {
     padding-left: 22px;
   }
+
+  :global {
+    .wp-block-image {
+      margin-top: 30px;
+      margin-bottom: 30px;
+      text-align: center;
+
+      figcaption {
+        font-size: $font-size-xs;
+        line-height: $line-height-xs;
+        color: $color-additional-6;
+      }
+    }
+  }
+
+  blockquote {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    margin-top: 60px;
+    margin-right: -130px;
+    margin-bottom: 60px;
+    margin-left: -130px;
+    text-align: center;
+
+    @include lg-down {
+      margin-right: 40px;
+      margin-left: 40px;
+    }
+
+    @include md-down {
+      margin-right: 0;
+      margin-left: 0;
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 60px;
+      height: 50px;
+      content: '';
+      background-image: url('./images/quote.svg');
+      transform: translateX(-50%);
+    }
+
+    p {
+      margin-top: 0;
+      margin-right: 0;
+      margin-bottom: 20px;
+      margin-left: 0;
+      font-size: 30px;
+      font-style: italic;
+      line-height: 1.3;
+
+      @include fullhd-down {
+        font-size: 28px;
+      }
+
+      @include xl-down {
+        font-size: 26px;
+      }
+
+      @include sm-down {
+        font-size: 24px;
+      }
+
+      @include xs-down {
+        font-size: 22px;
+      }
+
+      strong {
+        font-weight: 600;
+        color: $color-accent-primary;
+      }
+    }
+
+    cite {
+      font-size: $font-size-sm;
+      font-weight: 600;
+      line-height: $line-height-sm;
+      color: $color-additional-6;
+    }
+  }
+
+  code {
+    padding-top: 2px;
+    padding-right: 10px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    font-size: 17px;
+    line-height: 1.6;
+    background-color: $color-secondary;
+    border-radius: 5px;
+  }
 }
