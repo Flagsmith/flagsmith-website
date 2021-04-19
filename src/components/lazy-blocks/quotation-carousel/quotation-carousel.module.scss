@@ -103,7 +103,7 @@
   margin-left: 0;
   font-size: 30px;
   font-style: italic;
-  line-height: 1.3;
+  line-height: $line-height-secondary;
 
   @include fullhd-down {
     font-size: 28px;
@@ -130,7 +130,6 @@
 .author {
   font-size: $font-size-sm;
   font-weight: 600;
-  line-height: $line-height-sm;
   color: $color-additional-6;
 }
 

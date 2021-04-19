@@ -94,8 +94,6 @@
   > p,
   > ul,
   > ol {
-    line-height: $line-height-primary;
-
     @include lg-down {
       font-size: $font-size-sm;
     }
@@ -117,7 +115,6 @@
 
     li {
       margin-bottom: 10px;
-      line-height: $line-height-primary;
 
       &:last-of-type {
         margin-bottom: 0;
@@ -126,7 +123,6 @@
 
     ::marker {
       font-weight: bold;
-      line-height: $line-height-primary;
       color: $color-accent-secondary;
     }
   }

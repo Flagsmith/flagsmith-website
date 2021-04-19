@@ -69,12 +69,10 @@
   @include xl-down {
     max-width: 630px;
     font-size: $font-size-sm;
-    line-height: $line-height-sm;
   }
 
   @include lg-down {
     font-size: $font-size-xs;
-    line-height: $line-height-xs;
   }
 }
 
@@ -82,7 +80,6 @@
   display: inline-block;
   font-size: $font-size-xs;
   font-weight: 700;
-  line-height: $line-height-xs;
 }
 
 .tabs-wrapper {
@@ -138,7 +135,6 @@
     padding-left: 30px;
     font-size: $font-size-xxxs;
     font-weight: 700;
-    line-height: $line-height-xxxs;
     color: $color-tertiary;
     text-transform: uppercase;
     letter-spacing: 0.05em;
