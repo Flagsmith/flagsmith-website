@@ -214,7 +214,6 @@
 
 .item-image {
   margin-bottom: 30px;
-  line-height: 0;
   text-align: center;
 
   @include lg-down {
@@ -225,6 +224,10 @@
 
   @include sm-down {
     margin-bottom: 20px;
+  }
+
+  & > div {
+    display: block !important;
   }
 }
 
@@ -250,7 +253,6 @@
     align-items: flex-start;
     margin-bottom: 15px;
     font-size: $font-size-xs;
-    line-height: $line-height-xs;
 
     @include fullhd-down {
       margin-bottom: 17px;
@@ -259,7 +261,6 @@
     @include xl-down {
       margin-bottom: 15px;
       font-size: $font-size-xxs;
-      line-height: 21px;
     }
 
     &:last-child {
@@ -289,7 +290,6 @@
   margin-top: auto;
   font-size: $font-size-xs;
   font-weight: 700;
-  line-height: $line-height-xs;
   color: $color-accent-secondary;
   border-top: 2px solid $color-additional-4;
   transition: color $transition-base;

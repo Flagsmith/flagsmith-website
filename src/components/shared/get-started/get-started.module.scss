@@ -97,12 +97,10 @@
 
   @include xl-down {
     font-size: $font-size-sm;
-    line-height: $line-height-sm;
   }
 
   @include lg-down {
     font-size: $font-size-xs;
-    line-height: $line-height-xs;
   }
 }
 

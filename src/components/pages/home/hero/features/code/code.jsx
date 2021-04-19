@@ -14,6 +14,7 @@ const Code = ({ codeLabel, code }) => (
       <span>{codeLabel}</span>
     </div>
     <SyntaxHighlighter
+      className={cx('codes')}
       language="javascript"
       style={okaidia}
       useInlineStyles={false}

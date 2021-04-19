@@ -28,12 +28,10 @@
 
   @include xl-down {
     font-size: $font-size-sm;
-    line-height: $line-height-sm;
   }
 
   @include lg-down {
     font-size: $font-size-xs;
-    line-height: $line-height-xs;
   }
 }
 
@@ -135,11 +133,9 @@
   margin-top: 0;
   margin-bottom: 30px;
   font-size: $font-size-sm;
-  line-height: $line-height-sm;
 
   @include xl-down {
     font-size: $font-size-xs;
-    line-height: $line-height-xs;
   }
 }
 
@@ -151,7 +147,6 @@
   margin-top: auto;
   font-size: $font-size-xs;
   font-weight: 700;
-  line-height: $line-height-xs;
   color: $color-accent-secondary;
   border-top: 1px solid $color-additional-4;
 

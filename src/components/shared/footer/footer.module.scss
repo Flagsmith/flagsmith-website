@@ -81,7 +81,6 @@
   margin-top: -25px;
   margin-bottom: 0;
   font-size: $font-size-xs;
-  line-height: $line-height-xs;
 
   @include with-link-accent-secondary;
 
@@ -97,7 +96,6 @@
 
   @include xxs-down {
     font-size: $font-size-xxs;
-    line-height: $line-height-xxs;
   }
 
   a {
@@ -106,11 +104,9 @@
     margin-left: 4px;
     font-size: $font-size-xs;
     font-weight: 700;
-    line-height: $line-height-xs;
 
     @include xxs-down {
       font-size: $font-size-xxs;
-      line-height: $line-height-xxs;
     }
 
     svg {

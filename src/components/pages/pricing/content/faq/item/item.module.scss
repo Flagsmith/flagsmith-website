@@ -29,7 +29,7 @@
     padding-left: 0;
     font-size: 30px;
     font-weight: 700;
-    line-height: 39px;
+    line-height: $line-height-secondary;
     text-align: left;
     cursor: pointer;
     background-color: transparent;
@@ -40,13 +40,11 @@
 
     @include md-down {
       font-size: $font-size-md;
-      line-height: $line-height-md;
     }
 
     @include sm-down {
       align-items: flex-start;
       font-size: 22px;
-      line-height: 28.6px;
     }
   }
 }
@@ -104,13 +102,11 @@
   @include md-down {
     padding-left: 45px;
     font-size: $font-size-sm;
-    line-height: $line-height-sm;
   }
 
   @include sm-down {
     padding-top: 10px;
     font-size: $font-size-xs;
-    line-height: $line-height-xs;
   }
 
   p {

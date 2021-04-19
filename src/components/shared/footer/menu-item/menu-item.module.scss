@@ -10,16 +10,15 @@
 
   .title {
     margin-bottom: 30px;
+    line-height: $line-height-secondary;
 
     @include lg-down {
       margin-bottom: 25px;
       font-size: 22px;
-      line-height: 28.6px;
     }
 
     @include md-down {
       font-size: $font-size-base;
-      line-height: 26px;
     }
   }
 }
@@ -47,5 +46,4 @@
 .link {
   display: block;
   font-size: $font-size-xs;
-  line-height: $line-height-xs;
 }
