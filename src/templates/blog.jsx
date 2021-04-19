@@ -6,6 +6,11 @@ import BlogPostsList from 'components/pages/blog/blog-posts-list';
 import Subscribe from 'components/shared/subscribe';
 import MainLayout from 'layouts/main';
 
+const podcast = {
+  episode: '9',
+  duration: '63:69',
+};
+
 const Blog = ({
   data: {
     wpPage: { seo, title, uri, acf: data },
@@ -19,6 +24,7 @@ const Blog = ({
       featuredPost={data.featuredPost}
       posts={posts}
       rootPath={uri}
+      podcast={podcast}
     />
     <Subscribe />
   </MainLayout>
@@ -87,6 +93,7 @@ export const query = graphql`
           podcast {
             ... on WpPodcast {
               content
+              uri
             }
           }
         }

@@ -51,28 +51,39 @@
   }
 }
 
-.icon {
+.icon-wrapper {
+  align-self: flex-start;
   margin-right: 35px;
+
+  @include fullhd-down {
+    margin-right: 20px;
+  }
+
+  @include xl-down {
+    margin-right: 15px;
+  }
+
+  @include md-down {
+    margin-bottom: 15px;
+  }
+}
+
+.icon {
+  cursor: pointer;
 
   @include fullhd-down {
     width: 55px;
     height: 55px;
-    margin-right: 20px;
   }
 
   @include xl-down {
     width: 50px;
     height: 55px;
-    margin-right: 15px;
   }
 
   @include lg-down {
     width: 45px;
     height: 45px;
-  }
-
-  @include md-down {
-    margin-bottom: 15px;
   }
 }
 
