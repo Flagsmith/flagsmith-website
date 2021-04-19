@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import parse from 'html-react-parser';
+import parse, { domToReact } from 'html-react-parser';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share';
@@ -31,31 +31,42 @@ const Content = ({
 
   let reactedContent;
 
+  const getCode = (node) => {
+    if (node.children.length > 0 && node.children[0].name === 'code') {
+      return node.children[0].children;
+    }
+    return node.children;
+  };
+
+  const getLanguage = (node) => {
+    if (node.attribs.class != null) {
+      const nodeClass = node.attribs.class;
+      const [language] = nodeClass.split(' ').filter((el) => el !== 'wp-block-code');
+      return language;
+    }
+    return null;
+  };
+
   if (content) {
     reactedContent = parse(content, {
       htmlparser2: {
         lowerCaseAttributeNames: true,
       },
       replace: (domNode) => {
-        // if (domNode.type === 'tag' && domNode.attribs.class === 'code-content') {
-        //   console.log(domNode);
-        // }
-        if (
-          domNode.type === 'tag' &&
-          domNode.name === 'pre' &&
-          domNode.children[0].name === 'code'
-        ) {
+        if (domNode.name === 'pre') {
           return (
-            <div className={cx('code-wrapper')}>
-              <SyntaxHighlighter
-                language="php"
-                style={okaidia}
-                useInlineStyles={false}
-                showLineNumbers
-              >
-                {domNode.children[0].children[0].data}
-              </SyntaxHighlighter>
-            </div>
+            domNode.children.length > 0 && (
+              <div className={cx('code-wrapper')}>
+                <SyntaxHighlighter
+                  language={getLanguage(domNode)}
+                  style={okaidia}
+                  useInlineStyles={false}
+                  showLineNumbers
+                >
+                  {domToReact(getCode(domNode))}
+                </SyntaxHighlighter>
+              </div>
+            )
           );
         }
         return undefined;
