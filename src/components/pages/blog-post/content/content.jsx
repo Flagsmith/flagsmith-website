@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import parse, { domToReact } from 'html-react-parser';
+import parse, { attributesToProps } from 'html-react-parser';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share';
@@ -29,51 +29,28 @@ const Content = ({
   const fullDate = getLocaleDate(date);
   const pageUrl = `${process.env.GATSBY_DEFAULT_SITE_URL}${url}`;
 
-  let reactedContent;
+  const reactedContent = parse(content, {
+    replace: (domNode) => {
+      const props = attributesToProps(domNode.attribs);
+      if (domNode.type === 'tag' && domNode.name === 'codeblock') {
+        return (
+          <div className={cx('code-wrapper')}>
+            <SyntaxHighlighter
+              language={props.language}
+              style={okaidia}
+              useInlineStyles={false}
+              showLineNumbers
+            >
+              {props.code}
+            </SyntaxHighlighter>
+          </div>
+        );
+      }
 
-  const getCode = (node) => {
-    if (node.children.length > 0 && node.children[0].name === 'code') {
-      return node.children[0].children;
-    }
-    return node.children;
-  };
+      return undefined;
+    },
+  });
 
-  const getLanguage = (node) => {
-    if (node.attribs.class != null) {
-      const nodeClass = node.attribs.class;
-      const [language] = nodeClass.split(' ').filter((el) => el !== 'wp-block-code');
-      return language;
-    }
-    return null;
-  };
-
-  if (content) {
-    reactedContent = parse(content, {
-      htmlparser2: {
-        lowerCaseAttributeNames: true,
-      },
-      replace: (domNode) => {
-        if (domNode.name === 'pre') {
-          return (
-            domNode.children.length > 0 && (
-              <div className={cx('code-wrapper')}>
-                <SyntaxHighlighter
-                  language={getLanguage(domNode)}
-                  style={okaidia}
-                  useInlineStyles={false}
-                  showLineNumbers
-                >
-                  {domToReact(getCode(domNode))}
-                </SyntaxHighlighter>
-              </div>
-            )
-          );
-        }
-        return undefined;
-      },
-    });
-  }
-  // console.log(content);
   return (
     <div className={cx('wrapper')}>
       <div className={cx('container', 'inner')}>
