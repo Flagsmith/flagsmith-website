@@ -29,28 +29,29 @@ const Content = ({
   const fullDate = getLocaleDate(date);
   const pageUrl = `${process.env.GATSBY_DEFAULT_SITE_URL}${url}`;
 
-  const reactedContent = parse(content, {
-    replace: (domNode) => {
-      const props = attributesToProps(domNode.attribs);
-      if (domNode.type === 'tag' && domNode.name === 'codeblock') {
-        return (
-          <div className={cx('code-wrapper')}>
-            <SyntaxHighlighter
-              language={props.language}
-              style={okaidia}
-              useInlineStyles={false}
-              showLineNumbers
-            >
-              {props.code}
-            </SyntaxHighlighter>
-          </div>
-        );
-      }
-
-      return undefined;
-    },
-  });
-
+  let reactedContent;
+  if (content) {
+    reactedContent = parse(content, {
+      replace: (domNode) => {
+        const props = attributesToProps(domNode.attribs);
+        if (domNode.type === 'tag' && domNode.name === 'codeblock') {
+          return (
+            <div className={cx('code-wrapper')}>
+              <SyntaxHighlighter
+                language={props.language}
+                style={okaidia}
+                useInlineStyles={false}
+                showLineNumbers
+              >
+                {props.code}
+              </SyntaxHighlighter>
+            </div>
+          );
+        }
+        return undefined;
+      },
+    });
+  }
   return (
     <div className={cx('wrapper')}>
       <div className={cx('container', 'inner')}>
