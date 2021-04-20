@@ -8,7 +8,7 @@ import Button from 'components/shared/button';
 import Heading from 'components/shared/heading';
 import Link from 'components/shared/link';
 
-import IconPlay from './images/play.inline.svg';
+import IconMicrophone from './images/microphone.inline.svg';
 import SoundWave from './images/sound-wave.inline.svg';
 import styles from './podcast-card.module.scss';
 
@@ -21,7 +21,6 @@ const PodcastCard = ({
   },
   episode,
   duration,
-  button,
 }) => {
   const { playerIllustration } = useStaticQuery(graphql`
     query {
@@ -38,7 +37,7 @@ const PodcastCard = ({
     <div className={cx('wrapper')}>
       <div className={cx('head')}>
         <Link className={cx('icon-wrapper')} to={url}>
-          <IconPlay className={cx('icon')} />
+          <IconMicrophone className={cx('icon')} />
         </Link>
         <div className={cx('title-wrapper')}>
           <Heading className={cx('title')} tag="h2" size="lg" color="tertiary">
