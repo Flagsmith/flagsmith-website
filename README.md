@@ -1,4 +1,4 @@
-# Pixel Point Gatsby Starter
+# Flagsmith Website
 
 ## Table of Contents
 
@@ -20,7 +20,7 @@
 1. Clone this repository
 
 ```bash
-git clone git@github.com:pixel-point/gatsby-starter.git
+git clone git@github.com:Flagsmith/flagsmith-website.git
 ```
 
 2. Install dependencies
