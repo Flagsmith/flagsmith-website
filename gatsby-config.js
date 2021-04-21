@@ -26,6 +26,11 @@ module.exports = {
       resolve: 'gatsby-plugin-sharp',
       options: {
         defaultQuality: 85,
+        // Defaults used for gatsbyImageData and StaticImage
+        defaults: {
+          placeholder: 'none',
+          quality: 80,
+        },
       },
     },
     {
@@ -107,16 +112,6 @@ module.exports = {
           nodeUpdateInterval: process.env.WP_NODE_UPDATE_INTERVAL || 5000,
           hardCacheMediaFiles: process.env.WP_HARD_CACHE_MEDIA === 'true',
           hardCacheData: process.env.WP_HARD_CACHE_DATA === 'true',
-        },
-      },
-    },
-    {
-      resolve: `gatsby-plugin-sharp`,
-      options: {
-        // Defaults used for gatsbyImageData and StaticImage
-        defaults: {
-          placeholder: 'none',
-          quality: 80,
         },
       },
     },
