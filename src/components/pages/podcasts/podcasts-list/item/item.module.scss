@@ -1,0 +1,28 @@
+.wrapper {
+  margin-bottom: 90px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  @include with-link-accent-secondary;
+
+  a {
+    font-weight: 600;
+  }
+}
+
+.title {
+  margin-bottom: 5px;
+}
+
+.duration {
+  display: inline-block;
+  margin-bottom: 15px;
+  color: $color-additional-6;
+}
+
+.description {
+  margin-top: 0;
+  margin-bottom: 20px;
+}

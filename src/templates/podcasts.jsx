@@ -45,7 +45,9 @@ export const query = graphql`
       nodes {
         title
         content
-        excerpt
+        acf {
+          description
+        }
         url: uri
       }
     }
