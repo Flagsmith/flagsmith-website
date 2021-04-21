@@ -101,7 +101,7 @@ Options.propTypes = {
       key: PropTypes.string.isRequired,
     })
   ).isRequired,
-  handleSetState: PropTypes.func.isRequired,
+  setState: PropTypes.func.isRequired,
   isUserTouchedToggle: PropTypes.bool.isRequired,
   animationIsCompleted: PropTypes.bool.isRequired,
 };

@@ -82,7 +82,11 @@ const illustrationWrapperVariants = {
     right: 0,
     left: 0,
     width: '100%',
-    transition: { delay: DELAY_BEFORE_ANIMATION_SEC, duration: 0.3, ease: MOTION_EASY },
+    transition: {
+      delay: DELAY_BEFORE_ANIMATION_SEC,
+      duration: 0.3,
+      ease: MOTION_EASY,
+    },
   },
 };
 
@@ -115,6 +119,7 @@ const State = ({ chat, designV2, dark, animationIsCompleted }) => {
           initial="initial"
           variants={illustrationWrapperVariants}
           animate={!designV2 ? 'initial' : 'animate'}
+          transition={!designV2 ? { type: 'tween', duration: 0.3 } : {}}
         >
           <GatsbyImage
             loading="eager"
