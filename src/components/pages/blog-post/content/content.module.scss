@@ -114,20 +114,3 @@
     font-weight: 700;
   }
 }
-
-.code-wrapper {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  margin-top: 30px;
-  margin-bottom: 60px;
-  font-size: 17px;
-  background-color: $color-primary;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
-
-  code {
-    white-space: pre-wrap !important;
-  }
-
-  @include code-highlighting;
-}

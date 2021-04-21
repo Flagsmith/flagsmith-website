@@ -1,13 +1,9 @@
 import classNames from 'classnames/bind';
-import parse, { attributesToProps } from 'html-react-parser';
 import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import React from 'react';
 import { FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { okaidia } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 import Heading from 'components/shared/heading';
-import MainContext from 'context/main';
 import FacebookIcon from 'icons/facebook.inline.svg';
 import LinkedinIcon from 'icons/linkedin.inline.svg';
 import TwitterIcon from 'icons/twitter.inline.svg';
@@ -24,34 +20,11 @@ const Content = ({
   },
   date,
   url,
+  content,
 }) => {
-  const { content } = useContext(MainContext);
   const fullDate = getLocaleDate(date);
   const pageUrl = `${process.env.GATSBY_DEFAULT_SITE_URL}${url}`;
 
-  let reactedContent;
-  if (content) {
-    reactedContent = parse(content, {
-      replace: (domNode) => {
-        const props = attributesToProps(domNode.attribs);
-        if (domNode.type === 'tag' && domNode.name === 'codeblock') {
-          return (
-            <div className={cx('code-wrapper')}>
-              <SyntaxHighlighter
-                language={props.language}
-                style={okaidia}
-                useInlineStyles={false}
-                showLineNumbers
-              >
-                {props.code}
-              </SyntaxHighlighter>
-            </div>
-          );
-        }
-        return undefined;
-      },
-    });
-  }
   return (
     <div className={cx('wrapper')}>
       <div className={cx('container', 'inner')}>
@@ -74,7 +47,7 @@ const Content = ({
             </LinkedinShareButton>
           </div>
         </div>
-        <div className={cx('content')}>{reactedContent}</div>
+        <div className={cx('content')}>{content}</div>
       </div>
     </div>
   );
@@ -90,5 +63,6 @@ Content.propTypes = {
   }).isRequired,
   date: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
 };
 export default Content;
