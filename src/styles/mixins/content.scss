@@ -274,5 +274,9 @@
     white-space: pre-wrap;
     background-color: $color-secondary;
     border-radius: 5px;
+
+    @include lg-down {
+      font-size: 15px;
+    }
   }
 }
