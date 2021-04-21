@@ -10,14 +10,40 @@
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
 
+  @include fullhd-down {
+    padding-left: 20px;
+  }
+
+  @include lg-down {
+    padding-left: 10px;
+  }
+
   code {
     display: block;
+    overflow: auto;
+    line-height: 1.6 !important;
+
+    @include sm-down {
+      font-size: 15px !important;
+    }
 
     @include code-highlighting;
 
     :global {
       .linenumber {
         padding-right: 50px !important;
+
+        @include fullhd-down {
+          padding-right: 40px !important;
+        }
+
+        @include xl-down {
+          padding-right: 30px !important;
+        }
+
+        @include lg-down {
+          padding-right: 20px !important;
+        }
       }
     }
   }
@@ -34,5 +60,6 @@
   padding-right: 8px;
   padding-bottom: 7px;
   padding-left: 8px;
+  font-size: $font-size-xxxs;
   text-transform: uppercase;
 }
