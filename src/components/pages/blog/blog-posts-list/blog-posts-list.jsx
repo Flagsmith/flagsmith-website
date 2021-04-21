@@ -2,11 +2,11 @@ import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 
+import FeaturedPost from 'components/shared/featured-post';
 import Heading from 'components/shared/heading';
+import Pagination from 'components/shared/pagination';
 import MainContext from 'context/main';
 
-import FeaturedPost from '../featured-post';
-import Pagination from '../pagination';
 import PodcastCard from '../podcast-card';
 
 import styles from './blog-posts-list.module.scss';
