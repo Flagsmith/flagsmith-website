@@ -25,6 +25,7 @@
     "@hookform/resolvers": "^1.3.5",
     "@svgr/webpack": "^5.5.0",
     "classnames": "^2.2.6",
+    "copy-to-clipboard": "^3.3.1",
     "framer-motion": "3.7.0",
     "gatsby": "^3.2.1",
     "gatsby-plugin-google-tagmanager": "^3.2.0",
