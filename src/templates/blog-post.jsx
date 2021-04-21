@@ -14,27 +14,22 @@ const BlogPost = ({
   },
   pageContext,
 }) => {
-  // https://github.com/remarkablemark/html-react-parser#htmlparser2
-  // The library does parsing on client side differently from server side
-  // it results in having a need of passing htmlparser2 to adjust behavior
-  // according to the client side behavior
-  const reactedContent = parse(content, {
-    htmlparser2: {
-      lowerCaseAttributeNames: true,
-    },
-    replace: (domNode) => {
-      const props = attributesToProps(domNode.attribs);
-
-      if (domNode.type === 'tag') {
-        switch (domNode.name) {
-          case 'codeblock':
-            return <Code language={props.language}>{props.code}</Code>;
-          default:
-            return undefined;
+  let reactedContent;
+  if (content) {
+    reactedContent = parse(content, {
+      replace: (domNode) => {
+        const props = attributesToProps(domNode.attribs);
+        if (domNode.type === 'tag') {
+          switch (domNode.name) {
+            case 'codeblock':
+              return <Code language={props.language}>{props.code}</Code>;
+            default:
+              return undefined;
+          }
         }
-      }
-    },
-  });
+      },
+    });
+  }
   return (
     <MainLayout seo={seo} pageContext={pageContext}>
       <Content title={title} author={author} date={date} url={url} content={reactedContent} />
