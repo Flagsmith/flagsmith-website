@@ -1,0 +1,76 @@
+.wrapper {
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 650px 1fr;
+  column-gap: 130px;
+}
+
+.title {
+  margin-bottom: 30px;
+}
+
+.text {
+  @include list-style;
+
+  margin-bottom: 30px;
+}
+
+.bottom {
+  width: 435px;
+}
+
+.buttons-wrapper {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.button {
+  display: flex;
+  padding: 13px;
+  margin-right: 30px;
+  font-weight: 600;
+  line-height: 1;
+  color: $color-tertiary;
+  text-decoration: none;
+  background-color: $color-primary;
+  border-radius: 6px;
+  box-shadow: 0 10px 20px rgba(30, 13, 38, 0.2);
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  &-icon {
+    margin-right: 13px;
+  }
+
+  &-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+  }
+
+  &-name {
+    font-size: $font-size-md;
+  }
+}
+
+.description {
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
+  color: $color-additional-6;
+
+  @include with-link-accent-secondary;
+
+  a {
+    font-weight: 600;
+  }
+}
+
+.image-wrapper {
+  justify-self: flex-end;
+}

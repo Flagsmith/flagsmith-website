@@ -8,6 +8,7 @@ const filterNonRootItems = require('./src/utils/filter-non-root-items');
 // constants
 const SUPPORTED_MENU_TYPES = ['header', 'footer', 'mobile'];
 const POSTS_PER_PAGE = 9;
+const PODCASTS_PER_PAGE = 7;
 
 // removes all the spaces from a string
 // stripSpaces(string: String) -> String
@@ -319,6 +320,63 @@ async function createPosts({ graphql, actions, reporter, menus, sharedBlocks }) 
   });
 }
 
+// Create Blog Pages
+async function createPodcastPages({ graphql, actions, menus, sharedBlocks }) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allWpPage(filter: { template: { templateName: { eq: "Podcasts" } } }) {
+        nodes {
+          id
+          uri
+        }
+      }
+      allWpPodcast(sort: { fields: date, order: DESC }) {
+        nodes {
+          id
+        }
+      }
+    }
+  `);
+
+  if (result.errors) {
+    throw new Error(result.errors);
+  }
+
+  const {
+    data: { allWpPage, allWpPodcast },
+  } = result;
+
+  const podcastPages = allWpPage.nodes;
+  const podcastPosts = allWpPodcast.nodes;
+
+  const template = path.resolve('./src/templates/podcasts.jsx');
+
+  podcastPages.forEach((podcastPage) => {
+    const context = {
+      id: podcastPage.id,
+      menus,
+      sharedBlocks,
+    };
+
+    const pageCount = Math.ceil(podcastPosts.length / PODCASTS_PER_PAGE);
+    const makePath = (i) => (i === 0 ? podcastPage.uri : `${podcastPage.uri}${i + 1}`);
+    Array.from({ length: pageCount }).forEach((_, i) => {
+      createPage({
+        path: makePath(i),
+        component: slash(template),
+        context: {
+          ...context,
+          limit: PODCASTS_PER_PAGE,
+          skip: i * PODCASTS_PER_PAGE,
+          pageCount,
+          currentPage: i + 1,
+        },
+      });
+    });
+  });
+}
+
 const getMenus = (allMenus) => {
   const menus = {};
 
@@ -344,4 +402,5 @@ exports.createPages = async (args) => {
   await createPages(params);
   await createBlogPages(params);
   await createPosts(params);
+  await createPodcastPages(params);
 };
