@@ -1,6 +1,8 @@
 .wrapper {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
   margin-top: 30px;
   margin-bottom: 60px;
   font-size: 17px;
@@ -9,8 +11,28 @@
   box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
 
   code {
-    white-space: pre-wrap !important;
-  }
+    display: block;
 
-  @include code-highlighting;
+    @include code-highlighting;
+
+    :global {
+      .linenumber {
+        padding-right: 50px !important;
+      }
+    }
+  }
+}
+
+.button-wrapper {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.button {
+  padding-top: 6px;
+  padding-right: 8px;
+  padding-bottom: 7px;
+  padding-left: 8px;
+  text-transform: uppercase;
 }
