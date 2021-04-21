@@ -29,6 +29,14 @@ export const query = graphql`
           title
           text
           description
+          buttons {
+            buttonIcon
+            button {
+              url
+              title
+              target
+            }
+          }
         }
       }
       ...wpPageSeo

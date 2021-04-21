@@ -13,17 +13,12 @@ import styles from './hero.module.scss';
 
 const cx = classNames.bind(styles);
 
-const buttons = [
-  { buttonUrl: '#', buttonIcon: 'applePodcast', buttonText: 'Apple Podcasts' },
-  { buttonUrl: '#', buttonIcon: 'spotify', buttonText: 'Spotify' },
-];
-
 const icons = {
   applePodcast: ApplePodcastIcon,
   spotify: SpotifyIcon,
 };
 
-const Hero = ({ title, text, description }) => {
+const Hero = ({ title, text, description, buttons }) => {
   const { podcastImage } = useStaticQuery(graphql`
     query {
       podcastImage: file(relativePath: { eq: "pages/podcasts/hero/podcast-image.jpg" }) {
@@ -41,14 +36,14 @@ const Hero = ({ title, text, description }) => {
           <div className={cx('text')} dangerouslySetInnerHTML={{ __html: text }} />
           <div className={cx('bottom')}>
             <div className={cx('buttons-wrapper')}>
-              {buttons.map(({ buttonUrl, buttonIcon, buttonText }, index) => {
+              {buttons.map(({ buttonIcon, button: { url, target, title } }, index) => {
                 const Icon = icons[buttonIcon];
                 return (
-                  <Link className={cx('button')} to={buttonUrl} key={index}>
+                  <Link className={cx('button')} to={url} target={target} key={index}>
                     <Icon className={cx('button-icon')} />
                     <div className={cx('button-text')}>
                       <span>Listen on</span>
-                      <span className={cx('button-name')}>{buttonText}</span>
+                      <span className={cx('button-name')}>{title}</span>
                     </div>
                   </Link>
                 );
@@ -69,8 +64,16 @@ Hero.propTypes = {
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  buttons: PropTypes.arrayOf(
+    PropTypes.shape({
+      buttonIcon: PropTypes.string.isRequired,
+      button: PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        target: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+      }),
+    })
+  ).isRequired,
 };
-
-Hero.defaultProps = {};
 
 export default Hero;
