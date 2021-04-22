@@ -119,7 +119,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-tagmanager',
       options: {
-        id: ' ',
+        id: 'GTM-T4K5B4W',
       },
     },
     `gatsby-plugin-sitemap`,
