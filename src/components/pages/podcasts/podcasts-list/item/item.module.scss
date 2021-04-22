@@ -1,5 +1,8 @@
 .wrapper {
+  max-width: 750px;
+  margin-right: auto;
   margin-bottom: 90px;
+  margin-left: auto;
 
   &:last-of-type {
     margin-bottom: 0;
@@ -13,16 +16,15 @@
 }
 
 .title {
-  margin-bottom: 5px;
-}
-
-.duration {
-  display: inline-block;
   margin-bottom: 15px;
-  color: $color-additional-6;
 }
 
 .description {
   margin-top: 0;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.link {
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
 }
