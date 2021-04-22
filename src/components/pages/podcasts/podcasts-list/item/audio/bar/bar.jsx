@@ -25,7 +25,9 @@ const Bar = ({ className, duration, currentTime, onTimeUpdate, playing, setPlayi
   };
   const handleTimeDrag = (e) => {
     onTimeUpdate(calcClickedTime(e));
-    setPlaying(true);
+    if (!playing) {
+      setPlaying(true);
+    }
     const updateTimeOnMove = (eMove) => {
       onTimeUpdate(calcClickedTime(eMove));
     };

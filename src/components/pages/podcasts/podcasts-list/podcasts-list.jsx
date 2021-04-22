@@ -20,13 +20,14 @@ const PodcastsList = ({ podcasts, rootPath }) => {
     const audioElement = parsedElement.querySelector('audio');
     return audioElement.src;
   });
-  const isCurrent = audioUrls[0] === currentPodcast;
+
   return (
     <section className={cx('wrapper')}>
       <div className={cx('container', 'inner')}>
         <div className={cx('list')}>
           {podcasts.map((item, index) => {
             const podcastNumber = podcasts.length - index;
+            const isCurrent = audioUrls[index] === currentPodcast;
             return (
               <Item
                 podcastNumber={podcastNumber}

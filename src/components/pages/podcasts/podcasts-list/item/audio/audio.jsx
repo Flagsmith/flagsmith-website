@@ -13,7 +13,7 @@ import Bar from './bar';
 
 const cx = classNames.bind(styles);
 
-const Audio = ({ audioUrl, isCurrent, onStartPlay, podcastNumber }) => {
+const Audio = ({ audioUrl, isCurrent, onStartPlay }) => {
   const {
     duration,
     currentTime,
@@ -31,8 +31,8 @@ const Audio = ({ audioUrl, isCurrent, onStartPlay, podcastNumber }) => {
 
   const startPlay = useCallback(() => {
     setPlaying(true);
-    onStartPlay(podcastNumber);
-  }, [onStartPlay, setPlaying, podcastNumber]);
+    onStartPlay(audioUrl);
+  }, [setPlaying, onStartPlay, audioUrl]);
 
   const handleVolumeAudio = () => setIsMuted(!isMuted);
 
