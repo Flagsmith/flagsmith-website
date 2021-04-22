@@ -10,14 +10,16 @@ import styles from './cards.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Cards = ({
-  title,
-  titleHighlightColor,
-  description,
-  items,
-  withBackground,
-  marginBottom,
-}) => {
+const Cards = (props) => {
+  const {
+    title,
+    titleHighlightColor,
+    description,
+    isBlankTarget,
+    items,
+    withBackground,
+    marginBottom,
+  } = props;
   const onlyLogo = items.every(({ text }) => !text);
 
   return (
@@ -49,9 +51,10 @@ const Cards = ({
         <ul className={cx('items-wrapper', { withText: !onlyLogo, onlyLogo })}>
           {items.map(({ logo, text, url }, index) => {
             const Tag = url ? Link : 'div';
+            const target = isBlankTarget && url ? '_blank' : null;
             return (
               <li className={cx('item')} key={index}>
-                <Tag className={cx('item-inner')} to={url || null}>
+                <Tag className={cx('item-inner')} to={url || null} target={target}>
                   <img className={cx('logo')} loading="lazy" src={logo.url} alt={logo.alt} />
                   {!onlyLogo && (
                     <>
@@ -76,6 +79,7 @@ Cards.propTypes = {
   title: PropTypes.string,
   titleHighlightColor: PropTypes.oneOf(['primary', 'secondary']),
   description: PropTypes.string,
+  isBlankTarget: PropTypes.bool,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       logo: PropTypes.shape({
@@ -94,6 +98,7 @@ Cards.defaultProps = {
   title: '',
   titleHighlightColor: 'primary',
   description: '',
+  isBlankTarget: false,
   withBackground: false,
   marginBottom: null,
 };
