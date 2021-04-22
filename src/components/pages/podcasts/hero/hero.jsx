@@ -23,7 +23,7 @@ const Hero = ({ title, text, description, buttons }) => {
     query {
       podcastImage: file(relativePath: { eq: "pages/podcasts/hero/podcast-image.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 780)
+          gatsbyImageData(width: 810)
         }
       }
     }

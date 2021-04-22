@@ -1,7 +1,7 @@
 .controls {
   display: flex;
   padding: 25px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   background-color: $color-additional-4;
   border-radius: 10px;
 
@@ -27,19 +27,17 @@
   }
 }
 
-.button {
-  cursor: pointer;
-}
-
 .bar {
-  margin-right: 70px;
+  margin-right: 65px;
 }
 
+.button,
 .icon-volume,
 .icon-download {
+  flex-shrink: 0;
   cursor: pointer;
 }
 
 .icon-volume {
-  margin-right: 30px;
+  margin-right: 25px;
 }

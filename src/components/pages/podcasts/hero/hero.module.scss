@@ -1,12 +1,12 @@
 .wrapper {
   margin-top: 150px;
-  margin-bottom: 150px;
+  margin-bottom: 135px;
 }
 
 .inner {
   display: grid;
-  grid-template-columns: 650px 1fr;
-  column-gap: 130px;
+  grid-template-columns: 620px 1fr;
+  column-gap: 100px;
 }
 
 .title {
@@ -17,6 +17,10 @@
   @include list-style;
 
   margin-bottom: 30px;
+
+  ul > li {
+    margin-bottom: 20px;
+  }
 }
 
 .bottom {
@@ -72,5 +76,5 @@
 }
 
 .image-wrapper {
-  justify-self: flex-end;
+  margin-top: 15px;
 }
