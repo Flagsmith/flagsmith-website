@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+
+  &.reversed {
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+}
+
+.badge {
+  font-size: 18px;
+
+  &:first-child {
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,22 @@
+.wrapper {
+  margin-top: 60px;
+  margin-bottom: 45px;
+}
+
+.inner {
+  position: relative;
+  padding-top: 45px;
+  padding-right: 45px;
+  padding-bottom: 45px;
+  padding-left: calc(50% + 45px);
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  border-radius: 20px;
+}
