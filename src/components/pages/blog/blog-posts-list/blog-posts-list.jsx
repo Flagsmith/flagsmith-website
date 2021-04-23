@@ -14,7 +14,7 @@ import Item from './item';
 
 const cx = classNames.bind(styles);
 
-const BlogPostsList = ({ pageTitle, featuredPost, posts, rootPath, podcast }) => {
+const BlogPostsList = ({ pageTitle, featuredPost, posts, rootPath }) => {
   const { pageCount, currentPage } = useContext(MainContext);
   return (
     <section className={cx('wrapper')}>
@@ -28,7 +28,7 @@ const BlogPostsList = ({ pageTitle, featuredPost, posts, rootPath, podcast }) =>
           const hasPodcastTag = Boolean(tags?.nodes.find((tag) => tag?.name === 'podcast'));
           return (
             <div className={cx('item')} key={index}>
-              {hasPodcastTag ? <PodcastCard {...post} {...podcast} /> : <Item {...post} />}
+              {hasPodcastTag ? <PodcastCard {...post.acf.podcast} /> : <Item {...post} />}
             </div>
           );
         })}
@@ -44,7 +44,5 @@ BlogPostsList.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   rootPath: PropTypes.string.isRequired,
 };
-
-BlogPostsList.defaultProps = {};
 
 export default BlogPostsList;

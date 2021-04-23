@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Button from 'components/shared/button';
 import Heading from 'components/shared/heading';
@@ -14,14 +14,8 @@ import styles from './podcast-card.module.scss';
 
 const cx = classNames.bind(styles);
 
-const PodcastCard = ({
-  title,
-  acf: {
-    podcast: { uri: url },
-  },
-  episode,
-  duration,
-}) => {
+const PodcastCard = ({ title, acf: { podcastUrl, episode }, uri: url }) => {
+  const [duration, setDuration] = useState(0);
   const { playerIllustration } = useStaticQuery(graphql`
     query {
       playerIllustration: file(
@@ -33,24 +27,34 @@ const PodcastCard = ({
       }
     }
   `);
+
+  useEffect(() => {
+    const audio = new Audio(podcastUrl);
+    const getAudioDuration = (e) => {
+      const { duration } = e.target;
+      setDuration(duration);
+    };
+    audio.addEventListener('loadedmetadata', getAudioDuration);
+    return () => audio.removeEventListener('loadedmetadata', getAudioDuration);
+  }, [podcastUrl]);
+
+  const timeDuration = `${Math.floor(duration / 60)}:${(duration % 60).toFixed()}`;
+
   return (
     <div className={cx('wrapper')}>
-      <div className={cx('head')}>
-        <Link className={cx('icon-wrapper')} to={url}>
-          <IconMicrophone className={cx('icon')} />
-        </Link>
+      <Link className={cx('head')} to={url}>
+        <IconMicrophone className={cx('icon')} />
         <div className={cx('title-wrapper')}>
           <Heading className={cx('title')} tag="h2" size="lg" color="tertiary">
             {title}
           </Heading>
           <div className={cx('info')}>
             <span className={cx('episode')}>Eps. {episode}</span>
-            <span>{duration}</span>
+            <span>{timeDuration}</span>
           </div>
         </div>
-      </div>
+      </Link>
       <SoundWave className={cx('wave')} />
-      {/* TODO: make sound wave animation */}
       <Button className={cx('button')} to="/podcasts/" theme="accent-tertiary">
         See all podcasts
       </Button>
@@ -67,12 +71,10 @@ const PodcastCard = ({
 PodcastCard.propTypes = {
   title: PropTypes.string.isRequired,
   acf: PropTypes.shape({
-    podcast: PropTypes.shape({
-      uri: PropTypes.string.isRequired,
-    }),
+    podcastUrl: PropTypes.string.isRequired,
+    episode: PropTypes.string.isRequired,
   }).isRequired,
-  episode: PropTypes.string.isRequired,
-  duration: PropTypes.string.isRequired,
+  uri: PropTypes.string.isRequired,
 };
 
 export default PodcastCard;
