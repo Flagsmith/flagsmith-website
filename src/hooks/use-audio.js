@@ -21,6 +21,9 @@ const useAudio = () => {
 
   useEffect(() => {
     const getAudioData = () => {
+      if (!audioRef.current) {
+        return;
+      }
       setIsAudioReady(true);
       setDuration(audioRef.current.duration);
       setCurrentTime(audioRef.current.currentTime);

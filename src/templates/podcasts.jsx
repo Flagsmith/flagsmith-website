@@ -24,7 +24,7 @@ const Podcasts = ({
 export default Podcasts;
 
 export const query = graphql`
-  query($id: String!) {
+  query($id: String!, $skip: Int!, $limit: Int!) {
     wpPage(id: { eq: $id }) {
       uri
       acf {
@@ -44,7 +44,7 @@ export const query = graphql`
       }
       ...wpPageSeo
     }
-    allWpPodcast(sort: { fields: date, order: DESC }) {
+    allWpPodcast(sort: { fields: date, order: DESC }, limit: $limit, skip: $skip) {
       nodes {
         title
         acf {
