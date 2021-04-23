@@ -72,7 +72,7 @@ PodcastCard.propTypes = {
   title: PropTypes.string.isRequired,
   acf: PropTypes.shape({
     podcastUrl: PropTypes.string.isRequired,
-    episode: PropTypes.string.isRequired,
+    episode: PropTypes.number.isRequired,
   }).isRequired,
   uri: PropTypes.string.isRequired,
 };
