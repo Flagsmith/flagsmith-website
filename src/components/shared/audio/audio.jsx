@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import React, { useCallback, useEffect } from 'react';
 
 import useAudio from 'hooks/use-audio';
-import DownloadIcon from 'icons/download.inline.svg';
 import PauseIcon from 'icons/pause.inline.svg';
 import PlayIcon from 'icons/play.inline.svg';
 import VolumeIcon from 'icons/volume.inline.svg';
@@ -70,7 +69,6 @@ const Audio = ({ audioUrl, isCurrent, onStartPlay }) => {
           onTimeUpdate={(time) => setClickedTime(time)}
         />
         <VolumeIcon className={cx('icon-volume')} onClick={muteAudio} />
-        <DownloadIcon className={cx('icon-download')} />
       </div>
     </div>
   );
