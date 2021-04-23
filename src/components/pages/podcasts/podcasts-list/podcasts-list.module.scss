@@ -1,7 +1,19 @@
 .wrapper {
-  margin-bottom: 90px;
+  margin-bottom: 180px;
 }
 
 .inner {
   max-width: 1010px;
+
+  @include fullhd-down {
+    max-width: 850px;
+  }
+
+  @include xl-down {
+    max-width: 770px;
+  }
+}
+
+.item {
+  margin-bottom: 90px;
 }

@@ -1,11 +1,14 @@
 .wrapper {
   max-width: 750px;
   margin-right: auto;
-  margin-bottom: 90px;
   margin-left: auto;
 
-  &:last-of-type {
-    margin-bottom: 0;
+  @include fullhd-down {
+    max-width: 630px;
+  }
+
+  @include xl-down {
+    max-width: 570px;
   }
 
   @include with-link-accent-secondary;
@@ -17,6 +20,10 @@
 
 .title {
   margin-bottom: 15px;
+
+  @include xl-down {
+    font-size: 35px;
+  }
 }
 
 .description {

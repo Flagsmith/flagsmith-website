@@ -8,7 +8,7 @@ const filterNonRootItems = require('./src/utils/filter-non-root-items');
 // constants
 const SUPPORTED_MENU_TYPES = ['header', 'footer', 'mobile'];
 const POSTS_PER_PAGE = 9;
-const PODCASTS_PER_PAGE = 7;
+const PODCASTS_PER_PAGE = 5;
 
 // removes all the spaces from a string
 // stripSpaces(string: String) -> String

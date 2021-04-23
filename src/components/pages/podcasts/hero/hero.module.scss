@@ -1,12 +1,26 @@
 .wrapper {
   margin-top: 150px;
   margin-bottom: 135px;
+
+  @include fullhd-down {
+    margin-bottom: 105px;
+  }
 }
 
 .inner {
   display: grid;
   grid-template-columns: 620px 1fr;
   column-gap: 100px;
+
+  @include fullhd-down {
+    grid-template-columns: 550px 1fr;
+    column-gap: 55px;
+  }
+
+  @include xl-down {
+    grid-template-columns: 570px 1fr;
+    column-gap: 10px;
+  }
 }
 
 .title {
@@ -76,5 +90,6 @@
 }
 
 .image-wrapper {
-  margin-top: 15px;
+  align-self: center;
+  margin-bottom: 15px;
 }
