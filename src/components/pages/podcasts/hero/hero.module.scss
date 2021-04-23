@@ -43,6 +43,11 @@
   @include lg-down {
     margin-bottom: 20px;
   }
+
+  @include sm-down {
+    font-size: 45px;
+    line-height: 1.3;
+  }
 }
 
 .text {
@@ -56,6 +61,15 @@
     line-height: $line-height-sm;
   }
 
+  @include md-down {
+    margin-bottom: 25px;
+  }
+
+  @include sm-down {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+  }
+
   ul > li {
     margin-bottom: 20px;
 
@@ -66,10 +80,10 @@
 }
 
 .bottom {
-  width: 435px;
+  max-width: 435px;
 
   @include md-down {
-    width: initial;
+    max-width: initial;
   }
 }
 
@@ -153,7 +167,7 @@
 
     @include md-down {
       display: block;
-      width: 580px;
+      max-width: 580px;
       margin-right: auto;
       margin-bottom: 30px;
       margin-left: auto;
