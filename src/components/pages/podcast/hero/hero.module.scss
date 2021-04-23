@@ -1,0 +1,65 @@
+.wrapper {
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+
+.inner {
+  height: 505px;
+  padding-top: 45px;
+  padding-right: 45px;
+  padding-bottom: 45px;
+  padding-left: calc(50% + 45px);
+
+  & > :first-child {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.content {
+  margin: 0;
+  font-size: $font-size-md;
+  font-style: italic;
+}
+
+.logo {
+  margin-bottom: 45px;
+}
+
+.avatar {
+  position: absolute;
+  z-index: 3;
+
+  &.host {
+    top: 45px;
+    left: -40px;
+  }
+
+  &.guest {
+    right: -40px;
+    bottom: 45px;
+  }
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  overflow: hidden;
+
+  & > div {
+    display: block !important;
+  }
+
+  &.left {
+    left: 0;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  &.right {
+    right: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+}

@@ -39,8 +39,6 @@
 }
 
 .title {
-  margin-bottom: 25px;
-
   @include xl-down {
     font-size: 50px;
   }
@@ -55,6 +53,14 @@
 
   @include sm-down {
     font-size: 35px;
+  }
+}
+
+.info {
+  margin-bottom: 85px;
+
+  @include md-down {
+    margin-bottom: 65px;
   }
 }
 
