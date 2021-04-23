@@ -64,7 +64,7 @@ export const query = graphql`
               acf {
                 description: shortDescription
               }
-              uri
+              url: uri
             }
           }
         }
