@@ -1,0 +1,43 @@
+.controls {
+  display: flex;
+  padding: 25px;
+  margin-bottom: 25px;
+  background-color: $color-additional-4;
+  border-radius: 10px;
+
+  &.audio-play {
+    background-color: $color-primary;
+    box-shadow: 0 10px 20px rgba(30, 13, 38, 0.2);
+
+    .icon-volume {
+      path {
+        stroke: $color-tertiary;
+
+        &:first-of-type {
+          fill: $color-tertiary;
+        }
+      }
+    }
+
+    .icon-download {
+      path {
+        stroke: $color-tertiary;
+      }
+    }
+  }
+}
+
+.bar {
+  margin-right: 65px;
+}
+
+.button,
+.icon-volume,
+.icon-download {
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.icon-volume {
+  margin-right: 25px;
+}

@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  user-select: none;
+}
+
+.time {
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+  color: $color-additional-6;
+
+  &.audio-play {
+    color: $color-tertiary;
+  }
+}
+
+.progress {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  height: 10px;
+  margin-top: 0;
+  margin-right: 15px;
+  margin-bottom: 0;
+  margin-left: 25px;
+  cursor: pointer;
+  background: #edeced;
+  border-radius: 4px;
+}
