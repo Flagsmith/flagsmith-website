@@ -6,10 +6,6 @@
     flex-direction: column;
   }
 
-  &:first-child {
-    margin-right: 20px;
-  }
-
   &.reversed {
     flex-direction: row-reverse;
     text-align: right;
@@ -17,27 +13,47 @@
     @include md-down {
       flex-direction: column-reverse;
     }
+
+    .badge {
+      margin-right: 20px;
+      margin-left: 0;
+    }
   }
 }
 
 .badge {
-  font-size: 18px;
+  margin-left: 20px;
 
-  &:first-child {
+  & span:first-child {
+    display: block;
     font-weight: bold;
   }
 
   &.light {
     color: $color-tertiary;
 
-    &:last-child {
+    & span:last-child {
       opacity: 0.5;
     }
   }
 
   &.dark {
-    &:last-child {
+    & span:last-child {
       color: $color-additional-6;
     }
+  }
+}
+
+.image-wrapper {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  filter:
+    drop-shadow(0 10px 30px rgba(30, 13, 38, 0.1))
+    drop-shadow(0 5px 10px rgba(30, 13, 38, 0.1));
+  border-radius: 20px;
+
+  & > img {
+    width: 100%;
   }
 }
