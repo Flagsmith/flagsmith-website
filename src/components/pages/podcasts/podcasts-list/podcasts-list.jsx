@@ -21,11 +21,9 @@ const PodcastsList = ({ podcasts, rootPath }) => {
       <div className={cx('container', 'inner')}>
         <div className={cx('list')}>
           {podcasts.map((item, index) => {
-            const podcastNumber = podcasts.length - index;
             const isCurrent = podcastUrls[index] === currentPodcast;
             return (
               <Item
-                podcastNumber={podcastNumber}
                 isCurrent={isCurrent}
                 key={index}
                 audioUrl={podcastUrls[index]}

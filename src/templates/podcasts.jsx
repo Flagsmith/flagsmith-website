@@ -44,10 +44,11 @@ export const query = graphql`
       }
       ...wpPageSeo
     }
-    allWpPodcast(sort: { fields: date, order: DESC }) {
+    allWpPodcast(sort: { fields: acf___episode, order: DESC }) {
       nodes {
         title
         acf {
+          episode
           podcastUrl
           description
         }
