@@ -2,10 +2,10 @@ import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import Audio from 'components/shared/audio';
 import Heading from 'components/shared/heading';
 import Link from 'components/shared/link';
 
-import Audio from './audio';
 import styles from './item.module.scss';
 
 const cx = classNames.bind(styles);
