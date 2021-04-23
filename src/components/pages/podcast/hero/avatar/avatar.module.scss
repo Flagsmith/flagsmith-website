@@ -1,9 +1,22 @@
 .wrapper {
   display: flex;
+  align-items: center;
+
+  @include md-down {
+    flex-direction: column;
+  }
+
+  &:first-child {
+    margin-right: 20px;
+  }
 
   &.reversed {
     flex-direction: row-reverse;
     text-align: right;
+
+    @include md-down {
+      flex-direction: column-reverse;
+    }
   }
 }
 
@@ -12,5 +25,19 @@
 
   &:first-child {
     font-weight: bold;
+  }
+
+  &.light {
+    color: $color-tertiary;
+
+    &:last-child {
+      opacity: 0.5;
+    }
+  }
+
+  &.dark {
+    &:last-child {
+      color: $color-additional-6;
+    }
   }
 }

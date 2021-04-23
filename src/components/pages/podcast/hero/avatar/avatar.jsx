@@ -6,18 +6,28 @@ import styles from './avatar.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Avatar = ({ fullName, position, isThemeLight, reversed }) => (
-  <div className={cx('wrapper', { reversed })}>
-    <div className={cx('image-wrapper')} />
-    <div className={cx('badge', { light: isThemeLight })}>
+const Avatar = ({ fullName, position, photo, theme, isReversed }) => (
+  <div className={cx('wrapper', { reversed: isReversed })}>
+    <div className={cx('image-wrapper')}>
+      <img src={photo} alt="" />
+    </div>
+    <div className={cx('badge', theme)}>
       <p>{fullName}</p>
       <p>{position}</p>
     </div>
   </div>
 );
 
-Avatar.propTypes = {};
+Avatar.propTypes = {
+  fullName: PropTypes.string.isRequired,
+  position: PropTypes.string.isRequired,
+  theme: PropTypes.oneOf(['light', 'dark']),
+  isReversed: PropTypes.bool,
+};
 
-Avatar.defaultProps = {};
+Avatar.defaultProps = {
+  theme: 'light',
+  isReversed: false,
+};
 
 export default Avatar;
