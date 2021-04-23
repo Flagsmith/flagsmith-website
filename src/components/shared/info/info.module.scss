@@ -2,15 +2,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 85px;
+  margin-top: 25px;
 
   @include md-down {
-    margin-bottom: 65px;
+    margin-top: 20px;
   }
 
   @include sm-down {
     flex-direction: column;
     align-items: flex-start;
+    margin-top: 15px;
   }
 }
 
