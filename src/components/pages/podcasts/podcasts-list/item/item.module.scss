@@ -11,6 +11,10 @@
     max-width: 570px;
   }
 
+  @include lg-down {
+    max-width: 460px;
+  }
+
   @include with-link-accent-secondary;
 
   a {
@@ -24,11 +28,20 @@
   @include xl-down {
     font-size: 35px;
   }
+
+  @include lg-down {
+    font-size: 30px;
+  }
 }
 
 .description {
   margin-top: 0;
   margin-bottom: 30px;
+
+  @include lg-down {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
 }
 
 .link {

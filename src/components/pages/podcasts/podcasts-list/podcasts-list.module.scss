@@ -1,5 +1,9 @@
 .wrapper {
   margin-bottom: 180px;
+
+  @include xl-down {
+    margin-bottom: 150px;
+  }
 }
 
 .inner {
@@ -11,6 +15,10 @@
 
   @include xl-down {
     max-width: 770px;
+  }
+
+  @include lg-down {
+    max-width: 620px;
   }
 }
 
