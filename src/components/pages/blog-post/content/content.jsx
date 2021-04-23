@@ -56,7 +56,13 @@ const Content = ({
         <Heading className={cx('title')} size="xl">
           {title}
         </Heading>
-        <Info fullName={fullName} fullDate={fullDate} title={title} pageUrl={pageUrl} />
+        <Info
+          className={cx('info')}
+          fullName={fullName}
+          fullDate={fullDate}
+          title={title}
+          pageUrl={pageUrl}
+        />
         <div className={cx('content')}>{reactedContent}</div>
       </div>
     </div>
