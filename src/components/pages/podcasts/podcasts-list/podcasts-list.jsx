@@ -14,12 +14,7 @@ const PodcastsList = ({ podcasts, rootPath }) => {
   const { pageCount, currentPage } = useContext(MainContext);
   const [currentPodcast, setCurrentPodcast] = useState(null);
 
-  const podcastContent = podcasts.map((podcast) => podcast.content);
-  const audioUrls = podcastContent.map((content) => {
-    const parsedElement = new DOMParser().parseFromString(content, 'text/html');
-    const audioElement = parsedElement.querySelector('audio');
-    return audioElement.src;
-  });
+  const podcastUrls = podcasts.map((podcast) => podcast.acf.podcastUrl);
 
   return (
     <section className={cx('wrapper')}>
@@ -27,13 +22,13 @@ const PodcastsList = ({ podcasts, rootPath }) => {
         <div className={cx('list')}>
           {podcasts.map((item, index) => {
             const podcastNumber = podcasts.length - index;
-            const isCurrent = audioUrls[index] === currentPodcast;
+            const isCurrent = podcastUrls[index] === currentPodcast;
             return (
               <Item
                 podcastNumber={podcastNumber}
                 isCurrent={isCurrent}
                 key={index}
-                audioUrl={audioUrls[index]}
+                audioUrl={podcastUrls[index]}
                 onStartPlay={setCurrentPodcast}
                 {...item}
               />
