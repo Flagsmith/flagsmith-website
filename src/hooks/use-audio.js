@@ -1,54 +1,81 @@
-import { useState, useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect, useRef } from 'react';
 
-const useAudio = (audioUrl) => {
-  const [audioEl, setAudioEl] = useState(null);
-  const [duration, setDuration] = useState();
-  const [currentTime, setCurrentTime] = useState();
-  const [playing, setPlaying] = useState(false);
+import { isSafari } from 'utils/check-browser';
+
+const useAudio = () => {
+  const [isAudioReady, setIsAudioReady] = useState(false);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [audioState, setAudioState] = useState('stop');
   const [clickedTime, setClickedTime] = useState();
   const [isMuted, setIsMuted] = useState(false);
 
-  useEffect(() => {
-    setAudioEl(new Audio(audioUrl));
-  }, [audioUrl]);
+  const audioRef = useRef();
+
+  const setAudioTime = () => setCurrentTime(audioRef.current.currentTime);
+
+  const muteAudio = () => {
+    setIsMuted(!isMuted);
+  };
 
   useEffect(() => {
-    if (!audioEl) {
-      return;
-    }
-    const getAudioData = (e) => {
-      const { duration } = e.target;
-      setDuration(duration);
-      setCurrentTime(audioEl.currentTime);
+    const getAudioData = () => {
+      setIsAudioReady(true);
+      setDuration(audioRef.current.duration);
+      setCurrentTime(audioRef.current.currentTime);
     };
-    const setAudioTime = () => setCurrentTime(audioEl.currentTime);
+    // Safari does not fire canplay video event
+    // https://stackoverflow.com/questions/50051639/javascript-html5-video-event-canplay-not-firing-on-safari
 
-    audioEl.addEventListener('loadedmetadata', getAudioData);
-    audioEl.addEventListener('timeupdate', setAudioTime);
-
-    if (playing) {
-      audioEl.play();
-    } else {
-      audioEl.pause();
-    }
-
-    if (isMuted) {
-      audioEl.muted = true;
-    } else {
-      audioEl.muted = false;
-    }
-
-    if (clickedTime && clickedTime !== currentTime) {
-      audioEl.currentTime = clickedTime;
-      setClickedTime(null);
+    const canPlayEventName = isSafari ? 'loadedmetadata' : 'canplay';
+    const allowedReadyState = isSafari ? 1 : 3;
+    if (audioRef.current) {
+      if (audioRef.current.readyState >= allowedReadyState) {
+        getAudioData();
+      }
+      if (audioRef.current.readyState < allowedReadyState) {
+        audioRef.current.addEventListener(canPlayEventName, getAudioData);
+      }
     }
 
     return () => {
-      audioEl.removeEventListener('loadedmetadata', getAudioData);
-      audioEl.removeEventListener('timeupdate', setAudioTime);
+      if (audioRef.current) {
+        audioRef.current.removeEventListener(canPlayEventName, getAudioData);
+      }
     };
-  }, [audioEl, clickedTime, currentTime, isMuted, playing]);
-  return { duration, currentTime, playing, setPlaying, setClickedTime, isMuted, setIsMuted };
+  }, [audioRef.current, currentTime, duration]);
+
+  useEffect(() => {
+    if (!isAudioReady) {
+      return;
+    }
+    if (audioState === 'play') {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  }, [isAudioReady, audioState]);
+
+  useEffect(() => {
+    if (clickedTime && clickedTime !== currentTime) {
+      audioRef.current.currentTime = clickedTime;
+      setClickedTime(null);
+    }
+  }, [clickedTime, currentTime]);
+
+  return {
+    audioRef,
+    duration,
+    setAudioTime,
+    currentTime,
+    audioState,
+    setAudioState,
+    setClickedTime,
+    muteAudio,
+    isMuted,
+    setIsMuted,
+  };
 };
 
 export default useAudio;

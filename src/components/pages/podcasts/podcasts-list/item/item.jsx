@@ -13,7 +13,7 @@ const cx = classNames.bind(styles);
 const Item = ({
   podcastNumber,
   title,
-  acf: { description },
+  acf: { description, episode },
   url,
   audioUrl,
   isCurrent,
@@ -21,7 +21,7 @@ const Item = ({
 }) => (
   <div className={cx('wrapper')}>
     <Heading className={cx('title')} tag="h2" size="lg">
-      <span className={cx('number')}>#{podcastNumber}</span> {title}
+      <span className={cx('number')}>#{episode}</span> {title}
     </Heading>
     <p className={cx('description')}>{description}</p>
     <Audio
@@ -40,6 +40,7 @@ Item.propTypes = {
   title: PropTypes.string.isRequired,
   acf: PropTypes.shape({
     description: PropTypes.string.isRequired,
+    episode: PropTypes.number.isRequired,
   }).isRequired,
   url: PropTypes.string.isRequired,
 };

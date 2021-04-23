@@ -47,9 +47,26 @@ export const query = graphql`
     allWpPodcast(sort: { fields: date, order: DESC }) {
       nodes {
         title
-        content
         acf {
+          episode
+          podcastUrl
           description
+          blogPost {
+            ... on WpPost {
+              title
+              author {
+                node {
+                  firstName
+                  lastName
+                }
+              }
+              date(formatString: "YYYY-MM-DD")
+              acf {
+                description: shortDescription
+              }
+              uri
+            }
+          }
         }
         url: uri
       }

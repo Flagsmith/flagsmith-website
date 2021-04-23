@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import React, { useContext, useState } from 'react';
 
+import FeaturedPost from 'components/shared/featured-post';
 import Pagination from 'components/shared/pagination';
 import MainContext from 'context/main';
 
@@ -14,29 +15,28 @@ const PodcastsList = ({ podcasts, rootPath }) => {
   const { pageCount, currentPage } = useContext(MainContext);
   const [currentPodcast, setCurrentPodcast] = useState(null);
 
-  const podcastContent = podcasts.map((podcast) => podcast.content);
-  const audioUrls = podcastContent.map((content) => {
-    const parsedElement = new DOMParser().parseFromString(content, 'text/html');
-    const audioElement = parsedElement.querySelector('audio');
-    return audioElement.src;
-  });
+  const podcastUrls = podcasts.map((podcast) => podcast.acf.podcastUrl);
 
   return (
     <section className={cx('wrapper')}>
       <div className={cx('container', 'inner')}>
         <div className={cx('list')}>
           {podcasts.map((item, index) => {
-            const podcastNumber = podcasts.length - index;
-            const isCurrent = audioUrls[index] === currentPodcast;
+            const isCurrent = podcastUrls[index] === currentPodcast;
+            const { blogPost } = item.acf;
             return (
-              <Item
-                podcastNumber={podcastNumber}
-                isCurrent={isCurrent}
-                key={index}
-                audioUrl={audioUrls[index]}
-                onStartPlay={setCurrentPodcast}
-                {...item}
-              />
+              <div className={cx('item')} key={index}>
+                {blogPost ? (
+                  <FeaturedPost post={blogPost} />
+                ) : (
+                  <Item
+                    isCurrent={isCurrent}
+                    audioUrl={podcastUrls[index]}
+                    onStartPlay={setCurrentPodcast}
+                    {...item}
+                  />
+                )}
+              </div>
             );
           })}
         </div>
