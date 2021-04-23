@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import React, { useCallback, useEffect } from 'react';
@@ -15,36 +16,47 @@ const cx = classNames.bind(styles);
 
 const Audio = ({ audioUrl, isCurrent, onStartPlay }) => {
   const {
+    audioRef,
     duration,
+    setAudioTime,
     currentTime,
-    playing,
-    setPlaying,
+    audioState,
+    setAudioState,
     setClickedTime,
+    muteAudio,
     isMuted,
-    setIsMuted,
   } = useAudio(audioUrl);
+
+  const playing = audioState === 'play';
+
   useEffect(() => {
     if (!isCurrent) {
-      setPlaying(false);
+      setAudioState('pause');
     }
-  }, [isCurrent, setPlaying]);
+  }, [isCurrent, setAudioState]);
 
   const startPlay = useCallback(() => {
-    setPlaying(true);
+    setAudioState('play');
     onStartPlay(audioUrl);
-  }, [setPlaying, onStartPlay, audioUrl]);
-
-  const handleVolumeAudio = () => setIsMuted(!isMuted);
+  }, [setAudioState, onStartPlay, audioUrl]);
 
   return (
     <div className={cx('wrapper')}>
-      <audio preload="auto">
-        <source src={audioUrl} />
+      <audio
+        preload="auto"
+        ref={audioRef}
+        muted={isMuted}
+        playsInline
+        onPlay={() => setAudioState('play')}
+        onPause={() => setAudioState('pause')}
+        onTimeUpdate={setAudioTime}
+      >
+        <source type="audio/mp3" src={audioUrl} />
         Your browser does not support the <code>audio</code> element.
       </audio>
       <div className={cx('controls', { audioPlay: playing })}>
         {playing ? (
-          <PauseIcon className={cx('button')} onClick={() => setPlaying(false)} />
+          <PauseIcon className={cx('button')} onClick={() => setAudioState('pause')} />
         ) : (
           <PlayIcon className={cx('button')} onClick={startPlay} />
         )}
@@ -53,10 +65,11 @@ const Audio = ({ audioUrl, isCurrent, onStartPlay }) => {
           currentTime={currentTime}
           duration={duration}
           playing={playing}
-          setPlaying={setPlaying}
+          audioState={audioState}
+          setAudioState={setAudioState}
           onTimeUpdate={(time) => setClickedTime(time)}
         />
-        <VolumeIcon className={cx('icon-volume')} onClick={handleVolumeAudio} />
+        <VolumeIcon className={cx('icon-volume')} onClick={muteAudio} />
         <DownloadIcon className={cx('icon-download')} />
       </div>
     </div>

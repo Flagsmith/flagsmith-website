@@ -9,7 +9,15 @@ import styles from './bar.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Bar = ({ className, duration, currentTime, onTimeUpdate, playing, setPlaying }) => {
+const Bar = ({
+  className,
+  duration,
+  currentTime,
+  onTimeUpdate,
+  playing,
+  audioState,
+  setAudioState,
+}) => {
   const curPercentage = (currentTime / duration) * 100;
   const barRef = useRef();
 
@@ -26,7 +34,7 @@ const Bar = ({ className, duration, currentTime, onTimeUpdate, playing, setPlayi
   const handleTimeDrag = (e) => {
     onTimeUpdate(calcClickedTime(e));
     if (!playing) {
-      setPlaying(true);
+      setAudioState('play');
     }
     const updateTimeOnMove = (eMove) => {
       onTimeUpdate(calcClickedTime(eMove));
