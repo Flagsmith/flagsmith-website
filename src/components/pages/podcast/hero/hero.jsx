@@ -6,34 +6,51 @@ import React from 'react';
 
 import Avatar from './avatar';
 import styles from './hero.module.scss';
+import companyLogo from './images/logo.svg';
 
 const cx = classNames.bind(styles);
 
 const Hero = (props) => {
   const { authorName, authorPosition, guestName, guestPosition, logo, content } = props;
-  const { background } = useStaticQuery(graphql`
+  const { leftBackground, rightBackground } = useStaticQuery(graphql`
     query {
-      podcastImage: file(relativePath: { eq: "pages/podcast/hero/background.jpg" }) {
+      leftBackground: file(relativePath: { eq: "pages/podcast/hero/left-background.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 1010)
+          gatsbyImageData(width: 505)
+        }
+      }
+      rightBackground: file(relativePath: { eq: "pages/podcast/hero/right-background.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(width: 505)
         }
       }
     }
   `);
   return (
     <section className={cx('wrapper')}>
-      <div className={cx('container')}>
-        {logo && <img src={logo} alt="" />}
-        {content && <p className={cx('content')}>{content}</p>}
-        <Avatar className={cx('avatar', 'host')} fullName={authorName} position={authorPosition} />
+      <div className={cx('container', 'inner')}>
+        <div>
+          {companyLogo && <img className={cx('logo')} src={companyLogo} alt="" />}
+          {content && <p className={cx('content')}>{content}</p>}
+        </div>
         <Avatar
-          className={cx('avatar', 'guest')}
+          additionalClassName={cx('avatar', 'host')}
+          fullName={authorName}
+          position={authorPosition}
+        />
+        <Avatar
+          additionalClassName={cx('avatar', 'guest')}
           fullName={guestName}
           position={guestPosition}
           theme="dark"
           isReversed
         />
-        <GatsbyImage className={cx('background')} image={getImage(background)} alt="" />
+        <div className={cx('background', 'left')}>
+          <GatsbyImage image={getImage(leftBackground)} alt="" />
+        </div>
+        <div className={cx('background', 'right')}>
+          <GatsbyImage fadeIn="false" image={getImage(rightBackground)} alt="" />
+        </div>
       </div>
     </section>
   );
