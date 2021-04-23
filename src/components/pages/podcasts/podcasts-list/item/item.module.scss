@@ -32,6 +32,10 @@
   @include lg-down {
     font-size: 30px;
   }
+
+  @include md-down {
+    font-size: 28px;
+  }
 }
 
 .description {

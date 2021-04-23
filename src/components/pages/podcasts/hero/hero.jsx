@@ -34,6 +34,9 @@ const Hero = ({ title, text, description, buttons }) => {
         <div>
           <Heading className={cx('title')} innerHTML={title} />
           <div className={cx('text')} dangerouslySetInnerHTML={{ __html: text }} />
+          <div className={cx('image-wrapper', 'md-visible')}>
+            <GatsbyImage image={getImage(podcastImage)} alt="" />
+          </div>
           <div className={cx('bottom')}>
             <div className={cx('buttons-wrapper')}>
               {buttons.map(({ buttonIcon, button: { url, target, title } }, index) => {
@@ -52,7 +55,7 @@ const Hero = ({ title, text, description, buttons }) => {
             <div className={cx('description')} dangerouslySetInnerHTML={{ __html: description }} />
           </div>
         </div>
-        <div className={cx('image-wrapper')}>
+        <div className={cx('image-wrapper', 'md-hidden')}>
           <GatsbyImage image={getImage(podcastImage)} alt="" />
         </div>
       </div>

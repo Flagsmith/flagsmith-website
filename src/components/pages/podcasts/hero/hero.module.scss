@@ -2,6 +2,8 @@
   margin-top: 150px;
   margin-bottom: 135px;
 
+  @include section-paddings;
+
   @include fullhd-down {
     margin-bottom: 105px;
   }
@@ -28,6 +30,10 @@
 
   @include lg-down {
     grid-template-columns: 460px 1fr;
+  }
+
+  @include md-down {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -61,6 +67,10 @@
 
 .bottom {
   width: 435px;
+
+  @include md-down {
+    width: initial;
+  }
 }
 
 .buttons-wrapper {
@@ -137,4 +147,22 @@
 .image-wrapper {
   align-self: center;
   margin-bottom: 15px;
+
+  &.md-visible {
+    display: none;
+
+    @include md-down {
+      display: block;
+      width: 580px;
+      margin-right: auto;
+      margin-bottom: 30px;
+      margin-left: auto;
+    }
+  }
+
+  &.md-hidden {
+    @include md-down {
+      display: none;
+    }
+  }
 }
