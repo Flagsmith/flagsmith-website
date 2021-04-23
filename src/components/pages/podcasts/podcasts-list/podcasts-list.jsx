@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import React, { useContext, useState } from 'react';
 
+import FeaturedPost from 'components/shared/featured-post';
 import Pagination from 'components/shared/pagination';
 import MainContext from 'context/main';
 
@@ -22,14 +23,20 @@ const PodcastsList = ({ podcasts, rootPath }) => {
         <div className={cx('list')}>
           {podcasts.map((item, index) => {
             const isCurrent = podcastUrls[index] === currentPodcast;
+            const { blogPost } = item.acf;
             return (
-              <Item
-                isCurrent={isCurrent}
-                key={index}
-                audioUrl={podcastUrls[index]}
-                onStartPlay={setCurrentPodcast}
-                {...item}
-              />
+              <div className={cx('item')} key={index}>
+                {blogPost ? (
+                  <FeaturedPost post={blogPost} />
+                ) : (
+                  <Item
+                    isCurrent={isCurrent}
+                    audioUrl={podcastUrls[index]}
+                    onStartPlay={setCurrentPodcast}
+                    {...item}
+                  />
+                )}
+              </div>
             );
           })}
         </div>
