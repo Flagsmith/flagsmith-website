@@ -170,7 +170,15 @@
     width: 470px;
   }
 
-  @include sm-down {
-    width: 100%;
+  img {
+    top: initial;
+    left: initial;
+    width: auto;
+    height: 95px;
+    object-fit: contain !important;
+
+    @include xxs-down {
+      height: 70px;
+    }
   }
 }
