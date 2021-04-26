@@ -13,8 +13,12 @@ const Bar = ({ className, duration, currentTime, onTimeUpdate, playing, setAudio
   const curPercentage = (currentTime / duration) * 100;
   const barRef = useRef();
 
-  const formatDuration = (duration) =>
-    moment.duration(duration, 'seconds').format('mm:ss', { trim: false });
+  const formatDuration = (duration) => {
+    if (duration <= 3600) {
+      return moment.duration(duration, 'seconds').format('mm:ss', { trim: false });
+    }
+    return moment.duration(duration, 'seconds').format('hh:mm:ss', { trim: false });
+  };
   const calcClickedTime = (e) => {
     const clickPositionInPage = e.pageX;
     const barStart = barRef.current.getBoundingClientRect().left + window.scrollX;
@@ -64,8 +68,20 @@ const Bar = ({ className, duration, currentTime, onTimeUpdate, playing, setAudio
   );
 };
 
-Bar.propTypes = {};
+Bar.propTypes = {
+  className: PropTypes.string,
+  duration: PropTypes.number,
+  currentTime: PropTypes.number,
+  onTimeUpdate: PropTypes.func.isRequired,
+  playing: PropTypes.bool,
+  setAudioState: PropTypes.func.isRequired,
+};
 
-Bar.defaultProps = {};
+Bar.defaultProps = {
+  className: null,
+  duration: 0,
+  currentTime: 0,
+  playing: false,
+};
 
 export default Bar;
