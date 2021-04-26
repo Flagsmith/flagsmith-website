@@ -40,7 +40,7 @@ const Content = (props) => {
           authorName={authorName}
           guestName="Torkel Ödegaard"
           guestPosition="Creator & Project Lead"
-          content="It's much more useful for Grafana to be more open, compostable, and use different data sources because that's the reality of so many users."
+          quote="It's much more useful for Grafana to be more open, compostable, and use different data sources because that's the reality of so many users."
         />
         <Audio />
       </div>
