@@ -13,7 +13,7 @@ import Bar from './bar';
 
 const cx = classNames.bind(styles);
 
-const Audio = ({ audioUrl, isCurrent, onStartPlay }) => {
+const Audio = ({ audioUrl, isCurrent, setIsPlaying, onStartPlay }) => {
   const {
     audioRef,
     duration,
@@ -34,8 +34,17 @@ const Audio = ({ audioUrl, isCurrent, onStartPlay }) => {
     }
   }, [isCurrent, setAudioState]);
 
+  useEffect(() => {
+    if (playing) {
+      setIsPlaying(true);
+    } else {
+      setIsPlaying(false);
+    }
+  });
+
   const startPlay = useCallback(() => {
     setAudioState('play');
+
     onStartPlay(audioUrl);
   }, [setAudioState, onStartPlay, audioUrl]);
 

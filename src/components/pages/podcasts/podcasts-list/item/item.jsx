@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 
 import Audio from 'components/shared/audio';
 import Heading from 'components/shared/heading';
@@ -11,21 +11,30 @@ import styles from './item.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Item = ({ title, acf: { description, episode }, url, audioUrl, isCurrent, onStartPlay }) => (
-  <div className={cx('wrapper', { currentAudio: isCurrent })}>
-    <EqualizerIcon className={cx('icon')} />
-    <div className={cx('inner')}>
-      <Heading className={cx('title')} tag="h2" size="lg">
-        <span className={cx('number')}>#{episode}</span> {title}
-      </Heading>
-      <p className={cx('description')}>{description}</p>
-      <Audio audioUrl={audioUrl} isCurrent={isCurrent} onStartPlay={onStartPlay} />
-      <Link className={cx('link')} to={url} withArrow>
-        View Transcription
-      </Link>
+const Item = ({ title, acf: { description, episode }, url, audioUrl, isCurrent, onStartPlay }) => {
+  const [isCurrentPodcastPlaying, setIsCurrentPodcastPlaying] = useState(false);
+
+  return (
+    <div className={cx('wrapper', { currentAudio: isCurrentPodcastPlaying })}>
+      <EqualizerIcon className={cx('icon')} />
+      <div className={cx('inner')}>
+        <Heading className={cx('title')} tag="h2" size="lg">
+          <span className={cx('number')}>#{episode}</span> {title}
+        </Heading>
+        <p className={cx('description')}>{description}</p>
+        <Audio
+          audioUrl={audioUrl}
+          isCurrent={isCurrent}
+          setIsPlaying={setIsCurrentPodcastPlaying}
+          onStartPlay={onStartPlay}
+        />
+        <Link className={cx('link')} to={url} withArrow>
+          View Transcription
+        </Link>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 Item.propTypes = {
   title: PropTypes.string.isRequired,
