@@ -1,14 +1,53 @@
 .wrapper {
   margin-top: 45px;
   margin-bottom: 45px;
+
+  @include md-down {
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
+}
+
+.aspect-ratio {
+  display: flex;
+
+  &::before {
+    padding-bottom: 50%;
+    content: '';
+
+    @include sm-down {
+      padding-bottom: 200%;
+    }
+  }
 }
 
 .inner {
-  height: 505px;
+  position: relative;
   padding-top: 45px;
   padding-right: 45px;
   padding-bottom: 45px;
   padding-left: calc(50% + 45px);
+
+  @include fullhd-down {
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-left: calc(50% + 30px);
+  }
+
+  @include xl-down {
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-left: calc(50% + 25px);
+  }
+
+  @include sm-down {
+    padding-top: calc(100% + 30px);
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+  }
 
   & > :first-child {
     position: relative;
@@ -16,14 +55,35 @@
   }
 }
 
-.content {
+.quote {
   margin: 0;
   font-size: $font-size-md;
   font-style: italic;
+
+  @include xl-down {
+    font-size: 22px;
+  }
+
+  @include md-down {
+    font-size: $font-size-base;
+  }
 }
 
 .logo {
+  display: block;
   margin-bottom: 45px;
+
+  @include fullhd-down {
+    margin-bottom: 30px;
+  }
+
+  @include xl-down {
+    margin-bottom: 25px;
+  }
+
+  @include sm-down {
+    margin-bottom: 30px;
+  }
 }
 
 .avatar {
@@ -33,11 +93,55 @@
   &.host {
     top: 45px;
     left: -40px;
+
+    @include fullhd-down {
+      top: 30px;
+      left: -30px;
+    }
+
+    @include xl-down {
+      top: 25px;
+    }
+
+    @include lg-down {
+      top: 35px;
+    }
+
+    @include md-down {
+      top: -35px;
+      left: 25px;
+    }
+
+    @include sm-down {
+      left: 30px;
+    }
   }
 
   &.guest {
     right: -40px;
     bottom: 45px;
+
+    @include fullhd-down {
+      right: -30px;
+      bottom: 30px;
+    }
+
+    @include xl-down {
+      bottom: 25px;
+    }
+
+    @include lg-down {
+      bottom: 35px;
+    }
+
+    @include md-down {
+      right: 25px;
+      bottom: -35px;
+    }
+
+    @include sm-down {
+      right: 30px;
+    }
   }
 }
 
@@ -47,6 +151,11 @@
   width: 50%;
   overflow: hidden;
 
+  @include sm-down {
+    top: auto;
+    width: 100%;
+  }
+
   & > div {
     display: block !important;
   }
@@ -55,11 +164,23 @@
     left: 0;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+
+    @include sm-down {
+      top: 0;
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 0;
+    }
   }
 
   &.right {
     right: 0;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+
+    @include sm-down {
+      bottom: 0;
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 10px;
+    }
   }
 }

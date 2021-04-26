@@ -2,6 +2,8 @@
   margin-top: 180px;
   margin-bottom: 150px;
 
+  @include section-paddings;
+
   @include fullhd-down {
     margin-top: 150px;
   }
@@ -14,8 +16,6 @@
     margin-top: 120px;
     margin-bottom: 120px;
   }
-
-  @include section-paddings;
 }
 
 .label {
@@ -31,7 +31,34 @@
 }
 
 .description {
+  margin-top: 0;
   margin-bottom: 25px;
   font-size: $font-size-md;
   font-weight: 600;
+
+  @include lg-down {
+    font-size: $font-size-base;
+  }
+
+  @include md-down {
+    margin-bottom: 20px;
+  }
+
+  @include sm-down {
+    margin-bottom: 15px;
+    font-size: $font-size-sm;
+  }
+}
+
+.content {
+  @include content;
+
+  blockquote {
+    padding: 15px 20px;
+    margin: 15px 0;
+    color: $color-accent-secondary;
+    background-color: $color-accent-secondary;
+    border-radius: 10px;
+    opacity: 0.05;
+  }
 }
