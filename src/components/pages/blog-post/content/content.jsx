@@ -24,7 +24,6 @@ const Content = ({
 }) => {
   const fullDate = getLocaleDate(date);
   const pageUrl = `${process.env.GATSBY_DEFAULT_SITE_URL}${url}`;
-
   return (
     <div className={cx('wrapper')}>
       <div className={cx('container', 'inner')}>
@@ -42,7 +41,7 @@ const Content = ({
             <TwitterShareButton title={title} url={pageUrl}>
               <TwitterIcon />
             </TwitterShareButton>
-            <LinkedinShareButton title={title} url={pageUrl}>
+            <LinkedinShareButton title={title} url={encodeURI(pageUrl)}>
               <LinkedinIcon />
             </LinkedinShareButton>
           </div>
@@ -63,6 +62,10 @@ Content.propTypes = {
   }).isRequired,
   date: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
+  content: PropTypes.arrayOf(PropTypes.any),
+};
+
+Content.defaultProps = {
+  content: null,
 };
 export default Content;
