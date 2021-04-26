@@ -41,7 +41,7 @@ const Content = ({
             <TwitterShareButton title={title} url={pageUrl}>
               <TwitterIcon />
             </TwitterShareButton>
-            <LinkedinShareButton title={title} url={encodeURI(pageUrl)}>
+            <LinkedinShareButton url={pageUrl}>
               <LinkedinIcon />
             </LinkedinShareButton>
           </div>
