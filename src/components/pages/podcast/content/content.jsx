@@ -9,6 +9,7 @@ import getLocaleDate from 'utils/get-locale-date';
 
 import About from '../about';
 import Hero from '../hero';
+import RelativeLinks from '../relative-links';
 
 import styles from './content.module.scss';
 
@@ -25,6 +26,7 @@ const Content = (props) => {
     guestName,
     aboutGuest,
     availableOn,
+    relativeLinks,
     date,
     url,
   } = props;
@@ -51,6 +53,7 @@ const Content = (props) => {
 
         <div className={cx('content')}>{content}</div>
         <About guestName={guestName} about={aboutGuest} availableOn={availableOn} />
+        <RelativeLinks items={relativeLinks} title="Links from the Episode" />
       </div>
     </div>
   );
@@ -71,6 +74,15 @@ Content.defaultProps = {
     'Continuous integration & Automated deployment',
     'Time series databases',
     'Application metrics & instrumentation',
+  ],
+  relativeLinks: [
+    { url: '/', text: 'Grafana' },
+    { url: '/', text: 'Loki' },
+    { url: '/', text: 'Graphite' },
+    { url: '/', text: 'Tempo' },
+    { url: '/', text: 'Etsy' },
+    { url: '/', text: 'Github (Grafana)' },
+    { url: '/', text: 'Slack (Grafana)' },
   ],
 };
 
