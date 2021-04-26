@@ -27,4 +27,21 @@
   cursor: pointer;
   background: #edeced;
   border-radius: 4px;
+
+  &:hover {
+    .knob.show-knob {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.knob {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  visibility: hidden;
+  background-color: $color-tertiary;
+  border-radius: 50%;
+  opacity: 0;
 }

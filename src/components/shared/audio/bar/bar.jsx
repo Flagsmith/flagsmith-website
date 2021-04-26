@@ -9,15 +9,7 @@ import styles from './bar.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Bar = ({
-  className,
-  duration,
-  currentTime,
-  onTimeUpdate,
-  playing,
-  audioState,
-  setAudioState,
-}) => {
+const Bar = ({ className, duration, currentTime, onTimeUpdate, playing, setAudioState }) => {
   const curPercentage = (currentTime / duration) * 100;
   const barRef = useRef();
 
@@ -59,7 +51,12 @@ const Bar = ({
             : { background: `linear-gradient(to right, #7b51fb ${curPercentage}%, #edeced 0)` }
         }
         onMouseDown={(e) => handleTimeDrag(e)}
-      />
+      >
+        <span
+          className={cx('knob', { showKnob: playing })}
+          style={{ left: `${curPercentage - 2}%` }}
+        />
+      </div>
       <span className={cx('time', { audioPlay: playing })}>
         {formatDuration(currentTime)} / {formatDuration(duration)}
       </span>
