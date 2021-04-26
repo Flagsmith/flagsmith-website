@@ -6,20 +6,24 @@ import Audio from 'components/shared/audio';
 import Heading from 'components/shared/heading';
 import Link from 'components/shared/link';
 
+import EqualizerIcon from './images/equalizer.inline.svg';
 import styles from './item.module.scss';
 
 const cx = classNames.bind(styles);
 
 const Item = ({ title, acf: { description, episode }, url, audioUrl, isCurrent, onStartPlay }) => (
-  <div className={cx('wrapper')}>
-    <Heading className={cx('title')} tag="h2" size="lg">
-      <span className={cx('number')}>#{episode}</span> {title}
-    </Heading>
-    <p className={cx('description')}>{description}</p>
-    <Audio audioUrl={audioUrl} isCurrent={isCurrent} onStartPlay={onStartPlay} />
-    <Link className={cx('link')} to={url} withArrow>
-      View Transcription
-    </Link>
+  <div className={cx('wrapper', { currentAudio: isCurrent })}>
+    <EqualizerIcon className={cx('icon')} />
+    <div className={cx('inner')}>
+      <Heading className={cx('title')} tag="h2" size="lg">
+        <span className={cx('number')}>#{episode}</span> {title}
+      </Heading>
+      <p className={cx('description')}>{description}</p>
+      <Audio audioUrl={audioUrl} isCurrent={isCurrent} onStartPlay={onStartPlay} />
+      <Link className={cx('link')} to={url} withArrow>
+        View Transcription
+      </Link>
+    </div>
   </div>
 );
 
