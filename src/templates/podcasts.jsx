@@ -46,6 +46,11 @@ export const query = graphql`
     }
     allWpPodcast(sort: { fields: date, order: DESC }, limit: $limit, skip: $skip) {
       nodes {
+        tags {
+          nodes {
+            name
+          }
+        }
         title
         acf {
           episode
