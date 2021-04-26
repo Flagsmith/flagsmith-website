@@ -4,7 +4,8 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Avatar from './avatar';
+import Avatar from '../avatar';
+
 import styles from './hero.module.scss';
 import companyLogo from './images/logo.svg';
 
@@ -28,7 +29,7 @@ const Hero = (props) => {
   `);
   return (
     <section className={cx('wrapper')}>
-      <div className={cx('container', 'aspect-ratio')}>
+      <div className={cx('aspect-ratio')}>
         <div className={cx('inner')}>
           <div>
             {companyLogo && <img className={cx('logo')} src={companyLogo} alt="" />}
@@ -46,12 +47,12 @@ const Hero = (props) => {
             theme="dark"
             isReversed
           />
-        </div>
-        <div className={cx('background', 'left')}>
-          <GatsbyImage image={getImage(leftBackground)} alt="" />
-        </div>
-        <div className={cx('background', 'right')}>
-          <GatsbyImage fadeIn="false" image={getImage(rightBackground)} alt="" />
+          <div className={cx('background', 'left')}>
+            <GatsbyImage image={getImage(leftBackground)} alt="" />
+          </div>
+          <div className={cx('background', 'right')}>
+            <GatsbyImage fadeIn="false" image={getImage(rightBackground)} alt="" />
+          </div>
         </div>
       </div>
     </section>
