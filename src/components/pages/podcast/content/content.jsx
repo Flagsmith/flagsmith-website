@@ -40,6 +40,7 @@ const Content = (props) => {
   const authorName = `${firstName} ${lastName}`;
   const pageUrl = `${process.env.GATSBY_DEFAULT_SITE_URL}${url}`;
   const fullDate = getLocaleDate(date);
+  console.log(guest.position);
   const updatedPosition = guest.position.replace(/&/g, 'and');
   const description = `Interview with ${guest.fullName}: ${updatedPosition}, ${title}`;
   return (

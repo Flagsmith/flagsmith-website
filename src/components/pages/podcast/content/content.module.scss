@@ -68,4 +68,12 @@
   & a {
     font-weight: 700;
   }
+
+  hr {
+    height: 2px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: $color-additional-4;
+    border: none;
+  }
 }
