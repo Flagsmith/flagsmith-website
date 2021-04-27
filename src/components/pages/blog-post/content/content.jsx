@@ -1,9 +1,12 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { FacebookShareButton, LinkedinShareButton, TwitterShareButton } from 'react-share';
 
 import Heading from 'components/shared/heading';
-import Info from 'components/shared/info';
+import FacebookIcon from 'icons/facebook.inline.svg';
+import LinkedinIcon from 'icons/linkedin.inline.svg';
+import TwitterIcon from 'icons/twitter.inline.svg';
 import getLocaleDate from 'utils/get-locale-date';
 
 import styles from './content.module.scss';
