@@ -6,6 +6,7 @@ import React, { useCallback, useEffect } from 'react';
 import useAudio from 'hooks/use-audio';
 import PauseIcon from 'icons/pause.inline.svg';
 import PlayIcon from 'icons/play.inline.svg';
+import UnmuteIcon from 'icons/unmute.inline.svg';
 import VolumeIcon from 'icons/volume.inline.svg';
 
 import styles from './audio.module.scss';
@@ -25,7 +26,6 @@ const Audio = ({ audioUrl, isCurrent, setIsPlaying, onStartPlay }) => {
     muteAudio,
     isMuted,
   } = useAudio(audioUrl);
-
   const playing = audioState === 'play';
 
   useEffect(() => {
@@ -82,7 +82,19 @@ const Audio = ({ audioUrl, isCurrent, setIsPlaying, onStartPlay }) => {
           setAudioState={setAudioState}
           onTimeUpdate={(time) => setClickedTime(time)}
         />
-        <VolumeIcon className={cx('volume')} onClick={muteAudio} />
+        <div className={cx('volume', { audioPlay: playing })}>
+          <div className={cx('inner')}>
+            <button className={cx('icon')} type="button" onClick={muteAudio}>
+              {isMuted ? <UnmuteIcon className={cx('unmute')} /> : <VolumeIcon />}
+            </button>
+            <div
+              className={cx('progress')}
+              style={{
+                background: `linear-gradient(to right, #7b51fb 100%, #403247 0)`,
+              }}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
