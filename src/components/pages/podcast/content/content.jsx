@@ -19,9 +19,10 @@ const Content = (props) => {
   const {
     title,
     description,
-    author: {
-      node: { firstName, lastName },
-    },
+    podcastUrl,
+    // author: {
+    //   node: { firstName, lastName },
+    // },
     content,
     guestName,
     aboutGuest,
@@ -30,7 +31,8 @@ const Content = (props) => {
     date,
     url,
   } = props;
-  const authorName = `${firstName} ${lastName}`;
+  // const authorName = `${firstName} ${lastName}`;
+  const authorName = `Jasurbek Normurodov`;
   const pageUrl = `${process.env.GATSBY_DEFAULT_SITE_URL}${url}`;
   const fullDate = getLocaleDate(date);
   return (
@@ -49,7 +51,6 @@ const Content = (props) => {
           guestPosition="Creator & Project Lead"
           quote="It's much more useful for Grafana to be more open, compostable, and use different data sources because that's the reality of so many users."
         />
-        <Audio />
 
         <div className={cx('content')}>{content}</div>
         <About guestName={guestName} about={aboutGuest} availableOn={availableOn} />
