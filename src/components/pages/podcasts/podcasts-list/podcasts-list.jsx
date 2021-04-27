@@ -21,19 +21,21 @@ const PodcastsList = ({ podcasts, rootPath }) => {
     <section className={cx('wrapper')}>
       <div className={cx('container', 'inner')}>
         <div className={cx('list')}>
-          {podcasts.map((item, index) => {
+          {podcasts.map((podcast, index) => {
             const isCurrent = podcastUrls[index] === currentPodcast;
-            const { blogPost } = item.acf;
+            const { tags } = podcast;
+            const hasBlogTag = Boolean(tags?.nodes.find((tag) => tag?.name === 'blog'));
+            const { blogPost } = podcast.acf;
             return (
               <div className={cx('item')} key={index}>
-                {blogPost ? (
+                {hasBlogTag && blogPost ? (
                   <FeaturedPost post={blogPost} />
                 ) : (
                   <Item
                     isCurrent={isCurrent}
                     audioUrl={podcastUrls[index]}
                     onStartPlay={setCurrentPodcast}
-                    {...item}
+                    {...podcast}
                   />
                 )}
               </div>
