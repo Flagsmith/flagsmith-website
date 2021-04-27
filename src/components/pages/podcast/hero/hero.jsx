@@ -1,5 +1,4 @@
 import classNames from 'classnames/bind';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -19,11 +18,7 @@ const Hero = (props) => {
         <div className={cx('inner')}>
           <div>
             {logo && (
-              <GatsbyImage
-                className={cx('logo')}
-                alt={logo.altText}
-                image={getImage(logo.localFile)}
-              />
+              <img src={logo.localFile.publicURL} className={cx('logo')} alt={logo.altText} />
             )}
             {quote && <p className={cx('quote')}>{quote}</p>}
           </div>

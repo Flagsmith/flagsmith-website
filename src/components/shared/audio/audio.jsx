@@ -87,12 +87,6 @@ const Audio = ({ audioUrl, isCurrent, setIsPlaying, onStartPlay }) => {
             <button className={cx('icon')} type="button" onClick={muteAudio}>
               {isMuted ? <UnmuteIcon className={cx('unmute')} /> : <VolumeIcon />}
             </button>
-            <div
-              className={cx('progress')}
-              style={{
-                background: `linear-gradient(to right, #7b51fb 100%, #403247 0)`,
-              }}
-            />
           </div>
         </div>
       </div>

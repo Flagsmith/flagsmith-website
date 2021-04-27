@@ -71,6 +71,8 @@
 
 .logo {
   display: block;
+  max-width: 150px;
+  max-height: 36px;
   margin-bottom: 45px;
 
   @include fullhd-down {

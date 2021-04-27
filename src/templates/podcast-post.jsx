@@ -57,9 +57,7 @@ export const query = graphql`
         logo {
           altText
           localFile {
-            childImageSharp {
-              gatsbyImageData(width: 150)
-            }
+            publicURL
           }
         }
         host {
