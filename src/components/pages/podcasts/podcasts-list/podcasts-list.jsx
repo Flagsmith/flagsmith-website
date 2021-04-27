@@ -17,22 +17,20 @@ const PodcastsList = ({ podcasts, rootPath }) => {
 
   const podcastUrls = podcasts.map((podcast) => podcast.acf.podcastUrl);
 
-  const animateScroll = () => {
-    const scrollToClassName = styles.list || 'list';
-    const scrollTo = document.querySelector(`.${scrollToClassName}`);
+  const scrollTo = () => {
+    const elementClassName = styles.list || 'list';
+    const element = document.querySelector(`.${elementClassName}`);
+    const offset = -50;
+    const y = element.getBoundingClientRect().top + window.pageYOffset + offset;
 
-    // eslint-disable-next-line global-require
-    require('smooth-scroll')().animateScroll(scrollTo, undefined, {
-      speed: 500,
-      offset: 50,
-    });
+    window.scrollTo({ top: y });
   };
 
   useEffect(() => {
     // scroll the page to the podcast list
     // when navigating through the pages
     if (currentPage !== 1) {
-      animateScroll();
+      scrollTo();
     }
   }, [currentPage]);
 
