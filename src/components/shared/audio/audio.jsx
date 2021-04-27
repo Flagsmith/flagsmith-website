@@ -35,6 +35,9 @@ const Audio = ({ audioUrl, isCurrent, setIsPlaying, onStartPlay }) => {
   }, [isCurrent, setAudioState]);
 
   useEffect(() => {
+    if (!setIsPlaying) {
+      return;
+    }
     if (playing) {
       setIsPlaying(true);
     } else {
@@ -45,7 +48,9 @@ const Audio = ({ audioUrl, isCurrent, setIsPlaying, onStartPlay }) => {
   const startPlay = useCallback(() => {
     setAudioState('play');
 
-    onStartPlay(audioUrl);
+    if (onStartPlay) {
+      onStartPlay(audioUrl);
+    }
   }, [setAudioState, onStartPlay, audioUrl]);
 
   return (
