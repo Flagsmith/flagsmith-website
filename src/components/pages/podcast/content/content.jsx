@@ -2,7 +2,6 @@ import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import RelativeLinks from 'components/lazy-blocks/relative-links';
 import Audio from 'components/shared/audio';
 import Heading from 'components/shared/heading';
 import Info from 'components/shared/info';
@@ -10,6 +9,7 @@ import getLocaleDate from 'utils/get-locale-date';
 
 import About from '../about';
 import Hero from '../hero';
+import RelativeLinks from '../relative-links';
 
 import styles from './content.module.scss';
 
@@ -32,13 +32,14 @@ const Content = (props) => {
     quote,
     aboutGuest,
     availableOn,
-    relativeLinks,
+    relatedLinks,
     date,
     url,
     author: {
       node: { firstName, lastName },
     },
   } = props;
+  console.log(relatedLinks);
   const authorName = `${firstName} ${lastName}`;
   const pageUrl = `${process.env.GATSBY_DEFAULT_SITE_URL}${url}`;
   const fullDate = getLocaleDate(date);
@@ -59,6 +60,7 @@ const Content = (props) => {
 
         <div className={cx('content')}>{content}</div>
         <About {...guest} />
+        <RelativeLinks items={relatedLinks} />
       </div>
     </div>
   );

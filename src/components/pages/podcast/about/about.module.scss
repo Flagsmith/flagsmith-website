@@ -55,3 +55,15 @@
     left: 30px;
   }
 }
+
+.additional {
+  padding-top: 30px;
+  margin-top: 30px;
+  border-top: 2px solid rgba(34, 25, 77, 0.05);
+
+  @include content;
+
+  & > ul {
+    margin: 0 !important;
+  }
+}

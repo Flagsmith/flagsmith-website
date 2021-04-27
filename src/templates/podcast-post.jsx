@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import parse, { attributesToProps } from 'html-react-parser';
 import React from 'react';
 
-import RelativeLinks from 'components/lazy-blocks/relative-links';
 import Content from 'components/pages/podcast/content';
 import Subscribe from 'components/shared/subscribe';
 import MainLayout from 'layouts/main';
@@ -28,14 +27,14 @@ const Podcast = ({
       replace: (domNode) => {
         const props = attributesToProps(domNode.attribs);
         if (domNode.type === 'tag') {
-          switch (domNode.name) {
-            case 'relativelinks': {
-              const links = JSON.parse(props.items);
-              return <RelativeLinks {...props} items={links} />;
-            }
-            default:
-              return undefined;
-          }
+          // switch (domNode.name) {
+          //   case 'relativelinks': {
+          //     const links = JSON.parse(props.items);
+          //     return <RelativeLinks {...props} items={links} />;
+          //   }
+          //   default:
+          //     return undefined;
+          // }
         }
         return undefined;
       },
@@ -97,6 +96,7 @@ export const query = graphql`
           fullName
           position
           description
+          additionalInformation
           photo {
             altText
             localFile {
@@ -104,6 +104,15 @@ export const query = graphql`
                 gatsbyImageData(width: 80)
               }
             }
+          }
+        }
+        relatedLinks {
+          fieldGroupName
+          textPostfix
+          link {
+            target
+            title
+            url
           }
         }
       }

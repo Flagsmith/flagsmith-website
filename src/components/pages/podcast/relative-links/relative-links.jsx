@@ -10,20 +10,20 @@ import styles from './relative-links.module.scss';
 
 const cx = classNames.bind(styles);
 
-const RelativeLinks = ({ title, items, isblank }) => (
+const RelativeLinks = ({ title, items }) => (
   <section className={cx('wrapper')}>
     <div className={cx('container', 'inner')}>
       <Heading className={cx('title')} tag="h3" size="lg">
         {title}
       </Heading>
       <ul className={cx('list')}>
-        {items.map(({ url, text, textPostfix }, index) => (
+        {items.map(({ link, textPostfix }, index) => (
           <li className={cx('item')} key={index}>
             <span className={cx('icon')}>
               <UrlIcon />
             </span>
-            <Link target={isblank ? '_blank' : '_self'} to={url} withArrow>
-              {text} <span className={cx('postfix')}>{textPostfix}</span>
+            <Link to={link.url} target={link.target} withArrow>
+              {link.title} <span className={cx('postfix')}>{textPostfix}</span>
             </Link>
           </li>
         ))}

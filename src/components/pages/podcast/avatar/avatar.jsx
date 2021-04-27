@@ -37,14 +37,16 @@ const Avatar = ({ fullName, position, photo, theme, isReversed, additionalClassN
 };
 
 Avatar.propTypes = {
-  fullName: PropTypes.string.isRequired,
-  position: PropTypes.string.isRequired,
+  fullName: PropTypes.string,
+  position: PropTypes.string,
   theme: PropTypes.oneOf(['light', 'dark']),
   isReversed: PropTypes.bool,
   additionalClassName: PropTypes.string,
 };
 
 Avatar.defaultProps = {
+  fullName: '',
+  position: '',
   theme: 'light',
   isReversed: false,
   additionalClassName: null,
