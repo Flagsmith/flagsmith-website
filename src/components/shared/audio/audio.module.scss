@@ -1,7 +1,10 @@
 .controls {
   position: relative;
   display: flex;
-  padding: 25px;
+  padding-top: 25px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 25px;
   margin-bottom: 25px;
   background-color: $color-additional-4;
   border-radius: 10px;
@@ -39,5 +42,61 @@
 }
 
 .volume {
+  position: relative;
+  height: 36px;
   margin-left: 30px;
+
+  &.audio-play {
+    &:hover {
+      .inner {
+        background-color: #403247;
+      }
+    }
+  }
+}
+
+.icon {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  .unmute {
+    g {
+      stroke: #d7d5d8;
+    }
+
+    path {
+      fill: #d7d5d8;
+    }
+  }
+}
+
+.inner {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  height: 175px;
+  padding-top: 15px;
+  border-radius: 6px;
+
+  &:hover {
+    background-color: $color-additional-4;
+
+    .progress {
+      display: block;
+    }
+  }
+}
+
+.progress {
+  display: none;
+  flex-grow: 1;
+  width: 6px;
+  margin-bottom: 10px;
+  border-radius: 4px;
 }
