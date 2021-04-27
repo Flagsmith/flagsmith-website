@@ -13,9 +13,11 @@ const cx = classNames.bind(styles);
 const RelativeLinks = ({ title, items }) => (
   <section className={cx('wrapper')}>
     <div className={cx('container', 'inner')}>
-      <Heading className={cx('title')} tag="h3" size="lg">
-        {title}
-      </Heading>
+      {title && (
+        <Heading className={cx('title')} tag="h3" size="lg">
+          {title}
+        </Heading>
+      )}
       <ul className={cx('list')}>
         {items.map(({ link, textPostfix }, index) => (
           <li className={cx('item')} key={index}>
@@ -33,13 +35,21 @@ const RelativeLinks = ({ title, items }) => (
 );
 
 RelativeLinks.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
+      link: PropTypes.shape({
+        url: PropTypes.string,
+        target: PropTypes.string,
+        title: PropTypes.string,
+      }),
+      textPostfix: PropTypes.string,
     })
   ).isRequired,
+};
+
+RelativeLinks.defaultProps = {
+  title: '',
 };
 
 export default RelativeLinks;

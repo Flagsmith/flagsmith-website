@@ -20,25 +20,7 @@ const Podcast = ({
 
   let parsedContent;
   if (content) {
-    parsedContent = parse(content, {
-      htmlparser2: {
-        lowerCaseAttributeNames: true,
-      },
-      replace: (domNode) => {
-        const props = attributesToProps(domNode.attribs);
-        if (domNode.type === 'tag') {
-          // switch (domNode.name) {
-          //   case 'relativelinks': {
-          //     const links = JSON.parse(props.items);
-          //     return <RelativeLinks {...props} items={links} />;
-          //   }
-          //   default:
-          //     return undefined;
-          // }
-        }
-        return undefined;
-      },
-    });
+    parsedContent = parse(content);
   }
 
   return (

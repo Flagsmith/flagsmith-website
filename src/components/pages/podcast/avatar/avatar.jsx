@@ -1,7 +1,6 @@
 import classNames from 'classnames/bind';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import { defaultFormat } from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 

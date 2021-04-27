@@ -30,8 +30,6 @@ const Content = (props) => {
     guest,
     host,
     quote,
-    aboutGuest,
-    availableOn,
     relatedLinks,
     date,
     url,
@@ -39,7 +37,6 @@ const Content = (props) => {
       node: { firstName, lastName },
     },
   } = props;
-  console.log(relatedLinks);
   const authorName = `${firstName} ${lastName}`;
   const pageUrl = `${process.env.GATSBY_DEFAULT_SITE_URL}${url}`;
   const fullDate = getLocaleDate(date);
@@ -60,7 +57,7 @@ const Content = (props) => {
 
         <div className={cx('content')}>{content}</div>
         <About {...guest} />
-        <RelativeLinks items={relatedLinks} />
+        <RelativeLinks title="Links from the Episode" items={relatedLinks} />
       </div>
     </div>
   );
