@@ -1,6 +1,4 @@
 @mixin content {
-  @include with-link-accent-secondary;
-
   > h1,
   > h2,
   > h3,
@@ -106,6 +104,8 @@
   > p {
     margin-top: 15px;
     margin-bottom: 15px;
+
+    @include with-link-accent-secondary;
   }
 
   > ul,
@@ -133,5 +133,62 @@
 
   > ol {
     padding-left: 22px;
+  }
+
+  :global {
+    .wp-block-image {
+      margin-top: 30px;
+      margin-right: auto;
+      margin-bottom: 30px;
+      margin-left: auto;
+      text-align: center;
+
+      figure {
+        margin: 0;
+      }
+
+      figcaption {
+        font-size: $font-size-xs;
+        line-height: $line-height-xs;
+        color: $color-additional-6;
+      }
+    }
+  }
+
+  code {
+    padding-top: 2px;
+    padding-right: 10px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    font-size: 17px;
+    line-height: 1.6;
+    word-break: break-word;
+    white-space: pre-wrap;
+    background-color: $color-secondary;
+    border-radius: 5px;
+
+    @include lg-down {
+      font-size: 15px;
+    }
+  }
+
+  .overview {
+    font-size: $font-size-md;
+    font-style: italic;
+
+    @include lg-down {
+      font-size: 22px;
+    }
+
+    @include md-down {
+      font-size: $font-size-base;
+    }
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
   }
 }

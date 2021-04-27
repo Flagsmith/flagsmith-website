@@ -1,0 +1,217 @@
+.wrapper {
+  position: relative;
+  padding-top: 35px;
+  padding-right: 35px;
+  padding-bottom: 100px;
+  padding-left: 35px;
+  color: $color-tertiary;
+  background: $color-primary;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
+
+  @include fullhd-down {
+    padding-bottom: 70px;
+  }
+
+  @include lg-down {
+    padding-top: 25px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+    padding-left: 20px;
+  }
+
+  @include md-down {
+    padding-top: 30px;
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+
+  @include sm-down {
+    padding-right: 25px;
+    padding-bottom: 120px;
+    padding-left: 25px;
+  }
+}
+
+.head {
+  display: flex;
+  margin-bottom: 40px;
+  color: $color-tertiary;
+  text-decoration: none;
+
+  @include xl-down {
+    margin-bottom: 35px;
+  }
+
+  @include lg-down {
+    margin-bottom: 20px;
+  }
+
+  @include md-down {
+    flex-direction: column;
+    margin-bottom: 5px;
+  }
+}
+
+.icon {
+  align-self: flex-start;
+  margin-right: 35px;
+
+  @include fullhd-down {
+    width: 55px;
+    height: 55px;
+    margin-right: 20px;
+  }
+
+  @include xl-down {
+    width: 50px;
+    height: 55px;
+    margin-right: 15px;
+  }
+
+  @include lg-down {
+    width: 45px;
+    height: 45px;
+  }
+
+  @include md-down {
+    margin-bottom: 15px;
+  }
+}
+
+.title-wrapper {
+  margin-top: 5px;
+
+  @include sm-down {
+    margin-top: 0;
+  }
+}
+
+.title {
+  margin-bottom: 5px;
+
+  @include xl-down {
+    font-size: 35px;
+  }
+
+  @include lg-down {
+    font-size: 30px;
+  }
+
+  @include md-down {
+    font-size: 28px;
+  }
+}
+
+.info {
+  @include lg-down {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+}
+
+.episode {
+  display: inline-block;
+  margin-right: 10px;
+  font-weight: 600;
+  color: $color-accent-tertiary;
+}
+
+.wave {
+  margin-bottom: 35px;
+
+  @include fullhd-down {
+    width: 100%;
+    margin-bottom: 25px;
+  }
+
+  @include lg-down {
+    margin-bottom: 15px;
+  }
+
+  @include md-down {
+    margin-bottom: 10px;
+  }
+
+  @include sm-down {
+    margin-bottom: 20px;
+  }
+}
+
+.button {
+  position: relative;
+  z-index: 1;
+
+  @include lg-down {
+    padding-top: 17px;
+    padding-right: 25px;
+    padding-bottom: 17px;
+    padding-left: 25px;
+    font-size: $font-size-xs;
+  }
+}
+
+.illustration {
+  position: absolute !important;
+  right: 0;
+  bottom: 0;
+  max-width: 100%;
+  border-radius: 0 0 10px 10px;
+
+  @include xl-down {
+    width: 730px;
+  }
+
+  @include lg-down {
+    width: 580px;
+  }
+
+  @include md-down {
+    width: 470px;
+  }
+
+  img {
+    top: initial;
+    left: initial;
+    width: auto;
+    height: 95px;
+    object-fit: contain !important;
+
+    @include xxs-down {
+      height: 70px;
+    }
+  }
+}
+
+.all-podcasts {
+  margin-left: 30px;
+  font-size: $font-size-xs;
+  font-weight: 600;
+  line-height: $line-height-xs;
+  color: $color-additional-4;
+  text-decoration: none;
+
+  @include sm-down {
+    display: block;
+    margin-top: 15px;
+    margin-left: 0;
+  }
+
+  svg {
+    margin-left: 10px;
+
+    & > path {
+      fill: $color-additional-4;
+      transition: fill $transition-base;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+
+  @include sm-down {
+    display: block;
+  }
+}

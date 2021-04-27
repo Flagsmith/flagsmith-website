@@ -1,0 +1,49 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 25px;
+
+  @include md-down {
+    margin-top: 20px;
+  }
+
+  @include sm-down {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 15px;
+  }
+}
+
+.info {
+  display: block;
+  margin-top: 5px;
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
+  color: $color-additional-6;
+
+  @include lg-down {
+    font-size: $font-size-xxs;
+    line-height: $line-height-xxs;
+  }
+
+  @include sm-down {
+    margin-bottom: 10px;
+  }
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+
+  button {
+    margin-right: 10px;
+    margin-left: 13px;
+    outline: none;
+
+    @include sm-down {
+      margin-left: 0;
+    }
+  }
+}

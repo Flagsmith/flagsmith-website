@@ -1,0 +1,53 @@
+.wrapper {
+  display: flex;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  color: $color-primary;
+  text-decoration: none;
+  cursor: pointer;
+
+  @include md-down {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+
+  &:hover {
+    svg {
+      circle {
+        fill: $color-primary-hover;
+      }
+    }
+  }
+
+  svg {
+    @include md-down {
+      width: 32px;
+      height: 32px;
+    }
+
+    circle {
+      transition: fill $transition-base;
+    }
+  }
+
+  &.previous {
+    margin-right: auto;
+
+    svg {
+      margin-right: 20px;
+      transform: rotate(180deg);
+    }
+  }
+
+  &.next {
+    margin-left: auto;
+
+    svg {
+      margin-left: 20px;
+    }
+  }
+}

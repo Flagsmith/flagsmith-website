@@ -1,0 +1,71 @@
+.wrapper {
+  padding-top: 40px;
+  margin-top: 130px;
+  margin-bottom: 90px;
+
+  @include lg-down {
+    padding-top: 35px;
+  }
+}
+
+.inner {
+  @include content;
+
+  position: relative;
+  padding: 40px 45px 45px;
+  color: $color-quaternary;
+  background-color: $color-additional-4;
+  border-radius: 10px;
+
+  @include lg-down {
+    padding-top: 35px;
+  }
+
+  @include md-down {
+    padding-right: 35px;
+    padding-bottom: 35px;
+    padding-left: 35px;
+  }
+
+  @include sm-down {
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+  }
+}
+
+.about {
+  margin: 0 !important;
+
+  @include with-link-accent-secondary;
+}
+
+.photo {
+  position: absolute;
+  top: -40px;
+  left: 45px;
+
+  @include lg-down {
+    top: -35px;
+  }
+
+  @include md-down {
+    left: 35px;
+  }
+
+  @include sm-down {
+    left: 30px;
+  }
+}
+
+.additional {
+  padding-top: 30px;
+  margin-top: 30px;
+  border-top: 2px solid rgba(34, 25, 77, 0.05);
+
+  @include content;
+
+  & > ul {
+    margin: 0 !important;
+  }
+}

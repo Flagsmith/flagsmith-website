@@ -1,0 +1,257 @@
+.wrapper {
+  margin-bottom: 180px;
+
+  @include section-paddings;
+
+  @include xl-down {
+    margin-bottom: 150px;
+  }
+
+  @include lg-down {
+    margin-bottom: 135px;
+  }
+
+  @include md-down {
+    margin-bottom: 110px;
+  }
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1270px;
+  padding-top: 60px;
+  padding-right: 60px;
+  padding-bottom: 60px;
+  padding-left: 80px;
+  background: $color-accent-tertiary;
+  border-radius: 10px;
+
+  @include fullhd-down {
+    max-width: 1070px;
+    padding-right: 50px;
+    padding-left: 60px;
+  }
+
+  @include xl-down {
+    max-width: 970px;
+    padding-top: 45px;
+    padding-right: 30px;
+    padding-bottom: 45px;
+    padding-left: 50px;
+  }
+
+  @include lg-down {
+    max-width: 780px;
+    padding-top: 40px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+  }
+
+  @include sm-down {
+    flex-direction: column;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+  }
+}
+
+.content {
+  position: relative;
+  flex-basis: 630px;
+
+  @include fullhd-down {
+    flex-basis: 620px;
+  }
+
+  @include xl-down {
+    flex-basis: 520px;
+  }
+
+  @include lg-down {
+    flex-basis: 450px;
+  }
+
+  @include md-down {
+    flex-basis: 300px;
+  }
+
+  @include sm-down {
+    flex-basis: initial;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+.title {
+  @include sm-down {
+    font-size: 45px;
+  }
+}
+
+.description {
+  margin-bottom: 40px;
+
+  @include fullhd-down {
+    margin-bottom: 30px;
+  }
+
+  @include xl-down {
+    margin-bottom: 20px;
+  }
+
+  @include xl-down {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+
+  @include lg-down {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+  }
+
+  p {
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.form {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  @include md-down {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  input {
+    width: 100%;
+    padding-top: 17px;
+    padding-right: 20px;
+    padding-bottom: 16px;
+    padding-left: 20px;
+    margin-right: 20px;
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    box-shadow: 0 10px 20px rgba(192, 188, 194, 0.2);
+    -webkit-appearance: none;
+
+    @include xl-down {
+      font-size: $font-size-xs;
+      line-height: $line-height-xs;
+    }
+
+    @include lg-down {
+      padding-top: 15px;
+      padding-bottom: 14px;
+      font-size: $font-size-xxs;
+      line-height: $line-height-xxs;
+    }
+
+    @include md-down {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.error {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  font-size: $font-size-xxs;
+  line-height: 1.5;
+  color: $color-error;
+
+  @include lg-down {
+    font-size: $font-size-xxxs;
+  }
+}
+
+.message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.message-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+  background-color: $color-accent-secondary;
+  border-radius: 100%;
+
+  svg {
+    width: 31px;
+    height: 24px;
+  }
+}
+
+.message-title {
+  margin-bottom: 5px;
+  font-family: $font-family-secondary;
+  font-size: $font-size-lg;
+  font-weight: 800;
+  line-height: $line-height-lg;
+}
+
+.message-description {
+  @include lg-down {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+}
+
+.button {
+  @include lg-down {
+    padding-top: 17px;
+    padding-right: 25px;
+    padding-bottom: 17px;
+    padding-left: 25px;
+    font-size: $font-size-xs;
+  }
+}
+
+.illustration {
+  flex-shrink: 0;
+  max-width: 100%;
+
+  @include fullhd-down {
+    width: 320px;
+  }
+
+  @include xl-down {
+    width: 340px;
+  }
+
+  @include lg-down {
+    width: 240px;
+  }
+
+  @include md-down {
+    width: 320px;
+  }
+}

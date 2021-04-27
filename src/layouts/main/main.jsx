@@ -70,6 +70,39 @@ export const query = graphql`
       twitterTitle
     }
   }
+  fragment wpPostSeo on WpPost {
+    seo {
+      canonical
+      cornerstone
+      focuskw
+      metaDesc
+      metaKeywords
+      metaRobotsNofollow
+      metaRobotsNoindex
+      opengraphAuthor
+      opengraphDescription
+      opengraphImage {
+        localFile {
+          childImageSharp {
+            fixed(toFormat: JPG, width: 1200, height: 630) {
+              src
+            }
+          }
+        }
+      }
+      opengraphModifiedTime
+      opengraphPublishedTime
+      opengraphPublisher
+      opengraphSiteName
+      opengraphTitle
+      opengraphType
+      opengraphUrl
+      readingTime
+      title
+      twitterDescription
+      twitterTitle
+    }
+  }
 `;
 
 MainLayout.propTypes = {

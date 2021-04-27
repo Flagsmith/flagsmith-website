@@ -9,145 +9,6 @@
     @include convert-br-into-space;
   }
 
-  &.size {
-    &-xxl {
-      font-size: $font-size-xxl;
-
-      @include fullhd-down {
-        font-size: $font-size-xl;
-      }
-
-      @include xl-down {
-        font-size: 55px;
-      }
-
-      @include lg-down {
-        font-size: 50px;
-      }
-
-      @include sm-down {
-        font-size: 45px;
-      }
-
-      @include xs-down {
-        font-size: 40px;
-      }
-    }
-
-    &-xl {
-      font-size: $font-size-xl;
-
-      @include fullhd-down {
-        font-size: 50px;
-      }
-
-      @include xl-down {
-        font-size: 45px;
-      }
-
-      @include lg-down {
-        font-size: $font-size-lg;
-      }
-
-      @include sm-down {
-        font-size: 35px;
-      }
-
-      @include xs-down {
-        font-size: 30px;
-      }
-    }
-
-    &-lg {
-      font-size: $font-size-lg;
-
-      @include fullhd-down {
-        font-size: 35px;
-      }
-
-      @include xl-down {
-        font-size: 30px;
-      }
-
-      @include xs-down {
-        font-size: 25px;
-      }
-    }
-
-    &-md {
-      font-size: 30px;
-
-      @include fullhd-down {
-        font-size: 28px;
-      }
-
-      @include xl-down {
-        font-size: 26px;
-      }
-
-      @include xs-down {
-        font-size: 22px;
-      }
-    }
-
-    &-sm {
-      font-size: $font-size-md;
-
-      @include xs-down {
-        font-size: 20px;
-      }
-    }
-  }
-
-  &.color {
-    &-primary {
-      color: $color-primary;
-    }
-
-    &-tertiary {
-      color: $color-tertiary;
-    }
-
-    &-quaternary {
-      color: $color-quaternary;
-    }
-
-    &-accent-primary {
-      color: $color-accent-primary;
-    }
-
-    &-accent-secondary {
-      color: $color-accent-secondary;
-    }
-
-    &-accent-tertiary {
-      color: $color-accent-tertiary;
-    }
-  }
-
-  &.highlighted-words-color {
-    &-primary {
-      span,
-      strong {
-        color: $color-accent-primary;
-      }
-    }
-
-    &-secondary {
-      span,
-      strong {
-        color: $color-accent-secondary;
-      }
-    }
-  }
-
-  &.highlighted-words-no-wrap {
-    span,
-    strong {
-      white-space: nowrap;
-    }
-  }
-
   a {
     color: inherit;
     text-decoration: none;
@@ -156,5 +17,144 @@
     &:hover {
       color: $color-accent-primary;
     }
+  }
+}
+
+.size {
+  &-xxl {
+    font-size: $font-size-xxl;
+
+    @include fullhd-down {
+      font-size: $font-size-xl;
+    }
+
+    @include xl-down {
+      font-size: 55px;
+    }
+
+    @include lg-down {
+      font-size: 50px;
+    }
+
+    @include sm-down {
+      font-size: 45px;
+    }
+
+    @include xs-down {
+      font-size: 40px;
+    }
+  }
+
+  &-xl {
+    font-size: $font-size-xl;
+
+    @include fullhd-down {
+      font-size: 50px;
+    }
+
+    @include xl-down {
+      font-size: 45px;
+    }
+
+    @include lg-down {
+      font-size: $font-size-lg;
+    }
+
+    @include sm-down {
+      font-size: 35px;
+    }
+
+    @include xs-down {
+      font-size: 30px;
+    }
+  }
+
+  &-lg {
+    font-size: $font-size-lg;
+
+    @include fullhd-down {
+      font-size: 35px;
+    }
+
+    @include xl-down {
+      font-size: 30px;
+    }
+
+    @include xs-down {
+      font-size: 25px;
+    }
+  }
+
+  &-md {
+    font-size: 30px;
+
+    @include fullhd-down {
+      font-size: 28px;
+    }
+
+    @include xl-down {
+      font-size: 26px;
+    }
+
+    @include xs-down {
+      font-size: 22px;
+    }
+  }
+
+  &-sm {
+    font-size: $font-size-md;
+
+    @include xs-down {
+      font-size: 20px;
+    }
+  }
+}
+
+.color {
+  &-primary {
+    color: $color-primary;
+  }
+
+  &-tertiary {
+    color: $color-tertiary;
+  }
+
+  &-quaternary {
+    color: $color-quaternary;
+  }
+
+  &-accent-primary {
+    color: $color-accent-primary;
+  }
+
+  &-accent-secondary {
+    color: $color-accent-secondary;
+  }
+
+  &-accent-tertiary {
+    color: $color-accent-tertiary;
+  }
+}
+
+.highlighted-words-color {
+  &-primary {
+    span,
+    strong {
+      color: $color-accent-primary;
+    }
+  }
+
+  &-secondary {
+    span,
+    strong {
+      color: $color-accent-secondary;
+    }
+  }
+}
+
+.highlighted-words-no-wrap {
+  span,
+  strong {
+    white-space: nowrap;
   }
 }

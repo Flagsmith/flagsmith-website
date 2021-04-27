@@ -1,0 +1,79 @@
+.wrapper {
+  margin-top: 180px;
+  margin-bottom: 150px;
+
+  @include section-paddings;
+
+  @include fullhd-down {
+    margin-top: 150px;
+  }
+
+  @include lg-down {
+    margin-top: 140px;
+  }
+
+  @include md-down {
+    margin-top: 120px;
+    margin-bottom: 120px;
+  }
+}
+
+.label {
+  margin-bottom: 60px;
+}
+
+.title {
+  margin-bottom: 15px;
+
+  @include md-down {
+    margin-bottom: 10px;
+  }
+}
+
+.description {
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: $font-size-md;
+  font-weight: 600;
+
+  @include lg-down {
+    font-size: $font-size-base;
+  }
+
+  @include md-down {
+    margin-bottom: 20px;
+  }
+
+  @include sm-down {
+    margin-bottom: 15px;
+    font-size: $font-size-sm;
+  }
+}
+
+.content {
+  @include content;
+
+  blockquote {
+    padding: 15px 20px;
+    margin: 15px 0;
+    color: $color-accent-secondary;
+    background-color: rgba(123, 81, 251, 0.05);
+    border-radius: 10px;
+
+    & > p {
+      margin: 0;
+    }
+  }
+
+  & a {
+    font-weight: 700;
+  }
+
+  hr {
+    height: 2px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: $color-additional-4;
+    border: none;
+  }
+}

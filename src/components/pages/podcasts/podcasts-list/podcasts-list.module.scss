@@ -1,0 +1,41 @@
+.wrapper {
+  margin-bottom: 180px;
+
+  @include section-paddings;
+
+  @include xl-down {
+    margin-bottom: 150px;
+  }
+
+  @include md-down {
+    margin-bottom: 120px;
+  }
+}
+
+.inner {
+  max-width: 1010px;
+
+  @include fullhd-down {
+    max-width: 850px;
+  }
+
+  @include xl-down {
+    max-width: 770px;
+  }
+
+  @include lg-down {
+    max-width: 620px;
+  }
+
+  @include md-down {
+    max-width: 580px;
+  }
+}
+
+.item {
+  margin-bottom: 90px;
+
+  @include md-down {
+    margin-bottom: 70px;
+  }
+}

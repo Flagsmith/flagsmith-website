@@ -1,0 +1,99 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 60px 750px 60px;
+  column-gap: 35px;
+  justify-content: center;
+
+  @include fullhd-down {
+    grid-template-columns: 55px 630px 55px;
+    column-gap: 20px;
+  }
+
+  @include xl-down {
+    grid-template-columns: 50px 570px 50px;
+    column-gap: 15px;
+  }
+
+  @include lg-down {
+    grid-template-columns: 45px 460px 45px;
+  }
+
+  @include md-down {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+
+  &::after {
+    content: '';
+
+    @include md-down {
+      display: none;
+    }
+  }
+
+  @include with-link-accent-secondary;
+
+  &.current-audio {
+    .icon {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  a {
+    font-weight: 600;
+  }
+}
+
+.icon {
+  visibility: hidden;
+  opacity: 0;
+  transition-duration: $transition-base;
+  transition-property: visibility, opacity;
+
+  @include fullhd-down {
+    width: 55px;
+    height: 55px;
+  }
+
+  @include xl-down {
+    width: 50px;
+    height: 50px;
+  }
+
+  @include lg-down {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+.title {
+  margin-bottom: 15px;
+
+  @include xl-down {
+    font-size: 35px;
+  }
+
+  @include lg-down {
+    font-size: 30px;
+  }
+
+  @include md-down {
+    font-size: 28px;
+  }
+}
+
+.description {
+  margin-top: 0;
+  margin-bottom: 30px;
+
+  @include lg-down {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+}
+
+.link {
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
+}

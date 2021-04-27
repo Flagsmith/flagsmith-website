@@ -1,0 +1,66 @@
+.wrapper {
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  margin-top: 30px;
+  margin-bottom: 60px;
+  font-size: 17px;
+  background-color: $color-primary;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
+
+  @include fullhd-down {
+    padding-left: 20px;
+  }
+
+  @include lg-down {
+    padding-left: 10px;
+  }
+
+  code {
+    display: block;
+    padding-left: 0 !important;
+    overflow: auto;
+    line-height: 1.6 !important;
+
+    @include sm-down {
+      font-size: 15px !important;
+    }
+
+    @include code-highlighting;
+
+    :global {
+      .linenumber {
+        margin-right: 35px;
+
+        @include fullhd-down {
+          margin-right: 25px;
+        }
+
+        @include xl-down {
+          margin-right: 15px;
+        }
+
+        @include lg-down {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+.button-wrapper {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.button {
+  padding-top: 6px;
+  padding-right: 8px;
+  padding-bottom: 7px;
+  padding-left: 8px;
+  font-size: $font-size-xxxs;
+  text-transform: uppercase;
+}

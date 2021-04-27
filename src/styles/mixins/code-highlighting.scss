@@ -16,6 +16,10 @@
       color: $color-accent-primary;
     }
 
+    .hljs-comment {
+      color: rgba($color-tertiary, 0.5);
+    }
+
     .hljs-string {
       color: $color-accent-tertiary;
     }

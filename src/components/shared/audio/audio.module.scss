@@ -1,0 +1,83 @@
+.controls {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-top: 25px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 25px;
+  margin-bottom: 25px;
+  background-color: $color-additional-4;
+  border-radius: 10px;
+
+  @include xl-down {
+    padding-bottom: 70px;
+  }
+
+  &.audio-play {
+    background-color: $color-primary;
+    box-shadow: 0 10px 20px rgba(30, 13, 38, 0.2);
+
+    .volume {
+      path {
+        stroke: $color-tertiary;
+
+        &:first-of-type {
+          fill: $color-tertiary;
+        }
+      }
+    }
+  }
+}
+
+.button,
+.volume {
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.button {
+  @include xl-down {
+    margin-right: 25px;
+  }
+}
+
+.volume {
+  position: relative;
+  height: 36px;
+  margin-left: 60px;
+}
+
+.icon {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  svg {
+    vertical-align: middle;
+  }
+
+  .unmute {
+    g {
+      stroke: #d7d5d8;
+    }
+
+    path {
+      fill: #d7d5d8;
+    }
+  }
+}
+
+.inner {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  height: 175px;
+  padding-top: 15px;
+  border-radius: 6px;
+}

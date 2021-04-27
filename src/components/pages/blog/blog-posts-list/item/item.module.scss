@@ -1,0 +1,195 @@
+.wrapper {
+  display: block;
+  max-width: 750px;
+  margin-right: auto;
+  margin-left: auto;
+  color: $color-primary;
+  text-decoration: none;
+
+  @include no-highlight-on-tap;
+
+  @include fullhd-down {
+    max-width: 630px;
+  }
+
+  @include xl-down {
+    max-width: 570px;
+  }
+
+  @include lg-down {
+    max-width: 460px;
+  }
+
+  @include hover {
+    .item-link {
+      color: $color-accent-primary;
+
+      svg {
+        animation: bounce 0.3s;
+
+        path {
+          fill: $color-accent-primary;
+        }
+      }
+    }
+  }
+
+  &.with-image {
+    display: flex;
+    max-width: 880px;
+    margin-right: auto;
+    margin-left: initial;
+
+    @include fullhd-down {
+      max-width: 740px;
+    }
+
+    @include xl-down {
+      max-width: 770px;
+    }
+
+    @include lg-down {
+      max-width: 620px;
+    }
+
+    @include md-down {
+      max-width: 580px;
+    }
+
+    @include sm-down {
+      flex-direction: column;
+      max-width: 460px;
+      margin-left: auto;
+    }
+  }
+}
+
+.image-wrapper {
+  flex-shrink: 0;
+  margin-right: 60px;
+
+  &.sm-hidden {
+    @include sm-down {
+      display: none;
+    }
+  }
+
+  &.sm-visible {
+    display: none;
+
+    @include sm-down {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 5px;
+    }
+  }
+
+  @include fullhd-down {
+    margin-right: 50px;
+  }
+
+  @include lg-down {
+    margin-right: 40px;
+  }
+
+  @include md-down {
+    margin-right: 20px;
+  }
+
+  @include sm-down {
+    margin-right: 0;
+  }
+}
+
+.image {
+  width: 330px;
+  border-radius: 10px;
+
+  @include fullhd-down {
+    width: 280px;
+  }
+
+  @include lg-down {
+    width: 240px;
+  }
+
+  @include md-down {
+    width: 220px;
+  }
+
+  @include sm-down {
+    width: 100%;
+  }
+}
+
+.title {
+  margin-bottom: 15px;
+
+  @include xl-down {
+    font-size: 35px;
+  }
+
+  @include lg-down {
+    margin-bottom: 5px;
+    font-size: 30px;
+  }
+
+  @include md-down {
+    font-size: 28px;
+  }
+}
+
+.info {
+  display: inline-block;
+  margin-bottom: 15px;
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
+  color: $color-additional-6;
+
+  @include lg-down {
+    margin-bottom: 10px;
+    font-size: $font-size-xxs;
+    line-height: 1.5;
+  }
+}
+
+.description {
+  margin-top: 0;
+  margin-bottom: 25px;
+
+  @include lg-down {
+    margin-bottom: 15px;
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+}
+
+.item-link {
+  font-size: $font-size-xs;
+  font-weight: 600;
+  line-height: $line-height-xs;
+  color: $color-accent-secondary;
+
+  svg {
+    margin-left: 10px;
+
+    & > path {
+      fill: $color-accent-secondary;
+      transition: fill $transition-base;
+    }
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
