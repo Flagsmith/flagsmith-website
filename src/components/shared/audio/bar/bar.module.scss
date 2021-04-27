@@ -19,7 +19,6 @@
   display: flex;
   flex: 1;
   align-items: center;
-  max-width: 425px;
   height: 10px;
   margin-top: 0;
   margin-right: 25px;
@@ -29,16 +28,11 @@
   background: #edeced;
   border-radius: 4px;
 
-  @include fullhd-down {
-    max-width: 305px;
-  }
-
   @include xl-down {
     position: absolute;
     right: 25px;
     bottom: 30px;
     left: 25px;
-    max-width: initial;
     margin-right: 0;
     margin-left: 0;
   }
