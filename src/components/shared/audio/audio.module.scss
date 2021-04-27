@@ -1,15 +1,20 @@
 .controls {
+  position: relative;
   display: flex;
   padding: 25px;
   margin-bottom: 25px;
   background-color: $color-additional-4;
   border-radius: 10px;
 
+  @include xl-down {
+    padding-bottom: 70px;
+  }
+
   &.audio-play {
     background-color: $color-primary;
     box-shadow: 0 10px 20px rgba(30, 13, 38, 0.2);
 
-    .icon-volume {
+    .volume {
       path {
         stroke: $color-tertiary;
 
@@ -21,12 +26,18 @@
   }
 }
 
-.bar {
-  margin-right: 65px;
-}
-
 .button,
-.icon-volume {
+.volume {
   flex-shrink: 0;
   cursor: pointer;
+}
+
+.button {
+  @include xl-down {
+    margin-right: 25px;
+  }
+}
+
+.volume {
+  margin-left: 30px;
 }

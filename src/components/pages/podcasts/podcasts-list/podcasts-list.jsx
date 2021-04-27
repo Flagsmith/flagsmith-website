@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 import FeaturedPost from 'components/shared/featured-post';
 import Pagination from 'components/shared/pagination';
@@ -16,6 +16,23 @@ const PodcastsList = ({ podcasts, rootPath }) => {
   const [currentPodcast, setCurrentPodcast] = useState(null);
 
   const podcastUrls = podcasts.map((podcast) => podcast.acf.podcastUrl);
+
+  const scrollTo = () => {
+    const elementClassName = styles.list || 'list';
+    const element = document.querySelector(`.${elementClassName}`);
+    const offset = -50;
+    const y = element.getBoundingClientRect().top + window.pageYOffset + offset;
+
+    window.scrollTo({ top: y });
+  };
+
+  useEffect(() => {
+    // scroll the page to the podcast list
+    // when navigating through the pages
+    if (currentPage !== 1) {
+      scrollTo();
+    }
+  }, [currentPage]);
 
   return (
     <section className={cx('wrapper')}>

@@ -18,9 +18,11 @@ const Item = ({ title, acf: { description, episode }, url, audioUrl, isCurrent, 
     <div className={cx('wrapper', { currentAudio: isCurrentPodcastPlaying })}>
       <EqualizerIcon className={cx('icon')} />
       <div className={cx('inner')}>
-        <Heading className={cx('title')} tag="h2" size="lg">
-          <span className={cx('number')}>#{episode}</span> {title}
-        </Heading>
+        <Link to={url}>
+          <Heading className={cx('title')} tag="h2" size="lg">
+            <span>#{episode}</span> {title}
+          </Heading>
+        </Link>
         <p className={cx('description')}>{description}</p>
         <Audio
           audioUrl={audioUrl}

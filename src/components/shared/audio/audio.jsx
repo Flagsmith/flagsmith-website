@@ -82,7 +82,7 @@ const Audio = ({ audioUrl, isCurrent, setIsPlaying, onStartPlay }) => {
           setAudioState={setAudioState}
           onTimeUpdate={(time) => setClickedTime(time)}
         />
-        <VolumeIcon className={cx('icon-volume')} onClick={muteAudio} />
+        <VolumeIcon className={cx('volume')} onClick={muteAudio} />
       </div>
     </div>
   );
