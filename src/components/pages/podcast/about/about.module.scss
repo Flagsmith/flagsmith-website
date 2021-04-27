@@ -32,21 +32,10 @@
     padding-bottom: 30px;
     padding-left: 30px;
   }
-
-  & > p:nth-of-type(2) {
-    font-weight: bold;
-  }
-
-  & > ul {
-    margin: 0;
-  }
 }
 
 .about {
-  padding-bottom: 30px;
-  margin-top: 0;
-  margin-bottom: 30px !important;
-  border-bottom: 2px solid rgba(34, 25, 77, 0.05);
+  margin: 0 !important;
 }
 
 .photo {

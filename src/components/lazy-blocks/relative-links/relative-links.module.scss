@@ -27,7 +27,11 @@
   font-size: $font-size-sm;
   font-weight: 600;
 
-  @include with-link-primary;
+  @include with-link-quaternary;
+}
+
+.postfix {
+  font-weight: normal;
 }
 
 .icon {
