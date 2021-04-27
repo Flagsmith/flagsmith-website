@@ -320,7 +320,7 @@ async function createPosts({ graphql, actions, reporter, menus, sharedBlocks }) 
   });
 }
 
-// Create Blog Pages
+// Create Podcasts Pages
 async function createPodcastPages({ graphql, actions, menus, sharedBlocks }) {
   const { createPage } = actions;
   const result = await graphql(`
@@ -377,6 +377,47 @@ async function createPodcastPages({ graphql, actions, menus, sharedBlocks }) {
   });
 }
 
+// Create Podcast
+async function createPodcasts({ graphql, actions, reporter, menus, sharedBlocks }) {
+  const { createPage } = actions;
+  const result = await graphql(`
+    {
+      allWpPodcast {
+        nodes {
+          id
+          content
+          uri
+        }
+      }
+    }
+  `);
+
+  if (result.errors) {
+    throw new Error(result.errors);
+  }
+  const podcasts = result.data.allWpPodcast.nodes;
+  podcasts.forEach(({ id, content, uri }) => {
+    const templatePath = path.resolve('./src/templates/podcast.jsx');
+
+    const context = {
+      id,
+      menus,
+      content,
+      sharedBlocks,
+    };
+
+    if (fs.existsSync(templatePath)) {
+      createPage({
+        path: uri,
+        component: slash(templatePath),
+        context,
+      });
+    } else {
+      reporter.error('Template Podcast was not found');
+    }
+  });
+}
+
 const getMenus = (allMenus) => {
   const menus = {};
 
@@ -403,4 +444,5 @@ exports.createPages = async (args) => {
   await createBlogPages(params);
   await createPosts(params);
   await createPodcastPages(params);
+  await createPodcasts(params);
 };
