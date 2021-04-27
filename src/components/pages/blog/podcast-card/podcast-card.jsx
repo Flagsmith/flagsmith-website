@@ -55,9 +55,14 @@ const PodcastCard = ({ title, acf: { podcastUrl, episode }, uri: url }) => {
         </div>
       </Link>
       <SoundWave className={cx('wave')} />
-      <Button className={cx('button')} to="/podcasts/" theme="accent-tertiary">
-        See all podcasts
-      </Button>
+      <div className={cx('actions')}>
+        <Button className={cx('button')} to={url} theme="accent-tertiary">
+          Listen now
+        </Button>
+        <Link className={cx('all-podcasts')} to="/podcasts" withArrow>
+          All podcasts
+        </Link>
+      </div>
       <GatsbyImage
         className={cx('illustration')}
         image={getImage(playerIllustration)}
