@@ -149,12 +149,10 @@
       font-size: $font-size-sm;
       font-style: normal;
       font-weight: 600;
-      line-height: $line-height-sm;
       color: $color-additional-6;
 
       @include lg-down {
         font-size: $font-size-xs;
-        line-height: $line-height-xs;
       }
     }
   }

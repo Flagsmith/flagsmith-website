@@ -143,7 +143,7 @@
   display: inline-block;
   margin-bottom: 15px;
   font-size: $font-size-xs;
-  line-height: $line-height-xs;
+  line-height: $line-height-primary;
   color: $color-additional-6;
 
   @include lg-down {
@@ -160,14 +160,13 @@
   @include lg-down {
     margin-bottom: 15px;
     font-size: $font-size-sm;
-    line-height: $line-height-sm;
   }
 }
 
 .item-link {
   font-size: $font-size-xs;
   font-weight: 600;
-  line-height: $line-height-xs;
+  line-height: $line-height-primary;
   color: $color-accent-secondary;
 
   svg {
