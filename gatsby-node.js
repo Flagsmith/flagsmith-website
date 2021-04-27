@@ -397,7 +397,7 @@ async function createPodcasts({ graphql, actions, reporter, menus, sharedBlocks 
   }
   const podcasts = result.data.allWpPodcast.nodes;
   podcasts.forEach(({ id, content, uri }) => {
-    const templatePath = path.resolve('./src/templates/podcast.jsx');
+    const templatePath = path.resolve('./src/templates/podcast-post.jsx');
 
     const context = {
       id,

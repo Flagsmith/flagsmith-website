@@ -10,20 +10,20 @@ import styles from './about.module.scss';
 
 const cx = classNames.bind(styles);
 
-const About = ({ guestName, photo, about, availableOn }) => (
+const About = ({ fullName, photo, description, additionalInformation }) => (
   <section className={cx('wrapper')}>
     <div className={cx('inner')}>
       <Heading tag="h4" size="md">
-        About {guestName}
+        About {fullName}
       </Heading>
-      <p className={cx('about')}>{about}</p>
-      <p>Available for talk, coaching and workshops on:</p>
-      <ul>
-        {availableOn.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
-      <Avatar additionalClassName={cx('photo')} />
+      <p className={cx('about')}>{description}</p>
+      {additionalInformation && (
+        <div
+          className={cx('additional')}
+          dangerouslySetInnerHTML={{ __html: additionalInformation }}
+        />
+      )}
+      <Avatar additionalClassName={cx('photo')} photo={photo} />
     </div>
   </section>
 );

@@ -4,21 +4,12 @@ import parse, { attributesToProps } from 'html-react-parser';
 import React from 'react';
 
 import Content from 'components/pages/podcast/content';
-import Audio from 'components/shared/audio';
 import Subscribe from 'components/shared/subscribe';
 import MainLayout from 'layouts/main';
 
 const Podcast = ({
   data: {
-    wpPodcast: {
-      content,
-      seo,
-      title,
-      date,
-      url,
-      author,
-      acf: { podcastUrl },
-    },
+    wpPodcast: { content, seo, title, date, url, acf: data, author },
   },
   pageContext,
 }) => {
@@ -29,34 +20,18 @@ const Podcast = ({
 
   let parsedContent;
   if (content) {
-    parsedContent = parse(content, {
-      htmlparser2: {
-        lowerCaseAttributeNames: true,
-      },
-      replace: (domNode) => {
-        const props = attributesToProps(domNode.attribs);
-        if (domNode.type === 'tag') {
-          switch (domNode.name) {
-            case 'figure':
-              return <Audio audioUrl={podcastUrl} {...props} />;
-            default:
-              return undefined;
-          }
-        }
-        return undefined;
-      },
-    });
+    parsedContent = parse(content);
   }
 
   return (
     <MainLayout seo={seo} pageContext={pageContext}>
       <Content
         title={title}
-        author={author}
         date={date}
         url={url}
         content={parsedContent}
-        podcastUrl={podcastUrl}
+        {...data}
+        author={author}
       />
       <Subscribe />
     </MainLayout>
@@ -70,7 +45,7 @@ export const query = graphql`
       title
       date(formatString: "YYYY-MM-DD")
       url: uri
-      author: lastEditedBy {
+      author {
         node {
           firstName
           lastName
@@ -78,6 +53,50 @@ export const query = graphql`
       }
       acf {
         podcastUrl
+        quote
+        logo {
+          altText
+          localFile {
+            childImageSharp {
+              gatsbyImageData(width: 150)
+            }
+          }
+        }
+        host {
+          fullName
+          photo {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData(width: 80)
+              }
+            }
+          }
+        }
+
+        guest {
+          fullName
+          position
+          description
+          additionalInformation
+          photo {
+            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData(width: 80)
+              }
+            }
+          }
+        }
+        relatedLinks {
+          fieldGroupName
+          textPostfix
+          link {
+            target
+            title
+            url
+          }
+        }
       }
     }
   }
