@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 import FeaturedPost from 'components/shared/featured-post';
 import Pagination from 'components/shared/pagination';
@@ -16,6 +16,25 @@ const PodcastsList = ({ podcasts, rootPath }) => {
   const [currentPodcast, setCurrentPodcast] = useState(null);
 
   const podcastUrls = podcasts.map((podcast) => podcast.acf.podcastUrl);
+
+  const animateScroll = () => {
+    const scrollToClassName = styles.list || 'list';
+    const scrollTo = document.querySelector(`.${scrollToClassName}`);
+
+    // eslint-disable-next-line global-require
+    require('smooth-scroll')().animateScroll(scrollTo, undefined, {
+      speed: 500,
+      offset: 50,
+    });
+  };
+
+  useEffect(() => {
+    // scroll the page to the podcast list
+    // when navigating through the pages
+    if (currentPage !== 1) {
+      animateScroll();
+    }
+  }, [currentPage]);
 
   return (
     <section className={cx('wrapper')}>
