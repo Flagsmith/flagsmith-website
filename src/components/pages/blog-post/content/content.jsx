@@ -21,15 +21,28 @@ const Content = ({
 }) => {
   const fullDate = getLocaleDate(date);
   const pageUrl = `${process.env.GATSBY_DEFAULT_SITE_URL}${url}`;
-  const fullName = `${firstName} ${lastName}`;
-
   return (
     <div className={cx('wrapper')}>
       <div className={cx('container', 'inner')}>
         <Heading className={cx('title')} size="xl">
           {title}
         </Heading>
-        <Info fullName={fullName} fullDate={fullDate} title={title} pageUrl={pageUrl} />
+        <div className={cx('info-wrapper')}>
+          <span className={cx('info')}>
+            By {firstName} {lastName} on {fullDate}
+          </span>
+          <div className={cx('social-icons')}>
+            <FacebookShareButton url={pageUrl}>
+              <FacebookIcon />
+            </FacebookShareButton>
+            <TwitterShareButton title={title} url={pageUrl}>
+              <TwitterIcon />
+            </TwitterShareButton>
+            <LinkedinShareButton url={pageUrl}>
+              <LinkedinIcon />
+            </LinkedinShareButton>
+          </div>
+        </div>
         <div className={cx('content')}>{content}</div>
       </div>
     </div>
@@ -46,6 +59,10 @@ Content.propTypes = {
   }).isRequired,
   date: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  content: PropTypes.arrayOf(PropTypes.any).isRequired,
+  content: PropTypes.arrayOf(PropTypes.any),
+};
+
+Content.defaultProps = {
+  content: null,
 };
 export default Content;

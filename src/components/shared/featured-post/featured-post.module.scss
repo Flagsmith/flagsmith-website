@@ -64,6 +64,10 @@
   margin-top: 5px;
 }
 
+.title-wrapper {
+  text-decoration: none;
+}
+
 .title {
   margin-bottom: 15px;
 
@@ -136,5 +140,17 @@
 
   @include md-down {
     width: 490px;
+  }
+
+  img {
+    top: initial;
+    left: initial;
+    width: auto;
+    height: 160px;
+    object-fit: contain !important;
+
+    @include xxs-down {
+      height: 120px;
+    }
   }
 }

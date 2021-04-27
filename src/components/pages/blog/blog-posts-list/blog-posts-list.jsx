@@ -26,9 +26,10 @@ const BlogPostsList = ({ pageTitle, featuredPost, posts, rootPath }) => {
         {posts.map((post, index) => {
           const { tags } = post;
           const hasPodcastTag = Boolean(tags?.nodes.find((tag) => tag?.name === 'podcast'));
+          const { podcast } = post.acf;
           return (
             <div className={cx('item')} key={index}>
-              {hasPodcastTag ? <PodcastCard {...post.acf.podcast} /> : <Item {...post} />}
+              {hasPodcastTag && podcast ? <PodcastCard {...podcast} /> : <Item {...post} />}
             </div>
           );
         })}

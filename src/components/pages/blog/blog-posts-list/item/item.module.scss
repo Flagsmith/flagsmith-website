@@ -1,9 +1,12 @@
 .wrapper {
+  display: block;
   max-width: 750px;
   margin-right: auto;
   margin-left: auto;
+  color: $color-primary;
+  text-decoration: none;
 
-  @include with-link-accent-secondary;
+  @include no-highlight-on-tap;
 
   @include fullhd-down {
     max-width: 630px;
@@ -15,6 +18,20 @@
 
   @include lg-down {
     max-width: 460px;
+  }
+
+  @include hover {
+    .item-link {
+      color: $color-accent-primary;
+
+      svg {
+        animation: bounce 0.3s;
+
+        path {
+          fill: $color-accent-primary;
+        }
+      }
+    }
   }
 
   &.with-image {
@@ -147,8 +164,32 @@
   }
 }
 
-.link {
+.item-link {
   font-size: $font-size-xs;
   font-weight: 600;
   line-height: $line-height-xs;
+  color: $color-accent-secondary;
+
+  svg {
+    margin-left: 10px;
+
+    & > path {
+      fill: $color-accent-secondary;
+      transition: fill $transition-base;
+    }
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }

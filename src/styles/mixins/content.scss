@@ -147,22 +147,6 @@
       margin-left: auto;
       text-align: center;
 
-      @include fullhd-down {
-        width: 73%;
-      }
-
-      @include lg-down {
-        width: 78%;
-      }
-
-      @include md-down {
-        width: 81%;
-      }
-
-      @include sm-down {
-        width: 100%;
-      }
-
       figure {
         margin: 0;
       }
@@ -203,5 +187,12 @@
     @include md-down {
       font-size: $font-size-base;
     }
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
   }
 }

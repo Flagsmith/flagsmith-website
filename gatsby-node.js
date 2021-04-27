@@ -10,10 +10,6 @@ const SUPPORTED_MENU_TYPES = ['header', 'footer', 'mobile'];
 const POSTS_PER_PAGE = 9;
 const PODCASTS_PER_PAGE = 9;
 
-// removes all the spaces from a string
-// stripSpaces(string: String) -> String
-const stripSpaces = (string) => string.replace(/\s+/g, ' ');
-
 async function createRedirects({ graphql, actions }) {
   const { createRedirect } = actions;
   const result = await graphql(`
@@ -282,7 +278,6 @@ async function createPosts({ graphql, actions, reporter, menus, sharedBlocks }) 
       allWpPost {
         nodes {
           id
-          content
           uri
         }
       }
@@ -294,19 +289,14 @@ async function createPosts({ graphql, actions, reporter, menus, sharedBlocks }) 
   }
   const posts = result.data.allWpPost.nodes;
 
-  posts.forEach(({ id, content, uri }) => {
+  posts.forEach(({ id, uri }) => {
     const templatePath = path.resolve('./src/templates/blog-post.jsx');
 
     const context = {
       id,
       menus,
-      content,
       sharedBlocks,
     };
-
-    if (content) {
-      context.content = stripSpaces(content);
-    }
 
     if (fs.existsSync(templatePath)) {
       createPage({
