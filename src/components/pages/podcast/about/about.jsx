@@ -16,7 +16,7 @@ const About = ({ fullName, photo, description, additionalInformation }) => (
       <Heading tag="h4" size="md">
         About {fullName}
       </Heading>
-      <p className={cx('about')}>{description}</p>
+      <div className={cx('about')} dangerouslySetInnerHTML={{ __html: description }} />
       {additionalInformation && (
         <div
           className={cx('additional')}
