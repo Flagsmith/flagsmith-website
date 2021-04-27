@@ -8,6 +8,8 @@ import Button from 'components/shared/button';
 import Heading from 'components/shared/heading';
 import getLocaleDate from 'utils/get-locale-date';
 
+import Link from '../link';
+
 import styles from './featured-post.module.scss';
 import IconStar from './images/star.inline.svg';
 
@@ -42,9 +44,11 @@ const FeaturedPost = ({
     <div className={cx('wrapper')}>
       <IconStar className={cx('icon')} />
       <div className={cx('inner')}>
-        <Heading className={cx('title')} tag="h2" size="lg">
-          {title}
-        </Heading>
+        <Link className={cx('title-wrapper')} to={url}>
+          <Heading className={cx('title')} tag="h2" size="lg">
+            {title}
+          </Heading>
+        </Link>
         <span className={cx('info')}>
           By {firstName} {lastName} on {fullDate}
         </span>
