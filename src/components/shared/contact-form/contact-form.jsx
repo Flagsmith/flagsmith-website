@@ -37,14 +37,17 @@ const validationSchema = yup.object().shape({
 // It is used for proper loading animation because most of the time we get response from the server almost immediately
 const APPEAR_AND_EXIT_ANIMATION_DURATION = 0.5; // seconds
 
-const ContactForm = ({
-  id,
-  title,
-  titleHighlightColor,
-  description,
-  withBackground,
-  marginBottom,
-}) => {
+const ContactForm = (props) => {
+  const {
+    id,
+    title,
+    titleHighlightColor,
+    description,
+    buttonText,
+    withBackground,
+    marginBottom,
+  } = props;
+
   const { register, handleSubmit, errors, reset } = useForm({
     resolver: yupResolver(validationSchema),
   });
@@ -153,7 +156,7 @@ const ContactForm = ({
 
                 <div className={cx('form-footer')}>
                   <Button className={cx('button')} type="submit" loading={isLoading}>
-                    Book a demo
+                    {buttonText}
                   </Button>
                   <span className={cx('form-footer-text')}>or</span>
                   <Link className={cx('link')} to="https://app.flagsmith.com/signup" withArrow>
@@ -225,6 +228,7 @@ ContactForm.propTypes = {
   title: PropTypes.string.isRequired,
   titleHighlightColor: PropTypes.oneOf(['primary', 'secondary']),
   description: PropTypes.string,
+  buttonText: PropTypes.string,
   withBackground: PropTypes.bool,
   marginBottom: null,
 };
@@ -233,6 +237,7 @@ ContactForm.defaultProps = {
   id: '',
   titleHighlightColor: 'primary',
   description: '',
+  buttonText: 'Book a demo',
   withBackground: false,
   marginBottom: PropTypes.oneOf(['xl', 'lg', 'md', 'sm', 'xs']),
 };
