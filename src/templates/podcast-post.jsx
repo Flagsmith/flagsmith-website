@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import parse, { attributesToProps } from 'html-react-parser';
 import React from 'react';
 
-import Content from 'components/pages/podcast/content';
+import Content from 'components/pages/podcast-post/content';
 import Subscribe from 'components/shared/subscribe';
 import MainLayout from 'layouts/main';
 
