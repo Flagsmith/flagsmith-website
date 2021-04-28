@@ -7,26 +7,23 @@ import styles from './avatar.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Avatar = ({ fullName, position, photo, theme, isReversed, additionalClassName }) => {
-  console.log(photo.url);
-  return (
-    <div className={cx('wrapper', { reversed: isReversed }, additionalClassName)}>
-      <div className={cx('image-wrapper')}>
-        {photo.url ? (
-          <img src={photo.url} alt="" />
-        ) : (
-          <GatsbyImage image={getImage(photo.localFile)} alt="" />
-        )}
-      </div>
-      {fullName && position && (
-        <div className={cx('badge', theme)}>
-          <span>{fullName}</span>
-          <span>{position}</span>
-        </div>
+const Avatar = ({ fullName, position, photo, theme, isReversed, additionalClassName }) => (
+  <div className={cx('wrapper', { reversed: isReversed }, additionalClassName)}>
+    <div className={cx('image-wrapper')}>
+      {photo?.url ? (
+        <img src={photo?.url} alt="" />
+      ) : (
+        <GatsbyImage image={getImage(photo?.localFile)} alt="" />
       )}
     </div>
-  );
-};
+    {fullName && position && (
+      <div className={cx('badge', theme)}>
+        <span>{fullName}</span>
+        <span>{position}</span>
+      </div>
+    )}
+  </div>
+);
 
 Avatar.propTypes = {
   fullName: PropTypes.string,
