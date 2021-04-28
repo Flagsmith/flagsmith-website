@@ -6,6 +6,10 @@
     padding-top: 35px;
     padding-bottom: 35px;
   }
+
+  @include sm-down {
+    padding-top: 0;
+  }
 }
 
 .aspect-ratio {
@@ -16,7 +20,7 @@
     content: '';
 
     @include sm-down {
-      padding-bottom: 200%;
+      padding-bottom: 100%;
     }
   }
 }
@@ -44,10 +48,7 @@
   }
 
   @include sm-down {
-    padding-top: calc(100% + 30px);
-    padding-right: 30px;
-    padding-bottom: 30px;
-    padding-left: 30px;
+    padding: 30px;
   }
 
   & > :first-child {
@@ -92,7 +93,7 @@
 
 .avatar {
   position: absolute;
-  z-index: 3;
+  z-index: 1;
 
   &.host {
     top: 45px;
@@ -117,7 +118,7 @@
     }
 
     @include sm-down {
-      left: 30px;
+      display: none;
     }
   }
 
@@ -170,9 +171,7 @@
     border-bottom-left-radius: 10px;
 
     @include sm-down {
-      top: 0;
-      border-top-right-radius: 10px;
-      border-bottom-left-radius: 0;
+      display: none;
     }
   }
 
@@ -182,9 +181,8 @@
     border-bottom-right-radius: 10px;
 
     @include sm-down {
-      bottom: 0;
-      border-top-right-radius: 0;
-      border-bottom-left-radius: 10px;
+      top: 0;
+      border-radius: 10px;
     }
   }
 }

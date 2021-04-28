@@ -102,6 +102,11 @@
   border-radius: 6px;
   box-shadow: 0 10px 20px rgba(30, 13, 38, 0.2);
 
+  &:hover:not(:disabled) {
+    background-color: $color-primary-hover;
+    box-shadow: none;
+  }
+
   @include lg-down {
     padding: 10px;
     margin-right: 15px;
