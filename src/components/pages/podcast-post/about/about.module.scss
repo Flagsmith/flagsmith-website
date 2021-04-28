@@ -41,7 +41,6 @@
 .about {
   margin: 0 !important;
 
-  @include with-link-accent-secondary;
   @include content;
 }
 

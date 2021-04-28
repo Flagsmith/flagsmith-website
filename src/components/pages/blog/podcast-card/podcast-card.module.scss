@@ -106,7 +106,6 @@
 .info {
   @include lg-down {
     font-size: $font-size-sm;
-    line-height: $line-height-sm;
   }
 }
 
@@ -170,7 +169,48 @@
     width: 470px;
   }
 
+  img {
+    top: initial;
+    left: initial;
+    width: auto;
+    height: 95px;
+    object-fit: contain !important;
+
+    @include xxs-down {
+      height: 70px;
+    }
+  }
+}
+
+.all-podcasts {
+  margin-left: 30px;
+  font-size: $font-size-xs;
+  font-weight: 600;
+  line-height: $line-height-primary;
+  color: $color-additional-4;
+  text-decoration: none;
+
   @include sm-down {
-    width: 100%;
+    display: block;
+    margin-top: 15px;
+    margin-left: 0;
+  }
+
+  svg {
+    margin-left: 10px;
+
+    & > path {
+      fill: $color-additional-4;
+      transition: fill $transition-base;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+
+  @include sm-down {
+    display: block;
   }
 }

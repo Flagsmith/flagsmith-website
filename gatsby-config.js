@@ -26,6 +26,11 @@ module.exports = {
       resolve: 'gatsby-plugin-sharp',
       options: {
         defaultQuality: 85,
+        // Defaults used for gatsbyImageData and StaticImage
+        defaults: {
+          placeholder: 'none',
+          quality: 80,
+        },
       },
     },
     {
@@ -110,16 +115,6 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-plugin-sharp`,
-      options: {
-        // Defaults used for gatsbyImageData and StaticImage
-        defaults: {
-          placeholder: 'none',
-          quality: 80,
-        },
-      },
-    },
     `gatsby-plugin-image`,
     {
       resolve: 'gatsby-plugin-google-tagmanager',
@@ -127,6 +122,7 @@ module.exports = {
         id: 'GTM-T4K5B4W',
       },
     },
+    `gatsby-plugin-sitemap`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

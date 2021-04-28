@@ -64,6 +64,10 @@
   margin-top: 5px;
 }
 
+.title-wrapper {
+  text-decoration: none;
+}
+
 .title {
   margin-bottom: 15px;
 
@@ -85,7 +89,6 @@
   display: block;
   margin-bottom: 15px;
   font-size: $font-size-xs;
-  line-height: $line-height-xs;
   color: $color-additional-6;
 
   @include lg-down {
@@ -102,7 +105,6 @@
   @include lg-down {
     margin-bottom: 30px;
     font-size: $font-size-sm;
-    line-height: $line-height-sm;
   }
 }
 
@@ -136,5 +138,17 @@
 
   @include md-down {
     width: 490px;
+  }
+
+  img {
+    top: initial;
+    left: initial;
+    width: auto;
+    height: 160px;
+    object-fit: contain !important;
+
+    @include xxs-down {
+      height: 120px;
+    }
   }
 }

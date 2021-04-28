@@ -57,7 +57,7 @@ const SEO = (props) => {
       {metaKeywords && <meta name="keywords" content={metaKeywords} />}
       {isRobotsNoindexPage && <meta name="robots" content="noindex" />}
       {/* Open Graph */}
-      {opengraphUrl.startsWith(siteUrl) && <meta property="og:url" content={opengraphUrl} />}
+      <meta property="og:url" content={siteUrl + opengraphUrl} />
       <meta property="og:title" content={opengraphTitle} />
       <meta property="og:description" content={opengraphDescription} />
       <meta property="og:image" content={opengraphPreviewImage} />

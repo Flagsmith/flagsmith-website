@@ -1,6 +1,4 @@
 import classNames from 'classnames/bind';
-import { graphql, useStaticQuery } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
 import React from 'react';
 import GitHubButton from 'react-github-btn';
@@ -21,42 +19,16 @@ const Hero = ({
   primaryButtonText,
   primaryButtonUrl,
   showGithubStarButton,
-  backgroundIllustration,
+  withBackground,
   marginBottom,
 }) => {
-  const { flagsIllustration, dronesIllustration } = useStaticQuery(graphql`
-    query {
-      flagsIllustration: file(relativePath: { eq: "lazy-blocks/hero/flags-illustration.jpg" }) {
-        childImageSharp {
-          gatsbyImageData(
-            width: 2048
-            breakpoints: [414, 768, 1024, 1280, 1440, 1920, 2880, 3840]
-            quality: 95
-          )
-        }
-      }
-      dronesIllustration: file(relativePath: { eq: "lazy-blocks/hero/drones-illustration.jpg" }) {
-        childImageSharp {
-          gatsbyImageData(
-            width: 2048
-            breakpoints: [414, 768, 1024, 1280, 1440, 1920, 2880, 3840]
-            quality: 95
-          )
-        }
-      }
-    }
-  `);
-
-  const backgroundIllustrations = {
-    flags: flagsIllustration,
-    drones: dronesIllustration,
-  };
-
   const shouldRenderButtonsWrapper =
     (accentButtonText && accentButtonUrl) || (primaryButtonText && primaryButtonUrl);
 
   return (
-    <section className={cx('wrapper', { [`margin-bottom-${marginBottom}`]: marginBottom })}>
+    <section
+      className={cx('wrapper', { withBackground, [`margin-bottom-${marginBottom}`]: marginBottom })}
+    >
       <div className={cx('container', 'inner')}>
         <Heading
           className={cx('title')}
@@ -98,15 +70,6 @@ const Hero = ({
           </div>
         )}
       </div>
-
-      {backgroundIllustration && backgroundIllustrations[backgroundIllustration] && (
-        <GatsbyImage
-          className={cx('illustration')}
-          image={getImage(backgroundIllustrations[backgroundIllustration])}
-          alt=""
-          aria-hidden
-        />
-      )}
     </section>
   );
 };
@@ -120,7 +83,7 @@ Hero.propTypes = {
   primaryButtonText: PropTypes.string,
   primaryButtonUrl: PropTypes.string,
   showGithubStarButton: PropTypes.bool,
-  backgroundIllustration: PropTypes.oneOf(['flags', 'drones']),
+  withBackground: PropTypes.bool,
   marginBottom: PropTypes.oneOf(['xl', 'lg', 'md', 'sm', 'xs']),
 };
 
@@ -132,7 +95,7 @@ Hero.defaultProps = {
   primaryButtonText: '',
   primaryButtonUrl: '',
   showGithubStarButton: false,
-  backgroundIllustration: null,
+  withBackground: false,
   marginBottom: null,
 };
 

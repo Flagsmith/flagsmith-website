@@ -20,6 +20,7 @@
 
   code {
     display: block;
+    padding-left: 0 !important;
     overflow: auto;
     line-height: 1.6 !important;
 
@@ -31,18 +32,18 @@
 
     :global {
       .linenumber {
-        padding-right: 50px !important;
+        margin-right: 35px;
 
         @include fullhd-down {
-          padding-right: 40px !important;
+          margin-right: 25px;
         }
 
         @include xl-down {
-          padding-right: 30px !important;
+          margin-right: 15px;
         }
 
         @include lg-down {
-          padding-right: 20px !important;
+          margin-right: 5px;
         }
       }
     }

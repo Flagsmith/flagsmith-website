@@ -75,12 +75,10 @@
 
   @include xl-down {
     font-size: $font-size-sm;
-    line-height: $line-height-sm;
   }
 
   @include lg-down {
     font-size: $font-size-xs;
-    line-height: $line-height-xs;
   }
 
   @include md-down {
@@ -193,17 +191,15 @@
   .tab-title {
     @include fullhd-down {
       font-size: $font-size-md;
-      line-height: $line-height-md;
+      line-height: $line-height-secondary;
     }
 
     @include lg-down {
       font-size: 22px;
-      line-height: 28.6px;
     }
 
     @include md-down {
       font-size: 20px;
-      line-height: 26px;
     }
   }
 }
@@ -212,7 +208,6 @@
   margin-top: 0;
   margin-bottom: 0;
   font-size: $font-size-xxs;
-  line-height: $line-height-xxs;
   color: $color-additional-6;
 }
 

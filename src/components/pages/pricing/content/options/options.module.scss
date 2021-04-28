@@ -121,11 +121,9 @@
     align-items: flex-start;
     margin-bottom: 15px;
     font-size: $font-size-xs;
-    line-height: $line-height-xs;
 
     @include xl-down {
       font-size: $font-size-xxs;
-      line-height: 1.5;
     }
 
     &:last-child {

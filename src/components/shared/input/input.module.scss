@@ -12,7 +12,6 @@
   padding-left: 0;
   font-size: $font-size-sm;
   font-weight: 600;
-  line-height: $line-height-sm;
   color: $color-primary;
   resize: none;
   border: none;
@@ -23,7 +22,6 @@
 
   @include lg-down {
     font-size: $font-size-xs;
-    line-height: $line-height-xs;
   }
 
   &::placeholder {
@@ -60,6 +58,5 @@
   bottom: -25px;
   left: 0;
   font-size: $font-size-xxs;
-  line-height: $line-height-xxs;
   color: $color-error;
 }

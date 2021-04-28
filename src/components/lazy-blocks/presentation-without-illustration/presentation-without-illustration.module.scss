@@ -50,13 +50,11 @@
 
   @include xl-down {
     font-size: $font-size-sm;
-    line-height: $line-height-sm;
   }
 
   @include lg-down {
     margin-bottom: 25px;
     font-size: $font-size-xs;
-    line-height: $line-height-xs;
   }
 
   &:last-child {
@@ -83,7 +81,6 @@
   margin-bottom: 30px;
   font-size: $font-size-xs;
   font-weight: 700;
-  line-height: $line-height-xs;
 
   @include lg-down {
     margin-bottom: 25px;
@@ -91,7 +88,6 @@
 
   @include xxs-down {
     font-size: $font-size-xxs;
-    line-height: $line-height-xxs;
   }
 
   svg {

@@ -5,6 +5,7 @@ import React from 'react';
 
 import Heading from 'components/shared/heading';
 import Link from 'components/shared/link';
+import IconArrowRight from 'icons/arrow-right.inline.svg';
 import getLocaleDate from 'utils/get-locale-date';
 
 import styles from './item.module.scss';
@@ -23,7 +24,7 @@ const Item = ({
 }) => {
   const fullDate = getLocaleDate(date);
   return (
-    <div className={cx('wrapper', { withImage: featuredImage })}>
+    <Link className={cx('wrapper', { withImage: featuredImage })} to={url}>
       {featuredImage && (
         <div className={cx('image-wrapper', 'sm-hidden')}>
           <GatsbyImage
@@ -50,11 +51,11 @@ const Item = ({
           By {firstName} {lastName} on {fullDate}
         </span>
         <p className={cx('description')}>{description}</p>
-        <Link className={cx('link')} to={url} withArrow>
-          Read More
-        </Link>
+        <span className={cx('item-link')}>
+          Read More <IconArrowRight />
+        </span>
       </div>
-    </div>
+    </Link>
   );
 };
 

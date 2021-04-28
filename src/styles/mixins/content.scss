@@ -94,8 +94,6 @@
   > p,
   > ul,
   > ol {
-    line-height: $line-height-primary;
-
     @include lg-down {
       font-size: $font-size-sm;
     }
@@ -117,7 +115,6 @@
 
     li {
       margin-bottom: 10px;
-      line-height: $line-height-primary;
 
       &:last-of-type {
         margin-bottom: 0;
@@ -126,7 +123,6 @@
 
     ::marker {
       font-weight: bold;
-      line-height: $line-height-primary;
       color: $color-accent-secondary;
     }
   }
@@ -147,29 +143,12 @@
       margin-left: auto;
       text-align: center;
 
-      @include fullhd-down {
-        width: 73%;
-      }
-
-      @include lg-down {
-        width: 78%;
-      }
-
-      @include md-down {
-        width: 81%;
-      }
-
-      @include sm-down {
-        width: 100%;
-      }
-
       figure {
         margin: 0;
       }
 
       figcaption {
         font-size: $font-size-xs;
-        line-height: $line-height-xs;
         color: $color-additional-6;
       }
     }
@@ -203,5 +182,12 @@
     @include md-down {
       font-size: $font-size-base;
     }
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
   }
 }

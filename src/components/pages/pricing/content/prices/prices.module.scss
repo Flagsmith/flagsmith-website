@@ -186,11 +186,9 @@
   margin-bottom: 0;
   font-size: $font-size-sm;
   font-weight: 600;
-  line-height: $line-height-sm;
 
   @include xl-down {
     font-size: $font-size-xs;
-    line-height: $line-height-xs;
   }
 }
 
@@ -208,14 +206,13 @@
   margin-left: auto;
   font-size: 100px;
   font-weight: bold;
-  line-height: 100%;
+  line-height: 1;
   color: $color-quaternary;
 
   @include xl-down {
     left: 6px;
     margin-bottom: 5px;
     font-size: 80px;
-    line-height: 80px;
   }
 
   &::before {
@@ -223,14 +220,13 @@
     top: 15px;
     left: -22px;
     font-size: 30px;
-    line-height: 30px;
+    line-height: 1;
     content: '$';
 
     @include xl-down {
       top: 9px;
       left: -18px;
       font-size: $font-size-md;
-      line-height: $line-height-md;
     }
   }
 }
@@ -238,7 +234,6 @@
 .price-text {
   margin-bottom: 30px;
   font-size: $font-size-xs;
-  line-height: $line-height-xs;
   color: $color-additional-6;
 
   @include xl-down {
@@ -268,7 +263,6 @@
   padding-left: 30px;
   margin: 0;
   font-size: $font-size-xs;
-  line-height: $line-height-xs;
   text-align: left;
   list-style: none;
 
@@ -279,7 +273,6 @@
 
   @include xl-down {
     font-size: $font-size-xxs;
-    line-height: $line-height-xxs;
   }
 
   li {
@@ -334,7 +327,6 @@
   span {
     font-size: $font-size-xs;
     font-weight: bold;
-    line-height: $line-height-xs;
     color: $color-additional-6;
     transition: color $transition-base;
 

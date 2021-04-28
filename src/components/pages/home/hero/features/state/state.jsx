@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { motion } from 'framer-motion';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { MOTION_EASY } from 'constants/constants';
 
@@ -16,27 +16,50 @@ import chatIcon from './images/chat.svg';
 import Search from './images/search.inline.svg';
 import styles from './state.module.scss';
 
-const cx = classNames.bind(styles);
+const DELAY_BEFORE_ANIMATION_SEC = 0.4;
 
-const variantsContent = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: (custom) => ({
-    opacity: 1,
-    clipPath: 'polygon(0 0, 0 100%, 100% 100%, 100% 0)',
-    transition: { delay: custom, duration: 1, ease: MOTION_EASY },
-  }),
-};
+const cx = classNames.bind(styles);
 
 const variantsContentFade = {
   hidden: {
     opacity: 0,
   },
-  visible: (custom) => ({
+  visible: {
     opacity: 1,
-    transition: { delay: custom, duration: 1, ease: MOTION_EASY },
-  }),
+    transition: { delay: DELAY_BEFORE_ANIMATION_SEC, duration: 0.8, ease: MOTION_EASY },
+  },
+};
+
+const variantsContentFadeOut = {
+  hidden: {
+    opacity: 0,
+    transition: { delay: DELAY_BEFORE_ANIMATION_SEC, duration: 0.8, ease: MOTION_EASY },
+  },
+  visible: {
+    opacity: 1,
+  },
+};
+
+const variantsActionsFade = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    clipPath: 'polygon(0 0, 0 100%, 100% 100%, 100% 0)',
+    transition: { delay: DELAY_BEFORE_ANIMATION_SEC, duration: 0.8, ease: MOTION_EASY },
+  },
+};
+
+const variantsActionsFadeOut = {
+  hidden: {
+    opacity: 0,
+    transition: { delay: DELAY_BEFORE_ANIMATION_SEC, duration: 0.8, ease: MOTION_EASY },
+  },
+  visible: {
+    opacity: 1,
+    clipPath: 'polygon(0 0, 0 100%, 100% 100%, 100% 0)',
+  },
 };
 
 const variantChat = {
@@ -45,11 +68,26 @@ const variantChat = {
     bottom: -90,
     transition: { delay: 0, duration: 0.7, ease: MOTION_EASY },
   },
-  visible: (custom) => ({
+  visible: {
     opacity: 1,
     bottom: 30,
-    transition: { delay: custom, duration: 0.7, ease: MOTION_EASY },
-  }),
+    transition: { delay: DELAY_BEFORE_ANIMATION_SEC, duration: 0.7, ease: MOTION_EASY },
+  },
+};
+
+const illustrationWrapperVariants = {
+  initial: {},
+  animate: {
+    top: 0,
+    right: 0,
+    left: 0,
+    width: '100%',
+    transition: {
+      delay: DELAY_BEFORE_ANIMATION_SEC,
+      duration: 0.3,
+      ease: MOTION_EASY,
+    },
+  },
 };
 
 const State = ({ chat, designV2, dark, animationIsCompleted }) => {
@@ -63,69 +101,74 @@ const State = ({ chat, designV2, dark, animationIsCompleted }) => {
     }
   `);
 
+  // apply designV2 css classes with delay
+  const [addV2Class, setAddV2Class] = useState(designV2);
+  useEffect(() => {
+    if (designV2) {
+      setTimeout(() => setAddV2Class(true), 400);
+    } else {
+      setAddV2Class(false);
+    }
+  }, [designV2]);
+
   return (
     <div className={cx('wrapper')}>
-      <motion.div className={cx('inner', { dark }, { designV2 })}>
-        <div className={cx('illustration-wrapper')}>
+      <motion.div className={cx('inner', { dark }, { designV2: addV2Class })}>
+        <motion.div
+          className={cx('illustration-wrapper')}
+          initial="initial"
+          variants={illustrationWrapperVariants}
+          animate={!designV2 ? 'initial' : 'animate'}
+          transition={!designV2 ? { type: 'tween', duration: 0.3 } : {}}
+        >
           <GatsbyImage
+            loading="eager"
             className={cx('illustration')}
             image={getImage(illustration)}
             imgStyle={{ objectPosition: 'right top' }}
             alt=""
           />
-        </div>
+        </motion.div>
 
-        {designV2 && (
-          <motion.div
-            initial="hidden"
-            variants={variantsContentFade}
-            animate={designV2 ? 'visible' : 'hidden'}
-          >
-            <Avatar className={cx('avatar')} />
-          </motion.div>
-        )}
-
-        {!designV2 && (
-          <motion.div
-            initial={!animationIsCompleted ? 'visible' : 'hidden'}
-            variants={variantsContentFade}
-            animate={!designV2 ? 'visible' : 'hidden'}
-          >
-            <AvatarDefault className={cx('avatar')} />
-          </motion.div>
-        )}
+        <motion.div
+          initial="hidden"
+          variants={variantsContentFade}
+          animate={designV2 ? 'visible' : 'hidden'}
+        >
+          <Avatar className={cx('avatar')} />
+        </motion.div>
 
         <motion.div
           initial={!animationIsCompleted ? 'visible' : 'hidden'}
-          variants={variantsContentFade}
-          animate="visible"
+          variants={variantsContentFadeOut}
+          animate={!designV2 ? 'visible' : 'hidden'}
         >
-          <Search className={cx('search')} />
+          <AvatarDefault className={cx('avatar', 'default')} />
         </motion.div>
 
-        {designV2 && (
-          <motion.div
-            className={cx('actions')}
-            initial="hidden"
-            variants={variantsContent}
-            animate={designV2 ? 'visible' : 'hidden'}
-          >
-            <Action1 className={cx('action', 'action-1')} />
-            <Action2 className={cx('action', 'action-1')} />
-          </motion.div>
-        )}
+        <div className={cx('search', 'searchV2' && addV2Class)}>
+          <Search />
+        </div>
 
-        {!designV2 && (
-          <motion.div
-            className={cx('actions')}
-            initial={!animationIsCompleted ? 'visible' : 'hidden'}
-            variants={variantsContent}
-            animate={!designV2 ? 'visible' : 'hidden'}
-          >
-            <Action1Default className={cx('action', 'action-1')} />
-            <Action2Default className={cx('action', 'action-2')} />
-          </motion.div>
-        )}
+        <motion.div
+          className={cx('actions')}
+          initial="hidden"
+          variants={variantsActionsFade}
+          animate={designV2 ? 'visible' : 'hidden'}
+        >
+          <Action1 className={cx('action', 'action-1')} />
+          <Action2 className={cx('action', 'action-1')} />
+        </motion.div>
+
+        <motion.div
+          className={cx('actions', 'default')}
+          initial={!animationIsCompleted ? 'visible' : 'hidden'}
+          variants={variantsActionsFadeOut}
+          animate={!designV2 ? 'visible' : 'hidden'}
+        >
+          <Action1Default className={cx('action', 'action-1', 'default')} />
+          <Action2Default className={cx('action', 'action-2', 'default')} />
+        </motion.div>
 
         <motion.img
           className={cx('chat')}

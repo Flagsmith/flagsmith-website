@@ -89,16 +89,14 @@
   font-family: $font-family-secondary;
   font-size: $font-size-lg;
   font-weight: 800;
-  line-height: $line-height-lg;
+  line-height: $line-height-secondary;
 
   @include fullhd-down {
     font-size: 35px;
-    line-height: 45.5px;
   }
 
   @include xl-down {
     font-size: 30px;
-    line-height: 130%;
   }
 
   @include lg-down {
@@ -112,12 +110,10 @@
 
   @include xl-down {
     font-size: $font-size-sm;
-    line-height: $line-height-sm;
   }
 
   @include lg-down {
     font-size: $font-size-xs;
-    line-height: $line-height-xs;
   }
 }
 

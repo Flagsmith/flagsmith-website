@@ -58,7 +58,6 @@
   @include lg-down {
     margin-bottom: 20px;
     font-size: $font-size-sm;
-    line-height: $line-height-sm;
   }
 
   @include md-down {
@@ -67,7 +66,6 @@
 
   @include sm-down {
     font-size: $font-size-xs;
-    line-height: $line-height-xs;
   }
 
   ul > li {
@@ -143,7 +141,6 @@
 
 .description {
   font-size: $font-size-xs;
-  line-height: $line-height-xs;
   color: $color-additional-6;
 
   @include lg-down {

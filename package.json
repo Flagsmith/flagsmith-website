@@ -30,6 +30,7 @@
     "gatsby": "^3.2.1",
     "gatsby-plugin-google-tagmanager": "^3.2.0",
     "gatsby-plugin-image": "^1.2.0",
+    "gatsby-plugin-sitemap": "^3.3.0",
     "gatsby-source-wordpress": "^5.3.0-next.1",
     "html-react-parser": "^1.2.4",
     "lodash.isboolean": "^3.0.3",

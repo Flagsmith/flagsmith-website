@@ -82,8 +82,8 @@
   position: absolute !important;
   top: 50%;
   left: 0;
-  height: 530px;
-  margin-top: -265px;
+  height: 100%;
+  transform: translateY(-50%);
 
   @include xl-down {
     left: 30px;
@@ -95,7 +95,7 @@
     top: 0;
     bottom: 0;
     left: 0;
-    margin-top: 0;
+    transform: translateY(0);
   }
 }
 
@@ -112,12 +112,11 @@
 
   @include fullhd-down {
     font-size: $font-size-lg;
-    line-height: $line-height-lg;
+    line-height: $line-height-secondary;
   }
 
   @include lg-down {
     font-size: 35px;
-    line-height: 45.5px;
   }
 
   &:last-child {
@@ -157,7 +156,6 @@
   margin-top: 0;
   margin-bottom: 0;
   font-size: $font-size-xs;
-  line-height: $line-height-xs;
 
   @include with-link-accent-secondary;
 
@@ -167,7 +165,6 @@
 
   @include lg-down {
     font-size: $font-size-xxs;
-    line-height: 1.5;
   }
 
   @include sm-down {
@@ -217,7 +214,6 @@
   margin-left: 30px;
   font-size: $font-size-xs;
   font-weight: bold;
-  line-height: $line-height-xs;
   color: $color-additional-6;
   text-transform: uppercase;
 
@@ -241,7 +237,6 @@
 .link {
   font-size: $font-size-xs;
   font-weight: bold;
-  line-height: $line-height-xs;
 }
 
 .error {
@@ -249,7 +244,6 @@
   bottom: -40px;
   left: 0;
   font-size: $font-size-xxs;
-  line-height: 1.5;
   color: $color-error;
 }
 
@@ -287,12 +281,10 @@
   font-family: $font-family-secondary;
   font-size: $font-size-lg;
   font-weight: 800;
-  line-height: $line-height-lg;
 }
 
 .message-description {
   font-size: $font-size-base;
-  line-height: $line-height-base;
 }
 
 .shape {
