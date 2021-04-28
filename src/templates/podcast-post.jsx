@@ -12,32 +12,12 @@ const Podcast = ({
     wpPodcast: { content, seo, title, date, url, acf: data, author },
   },
   pageContext,
-}) => {
-  // https://github.com/remarkablemark/html-react-parser#htmlparser2
-  // The library does parsing on client side differently from server side
-  // it results in having a need of passing htmlparser2 to adjust behavior
-  // according to the client side behavior
-
-  let parsedContent;
-  if (content) {
-    parsedContent = parse(content);
-  }
-
-  return (
-    <MainLayout seo={seo} pageContext={pageContext}>
-      <Content
-        title={title}
-        date={date}
-        url={url}
-        content={parsedContent}
-        {...data}
-        author={author}
-      />
-      <Subscribe />
-    </MainLayout>
-  );
-};
-
+}) => (
+  <MainLayout seo={seo} pageContext={pageContext}>
+    <Content title={title} date={date} url={url} content={content} {...data} author={author} />
+    <Subscribe />
+  </MainLayout>
+);
 export const query = graphql`
   query($id: String!) {
     wpPodcast(id: { eq: $id }) {

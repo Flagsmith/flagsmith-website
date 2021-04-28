@@ -61,7 +61,7 @@ const Content = (props) => {
         />
         <Audio audioUrl={podcastUrl} />
 
-        <div className={cx('content')}>{content}</div>
+        <div className={cx('content')} dangerouslySetInnerHTML={{ __html: content }} />
         <About {...guest} />
         <RelativeLinks title="Links from the Episode" items={relatedLinks} />
       </div>
