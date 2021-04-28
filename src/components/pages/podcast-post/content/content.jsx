@@ -28,15 +28,15 @@ const Content = (props) => {
     logo,
     content,
     guest,
-    host,
     quote,
     relatedLinks,
     date,
     url,
     author: {
-      node: { firstName, lastName },
+      node: { firstName, lastName, avatar },
     },
   } = props;
+
   const authorName = `${firstName} ${lastName}`;
   const pageUrl = `${process.env.GATSBY_DEFAULT_SITE_URL}${url}`;
   const fullDate = getLocaleDate(date);
@@ -52,10 +52,16 @@ const Content = (props) => {
           <p className={cx('description')}>{description}</p>
           <Info fullName={authorName} fullDate={fullDate} title={title} pageUrl={pageUrl} />
         </div>
-        <Hero guest={guest} host={host} quote={quote} logo={logo} />
+        <Hero
+          authorName={authorName}
+          authorPhoto={avatar}
+          guest={guest}
+          quote={quote}
+          logo={logo}
+        />
         <Audio audioUrl={podcastUrl} />
 
-        <div className={cx('content')}>{content}</div>
+        <div className={cx('content')} dangerouslySetInnerHTML={{ __html: content }} />
         <About {...guest} />
         <RelativeLinks title="Links from the Episode" items={relatedLinks} />
       </div>
@@ -63,10 +69,26 @@ const Content = (props) => {
   );
 };
 
-Content.propTypes = {};
+Content.propTypes = {
+  podcastUrl: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string,
+  quote: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  relatedLinks: PropTypes.arrayOf(
+    PropTypes.shape({
+      textPostix: PropTypes.string,
+      link: PropTypes.shape({
+        url: PropTypes.string,
+        title: PropTypes.string,
+        target: PropTypes.string,
+      }),
+    })
+  ).isRequired,
+};
 
 Content.defaultProps = {
-  description: 'Interview with Torkel Ödegaard: Creator and Project Lead, Grafana Labs',
+  content: null,
 };
 
 export default Content;

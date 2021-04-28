@@ -1,4 +1,6 @@
 @mixin content {
+  @include with-link-accent-secondary;
+
   > h1,
   > h2,
   > h3,
@@ -104,8 +106,6 @@
   > p {
     margin-top: 15px;
     margin-bottom: 15px;
-
-    @include with-link-accent-secondary;
   }
 
   > ul,

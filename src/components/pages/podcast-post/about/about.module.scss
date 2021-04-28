@@ -32,12 +32,16 @@
     padding-bottom: 30px;
     padding-left: 30px;
   }
+
+  a {
+    font-weight: bold;
+  }
 }
 
 .about {
   margin: 0 !important;
 
-  @include with-link-accent-secondary;
+  @include content;
 }
 
 .photo {

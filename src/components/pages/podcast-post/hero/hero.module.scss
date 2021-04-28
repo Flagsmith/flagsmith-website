@@ -23,6 +23,7 @@
 
 .inner {
   position: relative;
+  width: 100%;
   padding-top: 45px;
   padding-right: 45px;
   padding-bottom: 45px;
@@ -74,6 +75,7 @@
   max-width: 150px;
   max-height: 36px;
   margin-bottom: 45px;
+  margin-left: 0 !important;
 
   @include fullhd-down {
     margin-bottom: 30px;
