@@ -53,7 +53,7 @@ const Cards = (props) => {
             const Tag = url ? Link : 'div';
             const target = isBlankTarget && url ? '_blank' : null;
             return (
-              <li className={cx('item')} key={index}>
+              <li className={cx('item', { clickable: url })} key={index}>
                 <Tag className={cx('item-inner')} to={url || null} target={target}>
                   <img className={cx('logo')} loading="lazy" src={logo.url} alt={logo.alt} />
                   {!onlyLogo && (

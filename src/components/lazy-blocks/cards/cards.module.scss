@@ -101,7 +101,10 @@
     .item {
       width: 100%;
       height: 200px;
-      padding: 20px;
+
+      & > a {
+        padding: 20px;
+      }
     }
 
     .item-inner {
@@ -117,9 +120,11 @@
   box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
   transition: box-shadow $transition-base, background-color $transition-base;
 
-  & > a:hover {
-    background-color: $color-additional-4;
-    box-shadow: none;
+  &.clickable {
+    &:hover {
+      background-color: $color-additional-4;
+      box-shadow: none;
+    }
   }
 }
 
