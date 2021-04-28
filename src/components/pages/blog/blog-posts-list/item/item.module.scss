@@ -62,6 +62,21 @@
       margin-left: auto;
     }
   }
+
+  &.without-description {
+    .info {
+      margin-bottom: 20px;
+
+      @include lg-down {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
 }
 
 .image-wrapper {
@@ -155,7 +170,7 @@
 
 .description {
   margin-top: 0;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 
   @include lg-down {
     margin-bottom: 15px;

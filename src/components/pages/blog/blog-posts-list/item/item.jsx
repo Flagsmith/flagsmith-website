@@ -24,7 +24,10 @@ const Item = ({
 }) => {
   const fullDate = getLocaleDate(date);
   return (
-    <Link className={cx('wrapper', { withImage: featuredImage })} to={url}>
+    <Link
+      className={cx('wrapper', { withImage: featuredImage }, { withoutDescription: !description })}
+      to={url}
+    >
       {featuredImage && (
         <div className={cx('image-wrapper', 'sm-hidden')}>
           <GatsbyImage
@@ -50,7 +53,7 @@ const Item = ({
         <span className={cx('info')}>
           By {firstName} {lastName} on {fullDate}
         </span>
-        <p className={cx('description')}>{description}</p>
+        {description && <p className={cx('description')}>{description}</p>}
         <span className={cx('item-link')}>
           Read More <IconArrowRight />
         </span>

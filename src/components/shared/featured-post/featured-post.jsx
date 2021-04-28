@@ -29,10 +29,10 @@ const FeaturedPost = ({
   const { bookIllustration } = useStaticQuery(graphql`
     query {
       bookIllustration: file(
-        relativePath: { eq: "pages/blog/featured-post/book-illustration.jpg" }
+        relativePath: { eq: "pages/blog/featured-post/book-illustration.png" }
       ) {
         childImageSharp {
-          gatsbyImageData(width: 840)
+          gatsbyImageData(width: 764)
         }
       }
     }
