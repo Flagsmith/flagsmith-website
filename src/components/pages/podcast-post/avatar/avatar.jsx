@@ -1,5 +1,4 @@
 import classNames from 'classnames/bind';
-import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -9,21 +8,15 @@ import styles from './avatar.module.scss';
 const cx = classNames.bind(styles);
 
 const Avatar = ({ fullName, position, photo, theme, isReversed, additionalClassName }) => {
-  const { defaultPhoto } = useStaticQuery(graphql`
-    query {
-      defaultPhoto: file(relativePath: { eq: "pages/podcast/avatar/photo.jpg" }) {
-        childImageSharp {
-          gatsbyImageData(width: 80)
-        }
-      }
-    }
-  `);
-
-  const image = photo ? photo.localFile : defaultPhoto;
+  console.log(photo.url);
   return (
     <div className={cx('wrapper', { reversed: isReversed }, additionalClassName)}>
       <div className={cx('image-wrapper')}>
-        <GatsbyImage image={getImage(image)} alt="" />
+        {photo.url ? (
+          <img src={photo.url} alt="" />
+        ) : (
+          <GatsbyImage image={getImage(photo.localFile)} alt="" />
+        )}
       </div>
       {fullName && position && (
         <div className={cx('badge', theme)}>

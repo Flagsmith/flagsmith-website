@@ -49,6 +49,9 @@ export const query = graphql`
         node {
           firstName
           lastName
+          avatar {
+            url
+          }
         }
       }
       acf {
@@ -58,17 +61,6 @@ export const query = graphql`
           altText
           localFile {
             publicURL
-          }
-        }
-        host {
-          fullName
-          photo {
-            altText
-            localFile {
-              childImageSharp {
-                gatsbyImageData(width: 80)
-              }
-            }
           }
         }
 
