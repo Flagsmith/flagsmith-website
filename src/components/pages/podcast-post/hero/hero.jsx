@@ -41,7 +41,10 @@ const Hero = (props) => {
   );
 };
 
-Hero.propTypes = {};
+Hero.propTypes = {
+  quote: PropTypes.string.isRequired,
+  authorName: PropTypes.string.isRequired,
+};
 
 Hero.defaultProps = {};
 

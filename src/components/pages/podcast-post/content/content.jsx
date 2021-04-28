@@ -69,10 +69,26 @@ const Content = (props) => {
   );
 };
 
-Content.propTypes = {};
+Content.propTypes = {
+  podcastUrl: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string,
+  quote: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  relatedLinks: PropTypes.arrayOf(
+    PropTypes.shape({
+      textPostix: PropTypes.string,
+      link: PropTypes.shape({
+        url: PropTypes.string,
+        title: PropTypes.string,
+        target: PropTypes.string,
+      }),
+    })
+  ).isRequired,
+};
 
 Content.defaultProps = {
-  description: 'Interview with Torkel Ödegaard: Creator and Project Lead, Grafana Labs',
+  content: null,
 };
 
 export default Content;
