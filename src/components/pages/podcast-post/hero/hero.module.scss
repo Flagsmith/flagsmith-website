@@ -74,6 +74,7 @@
   max-width: 150px;
   max-height: 36px;
   margin-bottom: 45px;
+  margin-left: 0 !important;
 
   @include fullhd-down {
     margin-bottom: 30px;
