@@ -74,34 +74,11 @@
   }
 }
 
-.info {
-  display: block;
-  margin-top: 5px;
-  font-size: $font-size-xs;
-  color: $color-additional-6;
+.label {
+  margin-bottom: 85px;
 
-  @include lg-down {
-    font-size: $font-size-xxs;
-  }
-
-  @include sm-down {
-    margin-bottom: 10px;
-  }
-}
-
-.social-icons {
-  display: flex;
-  align-items: center;
-  margin-top: 5px;
-
-  button {
-    margin-right: 10px;
-    margin-left: 13px;
-    outline: none;
-
-    @include sm-down {
-      margin-left: 0;
-    }
+  @include md-down {
+    margin-bottom: 65px;
   }
 }
 

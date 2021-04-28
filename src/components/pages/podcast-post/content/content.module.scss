@@ -57,6 +57,7 @@
     padding: 15px 20px;
     margin: 15px 0;
     color: $color-accent-secondary;
+    text-align: left;
     background-color: rgba(123, 81, 251, 0.05);
     border-radius: 10px;
 
@@ -67,6 +68,10 @@
 
   & a {
     font-weight: 700;
+  }
+
+  strong {
+    font-style: italic;
   }
 
   hr {
