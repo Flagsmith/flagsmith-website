@@ -33,7 +33,11 @@ const Content = (props) => {
     date,
     url,
     author: {
-      node: { firstName, lastName, avatar },
+      node: {
+        firstName,
+        lastName,
+        acf: { avatar },
+      },
     },
   } = props;
 

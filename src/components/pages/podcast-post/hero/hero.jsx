@@ -28,7 +28,12 @@ const Hero = (props) => {
             photo={authorPhoto}
             position="Host Interview"
           />
-          <Avatar additionalClassName={cx('avatar', 'guest')} theme="dark" isReversed {...guest} />
+          <Avatar
+            additionalClassName={cx('avatar', 'guest', { withPhoto: guest.photo })}
+            theme="dark"
+            isReversed
+            {...guest}
+          />
           <div className={cx('background', 'left')}>
             <img src={leftBackground} alt="" />
           </div>

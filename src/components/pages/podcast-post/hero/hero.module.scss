@@ -69,6 +69,10 @@
   @include md-down {
     font-size: $font-size-base;
   }
+
+  @include xxs-down {
+    font-size: $font-size-sm;
+  }
 }
 
 .logo {
@@ -88,6 +92,10 @@
 
   @include sm-down {
     margin-bottom: 30px;
+  }
+
+  @include xxs-down {
+    display: none !important;
   }
 }
 
@@ -123,29 +131,38 @@
   }
 
   &.guest {
-    right: -40px;
+    right: 45px;
     bottom: 45px;
 
     @include fullhd-down {
-      right: -30px;
+      right: 30px;
       bottom: 30px;
     }
 
     @include xl-down {
-      bottom: 25px;
-    }
-
-    @include lg-down {
-      bottom: 35px;
-    }
-
-    @include md-down {
       right: 25px;
-      bottom: -35px;
+      bottom: 25px;
     }
 
     @include sm-down {
       right: 30px;
+    }
+
+    &.withPhoto {
+      right: -40px;
+
+      @include fullhd-down {
+        right: -30px;
+      }
+
+      @include md-down {
+        right: 25px;
+        bottom: -35px;
+      }
+
+      @include sm-down {
+        right: 30px;
+      }
     }
   }
 }

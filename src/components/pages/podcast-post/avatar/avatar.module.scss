@@ -16,8 +16,7 @@
       align-items: flex-end;
     }
 
-    .badge {
-      max-width: 350px;
+    .withPhoto {
       margin-right: 20px;
       margin-left: 0;
 
@@ -35,21 +34,33 @@
 }
 
 .badge {
-  margin-left: 20px;
+  max-width: 260px;
 
   @include lg-down {
-    margin-left: 15px;
     font-size: $font-size-sm;
   }
 
-  @include md-down {
-    margin-top: 10px;
-    margin-left: 0;
+  @include xxs-down {
+    font-size: $font-size-xs;
+    line-height: 1.3;
   }
 
   & span:first-child {
     display: block;
     font-weight: bold;
+  }
+
+  &.withPhoto {
+    margin-left: 20px;
+
+    @include lg-down {
+      margin-left: 15px;
+    }
+
+    @include md-down {
+      margin-top: 10px;
+      margin-left: 0;
+    }
   }
 
   &.light {

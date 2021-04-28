@@ -29,8 +29,15 @@ export const query = graphql`
         node {
           firstName
           lastName
-          avatar {
-            url
+          acf {
+            avatar {
+              altText
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(width: 80)
+                }
+              }
+            }
           }
         }
       }

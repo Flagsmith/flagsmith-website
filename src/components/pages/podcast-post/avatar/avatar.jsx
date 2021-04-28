@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -7,23 +8,33 @@ import styles from './avatar.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Avatar = ({ fullName, position, photo, theme, isReversed, additionalClassName }) => (
-  <div className={cx('wrapper', { reversed: isReversed }, additionalClassName)}>
-    <div className={cx('image-wrapper')}>
-      {photo?.url ? (
-        <img src={photo?.url} alt="" />
-      ) : (
-        <GatsbyImage image={getImage(photo?.localFile)} alt="" />
+const Avatar = ({ fullName, position, photo, theme, isReversed, additionalClassName }) => {
+  const { logo } = useStaticQuery(graphql`
+    query {
+      logo: file(relativePath: { eq: "pages/podcast-post/avatar/logo.png" }) {
+        childImageSharp {
+          gatsbyImageData(width: 80)
+        }
+      }
+    }
+  `);
+
+  return (
+    <div className={cx('wrapper', { reversed: isReversed }, additionalClassName)}>
+      {photo && (
+        <div className={cx('image-wrapper')}>
+          <GatsbyImage image={getImage(photo.localFile || logo)} alt={photo.altText} />
+        </div>
+      )}
+      {fullName && position && (
+        <div className={cx('badge', theme, { withPhoto: photo })}>
+          <span>{fullName}</span>
+          <span>{position}</span>
+        </div>
       )}
     </div>
-    {fullName && position && (
-      <div className={cx('badge', theme)}>
-        <span>{fullName}</span>
-        <span>{position}</span>
-      </div>
-    )}
-  </div>
-);
+  );
+};
 
 Avatar.propTypes = {
   fullName: PropTypes.string,
