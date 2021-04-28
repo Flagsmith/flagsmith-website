@@ -387,6 +387,9 @@ async function createPodcasts({ graphql, actions, reporter, menus, sharedBlocks 
   }
   const podcasts = result.data.allWpPodcast.nodes;
   podcasts.forEach(({ id, content, uri }) => {
+    if (uri === '/podcasts/dynamic-flags-feature-release/') {
+      return;
+    }
     const templatePath = path.resolve('./src/templates/podcast-post.jsx');
 
     const context = {
