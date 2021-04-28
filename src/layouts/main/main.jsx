@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
@@ -71,6 +72,39 @@ export const query = graphql`
     }
   }
   fragment wpPostSeo on WpPost {
+    seo {
+      canonical
+      cornerstone
+      focuskw
+      metaDesc
+      metaKeywords
+      metaRobotsNofollow
+      metaRobotsNoindex
+      opengraphAuthor
+      opengraphDescription
+      opengraphImage {
+        localFile {
+          childImageSharp {
+            fixed(toFormat: JPG, width: 1200, height: 630) {
+              src
+            }
+          }
+        }
+      }
+      opengraphModifiedTime
+      opengraphPublishedTime
+      opengraphPublisher
+      opengraphSiteName
+      opengraphTitle
+      opengraphType
+      opengraphUrl
+      readingTime
+      title
+      twitterDescription
+      twitterTitle
+    }
+  }
+  fragment wpPodcastSeo on WpPodcast {
     seo {
       canonical
       cornerstone
