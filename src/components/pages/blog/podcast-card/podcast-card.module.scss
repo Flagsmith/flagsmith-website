@@ -2,21 +2,17 @@
   position: relative;
   padding-top: 35px;
   padding-right: 35px;
-  padding-bottom: 100px;
+  padding-bottom: 75px;
   padding-left: 35px;
   color: $color-tertiary;
   background: $color-primary;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
 
-  @include fullhd-down {
-    padding-bottom: 70px;
-  }
-
   @include lg-down {
     padding-top: 25px;
     padding-right: 20px;
-    padding-bottom: 50px;
+    padding-bottom: 70px;
     padding-left: 20px;
   }
 
@@ -29,6 +25,7 @@
   @include sm-down {
     padding-right: 25px;
     padding-bottom: 120px;
+    padding-bottom: 50px;
     padding-left: 25px;
   }
 }
@@ -157,28 +154,8 @@
   max-width: 100%;
   border-radius: 0 0 10px 10px;
 
-  @include xl-down {
-    width: 730px;
-  }
-
-  @include lg-down {
-    width: 580px;
-  }
-
-  @include md-down {
-    width: 470px;
-  }
-
   img {
-    top: initial;
-    left: initial;
-    width: auto;
-    height: 95px;
     object-fit: contain !important;
-
-    @include xxs-down {
-      height: 70px;
-    }
   }
 }
 
@@ -207,8 +184,23 @@
 }
 
 .actions {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
+  padding-left: 95px;
+
+  @include fullhd-down {
+    padding-left: 65px;
+  }
+
+  @include lg-down {
+    padding-left: 60px;
+  }
+
+  @include md-down {
+    padding-left: 0;
+  }
 
   @include sm-down {
     display: block;

@@ -19,10 +19,10 @@ const PodcastCard = ({ title, acf: { podcastUrl, episode }, uri: url }) => {
   const { playerIllustration } = useStaticQuery(graphql`
     query {
       playerIllustration: file(
-        relativePath: { eq: "pages/blog/podcast-card/player-illustration.jpg" }
+        relativePath: { eq: "pages/blog/podcast-card/player-illustration.png" }
       ) {
         childImageSharp {
-          gatsbyImageData(width: 1010)
+          gatsbyImageData(width: 820)
         }
       }
     }
@@ -59,7 +59,7 @@ const PodcastCard = ({ title, acf: { podcastUrl, episode }, uri: url }) => {
         <Button className={cx('button')} to={url} theme="accent-tertiary">
           Listen now
         </Button>
-        <Link className={cx('all-podcasts')} to="/podcasts" withArrow>
+        <Link className={cx('all-podcasts')} to="/podcast" withArrow>
           All podcasts
         </Link>
       </div>

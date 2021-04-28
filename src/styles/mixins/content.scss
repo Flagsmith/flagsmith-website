@@ -151,6 +151,12 @@
         font-size: $font-size-xs;
         color: $color-additional-6;
       }
+
+      .gatsby-image-wrapper {
+        img {
+          object-fit: contain !important;
+        }
+      }
     }
   }
 
