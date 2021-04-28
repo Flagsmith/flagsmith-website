@@ -8,7 +8,7 @@ const filterNonRootItems = require('./src/utils/filter-non-root-items');
 // constants
 const SUPPORTED_MENU_TYPES = ['header', 'footer', 'mobile'];
 const POSTS_PER_PAGE = 8;
-const PODCASTS_PER_PAGE = 9;
+const PODCASTS_PER_PAGE = 8;
 
 async function createRedirects({ graphql, actions }) {
   const { createRedirect } = actions;
