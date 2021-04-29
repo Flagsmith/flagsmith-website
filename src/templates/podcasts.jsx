@@ -40,6 +40,19 @@ export const query = graphql`
               target
             }
           }
+          host {
+            firstName
+            lastName
+            acf {
+              avatar {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(width: 80)
+                  }
+                }
+              }
+            }
+          }
         }
       }
       ...wpPageSeo

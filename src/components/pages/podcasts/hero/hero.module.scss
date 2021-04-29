@@ -16,20 +16,21 @@
 .inner {
   display: grid;
   grid-template-columns: 620px 1fr;
-  column-gap: 100px;
+  column-gap: 160px;
 
   @include fullhd-down {
     grid-template-columns: 550px 1fr;
-    column-gap: 55px;
+    column-gap: 105px;
   }
 
   @include xl-down {
     grid-template-columns: 570px 1fr;
-    column-gap: 10px;
+    column-gap: 50px;
   }
 
   @include lg-down {
     grid-template-columns: 460px 1fr;
+    column-gap: 30px;
   }
 
   @include md-down {
@@ -141,6 +142,11 @@
     @include lg-down {
       font-size: $font-size-sm;
     }
+
+    @include xxs-down {
+      padding-top: 5px;
+      font-size: $font-size-xxxs;
+    }
   }
 }
 
@@ -160,19 +166,17 @@
   }
 }
 
-.image-wrapper {
-  align-self: center;
-  margin-bottom: 15px;
-
+.images {
   &.md-visible {
     display: none;
 
     @include md-down {
       display: block;
-      max-width: 580px;
-      margin-right: auto;
-      margin-bottom: 30px;
-      margin-left: auto;
+      margin-bottom: 40px;
+    }
+
+    @include xxs-down {
+      margin-bottom: 45px;
     }
   }
 

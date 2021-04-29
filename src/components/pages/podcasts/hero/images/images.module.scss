@@ -1,0 +1,299 @@
+.wrapper {
+  position: relative;
+  max-height: 565px;
+  margin-top: 55px;
+
+  @include fullhd-down {
+    max-height: 475px;
+    margin-top: 95px;
+  }
+
+  @include xl-down {
+    max-height: 410px;
+    margin-top: 125px;
+  }
+
+  @include lg-down {
+    max-height: 370px;
+    margin-top: 115px;
+  }
+
+  @include md-down {
+    max-width: 580px;
+    height: 380px;
+    margin-top: 45px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @include sm-down {
+    max-width: 545px;
+  }
+
+  @include xs-down {
+    height: 355px;
+  }
+
+  @include xxs-down {
+    height: 260px;
+  }
+}
+
+.box {
+  position: absolute;
+
+  &.purple,
+  &.yellow {
+    @include fullhd-down {
+      width: 52%;
+    }
+
+    @include lg-down {
+      width: 55%;
+    }
+
+    @include md-down {
+      width: 50%;
+      height: 80%;
+    }
+
+    @include sm-down {
+      width: 50%;
+    }
+
+    @include xs-down {
+      width: 52%;
+      height: 73%;
+    }
+
+    @include xxs-down {
+      width: 56%;
+    }
+  }
+
+  &.purple {
+    top: 0;
+    left: 0;
+  }
+
+  &.yellow {
+    right: 17%;
+    bottom: 0;
+
+    @include lg-down {
+      right: 13%;
+    }
+
+    @include md-down {
+      right: 11%;
+    }
+
+    @include sm-down {
+      right: 6%;
+    }
+  }
+
+  &.transparent {
+    top: 11%;
+    right: 0;
+
+    @include fullhd-down {
+      width: 61%;
+    }
+
+    @include lg-down {
+      top: 12%;
+      width: 64%;
+    }
+
+    @include md-down {
+      top: 8%;
+      width: 58%;
+    }
+
+    @include sm-down {
+      top: 14%;
+      width: 62%;
+    }
+
+    @include xs-down {
+      top: 10%;
+    }
+  }
+}
+
+.inner {
+  position: relative;
+  display: flex;
+
+  & > svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.host {
+  position: absolute;
+  top: -20px;
+  left: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @include fullhd-down {
+    top: -15px;
+    left: 25px;
+  }
+
+  @include xl-down {
+    left: 20px;
+  }
+
+  @include xxs-down {
+    left: 10px;
+  }
+}
+
+.avatar {
+  margin-bottom: 20px;
+
+  img {
+    border-radius: 20px;
+
+    @include sm-down {
+      border-radius: 15px;
+    }
+  }
+
+  @include xl-down {
+    margin-bottom: 15px;
+  }
+
+  @include sm-down {
+    margin-bottom: 10px;
+  }
+
+  @include xxs-down {
+    margin-bottom: 5px;
+  }
+}
+
+.avatar,
+.icon svg {
+  display: block;
+
+  @include fullhd-down {
+    width: 68px;
+    height: 68px;
+  }
+
+  @include xl-down {
+    width: 58px;
+    height: 58px;
+  }
+
+  @include lg-down {
+    width: 51px;
+    height: 51px;
+  }
+
+  @include md-down {
+    width: 58px;
+    height: 58px;
+  }
+
+  @include sm-down {
+    width: 51px;
+    height: 51px;
+  }
+}
+
+.company {
+  top: 100px;
+  left: 60px;
+  margin-bottom: 10px;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: $line-height-secondary;
+  color: $color-tertiary;
+
+  @include fullhd-down {
+    font-size: 28px;
+  }
+
+  @include xl-down {
+    margin-bottom: 5px;
+    font-size: $font-size-md;
+  }
+
+  @include sm-down {
+    font-size: 22px;
+  }
+
+  @include xxs-down {
+    font-size: 18px;
+  }
+}
+
+.name {
+  font-size: $font-size-xs;
+  color: rgba($color-tertiary, 0.5);
+
+  @include xl-down {
+    font-size: 12px;
+  }
+}
+
+.icon {
+  position: absolute;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
+
+  &-microphone {
+    bottom: -30px;
+    left: -30px;
+
+    @include fullhd-down {
+      bottom: -25px;
+      left: -25px;
+    }
+
+    @include xl-down {
+      bottom: -20px;
+      left: -20px;
+    }
+
+    @include sm-down {
+      bottom: -10px;
+      left: -10px;
+    }
+
+    @include xs-down {
+      bottom: -15px;
+      left: -5px;
+    }
+  }
+
+  &-headphones {
+    right: -30px;
+    bottom: 30px;
+
+    @include fullhd-down {
+      right: -25px;
+      bottom: 25px;
+    }
+
+    @include xl-down {
+      right: -20px;
+      bottom: 20px;
+    }
+
+    @include sm-down {
+      right: -10px;
+    }
+
+    @include xs-down {
+      bottom: 10px;
+    }
+  }
+}

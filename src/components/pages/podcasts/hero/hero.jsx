@@ -1,6 +1,4 @@
 import classNames from 'classnames/bind';
-import { graphql, useStaticQuery } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -10,6 +8,7 @@ import ApplePodcastIcon from 'icons/apple-podcasts.inline.svg';
 import SpotifyIcon from 'icons/spotify.inline.svg';
 
 import styles from './hero.module.scss';
+import Images from './images';
 
 const cx = classNames.bind(styles);
 
@@ -18,50 +17,36 @@ const icons = {
   spotify: SpotifyIcon,
 };
 
-const Hero = ({ title, text, description, buttons }) => {
-  const { podcastImage } = useStaticQuery(graphql`
-    query {
-      podcastImage: file(relativePath: { eq: "pages/podcasts/hero/podcast-image.jpg" }) {
-        childImageSharp {
-          gatsbyImageData(width: 810)
-        }
-      }
-    }
-  `);
-  return (
-    <section className={cx('wrapper')}>
-      <div className={cx('container', 'inner')}>
-        <div>
-          <Heading className={cx('title')} innerHTML={title} />
-          <div className={cx('text')} dangerouslySetInnerHTML={{ __html: text }} />
-          <div className={cx('image-wrapper', 'md-visible')}>
-            <GatsbyImage image={getImage(podcastImage)} alt="" />
+const Hero = ({ title, text, description, buttons, host }) => (
+  <section className={cx('wrapper')}>
+    <div className={cx('container', 'inner')}>
+      <div>
+        <Heading className={cx('title')} innerHTML={title} />
+        <div className={cx('text')} dangerouslySetInnerHTML={{ __html: text }} />
+        <Images className={cx('images', 'md-visible')} {...host} />
+
+        <div className={cx('bottom')}>
+          <div className={cx('buttons-wrapper')}>
+            {buttons.map(({ buttonIcon, button: { url, target, title } }, index) => {
+              const Icon = icons[buttonIcon];
+              return (
+                <Link className={cx('button')} to={url} target={target} key={index}>
+                  <Icon className={cx('button-icon')} />
+                  <div className={cx('button-text')}>
+                    <span>Listen on</span>
+                    <span className={cx('button-name')}>{title}</span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
-          <div className={cx('bottom')}>
-            <div className={cx('buttons-wrapper')}>
-              {buttons.map(({ buttonIcon, button: { url, target, title } }, index) => {
-                const Icon = icons[buttonIcon];
-                return (
-                  <Link className={cx('button')} to={url} target={target} key={index}>
-                    <Icon className={cx('button-icon')} />
-                    <div className={cx('button-text')}>
-                      <span>Listen on</span>
-                      <span className={cx('button-name')}>{title}</span>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-            <div className={cx('description')} dangerouslySetInnerHTML={{ __html: description }} />
-          </div>
-        </div>
-        <div className={cx('image-wrapper', 'md-hidden')}>
-          <GatsbyImage image={getImage(podcastImage)} alt="" />
+          <div className={cx('description')} dangerouslySetInnerHTML={{ __html: description }} />
         </div>
       </div>
-    </section>
-  );
-};
+      <Images className={cx('images', 'md-hidden')} {...host} />
+    </div>
+  </section>
+);
 
 Hero.propTypes = {
   title: PropTypes.string.isRequired,
@@ -77,6 +62,7 @@ Hero.propTypes = {
       }),
     })
   ).isRequired,
+  host: PropTypes.shape({}).isRequired,
 };
 
 export default Hero;
