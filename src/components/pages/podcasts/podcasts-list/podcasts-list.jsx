@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import FeaturedPost from 'components/shared/featured-post';
 import Pagination from 'components/shared/pagination';
@@ -14,6 +14,7 @@ const cx = classNames.bind(styles);
 const PodcastsList = ({ podcasts, rootPath }) => {
   const { pageCount, currentPage } = useContext(MainContext);
   const podcastUrls = podcasts.map((podcast) => podcast.acf.podcastUrl);
+  const [currentPodcast, setCurrentPodcast] = useState(null);
 
   const scrollTo = () => {
     const elementClassName = styles.list || 'list';
@@ -37,6 +38,7 @@ const PodcastsList = ({ podcasts, rootPath }) => {
       <div className={cx('container', 'inner')}>
         <div className={cx('list')}>
           {podcasts.map((podcast, index) => {
+            const isCurrentPodcast = podcastUrls[index] === currentPodcast;
             const { tags } = podcast;
             const hasBlogTag = Boolean(tags?.nodes.find((tag) => tag?.name === 'blog'));
             const { blogPost } = podcast.acf;
@@ -45,7 +47,12 @@ const PodcastsList = ({ podcasts, rootPath }) => {
                 {hasBlogTag && blogPost ? (
                   <FeaturedPost post={blogPost} />
                 ) : (
-                  <Item audioUrl={podcastUrls[index]} {...podcast} />
+                  <Item
+                    audioUrl={podcastUrls[index]}
+                    isCurrentPodcast={isCurrentPodcast}
+                    setCurrentPodcast={setCurrentPodcast}
+                    {...podcast}
+                  />
                 )}
               </div>
             );

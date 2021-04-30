@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 
 import PauseIcon from 'icons/pause.inline.svg';
@@ -12,7 +12,8 @@ import styles from './audio.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Audio = ({ audioUrl, setIsCurrentPodcastPlaying }) => {
+const Audio = ({ audioUrl, isCurrentPodcast, setCurrentPodcast, setIsCurrentPodcastPlaying }) => {
+  const player = useRef();
   const [isPlaying, setIsPlaying] = useState(false);
 
   // More details:
@@ -68,11 +69,24 @@ const Audio = ({ audioUrl, setIsCurrentPodcastPlaying }) => {
     }
     // highlight a playable item on a podcast page
     if (isPlaying) {
+      setCurrentPodcast(audioUrl);
       setIsCurrentPodcastPlaying(true);
     } else {
       setIsCurrentPodcastPlaying(false);
     }
-  }, [isPlaying, setIsCurrentPodcastPlaying]);
+  }, [isPlaying, setIsCurrentPodcastPlaying, audioUrl, setCurrentPodcast]);
+
+  useEffect(() => {
+    if (typeof isCurrentPodcast === 'undefined') {
+      return;
+    }
+    // pause and play when switching between podcasts
+    if (isCurrentPodcast) {
+      player.current.audio.current.play();
+    } else {
+      player.current.audio.current.pause();
+    }
+  }, [isCurrentPodcast]);
 
   return (
     <div className={cx('wrapper')}>
@@ -88,6 +102,7 @@ const Audio = ({ audioUrl, setIsCurrentPodcastPlaying }) => {
         }}
         customControlsSection={controlsSection}
         customProgressBarSection={customProgressBarSection}
+        ref={player}
         onPlay={handlePlaying}
         onPause={handlePlaying}
       />
@@ -96,11 +111,13 @@ const Audio = ({ audioUrl, setIsCurrentPodcastPlaying }) => {
 };
 
 Audio.defaultProps = {
+  setCurrentPodcast: null,
   setIsCurrentPodcastPlaying: null,
 };
 
 Audio.propTypes = {
   audioUrl: PropTypes.string.isRequired,
+  setCurrentPodcast: PropTypes.func,
   setIsCurrentPodcastPlaying: PropTypes.func,
 };
 
