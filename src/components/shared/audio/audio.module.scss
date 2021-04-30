@@ -1,83 +1,205 @@
-.controls {
-  position: relative;
-  display: flex;
-  align-items: center;
+.wrapper {
+  :global {
+    .rhap_main {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      align-items: center;
+
+      @include xl-down {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rhap_progress-section {
+      display: flex;
+      align-items: center;
+      order: 2;
+
+      &:hover {
+        .rhap_progress-indicator {
+          opacity: 1;
+        }
+      }
+    }
+
+    .rhap_controls-section {
+      @include xl-down {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+      }
+    }
+
+    .rhap_progress-container {
+      display: flex;
+      flex: 1 1;
+      align-items: center;
+      align-self: center;
+      margin: 0 25px;
+      cursor: pointer;
+      outline: none;
+
+      @include no-highlight-on-tap;
+
+      @include xl-down {
+        margin: 0;
+      }
+    }
+
+    .rhap_time {
+      font-size: $font-size-sm;
+      line-height: 1;
+      color: $color-additional-6;
+
+      @include no-highlight-on-tap;
+    }
+
+    .rhap_current-time {
+      &::after {
+        display: inline-block;
+        white-space: pre;
+        content: '\20/\20';
+      }
+
+      @include xl-down {
+        margin-left: 30px;
+      }
+    }
+
+    .rhap_progress-bar {
+      position: relative;
+      z-index: 0;
+      box-sizing: border-box;
+      width: 100%;
+      height: 8px;
+      background-color: #edeced;
+      border-radius: 4px;
+    }
+
+    .rhap_progress-filled {
+      position: absolute;
+      left: 0;
+      z-index: 2;
+      height: 100%;
+      background-color: $color-accent-secondary;
+      border-radius: 4px;
+    }
+
+    .rhap_download-progress {
+      // height: 100%;
+      // position: absolute;
+      // z-index: 1;
+      // background-color: rgba($color-accent-secondary, 0.15);
+      // border-radius: 4px;
+      display: none;
+    }
+
+    .rhap_progress-indicator {
+      position: absolute;
+      top: -4px;
+      z-index: 3;
+      width: 16px;
+      height: 16px;
+      margin-left: -10px;
+      background-color: $color-tertiary;
+      border-radius: 50px;
+      box-shadow: 0 0 5px rgba(30, 13, 38, 0.5);
+      opacity: 0;
+      transition: opacity $transition-base;
+    }
+
+    .rhap_volume-bar-area {
+      display: none;
+    }
+
+    .rhap_volume-controls {
+      margin-left: 60px;
+
+      @include xl-down {
+        margin-left: auto;
+      }
+    }
+
+    button {
+      display: flex;
+      padding: 0;
+      line-height: 1;
+      text-align: center;
+      text-decoration: none;
+      white-space: nowrap;
+      vertical-align: top;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      outline: none;
+
+      @include no-highlight-on-tap;
+    }
+
+    .unmute_inline_svg__icon {
+      g {
+        stroke: #d7d5d8;
+      }
+
+      path {
+        fill: #d7d5d8;
+      }
+    }
+  }
+}
+
+.player {
   padding-top: 25px;
   padding-right: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 25px;
   padding-left: 25px;
   margin-bottom: 25px;
+  line-height: 1;
   background-color: $color-additional-4;
   border-radius: 10px;
+  outline: none;
+  box-shadow: none;
+  transition: background-color $transition-base;
 
   @include xl-down {
-    padding-bottom: 70px;
+    padding-top: 30px;
+    padding-right: 25px;
+    padding-bottom: 30px;
+    padding-left: 25px;
   }
 
   &.audio-play {
     background-color: $color-primary;
     box-shadow: 0 10px 20px rgba(30, 13, 38, 0.2);
 
-    .volume {
-      path {
-        stroke: $color-tertiary;
+    :global {
+      .rhap_time {
+        color: $color-tertiary;
+      }
 
-        &:first-of-type {
+      .rhap_progress-bar {
+        background-color: rgba($color-tertiary, 0.15);
+      }
+
+      .volume_inline_svg__icon {
+        path {
+          stroke: $color-tertiary;
+
+          &:first-of-type {
+            fill: $color-tertiary;
+          }
+        }
+      }
+
+      .unmute_inline_svg__icon {
+        g {
+          stroke: $color-tertiary;
+        }
+
+        path {
           fill: $color-tertiary;
         }
       }
     }
   }
-}
-
-.button,
-.volume {
-  flex-shrink: 0;
-  cursor: pointer;
-}
-
-.button {
-  @include xl-down {
-    margin-right: 25px;
-  }
-}
-
-.volume {
-  position: relative;
-  height: 36px;
-  margin-left: 60px;
-}
-
-.icon {
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  outline: none;
-
-  svg {
-    vertical-align: middle;
-  }
-
-  .unmute {
-    g {
-      stroke: #d7d5d8;
-    }
-
-    path {
-      fill: #d7d5d8;
-    }
-  }
-}
-
-.inner {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  height: 175px;
-  padding-top: 15px;
-  border-radius: 6px;
 }

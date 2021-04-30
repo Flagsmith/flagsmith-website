@@ -11,7 +11,7 @@ import styles from './item.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Item = ({ title, acf: { description, episode }, url, audioUrl, isCurrent, onStartPlay }) => {
+const Item = ({ title, acf: { description, episode }, url, audioUrl }) => {
   const [isCurrentPodcastPlaying, setIsCurrentPodcastPlaying] = useState(false);
 
   return (
@@ -24,12 +24,7 @@ const Item = ({ title, acf: { description, episode }, url, audioUrl, isCurrent, 
           </Heading>
         </Link>
         <p className={cx('description')}>{description}</p>
-        <Audio
-          audioUrl={audioUrl}
-          isCurrent={isCurrent}
-          setIsPlaying={setIsCurrentPodcastPlaying}
-          onStartPlay={onStartPlay}
-        />
+        <Audio audioUrl={audioUrl} setIsCurrentPodcastPlaying={setIsCurrentPodcastPlaying} />
         <Link className={cx('link')} to={url} withArrow>
           View Transcription
         </Link>
@@ -45,6 +40,7 @@ Item.propTypes = {
     episode: PropTypes.number.isRequired,
   }).isRequired,
   url: PropTypes.string.isRequired,
+  audioUrl: PropTypes.string.isRequired,
 };
 
 export default Item;

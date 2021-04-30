@@ -1,101 +1,107 @@
-/* eslint-disable jsx-a11y/media-has-caption */
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 
-import useAudio from 'hooks/use-audio';
 import PauseIcon from 'icons/pause.inline.svg';
 import PlayIcon from 'icons/play.inline.svg';
 import UnmuteIcon from 'icons/unmute.inline.svg';
 import VolumeIcon from 'icons/volume.inline.svg';
 
 import styles from './audio.module.scss';
-import Bar from './bar';
 
 const cx = classNames.bind(styles);
 
-const Audio = ({ audioUrl, isCurrent, setIsPlaying, onStartPlay }) => {
-  const {
-    audioRef,
-    duration,
-    setAudioTime,
-    currentTime,
-    audioState,
-    setAudioState,
-    setClickedTime,
-    muteAudio,
-    isMuted,
-  } = useAudio(audioUrl);
-  const playing = audioState === 'play';
+const Audio = ({ audioUrl, setIsCurrentPodcastPlaying }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  useEffect(() => {
-    if (!isCurrent) {
-      setAudioState('pause');
+  // More details:
+  // https://static.hanzluo.com/react-h5-audio-player-storybook/index.html?path=/docs/layouts-advanced--stacked
+  const [controlsSection, setControlsSection] = useState([RHAP_UI.MAIN_CONTROLS]);
+  const [customProgressBarSection, setProgressBarSection] = useState([
+    RHAP_UI.PROGRESS_BAR,
+    RHAP_UI.CURRENT_TIME,
+    RHAP_UI.DURATION,
+    RHAP_UI.VOLUME_CONTROLS,
+  ]);
+
+  const handlePlaying = () => setIsPlaying(!isPlaying);
+
+  const handleSetCustomControls = () => {
+    const mediaQuery = window.matchMedia('(max-width: 1439.98px)');
+
+    if (mediaQuery.matches) {
+      setControlsSection([
+        RHAP_UI.MAIN_CONTROLS,
+        RHAP_UI.CURRENT_TIME,
+        RHAP_UI.DURATION,
+        RHAP_UI.VOLUME_CONTROLS,
+      ]);
+      setProgressBarSection([RHAP_UI.PROGRESS_BAR]);
+    } else {
+      setControlsSection([RHAP_UI.MAIN_CONTROLS]);
+      setProgressBarSection([
+        RHAP_UI.PROGRESS_BAR,
+        RHAP_UI.CURRENT_TIME,
+        RHAP_UI.DURATION,
+        RHAP_UI.VOLUME_CONTROLS,
+      ]);
     }
-  }, [isCurrent, setAudioState]);
+  };
+
+  // eslint-disable-next-line consistent-return
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      handleSetCustomControls();
+
+      window.addEventListener('resize', handleSetCustomControls);
+
+      return () => {
+        window.removeEventListener('resize', handleSetCustomControls);
+      };
+    }
+  }, []);
 
   useEffect(() => {
-    if (!setIsPlaying) {
+    if (!setIsCurrentPodcastPlaying) {
       return;
     }
-    if (playing) {
-      setIsPlaying(true);
+    // highlight a playable item on a podcast page
+    if (isPlaying) {
+      setIsCurrentPodcastPlaying(true);
     } else {
-      setIsPlaying(false);
+      setIsCurrentPodcastPlaying(false);
     }
-  });
-
-  const startPlay = useCallback(() => {
-    setAudioState('play');
-
-    if (onStartPlay) {
-      onStartPlay(audioUrl);
-    }
-  }, [setAudioState, onStartPlay, audioUrl]);
+  }, [isPlaying, setIsCurrentPodcastPlaying]);
 
   return (
     <div className={cx('wrapper')}>
-      <audio
-        preload="auto"
-        ref={audioRef}
-        muted={isMuted}
-        playsInline
-        onPlay={() => setAudioState('play')}
-        onPause={() => setAudioState('pause')}
-        onTimeUpdate={setAudioTime}
-      >
-        <source type="audio/mp3" src={audioUrl} />
-        Your browser does not support the <code>audio</code> element.
-      </audio>
-      <div className={cx('controls', { audioPlay: playing })}>
-        {playing ? (
-          <PauseIcon className={cx('button')} onClick={() => setAudioState('pause')} />
-        ) : (
-          <PlayIcon className={cx('button')} onClick={startPlay} />
-        )}
-        <Bar
-          className={cx('bar')}
-          currentTime={currentTime}
-          duration={duration}
-          playing={playing}
-          audioState={audioState}
-          setAudioState={setAudioState}
-          onTimeUpdate={(time) => setClickedTime(time)}
-        />
-        <div className={cx('volume', { audioPlay: playing })}>
-          <div className={cx('inner')}>
-            <button className={cx('icon')} type="button" onClick={muteAudio}>
-              {isMuted ? <UnmuteIcon className={cx('unmute')} /> : <VolumeIcon />}
-            </button>
-          </div>
-        </div>
-      </div>
+      <AudioPlayer
+        className={cx('player', { audioPlay: isPlaying })}
+        src={audioUrl}
+        showJumpControls={false}
+        customIcons={{
+          play: <PlayIcon />,
+          pause: <PauseIcon />,
+          volume: <VolumeIcon />,
+          volumeMute: <UnmuteIcon />,
+        }}
+        customControlsSection={controlsSection}
+        customProgressBarSection={customProgressBarSection}
+        onPlay={handlePlaying}
+        onPause={handlePlaying}
+      />
     </div>
   );
 };
 
-Audio.propTypes = {};
+Audio.defaultProps = {
+  setIsCurrentPodcastPlaying: null,
+};
 
-Audio.defaultProps = {};
+Audio.propTypes = {
+  audioUrl: PropTypes.string.isRequired,
+  setIsCurrentPodcastPlaying: PropTypes.func,
+};
 
 export default Audio;
