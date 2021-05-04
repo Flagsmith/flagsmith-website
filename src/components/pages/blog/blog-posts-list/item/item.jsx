@@ -30,11 +30,15 @@ const Item = ({
     >
       {featuredImage && (
         <div className={cx('image-wrapper', 'sm-hidden')}>
-          <GatsbyImage
-            className={cx('image')}
-            image={getImage(featuredImage.node.localFile)}
-            alt=""
-          />
+          {featuredImage.node.localFile.childImageSharp ? (
+            <GatsbyImage
+              className={cx('image')}
+              image={getImage(featuredImage.node.localFile)}
+              alt=""
+            />
+          ) : (
+            <img src={featuredImage.node.localFile.publicURL} className={cx('image')} alt="" />
+          )}
         </div>
       )}
       <div className={cx('content')}>
