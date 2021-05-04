@@ -39,9 +39,11 @@ const SEO = (props) => {
     }
   `);
 
-  const opengraphPreviewImage = opengraphImage
-    ? createMetaImagePath(opengraphImage, siteUrl)
-    : siteUrl + siteImage;
+  let opengraphPreviewImage = siteUrl + siteImage;
+
+  if (opengraphImage && opengraphImage?.localFile?.childImageSharp) {
+    opengraphPreviewImage = createMetaImagePath(opengraphImage, siteUrl);
+  }
 
   const isRobotsNoindexPage = metaRobotsNoindex === 'noindex';
   return (
