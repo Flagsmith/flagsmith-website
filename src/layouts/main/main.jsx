@@ -53,7 +53,7 @@ export const query = graphql`
       opengraphImage {
         localFile {
           childImageSharp {
-            fixed(toFormat: JPG, width: 1200, height: 630) {
+            fixed(toFormat: JPG, width: 1200, height: 630, fit: CONTAIN) {
               src
             }
           }
@@ -85,7 +85,7 @@ export const query = graphql`
       opengraphImage {
         localFile {
           childImageSharp {
-            fixed(toFormat: JPG, width: 1200, height: 630) {
+            fixed(toFormat: JPG, width: 1200, height: 630, fit: CONTAIN) {
               src
             }
           }
@@ -119,7 +119,7 @@ export const query = graphql`
       opengraphImage {
         localFile {
           childImageSharp {
-            fixed(toFormat: JPG, width: 1200, height: 630) {
+            fixed(toFormat: JPG, width: 1200, height: 630, fit: CONTAIN) {
               src
             }
           }
