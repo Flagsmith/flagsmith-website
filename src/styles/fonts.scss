@@ -3,8 +3,8 @@
   font-style: normal;
   font-weight: 700;
   src:
-    url('/fonts/open-sans-bold.woff2') format('woff2'),
-    url('/fonts/open-sans-bold.woff') format('woff');
+    url('../fonts/open-sans-bold.woff2') format('woff2'),
+    url('../fonts/open-sans-bold.woff') format('woff');
 }
 
 @font-face {
@@ -12,8 +12,8 @@
   font-style: italic;
   font-weight: normal;
   src:
-    url('/fonts/open-sans-italic.woff2') format('woff2'),
-    url('/fonts/open-sans-italic.woff') format('woff');
+    url('../fonts/open-sans-italic.woff2') format('woff2'),
+    url('../fonts/open-sans-italic.woff') format('woff');
 }
 
 @font-face {
@@ -21,8 +21,8 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url('/fonts/open-sans-regular.woff2') format('woff2'),
-    url('/fonts/open-sans-regular.woff') format('woff');
+    url('../fonts/open-sans-regular.woff2') format('woff2'),
+    url('../fonts/open-sans-regular.woff') format('woff');
 }
 
 @font-face {
@@ -30,8 +30,8 @@
   font-style: normal;
   font-weight: 600;
   src:
-    url('/fonts/open-sans-semi-bold.woff2') format('woff2'),
-    url('/fonts/open-sans-semi-bold.woff') format('woff');
+    url('../fonts/open-sans-semi-bold.woff2') format('woff2'),
+    url('../fonts/open-sans-semi-bold.woff') format('woff');
 }
 
 @font-face {
@@ -39,8 +39,8 @@
   font-style: italic;
   font-weight: 600;
   src:
-    url('/fonts/open-sans-semi-bold-italic.woff2') format('woff2'),
-    url('/fonts/open-sans-semi-bold-italic.woff') format('woff');
+    url('../fonts/open-sans-semi-bold-italic.woff2') format('woff2'),
+    url('../fonts/open-sans-semi-bold-italic.woff') format('woff');
 }
 
 @font-face {
@@ -48,8 +48,8 @@
   font-style: normal;
   font-weight: 700;
   src:
-    url('/fonts/bitter-bold.woff2') format('woff2'),
-    url('/fonts/bitter-bold.woff') format('woff');
+    url('../fonts/bitter-bold.woff2') format('woff2'),
+    url('../fonts/bitter-bold.woff') format('woff');
 }
 
 @font-face {
@@ -57,6 +57,6 @@
   font-style: normal;
   font-weight: 800;
   src:
-    url('/fonts/bitter-extra-bold.woff2') format('woff2'),
-    url('/fonts/bitter-extra-bold.woff') format('woff');
+    url('../fonts/bitter-extra-bold.woff2') format('woff2'),
+    url('../fonts/bitter-extra-bold.woff') format('woff');
 }
