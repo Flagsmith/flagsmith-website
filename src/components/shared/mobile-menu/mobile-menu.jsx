@@ -15,6 +15,14 @@ const cx = classNames.bind(styles);
 const MobileMenu = ({ isOpen, onCloseButtonClick }) => {
   const {
     menus: { mobileMenuItems: menuItems },
+    sharedBlocks: {
+      header: {
+        acf: {
+          button1: { title: button1Title, url: button1Link, target: button1Target },
+          button2: { title: button2Title, url: button2Link, target: button2Target },
+        },
+      },
+    },
   } = useContext(MainContext);
 
   return (
@@ -34,12 +42,17 @@ const MobileMenu = ({ isOpen, onCloseButtonClick }) => {
         })}
       </ul>
       <div className={cx('buttons-wrapper')}>
-        <Button className={cx('button')} to="/">
+        <Button className={cx('button')} to={button1Link} target={button1Target}>
           <GithubIcon className={cx('icon')} />
-          GitHub
+          {button1Title}
         </Button>
-        <Button className={cx('button')} theme="accent-tertiary" to="/">
-          Sign in
+        <Button
+          className={cx('button')}
+          theme="accent-tertiary"
+          to={button2Link}
+          target={button2Target}
+        >
+          {button2Title}
         </Button>
       </div>
       <button

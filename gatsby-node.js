@@ -115,6 +115,7 @@ const getAllSharedBlocks = async (graphql) => {
       header: wpSharedBlock(slug: { eq: "header" }) {
         acf {
           button1 {
+            title
             url
             target
           }
