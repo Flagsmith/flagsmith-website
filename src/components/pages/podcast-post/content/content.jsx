@@ -88,11 +88,12 @@ Content.propTypes = {
         target: PropTypes.string,
       }),
     })
-  ).isRequired,
+  ),
 };
 
 Content.defaultProps = {
   content: null,
+  relatedLinks: null,
 };
 
 export default Content;
