@@ -31,7 +31,6 @@ const validationSchema = yup.object().shape({
     .email('Must be a valid email')
     .required('Business email is a required field'),
   phone: yup.string().trim().required('Phone number is a required field'),
-  website: yup.string().trim().required('Website is a required field'),
 });
 
 // It is used for proper loading animation because most of the time we get response from the server almost immediately
@@ -63,7 +62,7 @@ const ContactForm = (props) => {
         input_1: values.name,
         input_2: values.email,
         input_3: values.phone,
-        input_5: values.website,
+        input_5: values.howcanwehelp,
       }).then(() => {
         setIsLoading(false);
         setServerResponse('success');
@@ -147,10 +146,9 @@ const ContactForm = (props) => {
                   ref={register}
                 />
                 <Input
-                  name="website"
-                  placeholder="Website to install Flagsmith on"
-                  autoComplete="url"
-                  error={errors?.website?.message}
+                  name="howcanwehelp"
+                  placeholder="How can we help you?"
+                  tag="textarea"
                   ref={register}
                 />
 
@@ -237,7 +235,7 @@ ContactForm.defaultProps = {
   id: '',
   titleHighlightColor: 'primary',
   description: '',
-  buttonText: 'Book a demo',
+  buttonText: 'Contact Us',
   withBackground: false,
   marginBottom: PropTypes.oneOf(['xl', 'lg', 'md', 'sm', 'xs']),
 };

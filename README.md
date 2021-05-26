@@ -33,6 +33,12 @@ npm install
 
 ## Usage
 
+### Run the website in develop mode
+
+```bash
+npm run develop
+```
+
 ### Run the website
 
 ```bash
