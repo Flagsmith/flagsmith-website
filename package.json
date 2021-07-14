@@ -33,7 +33,7 @@
     "gatsby-plugin-image": "^1.2.0",
     "gatsby-plugin-netlify": "^3.4.0",
     "gatsby-plugin-sitemap": "^3.3.0",
-    "gatsby-source-wordpress": "^5.3.0-next.1",
+    "gatsby-source-wordpress": "^5.9.2",
     "html-react-parser": "^1.2.4",
     "lodash.isboolean": "^3.0.3",
     "lodash.isempty": "^4.4.0",
