@@ -2,10 +2,11 @@ import classNames from 'classnames/bind';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React from 'react';
 
 import Button from 'components/shared/button';
 import Heading from 'components/shared/heading';
+import Tooltip from 'components/shared/tooltip';
 
 import Check from './images/check.inline.svg';
 import MostPopular from './images/most-popular.inline.svg';
@@ -113,10 +114,11 @@ const Prices = ({ items }) => {
                   </Button>
                 </div>
                 <ul className={cx('features')}>
-                  {features.map(({ text, enable }, index) => (
+                  {features.map(({ text, enable, tooltip }, index) => (
                     <li className={cx({ enable })} key={index}>
                       {enable ? <Check /> : <UnCheck />}
                       <div dangerouslySetInnerHTML={{ __html: text }} />
+                      {tooltip && <Tooltip text={tooltip} />}
                     </li>
                   ))}
                 </ul>
