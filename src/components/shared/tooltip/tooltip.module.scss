@@ -7,9 +7,12 @@
   align-items: center;
   justify-content: center;
   max-width: 200px;
-  margin-top: 2px;
   margin-left: 6px;
   cursor: pointer;
+
+  @include fullhd-down {
+    margin-top: 2px;
+  }
 }
 
 .icon {
