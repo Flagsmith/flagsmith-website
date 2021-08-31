@@ -1,0 +1,31 @@
+.container {
+  display: inline-block;
+}
+
+.opener {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 200px;
+  margin-left: 6px;
+  cursor: pointer;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 0 !important;
+}
+
+.inner {
+  max-width: 330px;
+  padding: 15px !important;
+  font-family: $font-family-primary;
+  font-weight: 600;
+  line-height: $line-height-primary;
+  border-radius: 6px !important;
+
+  @include xxs-down {
+    max-width: 80vw;
+  }
+}

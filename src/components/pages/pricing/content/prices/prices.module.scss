@@ -46,7 +46,6 @@
 }
 
 .item {
-  z-index: 1;
   display: flex;
   flex: 0 0 360px;
   flex-direction: column;
@@ -292,6 +291,10 @@
     svg {
       flex-shrink: 0;
       margin-right: 10px;
+
+      @include fullhd-down {
+        margin-top: 2px;
+      }
 
       @include xl-down {
         width: 18px;

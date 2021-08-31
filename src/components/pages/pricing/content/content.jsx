@@ -62,9 +62,6 @@ const Content = ({ hero: { title, description, tabs, prices, options }, faq, get
           </div>
 
           <div className={cx('content', tabNameActive)}>
-            {tabNameActive === 'cloud' && <Prices items={prices} />}
-            {tabNameActive === 'onPrem' && <Options items={options} />}
-
             <img
               className={cx('shape', 'shape-1')}
               src={shape1}
@@ -79,6 +76,8 @@ const Content = ({ hero: { title, description, tabs, prices, options }, faq, get
               loading="lazy"
               aria-hidden
             />
+            {tabNameActive === 'cloud' && <Prices items={prices} />}
+            {tabNameActive === 'onPrem' && <Options items={options} />}
           </div>
         </div>
       </section>

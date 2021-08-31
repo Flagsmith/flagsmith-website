@@ -56,6 +56,7 @@ export const query = graphql`
             features {
               text
               enable
+              tooltip
             }
             theme
             isMostPopular
