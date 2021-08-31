@@ -9,10 +9,6 @@
   max-width: 200px;
   margin-left: 6px;
   cursor: pointer;
-
-  @include fullhd-down {
-    margin-top: 2px;
-  }
 }
 
 .icon {
