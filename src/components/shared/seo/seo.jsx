@@ -48,7 +48,7 @@ const SEO = (props) => {
     <Helmet
       title={title}
       htmlAttributes={{
-        lang: settings.language,
+        lang: 'en-GB',
         prefix: 'og: http://ogp.me/ns#',
       }}
     >
