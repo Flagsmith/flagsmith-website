@@ -1,0 +1,28 @@
+{
+    "redirects": [
+        {
+            "source": "/featureflags",
+            "destination": "/overview/"
+        },
+        {
+            "source": "/devops",
+            "destination": "/use-cases/"
+        },
+        {
+            "source": "/legal/sla",
+            "destination": "/service-level-agreement/"
+        },
+        {
+            "source": "/tos",
+            "destination": "/terms-of-service/"
+        },
+        {
+            "source": "/blog/heather-meeker-founder-partner--oss-capital",
+            "destination": "/podcast/05-heather-meeker-oss-capital/"
+        },
+        {
+            "source": "//podcast/hashicorp/",
+            "destination": "/podcast/mitchell-hashimoto-founder-of-hashicorp-creator-of-vagrant-packer-serf-consul-terraform-vault-and-nomad/"
+        }
+    ]
+}
