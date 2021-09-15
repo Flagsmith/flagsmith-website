@@ -43,6 +43,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: process.env.GATSBY_DEFAULT_SITE_URL,
+        stripQueryString: true,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'gatsby-starter-default',
