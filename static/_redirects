@@ -9,3 +9,6 @@
 /blog/heather-meeker-founder-partner--oss-capital /podcast/05-heather-meeker-oss-capital/ 301
 /podcast/10-robin-gustafsson-ceo-k6 /podcast/08-robin-gustafsson-ceo-k6/ 301
 /podcast/hashicorp/ /podcast/mitchell-hashimoto-founder-of-hashicorp-creator-of-vagrant-packer-serf-consul-terraform-vault-and-nomad/ 301
+
+# http chained redirect fixes
+http://www.flagsmith.com/privacy-policy https://flagsmith.com/privacy-policy/ 301
