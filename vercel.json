@@ -25,6 +25,10 @@
             "destination": "/privacy-policy/"
         },
         {
+            "source": "/legal/sla",
+            "destination": "/service-level-agreement/"
+        },
+        {
             "source": "/blog/heather-meeker-founder-partner--oss-capital",
             "destination": "/podcast/05-heather-meeker-oss-capital/"
         },
