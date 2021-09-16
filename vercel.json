@@ -21,7 +21,7 @@
             "destination": "/terms-of-service/"
         },
         {
-            "source": "/legal/privacy-policy*",
+            "source": "/legal/privacy-policy((\/\w+)+|\/?)$",
             "destination": "/privacy-policy/"
         },
         {
