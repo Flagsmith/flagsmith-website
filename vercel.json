@@ -21,7 +21,7 @@
             "destination": "/terms-of-service/"
         },
         {
-            "source": "/legal/privacy-policy",
+            "source": "/legal/privacy-policy*",
             "destination": "/privacy-policy/"
         },
         {
@@ -33,8 +33,12 @@
             "destination": "/podcast/05-heather-meeker-oss-capital/"
         },
         {
-            "source": "//podcast/hashicorp/",
+            "source": "/podcast/hashicorp",
             "destination": "/podcast/mitchell-hashimoto-founder-of-hashicorp-creator-of-vagrant-packer-serf-consul-terraform-vault-and-nomad/"
+        },
+        {
+            "source": "/podcast/10-robin-gustafsson-ceo-k6",
+            "destination": "/podcast/08-robin-gustafsson-ceo-k6/"
         }
     ]
 }
