@@ -143,5 +143,12 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-plugin-heap',
+      options: {
+        appId: '1332296308',
+        enableOnDevMode: true, // if 'false', heap will be fired on NODE_ENV=production only
+      },
+    },
   ],
 };
