@@ -138,6 +138,48 @@ module.exports = {
         id: 'GTM-T4K5B4W',
       },
     },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allWpPost } }) => allWpPost.edges.map((edge) => ({ ...edge.node, description: edge.node.excerpt,
+                  date: edge.node.date,
+                  url: site.siteMetadata.siteUrl + edge.node.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.slug,
+                  custom_elements: [{ 'content:encoded': edge.node.content }],})),
+            query: `
+              {
+                allWpPost(sort: {order: DESC, fields: date}) {
+                  edges {
+                    node {
+                      date
+                      title
+                      content
+                      excerpt
+                      slug
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: `RSS Feed`,
+          },
+        ],
+      },
+    },
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
