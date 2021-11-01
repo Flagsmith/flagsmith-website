@@ -154,11 +154,15 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allWpPost } }) => allWpPost.edges.map((edge) => ({ ...edge.node, description: edge.node.excerpt,
-                  date: edge.node.date,
-                  url: site.siteMetadata.siteUrl + edge.node.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.slug,
-                  custom_elements: [{ 'content:encoded': edge.node.content }],})),
+            serialize: ({ query: { site, allWpPost } }) =>
+              allWpPost.edges.map((edge) => ({
+                ...edge.node,
+                description: edge.node.excerpt,
+                date: edge.node.date,
+                url: `${site.siteMetadata.siteUrl  }/blog/${  edge.node.slug}`,
+                guid: `${site.siteMetadata.siteUrl  }/blog/${  edge.node.slug}`,
+                custom_elements: [{ 'content:encoded': edge.node.content }],
+              })),
             query: `
               {
                 allWpPost(sort: {order: DESC, fields: date}) {
