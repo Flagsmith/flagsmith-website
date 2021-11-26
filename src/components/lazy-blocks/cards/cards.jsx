@@ -13,8 +13,10 @@ const cx = classNames.bind(styles);
 const Cards = (props) => {
   const {
     title,
+    titlefontsize,
     titleHighlightColor,
     description,
+    headingtextalignment,
     isBlankTarget,
     items,
     withBackground,
@@ -32,12 +34,12 @@ const Cards = (props) => {
     >
       <div className="container">
         {(title || description) && (
-          <div className={cx('header')}>
+          <div className={cx('header', `text-align-${headingtextalignment}`)}>
             {title && (
               <Heading
                 className={cx('title')}
                 tag="h2"
-                size="lg"
+                size={titlefontsize}
                 highlightedWordsColor={titleHighlightColor}
                 innerHTML={title}
                 highlightedWordsWithoutWrap={false}
@@ -48,7 +50,13 @@ const Cards = (props) => {
             )}
           </div>
         )}
-        <ul className={cx('items-wrapper', { withText: !onlyLogo, onlyLogo })}>
+        <ul
+          className={cx(
+            'items-wrapper',
+            { withText: !onlyLogo, onlyLogo },
+            `grid-column-${items.length}`
+          )}
+        >
           {items.map(({ logo, text, url }, index) => {
             const Tag = url ? Link : 'div';
             const target = isBlankTarget && url ? '_blank' : null;
@@ -77,8 +85,10 @@ const Cards = (props) => {
 
 Cards.propTypes = {
   title: PropTypes.string,
+  titlefontsize: PropTypes.oneOf(['lg', 'xl']),
   titleHighlightColor: PropTypes.oneOf(['primary', 'secondary']),
   description: PropTypes.string,
+  headingtextalignment: PropTypes.oneOf(['left', 'center']),
   isBlankTarget: PropTypes.bool,
   items: PropTypes.arrayOf(
     PropTypes.shape({
@@ -96,8 +106,10 @@ Cards.propTypes = {
 
 Cards.defaultProps = {
   title: '',
+  titlefontsize: 'lg',
   titleHighlightColor: 'primary',
   description: '',
+  headingtextalignment: 'left',
   isBlankTarget: false,
   withBackground: false,
   marginBottom: null,
