@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 
 import Heading from 'components/shared/heading';
 
-
 import Arrow from './images/arrow.inline.svg';
 import styles from './item.module.scss';
 

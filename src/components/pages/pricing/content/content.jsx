@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
 import ContactForm from 'components/shared/contact-form';
+import FAQ from 'components/shared/faq';
 import GetStarted from 'components/shared/get-started';
 import Heading from 'components/shared/heading/heading';
 
 import styles from './content.module.scss';
-import FAQ from './faq';
 import CloudIcon from './images/icon-cloud.inline.svg';
 import OnPremIcon from './images/icon-on-prem.inline.svg';
 import shape1 from './images/shape-1.svg';

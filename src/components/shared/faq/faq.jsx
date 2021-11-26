@@ -7,8 +7,14 @@ import Item from './item';
 
 const cx = classNames.bind(styles);
 
-const FAQ = ({ items }) => (
-  <section className={cx('wrapper')}>
+const FAQ = ({ items, marginBottom }) => (
+  <section
+    className={cx(
+      'wrapper',
+      { [`margin-bottom-${marginBottom}`]: marginBottom },
+      { 'margin-default': !marginBottom }
+    )}
+  >
     <div className={cx('container', 'inner')}>
       {items.map(({ title, description }, index) => {
         const id = `faq-item-${index + 1}`;
@@ -25,6 +31,11 @@ FAQ.propTypes = {
       description: PropTypes.string.isRequired,
     })
   ).isRequired,
+  marginBottom: PropTypes.oneOf(['xl', 'lg', 'md', 'sm', 'xs']),
+};
+
+FAQ.defaultProps = {
+  marginBottom: null,
 };
 
 export default FAQ;
