@@ -25,6 +25,7 @@ const QuotationCarousel = ({ items, withBackground, marginBottom }) => {
     setShowSwiper(paginationRef.current && prevButtonRef.current && nextButtonRef.current);
   }, [paginationRef, prevButtonRef, nextButtonRef]);
 
+  const withoutSlider = items.length < 2;
   return (
     <div
       className={cx('wrapper', {
@@ -36,53 +37,67 @@ const QuotationCarousel = ({ items, withBackground, marginBottom }) => {
       <div className="container">
         <Quote className={cx('quote')} aria-hidden />
         <div className={cx('slider-wrapper')}>
-          <button
-            className={cx('button')}
-            type="button"
-            aria-label="Previous slide"
-            ref={prevButtonRef}
-          >
-            <Arrow className={cx('arrow')} />
-          </button>
-          {showSwiper && (
-            <Swiper
-              className={cx('items-wrapper')}
-              pagination={{
-                el: paginationRef.current,
-                bulletClass: cx('bullet'),
-                bulletActiveClass: cx('active'),
-                clickable: true,
-              }}
-              navigation={{
-                prevEl: prevButtonRef.current,
-                nextEl: nextButtonRef.current,
-              }}
-              breakpoints={{
-                768: { autoHeight: false },
-              }}
-              slidesPerView={1}
-              loop
-              autoHeight
-            >
-              {items.map(({ text, author }, index) => (
-                <SwiperSlide key={index}>
-                  <figure className={cx('item')}>
-                    <blockquote className={cx('text')} dangerouslySetInnerHTML={{ __html: text }} />
-                    <figcaption className={cx('author')}>{author}</figcaption>
-                  </figure>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+          {!withoutSlider && (
+            <>
+              <button
+                className={cx('button')}
+                type="button"
+                aria-label="Previous slide"
+                ref={prevButtonRef}
+              >
+                <Arrow className={cx('arrow')} />
+              </button>
+              {showSwiper && (
+                <Swiper
+                  className={cx('items-wrapper')}
+                  pagination={{
+                    el: paginationRef.current,
+                    bulletClass: cx('bullet'),
+                    bulletActiveClass: cx('active'),
+                    clickable: true,
+                  }}
+                  navigation={{
+                    prevEl: prevButtonRef.current,
+                    nextEl: nextButtonRef.current,
+                  }}
+                  breakpoints={{
+                    768: { autoHeight: false },
+                  }}
+                  slidesPerView={1}
+                  loop
+                  autoHeight
+                >
+                  {items.map(({ text, author }, index) => (
+                    <SwiperSlide key={index}>
+                      <figure className={cx('item')}>
+                        <blockquote
+                          className={cx('text')}
+                          dangerouslySetInnerHTML={{ __html: text }}
+                        />
+                        <figcaption className={cx('author')}>{author}</figcaption>
+                      </figure>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              )}
+              <button
+                className={cx('button')}
+                type="button"
+                aria-label="Next slide"
+                ref={nextButtonRef}
+              >
+                <Arrow className={cx('arrow', 'flipped')} />
+              </button>
+              <div className="swiper-pagination" ref={paginationRef} />
+            </>
           )}
-          <button
-            className={cx('button')}
-            type="button"
-            aria-label="Next slide"
-            ref={nextButtonRef}
-          >
-            <Arrow className={cx('arrow', 'flipped')} />
-          </button>
-          <div className="swiper-pagination" ref={paginationRef} />
+          {withoutSlider &&
+            items.map(({ text, author }, index) => (
+              <figure className={cx('item')} key={index}>
+                <blockquote className={cx('text')} dangerouslySetInnerHTML={{ __html: text }} />
+                <figcaption className={cx('author')}>{author}</figcaption>
+              </figure>
+            ))}
         </div>
       </div>
     </div>
