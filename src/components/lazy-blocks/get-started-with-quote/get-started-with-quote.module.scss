@@ -1,0 +1,166 @@
+.wrapper {
+  @include section-paddings;
+}
+
+.quote {
+  display: block;
+  width: 40px;
+  margin-bottom: 20px;
+  fill: $color-quaternary;
+}
+
+.inner {
+  width: 100%;
+  max-width: 1070px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
+  background: $color-tertiary;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include sm-down {
+    display: block;
+  }
+}
+
+.left {
+  padding: 30px 40px;
+
+  @include xs-down {
+    padding: 30px 25px;
+  }
+
+  figure {
+    margin: 0;
+  }
+}
+
+.text {
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 30px;
+  margin-left: 0;
+  font-size: 24px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  font-size: $font-size-xs;
+  font-weight: 600;
+
+  > div {
+    display: flex;
+
+    @include md-down {
+      flex-direction: column;
+    }
+  }
+}
+
+.author-image {
+  width: 44px;
+  height: 44px;
+  margin-right: 16px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.author-name {
+  &::after {
+    margin: 0 5px;
+    content: '—';
+
+    @include md-down {
+      display: none;
+    }
+  }
+}
+
+.author-company {
+  color: $color-additional-6;
+}
+
+.right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 30px 40px;
+  overflow: hidden;
+  text-align: center;
+  background-color: $color-accent-tertiary;
+
+  @include sm-down {
+    min-height: 380px;
+  }
+
+  @include xs-down {
+    padding: 30px 25px;
+  }
+}
+
+.right-content {
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  margin-bottom: 25px;
+  font-size: 48px;
+
+  @include md-down {
+    font-size: 45px !important;
+  }
+}
+
+.button {
+  @include lg-down {
+    padding: 16px 25px;
+    font-size: $font-size-xs;
+  }
+}
+
+.shape-1 {
+  position: absolute;
+  bottom: -202px;
+  left: -288px;
+}
+
+.shape-2 {
+  position: absolute;
+  top: -107px;
+  right: -116px;
+}
+
+.illustration {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  @include lg-down {
+    width: 100%;
+  }
+
+  @include sm-down {
+    width: auto;
+  }
+
+  @include xs-down {
+    width: 100%;
+  }
+
+  @include xxs-down {
+    width: 120%;
+  }
+}
