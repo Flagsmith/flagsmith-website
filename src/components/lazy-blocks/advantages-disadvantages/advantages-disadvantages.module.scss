@@ -12,10 +12,14 @@
 .list {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 440px 1fr 1fr;
   column-gap: 20px;
   align-items: center;
   padding: 25px 0;
+
+  @include sm-down {
+    grid-template-columns: 340px 1fr 1fr;
+  }
 
   &::after {
     position: absolute;
@@ -78,7 +82,8 @@
 
 .wrapper-content {
   position: relative;
-  max-width: 1270px;
+  width: 1270px;
+  max-width: 100%;
   padding: 0 65px 40px;
   margin-right: auto;
   margin-left: auto;
@@ -87,6 +92,7 @@
   box-shadow: 0 10px 30px rgba(30, 13, 38, 0.1), 0 5px 10px rgba(30, 13, 38, 0.1);
 
   @include md-down {
+    max-width: 1270px;
     padding: 0 40px 40px;
   }
 

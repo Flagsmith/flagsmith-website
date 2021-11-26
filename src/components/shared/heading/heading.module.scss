@@ -105,8 +105,12 @@
     font-size: $font-size-md;
 
     @include xs-down {
-      font-size: 20px;
+      font-size: $font-size-base;
     }
+  }
+
+  &-base {
+    font-size: $font-size-base;
   }
 }
 
