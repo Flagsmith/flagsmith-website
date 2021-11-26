@@ -157,8 +157,8 @@ module.exports = {
                 ...edge.node,
                 description: edge.node.excerpt,
                 date: edge.node.date,
-                url: `${site.siteMetadata.siteUrl  }/blog/${  edge.node.slug}`,
-                guid: `${site.siteMetadata.siteUrl  }/blog/${  edge.node.slug}`,
+                url: `${site.siteMetadata.siteUrl}/blog/${edge.node.slug}`,
+                guid: `${site.siteMetadata.siteUrl}/blog/${edge.node.slug}`,
                 custom_elements: [{ 'content:encoded': edge.node.content }],
               })),
             query: `
