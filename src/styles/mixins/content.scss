@@ -196,4 +196,45 @@
     margin-right: auto;
     margin-left: auto;
   }
+
+  .wp-block-table {
+    margin-right: 0;
+    margin-left: 0;
+    overflow-x: auto;
+
+    table {
+      width: 100%;
+      min-width: 700px;
+      border-collapse: collapse;
+      border: 1px solid $color-additional-3;
+
+      @include lg-down {
+        font-size: $font-size-sm;
+      }
+
+      @include sm-down {
+        font-size: $font-size-xs;
+      }
+
+      tr {
+        &:first-child {
+          td {
+            color: $color-primary;
+            text-align: center;
+          }
+        }
+
+        td {
+          &.has-text-align-left {
+            text-align: left;
+          }
+        }
+      }
+
+      td {
+        padding: 10px;
+        border: 1px solid $color-additional-3;
+      }
+    }
+  }
 }
