@@ -26,7 +26,7 @@ const AdvantagesDisadvantages = ({
       {title}
     </Heading>
 
-    <div className={cx('test')}>
+    <div className={cx('inner')}>
       <div className={cx('wrapper-content')}>
         <div className={cx('content', { 'without-logos': !columnfirstlogo && !columnsecondlogo })}>
           {columnfirstlogo && columnsecondlogo && (

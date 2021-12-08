@@ -32,11 +32,8 @@
   }
 
   img {
-    max-width: 100%;
-
-    @include md-down {
-      max-width: 80%;
-    }
+    width: auto;
+    max-height: 36px;
   }
 }
 
@@ -45,7 +42,7 @@
   justify-content: center;
 }
 
-.test {
+.inner {
   display: flex;
 
   @include section-paddings;
