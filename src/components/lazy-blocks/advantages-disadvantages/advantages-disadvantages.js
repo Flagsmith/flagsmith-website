@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Heading from 'components/shared/heading';
+import Tooltip from 'components/shared/tooltip';
 
 import styles from './advantages-disadvantages.module.scss';
 import CheckIcon from './images/check.inline.svg';
@@ -41,10 +42,11 @@ const AdvantagesDisadvantages = ({
             </div>
           )}
 
-          {items.map(({ text, columnFirstIsChecked, columnSecondIsChecked }, index) => (
+          {items.map(({ text, tooltip, columnFirstIsChecked, columnSecondIsChecked }, index) => (
             <div className={cx('list')} key={index}>
-              <div>
+              <div className={cx('item-title-wrapper')}>
                 <Heading className={cx('item-title')} tag="h4" size="base" innerHTML={text} />
+                {tooltip && <Tooltip text={tooltip} />}
               </div>
               <div className={cx('icon-wrapper')}>
                 {columnFirstIsChecked ? <CheckIcon /> : <UncheckIcon />}
@@ -70,7 +72,8 @@ AdvantagesDisadvantages.propTypes = {
         url: PropTypes.string.isRequired,
         alt: PropTypes.string.isRequired,
       }).isRequired,
-      text: PropTypes.string,
+      text: PropTypes.string.isRequired,
+      tooltip: PropTypes.string,
       columnFirstIsChecked: PropTypes.bool,
       columnSecondIsChecked: PropTypes.bool,
     })

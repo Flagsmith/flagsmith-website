@@ -104,6 +104,15 @@
   }
 }
 
+.item-title-wrapper {
+  display: flex;
+  align-items: center;
+
+  span {
+    margin-top: 2px;
+  }
+}
+
 .item-title {
   font-weight: 600;
 }
