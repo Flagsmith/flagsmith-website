@@ -11,12 +11,6 @@ steps:
         from_secret: docker_username
       password:
         from_secret: docker_password
-    when:
-      branch:
-        - main
-      event:
-        exclude:
-          - custom
 
   - name: deploy-gatsby-preview-server
     image: peloton/drone-k8s-deployment
@@ -31,14 +25,10 @@ steps:
         from_secret: kubernetes_url
       token:
         from_secret: kubernetes_token
-    when:
-      branch:
-        - main
-      event:
-        exclude:
-          - custom
 
 trigger:
+  branch:
+    - main
   event:
     - push
     - custom
