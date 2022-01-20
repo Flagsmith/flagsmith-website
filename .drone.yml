@@ -4,7 +4,7 @@ steps:
   - name: build-gatsby-preview-docker
     image: plugins/docker
     settings:
-      repo: registry.pixelpoint.io/flagsmith-website
+      repo: registry.pixelpoint.io/flagsmith-preview
       registry: registry.pixelpoint.io
       dockerfile: Dockerfile.preview
       username:
@@ -22,10 +22,10 @@ steps:
     image: peloton/drone-k8s-deployment
     settings:
       insecure: false
-      deployment_names: flagsmith-website
-      container_names: flagsmith-website
+      deployment_names: flagsmith-preview
+      container_names: flagsmith-preview
       namespaces: websites
-      docker_image: registry.pixelpoint.io/flagsmith-website:latest
+      docker_image: registry.pixelpoint.io/flagsmith-preview:latest
       date_label: deployment.drone.io/date-deployed
       url:
         from_secret: kubernetes_url
