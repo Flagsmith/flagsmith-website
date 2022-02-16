@@ -12,6 +12,7 @@ import GetStartedWithQuote from 'components/lazy-blocks/get-started-with-quote';
 import Hero from 'components/lazy-blocks/hero';
 import Logos from 'components/lazy-blocks/logos';
 import Presentation from 'components/lazy-blocks/presentation';
+import PresentationWithItems from 'components/lazy-blocks/presentation-with-items';
 import PresentationWithoutIllustration from 'components/lazy-blocks/presentation-without-illustration';
 import QuotationCarousel from 'components/lazy-blocks/quotation-carousel';
 import ContactForm from 'components/shared/contact-form';
@@ -87,6 +88,7 @@ const components = {
   contactform: ContactForm,
   getstarted: GetStarted,
   rainbowtext: RainbowText,
+  presentationwithitems: PresentationWithItems,
 };
 
 export const useLazyBlocks = (content) => {
