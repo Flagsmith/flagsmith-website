@@ -67,11 +67,7 @@
     grid-auto-flow: dense;
 
     .content-wrapper {
-      grid-column: 8 / 12;
-
-      @include fullhd-down {
-        grid-column: 8 / 13;
-      }
+      grid-column: 8 / 13;
 
       @include md-down {
         grid-column: 2 / 12;
@@ -313,6 +309,7 @@
 }
 
 .item-title {
+  margin-top: 0;
   margin-bottom: 14px;
   font-family: $font-family-secondary;
   font-size: 22px;
@@ -321,6 +318,7 @@
 }
 
 .item-text {
+  margin-top: 0;
   font-size: $font-size-sm;
 
   @include lg-down {

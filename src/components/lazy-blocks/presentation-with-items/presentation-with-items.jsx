@@ -56,7 +56,6 @@ const PresentationWithItems = ({
       image.height / 2
     }' width='${image.width / 2}' xmlns='http://www.w3.org/2000/svg' version='1.1'%3E%3C/svg%3E`;
   }
-
   return (
     <section
       className={cx('wrapper', {
@@ -65,80 +64,83 @@ const PresentationWithItems = ({
         [`margin-bottom-${marginBottom}`]: marginBottom,
       })}
     >
-      <div className={cx('container', 'inner', 'botton-border', alignment)}>
-        <div className={cx('content-wrapper')}>
-          {icon && <img className={cx('icon')} src={icon.url} alt="" aria-hidden />}
-          <Heading
-            className={cx('title')}
-            tag="h2"
-            size="xl"
-            highlightedWordsColor={titleHighlightColor}
-            innerHTML={title}
-            highlightedWordsWithoutWrap={false}
-          />
-          <div className={cx('content')} dangerouslySetInnerHTML={{ __html: content }} />
-          {linkText && linkUrl && (
-            <Link className={cx('link')} to={linkUrl} withArrow>
-              {linkText}
-            </Link>
-          )}
-          {shouldRenderButtonsWrapper && (
-            <div className={cx('buttons-wrapper')}>
-              {accentButtonUrl && accentButtonText && (
-                <Button className={cx('button')} theme="accent-primary" to={accentButtonUrl}>
-                  {accentButtonText}
-                </Button>
-              )}
-              {primaryButtonUrl && primaryButtonText && (
-                <Button className={cx('button')} theme="primary" to={primaryButtonUrl}>
-                  {primaryButtonText}
-                </Button>
-              )}
-            </div>
-          )}
-        </div>
+      <div className={cx('container')}>
+        <div className={cx('inner', 'botton-border', alignment)}>
+          <div className={cx('content-wrapper')}>
+            {icon && <img className={cx('icon')} src={icon.url} alt="" aria-hidden />}
+            <Heading
+              className={cx('title')}
+              tag="h2"
+              size="xl"
+              highlightedWordsColor={titleHighlightColor}
+              innerHTML={title}
+              highlightedWordsWithoutWrap={false}
+            />
+            <div className={cx('content')} dangerouslySetInnerHTML={{ __html: content }} />
+            {linkText && linkUrl && (
+              <Link className={cx('link')} to={linkUrl} withArrow>
+                {linkText}
+              </Link>
+            )}
+            {shouldRenderButtonsWrapper && (
+              <div className={cx('buttons-wrapper')}>
+                {accentButtonUrl && accentButtonText && (
+                  <Button className={cx('button')} theme="accent-primary" to={accentButtonUrl}>
+                    {accentButtonText}
+                  </Button>
+                )}
+                {primaryButtonUrl && primaryButtonText && (
+                  <Button className={cx('button')} theme="primary" to={primaryButtonUrl}>
+                    {primaryButtonText}
+                  </Button>
+                )}
+              </div>
+            )}
+          </div>
 
-        <div
-          className={cx('illustration-wrapper')}
-          ref={withHTMLIllustration ? animationContainer : null}
-        >
-          {withHTMLIllustration && (
-            <HTMLIllustration className={cx('illustration')} animate={animationContainerView} />
-          )}
-          {withHTMLIllustration && withBackground && (
-            <img className={cx('shape')} loading="lazy" src={shape} alt="" aria-hidden />
-          )}
-          {image && !withHTMLIllustration && (
-            <div className={cx('image-wrapper')}>
-              <div className={cx('image-inner')}>
-                <div style={{ maxWidth: image.width / 2, display: 'block' }}>
+          <div
+            className={cx('illustration-wrapper')}
+            ref={withHTMLIllustration ? animationContainer : null}
+          >
+            {withHTMLIllustration && (
+              <HTMLIllustration className={cx('illustration')} animate={animationContainerView} />
+            )}
+            {withHTMLIllustration && withBackground && (
+              <img className={cx('shape')} loading="lazy" src={shape} alt="" aria-hidden />
+            )}
+            {image && !withHTMLIllustration && (
+              <div className={cx('image-wrapper')}>
+                <div className={cx('image-inner')}>
+                  <div style={{ maxWidth: image.width / 2, display: 'block' }}>
+                    <img
+                      src={imgPlaceholderData}
+                      alt=""
+                      style={{ maxWidth: '100%', display: 'block', position: 'static' }}
+                      aria-hidden
+                    />
+                  </div>
                   <img
-                    src={imgPlaceholderData}
+                    className={cx('image')}
+                    loading="lazy"
+                    srcSet={image.srcset}
                     alt=""
-                    style={{ maxWidth: '100%', display: 'block', position: 'static' }}
                     aria-hidden
                   />
                 </div>
-                <img
-                  className={cx('image')}
-                  loading="lazy"
-                  srcSet={image.srcset}
-                  alt=""
-                  aria-hidden
-                />
               </div>
-            </div>
-          )}
-        </div>
-      </div>
-      <div className={cx('container', 'items-wrapper')}>
-        {items.map((item, index) => (
-          <div className={cx('item')} key={index}>
-            <img className={cx('item-image')} src={item.itemIcon.url} alt="" aria-hidden />
-            <div className={cx('item-title')}>{item.itemTitle}</div>
-            <div className={cx('item-text')}>{item.itemText}</div>
+            )}
           </div>
-        ))}
+        </div>
+
+        <div className={cx('items-wrapper')}>
+          {items.map(({ itemIcon, itemText, itemTitle }, index) => (
+            <div key={index}>
+              <img className={cx('item-image')} src={itemIcon.url} alt="" aria-hidden />
+              <h3 className={cx('item-title')}>{itemTitle}</h3>
+              <p className={cx('item-text')}>{itemText}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
