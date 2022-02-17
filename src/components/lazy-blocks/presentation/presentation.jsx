@@ -147,7 +147,7 @@ const Presentation = ({
           </div>
         </div>
 
-        {features.length > 0 && (
+        {features && features.length > 0 && (
           <div className={cx('features')}>
             {features.map(({ iconName, title, text }, index) => {
               const Icon = featuresIcons[iconName];
