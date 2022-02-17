@@ -1,5 +1,4 @@
 /* eslint-disable no-case-declarations */
-import PresentationWithItems from 'components/lazy-blocks/presentation-with-items';
 import parse, { attributesToProps } from 'html-react-parser';
 import isBoolean from 'lodash.isboolean';
 import isEmpty from 'lodash.isempty';
