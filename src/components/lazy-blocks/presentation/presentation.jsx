@@ -9,12 +9,12 @@ import Heading from 'components/shared/heading';
 import Link from 'components/shared/link';
 import RemoteConfigIllustration from 'components/shared/remote-config-illustration';
 
-import ab from './images/ab.svg';
-import checkbox from './images/checkbox.svg';
-import diagrams from './images/diagrams.svg';
-import flag from './images/flag.svg';
-import list from './images/list.svg';
-import settings from './images/settings.svg';
+import Ab from './images/ab.svg';
+import Checkbox from './images/checkbox.svg';
+import Diagrams from './images/diagrams.svg';
+import Flag from './images/flag.svg';
+import List from './images/list.svg';
+import Settings from './images/settings.svg';
 import shape from './images/shape.svg';
 import styles from './presentation.module.scss';
 
@@ -26,15 +26,15 @@ const htmlIllustrations = {
 };
 
 const featuresIcons = {
-  ab,
-  checkbox,
-  diagrams,
-  flag,
-  list,
-  settings,
+  ab: Ab,
+  checkbox: Checkbox,
+  diagrams: Diagrams,
+  flag: Flag,
+  list: List,
+  settings: Settings,
 };
 
-const PresentationWithItems = ({
+const Presentation = ({
   icon,
   title,
   titleHighlightColor,
@@ -147,20 +147,18 @@ const PresentationWithItems = ({
           </div>
         </div>
 
-        {features && (
-          <div className={cx('features-wrapper')}>
-            {features.map(({ iconName, title, text }, index) => (
-              <div key={index}>
-                <img
-                  className={cx('feature-icon')}
-                  src={featuresIcons[iconName]}
-                  alt=""
-                  aria-hidden
-                />
-                <h3 className={cx('feature-title')}>{title}</h3>
-                <p className={cx('feature-text')}>{text}</p>
-              </div>
-            ))}
+        {features.length > 0 && (
+          <div className={cx('features')}>
+            {features.map(({ iconName, title, text }, index) => {
+              const Icon = featuresIcons[iconName];
+              return (
+                <div key={index}>
+                  {Icon && <Icon className={cx('feature-image')} aria-hidden />}
+                  <h3 className={cx('feature-title')}>{title}</h3>
+                  <p className={cx('feature-text')}>{text}</p>
+                </div>
+              );
+            })}
           </div>
         )}
       </div>
@@ -168,7 +166,7 @@ const PresentationWithItems = ({
   );
 };
 
-PresentationWithItems.propTypes = {
+Presentation.propTypes = {
   icon: PropTypes.shape({
     url: PropTypes.string,
   }),
@@ -193,13 +191,13 @@ PresentationWithItems.propTypes = {
   features: PropTypes.arrayOf(
     PropTypes.shape({
       iconName: PropTypes.oneOf(Object.keys(featuresIcons)),
-      itemTitle: PropTypes.string.isRequired,
-      itemText: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
     })
   ),
 };
 
-PresentationWithItems.defaultProps = {
+Presentation.defaultProps = {
   icon: null,
   titleHighlightColor: 'primary',
   linkText: '',
@@ -216,4 +214,4 @@ PresentationWithItems.defaultProps = {
   features: null,
 };
 
-export default PresentationWithItems;
+export default Presentation;

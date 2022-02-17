@@ -286,18 +286,15 @@
   margin: 0;
 }
 
-.botton-border {
-  padding-bottom: 56px;
-  border-bottom: 1px dashed $color-additional-7;
-}
-
-.features-wrapper {
+.features {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: repeat(3, 1fr);
   grid-row-gap: 56px;
   grid-column-gap: 28px;
+  padding-top: 56px;
   margin-top: 56px;
+  border-top: 1px dashed $color-additional-7;
 
   @include md-down {
     grid-template-columns: 1fr;
