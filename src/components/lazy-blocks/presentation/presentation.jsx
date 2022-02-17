@@ -9,12 +9,12 @@ import Heading from 'components/shared/heading';
 import Link from 'components/shared/link';
 import RemoteConfigIllustration from 'components/shared/remote-config-illustration';
 
-import Ab from './images/ab.svg';
-import Checkbox from './images/checkbox.svg';
-import Diagrams from './images/diagrams.svg';
-import Flag from './images/flag.svg';
-import List from './images/list.svg';
-import Settings from './images/settings.svg';
+import Ab from './images/ab.inline.svg';
+import Checkbox from './images/checkbox.inline.svg';
+import Diagrams from './images/diagrams.inline.svg';
+import Flag from './images/flag.inline.svg';
+import List from './images/list.inline.svg';
+import Settings from './images/settings.inline.svg';
 import shape from './images/shape.svg';
 import styles from './presentation.module.scss';
 
