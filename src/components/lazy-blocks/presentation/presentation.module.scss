@@ -19,11 +19,7 @@
 
   &.left {
     .content-wrapper {
-      grid-column: 2 / 6;
-
-      @include fullhd-down {
-        grid-column: 1 / 6;
-      }
+      grid-column: 1 / 6;
 
       @include md-down {
         grid-column: 2 / 12;
@@ -71,11 +67,7 @@
     grid-auto-flow: dense;
 
     .content-wrapper {
-      grid-column: 8 / 12;
-
-      @include fullhd-down {
-        grid-column: 8 / 13;
-      }
+      grid-column: 8 / 13;
 
       @include md-down {
         grid-column: 2 / 12;
@@ -292,4 +284,44 @@
   height: 100%;
   padding: 0;
   margin: 0;
+}
+
+.botton-border {
+  padding-bottom: 56px;
+  border-bottom: 1px dashed $color-additional-7;
+}
+
+.features-wrapper {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 56px;
+  grid-column-gap: 28px;
+  margin-top: 56px;
+
+  @include md-down {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature-icon {
+  margin-bottom: 14px;
+}
+
+.feature-title {
+  margin-top: 0;
+  margin-bottom: 14px;
+  font-family: $font-family-secondary;
+  font-size: 22px;
+  font-weight: bold;
+  color: $color-primary;
+}
+
+.feature-text {
+  margin-top: 0;
+  font-size: $font-size-sm;
+
+  @include lg-down {
+    font-size: $font-size-xs;
+  }
 }

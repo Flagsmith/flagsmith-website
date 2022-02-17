@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import Button from 'components/shared/button';
@@ -9,6 +9,12 @@ import Heading from 'components/shared/heading';
 import Link from 'components/shared/link';
 import RemoteConfigIllustration from 'components/shared/remote-config-illustration';
 
+import ab from './images/ab.svg';
+import checkbox from './images/checkbox.svg';
+import diagrams from './images/diagrams.svg';
+import flag from './images/flag.svg';
+import list from './images/list.svg';
+import settings from './images/settings.svg';
 import shape from './images/shape.svg';
 import styles from './presentation.module.scss';
 
@@ -19,7 +25,16 @@ const htmlIllustrations = {
   remoteConfig: RemoteConfigIllustration,
 };
 
-const Presentation = ({
+const featuresIcons = {
+  ab,
+  checkbox,
+  diagrams,
+  flag,
+  list,
+  settings,
+};
+
+const PresentationWithItems = ({
   icon,
   title,
   titleHighlightColor,
@@ -35,6 +50,7 @@ const Presentation = ({
   withBackground,
   alignment,
   marginBottom,
+  features,
 }) => {
   const [animationContainer, animationContainerView] = useInView({
     threshold: 0.5,
@@ -55,7 +71,7 @@ const Presentation = ({
       image.height / 2
     }' width='${image.width / 2}' xmlns='http://www.w3.org/2000/svg' version='1.1'%3E%3C/svg%3E`;
   }
-
+  console.log(features);
   return (
     <section
       className={cx('wrapper', {
@@ -64,77 +80,94 @@ const Presentation = ({
         [`margin-bottom-${marginBottom}`]: marginBottom,
       })}
     >
-      <div className={cx('container', 'inner', alignment)}>
-        <div className={cx('content-wrapper')}>
-          {icon && <img className={cx('icon')} src={icon.url} alt="" aria-hidden />}
-          <Heading
-            className={cx('title')}
-            tag="h2"
-            size="xl"
-            highlightedWordsColor={titleHighlightColor}
-            innerHTML={title}
-            highlightedWordsWithoutWrap={false}
-          />
-          <div className={cx('content')} dangerouslySetInnerHTML={{ __html: content }} />
-          {linkText && linkUrl && (
-            <Link className={cx('link')} to={linkUrl} withArrow>
-              {linkText}
-            </Link>
-          )}
-          {shouldRenderButtonsWrapper && (
-            <div className={cx('buttons-wrapper')}>
-              {accentButtonUrl && accentButtonText && (
-                <Button className={cx('button')} theme="accent-primary" to={accentButtonUrl}>
-                  {accentButtonText}
-                </Button>
-              )}
-              {primaryButtonUrl && primaryButtonText && (
-                <Button className={cx('button')} theme="primary" to={primaryButtonUrl}>
-                  {primaryButtonText}
-                </Button>
-              )}
-            </div>
-          )}
-        </div>
+      <div className={cx('container')}>
+        <div className={cx('inner', 'botton-border', alignment)}>
+          <div className={cx('content-wrapper')}>
+            {icon && <img className={cx('icon')} src={icon.url} alt="" aria-hidden />}
+            <Heading
+              className={cx('title')}
+              tag="h2"
+              size="xl"
+              highlightedWordsColor={titleHighlightColor}
+              innerHTML={title}
+              highlightedWordsWithoutWrap={false}
+            />
+            <div className={cx('content')} dangerouslySetInnerHTML={{ __html: content }} />
+            {linkText && linkUrl && (
+              <Link className={cx('link')} to={linkUrl} withArrow>
+                {linkText}
+              </Link>
+            )}
+            {shouldRenderButtonsWrapper && (
+              <div className={cx('buttons-wrapper')}>
+                {accentButtonUrl && accentButtonText && (
+                  <Button className={cx('button')} theme="accent-primary" to={accentButtonUrl}>
+                    {accentButtonText}
+                  </Button>
+                )}
+                {primaryButtonUrl && primaryButtonText && (
+                  <Button className={cx('button')} theme="primary" to={primaryButtonUrl}>
+                    {primaryButtonText}
+                  </Button>
+                )}
+              </div>
+            )}
+          </div>
 
-        <div
-          className={cx('illustration-wrapper')}
-          ref={withHTMLIllustration ? animationContainer : null}
-        >
-          {withHTMLIllustration && (
-            <HTMLIllustration className={cx('illustration')} animate={animationContainerView} />
-          )}
-          {withHTMLIllustration && withBackground && (
-            <img className={cx('shape')} loading="lazy" src={shape} alt="" aria-hidden />
-          )}
-          {image && !withHTMLIllustration && (
-            <div className={cx('image-wrapper')}>
-              <div className={cx('image-inner')}>
-                <div style={{ maxWidth: image.width / 2, display: 'block' }}>
+          <div
+            className={cx('illustration-wrapper')}
+            ref={withHTMLIllustration ? animationContainer : null}
+          >
+            {withHTMLIllustration && (
+              <HTMLIllustration className={cx('illustration')} animate={animationContainerView} />
+            )}
+            {withHTMLIllustration && withBackground && (
+              <img className={cx('shape')} loading="lazy" src={shape} alt="" aria-hidden />
+            )}
+            {image && !withHTMLIllustration && (
+              <div className={cx('image-wrapper')}>
+                <div className={cx('image-inner')}>
+                  <div style={{ maxWidth: image.width / 2, display: 'block' }}>
+                    <img
+                      src={imgPlaceholderData}
+                      alt=""
+                      style={{ maxWidth: '100%', display: 'block', position: 'static' }}
+                      aria-hidden
+                    />
+                  </div>
                   <img
-                    src={imgPlaceholderData}
+                    className={cx('image')}
+                    loading="lazy"
+                    srcSet={image.srcset}
                     alt=""
-                    style={{ maxWidth: '100%', display: 'block', position: 'static' }}
                     aria-hidden
                   />
                 </div>
-                <img
-                  className={cx('image')}
-                  loading="lazy"
-                  srcSet={image.srcset}
-                  alt=""
-                  aria-hidden
-                />
               </div>
+            )}
+          </div>
+        </div>
+
+        <div className={cx('features-wrapper')}>
+          {features.map(({ iconName, title, text }, index) => (
+            <div key={index}>
+              <img
+                className={cx('feature-icon')}
+                src={featuresIcons[iconName]}
+                alt=""
+                aria-hidden
+              />
+              <h3 className={cx('feature-title')}>{title}</h3>
+              <p className={cx('feature-text')}>{text}</p>
             </div>
-          )}
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
-Presentation.propTypes = {
+PresentationWithItems.propTypes = {
   icon: PropTypes.shape({
     url: PropTypes.string,
   }),
@@ -156,9 +189,16 @@ Presentation.propTypes = {
   withBackground: PropTypes.bool,
   alignment: PropTypes.oneOf(['left', 'right']),
   marginBottom: PropTypes.oneOf(['xl', 'lg', 'md', 'sm', 'xs']),
+  features: PropTypes.arrayOf(
+    PropTypes.shape({
+      iconName: PropTypes.oneOf(Object.keys(featuresIcons)),
+      itemTitle: PropTypes.string.isRequired,
+      itemText: PropTypes.string.isRequired,
+    })
+  ),
 };
 
-Presentation.defaultProps = {
+PresentationWithItems.defaultProps = {
   icon: null,
   titleHighlightColor: 'primary',
   linkText: '',
@@ -172,6 +212,7 @@ Presentation.defaultProps = {
   withBackground: false,
   alignment: 'left',
   marginBottom: null,
+  features: null,
 };
 
-export default Presentation;
+export default PresentationWithItems;
