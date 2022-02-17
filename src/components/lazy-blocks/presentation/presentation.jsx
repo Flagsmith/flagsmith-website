@@ -148,20 +148,22 @@ const PresentationWithItems = ({
           </div>
         </div>
 
-        <div className={cx('features-wrapper')}>
-          {features.map(({ iconName, title, text }, index) => (
-            <div key={index}>
-              <img
-                className={cx('feature-icon')}
-                src={featuresIcons[iconName]}
-                alt=""
-                aria-hidden
-              />
-              <h3 className={cx('feature-title')}>{title}</h3>
-              <p className={cx('feature-text')}>{text}</p>
-            </div>
-          ))}
-        </div>
+        {features && (
+          <div className={cx('features-wrapper')}>
+            {features.map(({ iconName, title, text }, index) => (
+              <div key={index}>
+                <img
+                  className={cx('feature-icon')}
+                  src={featuresIcons[iconName]}
+                  alt=""
+                  aria-hidden
+                />
+                <h3 className={cx('feature-title')}>{title}</h3>
+                <p className={cx('feature-text')}>{text}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
