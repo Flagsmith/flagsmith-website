@@ -71,7 +71,6 @@ const PresentationWithItems = ({
       image.height / 2
     }' width='${image.width / 2}' xmlns='http://www.w3.org/2000/svg' version='1.1'%3E%3C/svg%3E`;
   }
-  console.log(features);
   return (
     <section
       className={cx('wrapper', {
