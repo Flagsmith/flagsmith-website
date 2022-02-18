@@ -71,7 +71,6 @@ const Presentation = ({
       image.height / 2
     }' width='${image.width / 2}' xmlns='http://www.w3.org/2000/svg' version='1.1'%3E%3C/svg%3E`;
   }
-  console.log(features);
 
   return (
     <section
@@ -149,13 +148,13 @@ const Presentation = ({
           </div>
         </div>
 
-        {features && features.length > 0 && features[0].text && features[0].title && (
+        {features && !!features.length && features[0].text && features[0].title && (
           <div className={cx('features')}>
             {features.map(({ iconName, title, text }, index) => {
               const Icon = featuresIcons[iconName];
               return (
                 <div key={index}>
-                  {Icon && <Icon className={cx('feature-image')} aria-hidden />}
+                  {Icon && <Icon className={cx('feature-icon')} aria-hidden />}
                   <h3 className={cx('feature-title')}>{title}</h3>
                   <p className={cx('feature-text')}>{text}</p>
                 </div>
