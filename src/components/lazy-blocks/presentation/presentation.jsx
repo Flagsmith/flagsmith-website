@@ -19,25 +19,23 @@ const htmlIllustrations = {
   remoteConfig: RemoteConfigIllustration,
 };
 
-const Presentation = (props) => {
-  const {
-    icon,
-    title,
-    titleHighlightColor,
-    content,
-    linkText,
-    linkUrl,
-    accentButtonText,
-    accentButtonUrl,
-    primaryButtonText,
-    primaryButtonUrl,
-    image,
-    htmlIllustration,
-    withBackground,
-    alignment,
-    marginBottom,
-  } = props;
-
+const Presentation = ({
+  icon,
+  title,
+  titleHighlightColor,
+  content,
+  linkText,
+  linkUrl,
+  accentButtonText,
+  accentButtonUrl,
+  primaryButtonText,
+  primaryButtonUrl,
+  image,
+  htmlIllustration,
+  withBackground,
+  alignment,
+  marginBottom,
+}) => {
   const [animationContainer, animationContainerView] = useInView({
     threshold: 0.5,
     triggerOnce: true,
@@ -66,72 +64,70 @@ const Presentation = (props) => {
         [`margin-bottom-${marginBottom}`]: marginBottom,
       })}
     >
-      <div className={cx('container')}>
-        <div className={cx('inner', 'botton-border', alignment)}>
-          <div className={cx('content-wrapper')}>
-            {icon && <img className={cx('icon')} src={icon.url} alt="" aria-hidden />}
-            <Heading
-              className={cx('title')}
-              tag="h2"
-              size="xl"
-              highlightedWordsColor={titleHighlightColor}
-              innerHTML={title}
-              highlightedWordsWithoutWrap={false}
-            />
-            <div className={cx('content')} dangerouslySetInnerHTML={{ __html: content }} />
-            {linkText && linkUrl && (
-              <Link className={cx('link')} to={linkUrl} withArrow>
-                {linkText}
-              </Link>
-            )}
-            {shouldRenderButtonsWrapper && (
-              <div className={cx('buttons-wrapper')}>
-                {accentButtonUrl && accentButtonText && (
-                  <Button className={cx('button')} theme="accent-primary" to={accentButtonUrl}>
-                    {accentButtonText}
-                  </Button>
-                )}
-                {primaryButtonUrl && primaryButtonText && (
-                  <Button className={cx('button')} theme="primary" to={primaryButtonUrl}>
-                    {primaryButtonText}
-                  </Button>
-                )}
-              </div>
-            )}
-          </div>
+      <div className={cx('container', 'inner', alignment)}>
+        <div className={cx('content-wrapper')}>
+          {icon && <img className={cx('icon')} src={icon.url} alt="" aria-hidden />}
+          <Heading
+            className={cx('title')}
+            tag="h2"
+            size="xl"
+            highlightedWordsColor={titleHighlightColor}
+            innerHTML={title}
+            highlightedWordsWithoutWrap={false}
+          />
+          <div className={cx('content')} dangerouslySetInnerHTML={{ __html: content }} />
+          {linkText && linkUrl && (
+            <Link className={cx('link')} to={linkUrl} withArrow>
+              {linkText}
+            </Link>
+          )}
+          {shouldRenderButtonsWrapper && (
+            <div className={cx('buttons-wrapper')}>
+              {accentButtonUrl && accentButtonText && (
+                <Button className={cx('button')} theme="accent-primary" to={accentButtonUrl}>
+                  {accentButtonText}
+                </Button>
+              )}
+              {primaryButtonUrl && primaryButtonText && (
+                <Button className={cx('button')} theme="primary" to={primaryButtonUrl}>
+                  {primaryButtonText}
+                </Button>
+              )}
+            </div>
+          )}
+        </div>
 
-          <div
-            className={cx('illustration-wrapper')}
-            ref={withHTMLIllustration ? animationContainer : null}
-          >
-            {withHTMLIllustration && (
-              <HTMLIllustration className={cx('illustration')} animate={animationContainerView} />
-            )}
-            {withHTMLIllustration && withBackground && (
-              <img className={cx('shape')} loading="lazy" src={shape} alt="" aria-hidden />
-            )}
-            {image && !withHTMLIllustration && (
-              <div className={cx('image-wrapper')}>
-                <div className={cx('image-inner')}>
-                  <div style={{ maxWidth: image.width / 2, display: 'block' }}>
-                    <img
-                      src={imgPlaceholderData}
-                      alt=""
-                      style={{ maxWidth: '100%', display: 'block', position: 'static' }}
-                      aria-hidden
-                    />
-                  </div>
+        <div
+          className={cx('illustration-wrapper')}
+          ref={withHTMLIllustration ? animationContainer : null}
+        >
+          {withHTMLIllustration && (
+            <HTMLIllustration className={cx('illustration')} animate={animationContainerView} />
+          )}
+          {withHTMLIllustration && withBackground && (
+            <img className={cx('shape')} loading="lazy" src={shape} alt="" aria-hidden />
+          )}
+          {image && !withHTMLIllustration && (
+            <div className={cx('image-wrapper')}>
+              <div className={cx('image-inner')}>
+                <div style={{ maxWidth: image.width / 2, display: 'block' }}>
                   <img
-                    className={cx('image')}
-                    loading="lazy"
-                    srcSet={image.srcset}
+                    src={imgPlaceholderData}
                     alt=""
+                    style={{ maxWidth: '100%', display: 'block', position: 'static' }}
                     aria-hidden
                   />
                 </div>
+                <img
+                  className={cx('image')}
+                  loading="lazy"
+                  srcSet={image.srcset}
+                  alt=""
+                  aria-hidden
+                />
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
