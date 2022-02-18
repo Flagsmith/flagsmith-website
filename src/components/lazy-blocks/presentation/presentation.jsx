@@ -71,6 +71,8 @@ const Presentation = ({
       image.height / 2
     }' width='${image.width / 2}' xmlns='http://www.w3.org/2000/svg' version='1.1'%3E%3C/svg%3E`;
   }
+  console.log(features);
+
   return (
     <section
       className={cx('wrapper', {
@@ -147,7 +149,7 @@ const Presentation = ({
           </div>
         </div>
 
-        {features && features.length > 0 && (
+        {features && features.length > 0 && features[0].text && features[0].title && (
           <div className={cx('features')}>
             {features.map(({ iconName, title, text }, index) => {
               const Icon = featuresIcons[iconName];
@@ -190,7 +192,7 @@ Presentation.propTypes = {
   marginBottom: PropTypes.oneOf(['xl', 'lg', 'md', 'sm', 'xs']),
   features: PropTypes.arrayOf(
     PropTypes.shape({
-      iconName: PropTypes.oneOf(Object.keys(featuresIcons)),
+      iconName: PropTypes.oneOf(Object.keys(featuresIcons)).isRequired,
       title: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
     })
