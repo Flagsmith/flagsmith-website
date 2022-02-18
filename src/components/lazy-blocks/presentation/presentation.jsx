@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import Button from 'components/shared/button';

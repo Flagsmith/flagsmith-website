@@ -36,33 +36,25 @@
 
 .left {
   position: relative;
-  grid-column: span 6;
+  grid-column: 1 / 7;
 
   @include fullhd-down {
     grid-column: span 7;
   }
 
   @include md-down {
-    grid-column: span 12;
-    grid-column-start: 2;
-    grid-column-end: 12;
+    grid-column: 2 / 12;
   }
 
   @include sm-down {
-    grid-column-start: 1;
-    grid-column-end: 13;
+    grid-column: 1 / 13;
   }
 }
 
 .right {
-  grid-column-start: 8;
-  grid-column-end: 12;
+  grid-column: 8 / 13;
 
   @include with-link-accent-secondary;
-
-  @include fullhd-down {
-    grid-column-end: 13;
-  }
 
   @include lg-down {
     padding-left: 55px;
@@ -70,16 +62,13 @@
 
   @include md-down {
     grid-row-start: 1;
-    grid-column: span 12;
-    grid-column-start: 2;
-    grid-column-end: 12;
+    grid-column: 2 / 12;
     padding-left: 0;
     margin-bottom: 50px;
   }
 
   @include sm-down {
-    grid-column-start: 1;
-    grid-column-end: 13;
+    grid-column: 1 / 13;
   }
 }
 
@@ -144,5 +133,69 @@
   @include sm-down {
     margin-right: auto;
     margin-left: auto;
+  }
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column: 1 / 13;
+  grid-column-gap: 100px;
+  padding-top: 55px;
+  margin-top: 55px;
+  border-top: 1px dashed $color-additional-7;
+
+  @include xl-down {
+    grid-column-gap: 80px;
+  }
+
+  @include lg-down {
+    grid-column-gap: 50px;
+  }
+
+  @include md-down {
+    grid-template-columns: 1fr;
+    grid-column: 2 / 12;
+    row-gap: 30px;
+  }
+
+  @include sm-down {
+    grid-column: 1 / 13;
+  }
+}
+
+.feature-icon {
+  margin-bottom: 20px;
+
+  @include md-down {
+    margin-bottom: 10px;
+  }
+}
+
+.feature-title {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-family: $font-family-primary;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: $line-height-secondary;
+  color: $color-primary;
+
+  @include lg-down {
+    font-size: $font-size-base;
+  }
+
+  @include md-down {
+    margin-bottom: 10px;
+  }
+}
+
+.feature-description {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: $font-size-sm;
+
+  @include lg-down {
+    font-size: $font-size-xs;
   }
 }
