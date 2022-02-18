@@ -71,6 +71,11 @@ export const query = graphql`
           link {
             url
           }
+          features {
+            iconName
+            title
+            description
+          }
         }
         section2
         section3 {
@@ -78,6 +83,11 @@ export const query = graphql`
           description
           link {
             url
+          }
+          features {
+            iconName
+            title
+            description
           }
         }
         platform {

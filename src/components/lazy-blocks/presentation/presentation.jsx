@@ -9,12 +9,6 @@ import Heading from 'components/shared/heading';
 import Link from 'components/shared/link';
 import RemoteConfigIllustration from 'components/shared/remote-config-illustration';
 
-import Ab from './images/ab.inline.svg';
-import Checkbox from './images/checkbox.inline.svg';
-import Diagrams from './images/diagrams.inline.svg';
-import Flag from './images/flag.inline.svg';
-import List from './images/list.inline.svg';
-import Settings from './images/settings.inline.svg';
 import shape from './images/shape.svg';
 import styles from './presentation.module.scss';
 
@@ -25,33 +19,25 @@ const htmlIllustrations = {
   remoteConfig: RemoteConfigIllustration,
 };
 
-const featuresIcons = {
-  ab: Ab,
-  checkbox: Checkbox,
-  diagrams: Diagrams,
-  flag: Flag,
-  list: List,
-  settings: Settings,
-};
+const Presentation = (props) => {
+  const {
+    icon,
+    title,
+    titleHighlightColor,
+    content,
+    linkText,
+    linkUrl,
+    accentButtonText,
+    accentButtonUrl,
+    primaryButtonText,
+    primaryButtonUrl,
+    image,
+    htmlIllustration,
+    withBackground,
+    alignment,
+    marginBottom,
+  } = props;
 
-const Presentation = ({
-  icon,
-  title,
-  titleHighlightColor,
-  content,
-  linkText,
-  linkUrl,
-  accentButtonText,
-  accentButtonUrl,
-  primaryButtonText,
-  primaryButtonUrl,
-  image,
-  htmlIllustration,
-  withBackground,
-  alignment,
-  marginBottom,
-  features,
-}) => {
   const [animationContainer, animationContainerView] = useInView({
     threshold: 0.5,
     triggerOnce: true,
@@ -147,21 +133,6 @@ const Presentation = ({
             )}
           </div>
         </div>
-
-        {features && !!features.length && features[0].text && features[0].title && (
-          <div className={cx('features')}>
-            {features.map(({ iconName, title, text }, index) => {
-              const Icon = featuresIcons[iconName];
-              return (
-                <div key={index}>
-                  {Icon && <Icon className={cx('feature-icon')} aria-hidden />}
-                  <h3 className={cx('feature-title')}>{title}</h3>
-                  <p className={cx('feature-text')}>{text}</p>
-                </div>
-              );
-            })}
-          </div>
-        )}
       </div>
     </section>
   );
@@ -189,13 +160,6 @@ Presentation.propTypes = {
   withBackground: PropTypes.bool,
   alignment: PropTypes.oneOf(['left', 'right']),
   marginBottom: PropTypes.oneOf(['xl', 'lg', 'md', 'sm', 'xs']),
-  features: PropTypes.arrayOf(
-    PropTypes.shape({
-      iconName: PropTypes.oneOf(Object.keys(featuresIcons)).isRequired,
-      title: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
-    })
-  ),
 };
 
 Presentation.defaultProps = {
@@ -212,7 +176,6 @@ Presentation.defaultProps = {
   withBackground: false,
   alignment: 'left',
   marginBottom: null,
-  features: null,
 };
 
 export default Presentation;
