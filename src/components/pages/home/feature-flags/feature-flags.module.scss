@@ -36,7 +36,7 @@
 
 .left {
   position: relative;
-  grid-column: 1 / 6;
+  grid-column: 1 / 7;
 
   @include fullhd-down {
     grid-column: span 7;
