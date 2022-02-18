@@ -87,7 +87,6 @@ const components = {
   contactform: ContactForm,
   getstarted: GetStarted,
   rainbowtext: RainbowText,
-  presentationwithitems: Presentation,
 };
 
 export const useLazyBlocks = (content) => {
