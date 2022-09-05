@@ -1,7 +1,5 @@
 export default async function sendGravityFormData(formId, values) {
   // This puts the form data into Pipedrive
-  // todo: remove
-  // const url_vercel = `http://localhost:3000/api/contact-us`;
   const url_vercel = `/api/contact-us`;
 
   try {
