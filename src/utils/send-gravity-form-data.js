@@ -1,8 +1,19 @@
 export default async function sendGravityFormData(formId, values) {
-  const url = `${process.env.GATSBY_WP_URL}/wp-json/gf/v2/forms/${formId}/submissions`;
+  // This puts the form data into Pipedrive
+  const url_vercel = `/api/contact-us`;
 
   try {
-    const response = await fetch(url, {
+    const response = await fetch(url_vercel, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(values),
+    });
+  } catch (error) {}
+
+  // This is the regular gatsby form processor which emails and slacks us
+  const url_wordpress = `${process.env.GATSBY_WP_URL}/wp-json/gf/v2/forms/${formId}/submissions`;
+  try {
+    const response = await fetch(url_wordpress, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(values),
