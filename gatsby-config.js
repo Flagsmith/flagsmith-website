@@ -14,12 +14,14 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
         // The property ID; the tracking code won't be generated without it
-        trackingId: 'UA-120237963-1',
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: false,
+        trackingIds: ['UA-120237963-1'],
+        pluginConfig: {
+          // Defines where to place the tracking script - `true` in the head and `false` in the body
+          head: false,
+        },
       },
     },
     'gatsby-plugin-react-helmet',
