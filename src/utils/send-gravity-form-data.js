@@ -1,7 +1,11 @@
 export default async function sendGravityFormData(formId, values) {
-  // This puts the form data into Pipedrive
-  const url_vercel = `/api/contact-us`;
+  // Track event in Google Analytics
+  window.gtag('event', 'Contact Us Form Submission', {
+    event_category: 'Website',
+  });
 
+  // Put the form data into Pipedrive
+  const url_vercel = `/api/contact-us`;
   try {
     const response = await fetch(url_vercel, {
       method: 'POST',
@@ -10,7 +14,7 @@ export default async function sendGravityFormData(formId, values) {
     });
   } catch (error) {}
 
-  // This is the regular gatsby form processor which emails and slacks us
+  // Regular gatsby form processor which emails and slacks us
   const url_wordpress = `${process.env.GATSBY_WP_URL}/wp-json/gf/v2/forms/${formId}/submissions`;
   try {
     const response = await fetch(url_wordpress, {

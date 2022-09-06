@@ -30,7 +30,7 @@
     "gatsby": "^3.2.1",
     "gatsby-plugin-canonical-urls": "^3.13.0",
     "gatsby-plugin-feed": "^4.0.0",
-    "gatsby-plugin-google-analytics": "^3.5.0",
+    "gatsby-plugin-google-gtag": "^4.22.0",
     "gatsby-plugin-google-tagmanager": "^3.2.0",
     "gatsby-plugin-heap": "^1.1.0",
     "gatsby-plugin-image": "^1.2.0",
