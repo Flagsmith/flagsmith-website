@@ -65,7 +65,6 @@ const Hero = ({ title, description, button, codeLabel, code, logosTitle, logos, 
 
                 return (
                   <div key={index} className={cx('testimonial')}>
-                    <p className={cx('quote')}>{quote}</p>
                     <div className={cx('testimonial-bio')}>
                       <div className={cx('testimonial-headshot')}>
                         <GatsbyImage
@@ -82,6 +81,7 @@ const Hero = ({ title, description, button, codeLabel, code, logosTitle, logos, 
                         </h3>
                       </div>
                     </div>
+                    <p className={cx('quote')}>{quote}</p>
                   </div>
                 );
               })}
