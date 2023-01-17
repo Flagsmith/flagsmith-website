@@ -36,6 +36,41 @@
   }
 }
 
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.testimonials-wrapper {
+  margin-block-start: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+}
+
+.testimonial-bio {
+  margin-block-start: 26px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 0;
+}
+
+.testimonial-headshot {
+  flex-direction: column;
+  text-align: left;
+}
+
+.testimonial-name h3 {
+  margin-block-start: 0;
+}
+
+.quote {
+  margin-block-start: 0;
+  padding-right: 30px;
+  font-size: $font-size-xs;
+}
+
 .inner {
   @include md-down {
     max-width: 580px;

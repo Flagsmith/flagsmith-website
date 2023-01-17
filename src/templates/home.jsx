@@ -64,6 +64,11 @@ export const query = graphql`
               }
             }
           }
+          testimonials {
+            quote
+            customername
+            company
+          }
         }
         section1 {
           title
