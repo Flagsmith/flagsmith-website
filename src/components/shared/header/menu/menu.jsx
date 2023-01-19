@@ -33,10 +33,10 @@ const Menu = ({ items }) => (
 
             {withSubMenu && (
               <ul className={cx('dropdown')}>
-                {childItems.nodes.map(({ label, path }, index) => (
+                {childItems.nodes.map(({ label, path, childItems }, index) => (
                   <li key={index}>
                     <Link className={cx('link')} to={path}>
-                      {label}
+                      NODE: {childItems.nodes.length}: {label}
                     </Link>
                   </li>
                 ))}

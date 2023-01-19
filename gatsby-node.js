@@ -60,6 +60,12 @@ const getAllMenus = async (graphql) => {
               nodes {
                 label
                 path
+                childItems {
+                  nodes {
+                    label
+                    path
+                  }
+                }
               }
             }
           }
