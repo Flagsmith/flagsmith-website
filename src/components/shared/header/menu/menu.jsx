@@ -53,7 +53,7 @@ const Menu = ({ items }) => (
               </Link>
             )}
             {withSubMenu && (
-              <div className={cx('dropdown')}>
+              <div className={cx('dropdown', { multilevel: structuredItems.length > 1 })}>
                 {structuredItems.map(({ name, childItems }) => (
                   <div>
                     {structuredItems.length > 1 && <strong>{name}</strong>}
