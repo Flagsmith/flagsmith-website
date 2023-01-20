@@ -13,6 +13,28 @@ const Menu = ({ items }) => (
     <ul className={cx('list')}>
       {items.map(({ label, path, childItems }, index) => {
         const withSubMenu = childItems.nodes.length > 0;
+        const coreItems = [];
+        const groupedItems = {};
+
+        childItems.nodes.map((v) => {
+          if (v.childItems.nodes.length) {
+            groupedItems[v.label] = v.childItems.nodes;
+          } else {
+            coreItems.push(v);
+          }
+        });
+
+        const structuredItems = [
+          {
+            name: label,
+            childItems: coreItems,
+          },
+        ].concat(
+          Object.keys(groupedItems).map((v) => ({
+            name: v,
+            childItems: groupedItems[v],
+          }))
+        );
 
         const handleLinkClick = (event) => {
           event.preventDefault();
@@ -30,17 +52,21 @@ const Menu = ({ items }) => (
                 {label}
               </Link>
             )}
-
             {withSubMenu && (
-              <ul className={cx('dropdown')}>
-                {childItems.nodes.map(({ label, path, childItems }, index) => (
-                  <li key={index}>
-                    <Link className={cx('link')} to={path}>
-                      NODE: {childItems.nodes.length}: {label}
-                    </Link>
-                  </li>
+              <div className={cx('dropdown')}>
+                {structuredItems.map(({ name, childItems }) => (
+                  <div>
+                    {structuredItems.length > 1 && <strong>{name}</strong>}
+                    {childItems.map(({ label, path }, index) => (
+                      <li key={index}>
+                        <Link className={cx('link')} to={path}>
+                          {label}
+                        </Link>
+                      </li>
+                    ))}
+                  </div>
                 ))}
-              </ul>
+              </div>
             )}
           </li>
         );
