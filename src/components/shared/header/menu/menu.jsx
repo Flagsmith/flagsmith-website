@@ -4,6 +4,8 @@ import React from 'react';
 
 import Link from 'components/shared/link';
 
+import transformNav from '../../../../utils/transform-nav';
+
 import styles from './menu.module.scss';
 
 const cx = classNames.bind(styles);
@@ -12,34 +14,10 @@ const Menu = ({ items }) => (
   <nav className={cx('wrapper')}>
     <ul className={cx('list')}>
       {items.map(({ label, path, childItems }, index) => {
-        const withSubMenu = childItems.nodes.length > 0;
-        const coreItems = [];
-        const groupedItems = {};
-
-        childItems.nodes.map((v) => {
-          if (v.childItems.nodes.length) {
-            groupedItems[v.label] = v.childItems.nodes;
-          } else {
-            coreItems.push(v);
-          }
-        });
-
-        const structuredItems = [
-          {
-            name: label,
-            childItems: coreItems,
-          },
-        ].concat(
-          Object.keys(groupedItems).map((v) => ({
-            name: v,
-            childItems: groupedItems[v],
-          }))
-        );
-
+        const { withSubMenu, structuredItems } = transformNav(childItems, label, path);
         const handleLinkClick = (event) => {
           event.preventDefault();
         };
-
         return (
           <li className={cx('item')} key={index}>
             {path === '/' ? (
