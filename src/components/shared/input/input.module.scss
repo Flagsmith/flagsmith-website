@@ -1,6 +1,10 @@
 .input {
   position: relative;
   width: 100%;
+
+  textarea {
+    min-height: 200px;
+  }
 }
 
 .input-inner {
