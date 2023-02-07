@@ -11,13 +11,16 @@ export default function transformNav(childItems, label, path) {
     }
   });
 
-  const structuredItems = [
-    {
-      name: label,
-      path,
-      childItems: coreItems,
-    },
-  ].concat(
+  const structuredItems = (coreItems?.length
+    ? [
+        {
+          name: label,
+          path,
+          childItems: coreItems,
+        },
+      ]
+    : []
+  ).concat(
     Object.keys(groupedItems).map((groupedItemName) => ({
       name: groupedItemName,
       path: groupedItems[groupedItemName].path,
