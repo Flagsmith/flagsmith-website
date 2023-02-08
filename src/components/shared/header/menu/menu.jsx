@@ -36,11 +36,11 @@ const Menu = ({ items }) => (
                   <div>
                     {structuredItems.length > 1 && <strong>{name}</strong>}
                     {childItems.map(({ label, path }, index) => (
-                      <li key={index}>
+                      <div key={index}>
                         <Link className={cx('link')} to={path}>
                           {label}
                         </Link>
-                      </li>
+                      </div>
                     ))}
                   </div>
                 ))}
