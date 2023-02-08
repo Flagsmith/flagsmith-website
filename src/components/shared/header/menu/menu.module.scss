@@ -97,13 +97,14 @@
     transform: translateX(calc(-50% - 35px)) translateY(-100%);
   }
 
-  li,div {
+  li,
+  div {
     white-space: nowrap;
 
     a {
-      padding-top: 10px;
+      padding-top: 18px;
       padding-bottom: 10px;
-      font-size: $font-size-xxs;
+      font-size: $font-size-xs;
     }
   }
 }
