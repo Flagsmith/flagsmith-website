@@ -1,11 +1,11 @@
 {
   "name": "gatsby-starter-default",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A simple starter to get up and developing quickly with Gatsby yep",
   "version": "0.1.0",
   "author": "Alex Barashkov <alex@pixelpoint.io>",
   "scripts": {
-    "start": "npm run develop",
+    "start": "gatsby develop -H 0.0.0.0",
     "develop": "gatsby develop -H 0.0.0.0",
     "build": "gatsby build",
     "serve": "gatsby serve -H 0.0.0.0",
