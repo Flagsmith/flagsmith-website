@@ -70,7 +70,7 @@
   &.multilevel {
     display: flex;
 
-    div {
+    > div {
       min-width: 200px;
 
       &:first-child {
@@ -97,7 +97,7 @@
     transform: translateX(calc(-50% - 35px)) translateY(-100%);
   }
 
-  li {
+  li,div {
     white-space: nowrap;
 
     a {
