@@ -63,6 +63,27 @@
   transition: all $transition-base;
   transform: translate(calc(-50% + 35px), 15px);
 
+  strong {
+    font-size: $font-size-sm;
+  }
+
+  &.multilevel {
+    display: flex;
+
+    div {
+      min-width: 200px;
+
+      &:first-child {
+        padding-right: 30px;
+        border-right: 1px solid $color-additional-8;
+      }
+
+      &:nth-child(2) {
+        padding-left: 30px;
+      }
+    }
+  }
+
   &::before {
     position: absolute;
     top: 0;

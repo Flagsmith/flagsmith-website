@@ -4,6 +4,8 @@ import React from 'react';
 
 import Link from 'components/shared/link';
 
+import transformNav from '../../../../utils/transform-nav';
+
 import styles from './menu.module.scss';
 
 const cx = classNames.bind(styles);
@@ -12,12 +14,10 @@ const Menu = ({ items }) => (
   <nav className={cx('wrapper')}>
     <ul className={cx('list')}>
       {items.map(({ label, path, childItems }, index) => {
-        const withSubMenu = childItems.nodes.length > 0;
-
+        const { withSubMenu, structuredItems } = transformNav(childItems, label, path);
         const handleLinkClick = (event) => {
           event.preventDefault();
         };
-
         return (
           <li className={cx('item')} key={index}>
             {path === '/' ? (
@@ -30,17 +30,21 @@ const Menu = ({ items }) => (
                 {label}
               </Link>
             )}
-
             {withSubMenu && (
-              <ul className={cx('dropdown')}>
-                {childItems.nodes.map(({ label, path }, index) => (
-                  <li key={index}>
-                    <Link className={cx('link')} to={path}>
-                      {label}
-                    </Link>
-                  </li>
+              <div className={cx('dropdown', { multilevel: structuredItems.length > 1 })}>
+                {structuredItems.map(({ name, childItems }) => (
+                  <div>
+                    {structuredItems.length > 1 && <strong>{name}</strong>}
+                    {childItems.map(({ label, path }, index) => (
+                      <li key={index}>
+                        <Link className={cx('link')} to={path}>
+                          {label}
+                        </Link>
+                      </li>
+                    ))}
+                  </div>
                 ))}
-              </ul>
+              </div>
             )}
           </li>
         );

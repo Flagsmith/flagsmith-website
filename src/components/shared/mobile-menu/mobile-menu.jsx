@@ -7,6 +7,8 @@ import Link from 'components/shared/link';
 import MainContext from 'context/main';
 import GithubIcon from 'icons/github.inline.svg';
 
+import transformNav from '../../../utils/transform-nav';
+
 import styles from './mobile-menu.module.scss';
 import SubMenu from './sub-menu';
 
@@ -14,7 +16,7 @@ const cx = classNames.bind(styles);
 
 const MobileMenu = ({ isOpen, onCloseButtonClick }) => {
   const {
-    menus: { mobileMenuItems: menuItems },
+    menus: { headerMenuItems: menuItems },
     sharedBlocks: {
       header: {
         acf: {
@@ -24,20 +26,27 @@ const MobileMenu = ({ isOpen, onCloseButtonClick }) => {
       },
     },
   } = useContext(MainContext);
-
   return (
     <nav className={cx('wrapper', { open: isOpen })}>
       <ul className={cx('menu')}>
-        {menuItems.map(({ label, path, childItems }, index) => {
-          const withChildItems = childItems.nodes.length > 0;
-
+        {menuItems.map(({ childItems, label, path }) => {
+          const { withSubMenu, structuredItems } = transformNav(childItems, label, path);
+          const showSubTitle = structuredItems.length >= 2;
           return (
-            <li className={cx('item')} key={index}>
-              <Link className={cx('link')} to={path}>
-                {label}
-              </Link>
-              {withChildItems && <SubMenu items={childItems.nodes} />}
-            </li>
+            <>
+              <h2 className={cx('link')}>{label}</h2>
+              {structuredItems.map(({ childItems, name, path }) => (
+                <li className={cx('item')} key={name}>
+                  {showSubTitle && (
+                    <Link className={cx('link')} to={path}>
+                      {name}
+                    </Link>
+                  )}
+
+                  {withSubMenu && <SubMenu items={childItems} />}
+                </li>
+              ))}
+            </>
           );
         })}
       </ul>
