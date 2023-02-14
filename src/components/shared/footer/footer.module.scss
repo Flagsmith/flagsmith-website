@@ -1,5 +1,7 @@
 .wrapper {
   @include section-paddings;
+
+  background-color: $color-additional-1;
 }
 
 .inner {
