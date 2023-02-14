@@ -34,11 +34,9 @@ const Footer = () => {
           <Link to="/">
             <Logo />
           </Link>
-        </div>
-        <div className={cx('soc2-wrapper')}>
-          <Link to="/">
+          <div className={cx('soc2-wrapper')}>
             <GatsbyImage image={getImage(soc2)} alt="Soc2 Compliant" />
-          </Link>
+          </div>
         </div>
         <div className={cx('menu')}>
           {menuItems.map(({ label, childItems }, index) => (
