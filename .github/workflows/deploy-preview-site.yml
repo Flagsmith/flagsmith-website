@@ -1,4 +1,4 @@
-name: "deploy-preview-site"
+name: Deploy Wordpress Preview Site
 
 on:
     push:
@@ -10,9 +10,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Cloning repo
-              uses: actions/checkout@v2
-              with:
-                  fetch-depth: 0
+              uses: actions/checkout@v3
 
             - name: Push to dokku
               uses: dokku/github-action@master
