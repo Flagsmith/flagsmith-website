@@ -30,7 +30,7 @@ export default async function handler(request, response) {
       console.log(`pipedrivePersonsApi called successfully. Returned data: ${personData}`);
 
       const newLead = pipedrive.AddLeadRequest.constructFromObject({
-        title: `New ${personData.data.primary_email} Lead`,
+        title: `${personData.data.primary_email}`,
         person_id: personData.data.id,
         f001193d9249bb49d631d7c2c516ab72f9ebd204: 'Website Contact Us Form',
       });
