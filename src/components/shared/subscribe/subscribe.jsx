@@ -128,7 +128,7 @@ const Subscribe = () => {
               </div>
               <span className={cx('message-title')}>Success!</span>
               <span className={cx('message-description')}>
-                Now you will be up to date with the latest new.
+                We'll keep you up to date with the latest Flagsmith news.
               </span>
             </motion.div>
           )}
