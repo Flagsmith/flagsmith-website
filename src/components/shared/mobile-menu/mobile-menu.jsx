@@ -31,10 +31,24 @@ const MobileMenu = ({ isOpen, onCloseButtonClick }) => {
       <ul className={cx('menu')}>
         {menuItems.map(({ childItems, label, path }) => {
           const { withSubMenu, structuredItems } = transformNav(childItems, label, path);
+          const handleLinkClick = (event) => {
+            event.preventDefault();
+          };
           const showSubTitle = structuredItems.length >= 2;
           return (
             <>
-              <h2 className={cx('link')}>{label}</h2>
+              <h2 className={cx('link')}>
+                {path === '/' ? (
+                  // eslint-disable-next-line jsx-a11y/anchor-is-valid
+                  <a className={cx('link')} href="#" onClick={handleLinkClick}>
+                    {label}
+                  </a>
+                ) : (
+                  <Link className={cx('link')} to={path}>
+                    {label}
+                  </Link>
+                )}
+              </h2>
               {structuredItems.map(({ childItems, name, path }) => (
                 <li className={cx('item')} key={name}>
                   {showSubTitle && (
@@ -42,7 +56,6 @@ const MobileMenu = ({ isOpen, onCloseButtonClick }) => {
                       {name}
                     </Link>
                   )}
-
                   {withSubMenu && <SubMenu items={childItems} />}
                 </li>
               ))}
