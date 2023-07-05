@@ -13,6 +13,7 @@ module.exports = {
     authorTwitterAccount: '@',
   },
   plugins: [
+    `gatsby-plugin-no-index`,
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
