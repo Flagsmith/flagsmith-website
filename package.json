@@ -38,6 +38,7 @@
     "gatsby-plugin-heap": "^1.1.0",
     "gatsby-plugin-image": "^1.2.0",
     "gatsby-plugin-netlify": "^3.4.0",
+    "gatsby-plugin-no-index": "^1.0.2",
     "gatsby-plugin-sitemap": "^3.3.0",
     "gatsby-source-wordpress": "^5.9.2",
     "html-react-parser": "^1.2.4",
